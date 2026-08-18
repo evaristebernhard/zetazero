@@ -1,0 +1,97 @@
+\section{Major formalization nodes}
+
+The labels M01--M10 and their Lean facade modules are stable.  The checklists
+inside each node are provisional implementation guides rather than additional
+global dependency nodes.  No node carries a formalization-complete marker
+during initialization.
+
+\begin{definition}[\nodeid{M01}: Finite-dimensional inertia reduction]
+\label{node:m01}
+\notready
+Formalize Hermitian forms and operators, restriction and finite-rank
+perturbation, negative inertia dimension, positive-Gram whitening, the
+Hilbert--Schmidt threshold estimate, and the rank-plus-relative-Hilbert--Schmidt
+min--max conclusion.  Paper source: \texttt{sections/13\_minmax.tex}.
+\end{definition}
+
+\begin{definition}[\nodeid{M02}: Hardy gauge and invariant contour form]
+\label{node:m02}
+\notready
+Formalize the analytic Hardy gauge and the invariant curvature representation
+of the contour form.  Paper source: \texttt{sec:common-matrix}.
+\end{definition}
+
+\begin{definition}[\nodeid{M03}: Zero-side stationary geometry and packet evaluation]
+\label{node:m03}
+\notready
+\uses{node:m02}
+Formalize stationary blocks, exact packet evaluation rank, packet Riesz bounds,
+coordinate restriction, horizontal decay, and zero-side inertia bookkeeping.
+Paper source: \texttt{sec:zero-side}.
+\end{definition}
+
+\begin{definition}[\nodeid{M04}: Right-edge arithmetic source and dilation covariance]
+\label{node:m04}
+\notready
+\uses{node:m02}
+Formalize the reflected source decomposition, principal pole cluster, physical
+one-character carrier, stationary symbol, and exact dilation covariance.
+Paper sources: \texttt{sec:right-edge} and \texttt{sec:stationary}.
+\end{definition}
+
+\begin{definition}[\nodeid{M05}: HLP/HLZ local model and principal operator]
+\label{node:m05}
+\notready
+\uses{node:m04}
+Formalize the completed three-Z master, common-prefix geometry, exact HLP
+levels, local pole projection, smooth packet Mellin class, and the principal
+operator replacement.  Paper sources: \texttt{sec:threeZ},
+\texttt{sec:hlp-local}, and \texttt{sec:local-projector}.
+\end{definition}
+
+\begin{definition}[\nodeid{M06}: Global model and spectral floor]
+\label{node:m06}
+\notready
+\uses{node:m05}
+Formalize the completed global model, its closed kernel, the certified spectral
+lower bound, compression, and finite-parameter stability.  Paper source:
+\texttt{sec:model-floor}.
+\end{definition}
+
+\begin{definition}[\nodeid{M07}: Divisor Gram and arithmetic transfer]
+\label{node:m07}
+\notready
+\uses{node:m05}
+Formalize the gcd/divisor identities, arithmetic Gram, inverse bounds,
+dimension loss, and two-sided operator and Hilbert--Schmidt transfer.  Paper
+source: \texttt{sec:divisor-gram}.
+\end{definition}
+
+\begin{definition}[\nodeid{M08}: Frame compression, edge rank, and regular remainder]
+\label{node:m08}
+\notready
+\uses{node:m03,node:m06,node:m07}
+Formalize the stationary-shell frame, logarithmic Parseval transform,
+stationary-band leakage, macroscopic edge-rank control, reference metric, and
+regular remainder.  Paper sources: \texttt{sec:shell-frame},
+\texttt{sec:edge-rank}, and \texttt{sec:ledger}.
+\end{definition}
+
+\begin{definition}[\nodeid{M09}: Retained space and parameter hierarchy]
+\label{node:m09}
+\notready
+\uses{node:m08}
+Formalize the reduced spectral space, accumulated codimension bounds, and the
+parameter hierarchy.  Paper source: \texttt{sections/12\_retained\_space.tex}.
+\end{definition}
+
+\begin{definition}[\nodeid{M10}: Generic perturbation, min--max, and density-one endgame]
+\label{node:m10}
+\notready
+\uses{node:m01,node:m03,node:m09}
+Formalize multiplicity-removing perturbation, the final finite-dimensional
+min--max step, density-one selection, and the main theorem.  Paper sources:
+\texttt{sections/00\_main\_theorem.tex},
+\texttt{sections/13\_minmax.tex}, and
+\texttt{sections/14\_endgame.tex}.
+\end{definition}

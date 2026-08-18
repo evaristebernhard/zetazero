@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{hyperref}
+\usepackage[showmore,dep_graph]{blueprint}
+\input{macros/common}
+\input{macros/web}
+
+% Only completely formalized nodes are green.  Every intermediate status is
+% deliberately rendered in a non-green planning color.
+\graphcolor{stated}{orange}{Informally stated}
+\graphcolor{can_state}{lightskyblue}{Ready to state}
+\graphcolor{not_ready}{lightgray}{Planned or awaiting dependencies}
+\graphcolor{proved}{gold}{Informally proved}
+\graphcolor{can_prove}{lightskyblue}{Ready to prove}
+\graphcolor{defined}{orange}{Defined, not fully formalized}
+\graphcolor{fully_proved}{darkgreen}{Fully formalized}
+\graphcolor{mathlib}{darkgreen}{Mathlib}
+
+\title{ZetaZero Formalization Blueprint}
+\author{ZetaZero contributors}
+
+\begin{document}
+\maketitle
+\input{content}
+\end{document}
+

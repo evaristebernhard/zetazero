@@ -1,0 +1,6 @@
+/* Keep formalization nodes visually distinct in the generated web document. */
+div.definition_thmcontent {
+  border-left: .15rem solid #4b5563;
+  padding-left: .8rem;
+}
+
