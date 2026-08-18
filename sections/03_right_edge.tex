@@ -1,0 +1,325 @@
+\section{Right-edge arithmetic source and exact HLP algebra}
+\label{sec:right-edge}
+
+\subsection{Reflected archimedean contribution}
+Differentiate the functional equation $\zeta(s)=\chi(s)\zeta(1-s)$. Since
+$f(s)=-\frac12\chi'/\chi(s)$ and $f(s)=f(1-s)$, one obtains
+\begin{equation}
+\boxed{Z_1(s)=-\chi(s)Z_1(1-s).}
+\label{eq:Z1-FE}
+\end{equation}
+Taking logarithmic derivatives gives
+\begin{equation}
+\boxed{
+L_1(s)+L_1(1-s)=\frac{\chi'}{\chi}(s),
+\qquad L_1:=\frac{Z_1'}{Z_1}.
+}
+\label{eq:Z1-log-FE}
+\end{equation}
+The two vertical sides are related by the Hermitian reflection
+$\iota(s):=1-\bar s$, which preserves the positive height and maps the left
+vertical side onto the right one. The holomorphic map $s\mapsto1-s$ alone
+would reverse the sign of the height and is not used as a geometric contour
+substitution. By \eqref{eq:hardy-gauge-reflection}, the curvature and packet
+polarizations on the left are the adjoints of their values at $\iota(s)$.
+Because the left boundary has the opposite orientation, its pullback to the
+upward right side carries the scalar factor
+\[
+-\overline{L_1(1-\bar s)}=-L_1(1-s)
+=L_1(s)-\frac{\chi'}{\chi}(s),
+\]
+where the last equality is \eqref{eq:Z1-log-FE}. Hence the vertical
+contribution is exactly
+\begin{equation}
+\boxed{
+I_{\rm right}+I_{\rm right}^*+J_{\rm arch},
+\qquad
+J_{\rm arch}\text{ has scalar source }
+-\frac{\chi'}{\chi}=2f.
+}
+\label{eq:J-I-source-split}
+\end{equation}
+Here $I_{\rm right}$ contains the right-edge logarithmic derivative $L_1$ and
+all stationary arithmetic information. No $L_1$ contour is pushed through an
+interior stationary zero. The separate archimedean self source is holomorphic
+in the high rectangle and may be moved by Cauchy's theorem. For the completed
+Hermitian representation we distribute $J_{\rm arch}$ equally between the two
+adjoint orientations; hence each completed right-edge orientation carries the
+scalar source $f+L_1$.
+
+For bounded normalized curvature $p$, put $a=p/L$ and let
+$\mathcal B_{v,w}(s)$ denote the holomorphic packet-polarization multiplier.
+Set
+\[
+\mathcal S_a(s)
+:=\mathscr Z(s+a)\mathscr Z(s-a)\mathcal B_{v,w}(s),
+\qquad
+\Phi_J(s;a):=f(s)\mathcal S_a(s)
+=-\frac12\frac{\chi'}{\chi}(s)\mathcal S_a(s).
+\]
+Thus $\Phi_J$ is exactly one half of the full self source
+$J_{\rm arch}$ in \eqref{eq:J-I-source-split}.
+The shifts $a=O(L^{-1})$ leave the zeta poles at bounded imaginary height, so
+$\Phi_J$ is holomorphic on and inside the right half-rectangle
+\[
+\mathcal R_T^+:=\{\sigma+it:1/2\le\sigma\le c,
+\ T_1\le t\le T_2\},
+\]
+which is the right half of \eqref{eq:symmetric-contour-rectangle}, uniformly
+for $|p|\le P$. With the vertical sides oriented upward and the
+usual top/bottom orientations, Cauchy's theorem gives the exact identity
+\begin{equation}
+\boxed{
+\int_{\Gamma_{1/2}^{+}}\Phi_J(s;a)\,ds
+=\int_{\Gamma_c^{+}}\Phi_J(s;a)\,ds
++R_{{\rm hor},T}(a),
+}
+\label{eq:critical-J-move}
+\end{equation}
+where
+\[
+R_{{\rm hor},T}(a)
+=-\int_{\mathcal H_T^+}\Phi_J(s;a)\,ds
+ -\int_{\mathcal H_T^-}\Phi_J(s;a)\,ds.
+\]
+The reflected Hermitian orientation gives the adjoint identity. Summing the two
+orientations doubles $\Phi_J=f\mathcal S_a$ and therefore reconstructs the full
+self source $-\chi'/\chi=2f$ in \eqref{eq:J-I-source-split}, with the
+corresponding doubled right-edge and horizontal terms. Because all fixed $p$-derivatives remain holomorphic in
+the same rectangle,
+\begin{equation}
+\partial_p^j\mathcal J_{{\rm crit},T}(p)
+=\partial_p^j\mathcal J_{{\rm right},T}(p)
+ +\partial_p^jR_{{\rm hor},T}(p),
+\qquad 0\le j\le2.
+\label{eq:critical-J-curvature}
+\end{equation}
+Thus the critical-$J$ contribution is fixed unambiguously before the common
+curvature is taken.
+
+We insert the packet multiplier and the common curvature
+\eqref{eq:curvature-product} before deforming the contour to the right edge.
+On that edge,
+\[
+\mathscr Z(s+a)\mathscr Z(s-a)
+=\Gamma_a(s)\zeta(s+a)\zeta(s-a),
+\]
+where
+\[
+\Gamma_0(s)=\chi(1-s),
+\qquad
+\partial_a\Gamma_a|_{a=0}=0,
+\qquad
+\partial_a^2\Gamma_a|_{a=0}=2f'(s)\chi(1-s).
+\]
+Since $f'(\sigma+it)=O(T^{-1})$ on fixed strips with $t\asymp T$, the last term
+is assigned from the start to the regular remainder.
+
+Fix the sign convention
+\begin{equation}
+P(s):=-\frac{\zeta'}\zeta(s),
+\qquad
+Q(s):=-P'(s)=\sum_{n\ge1}\frac{\Lambda(n)\log n}{n^s}
+\quad (\Re s>1).
+\label{eq:PQ-convention}
+\end{equation}
+Then the right-edge logarithmic-derivative orientation itself has scalar source
+\[
+L_1(s)=\frac{Z_1'}{Z_1}(s)
+=-P(s)+\frac{f'(s)+Q(s)}{f(s)-P(s)}.
+\]
+The full archimedean self term in \eqref{eq:J-I-source-split} is $2f$; after the
+symmetric half-allocation described above, each completed right-edge orientation
+therefore carries $f+L_1$. After separating the $f'$ term, the pointwise
+completed source is
+\begin{equation}
+\boxed{
+\widehat H_{\rm ex}(s)
+=f(s)-P(s)+\frac{Q(s)}{f(s)-P(s)}.
+}
+\label{eq:Hex-variable}
+\end{equation}
+On a smooth height block with reference height $\tau_b$, put
+\begin{equation}
+\boxed{F_b:=f(1/2+i\tau_b)\in\mathbb R}
+\label{eq:Fb-real-freeze}
+\end{equation}
+(the reality follows from $|\chi(1/2+it)|=1$ and
+$\partial_t\log\chi=i\chi'/\chi$ on the critical line), and define the frozen
+source
+\begin{equation}
+\boxed{
+H_{\rm ex}(s;F_b)=F_b-P(s)+\frac{Q(s)}{F_b-P(s)}.
+}
+\label{eq:Hex}
+\end{equation}
+Thus the term $F_b$ is the frozen half of the archimedean self contribution and
+is not part of the Dirichlet series for $Z_1'/Z_1$.
+The completed two-master model is
+\begin{equation}
+\boxed{
+H_{\rm mod}(s;F_b)=F_b-2P(s)+P(s-2/L).
+}
+\label{eq:Hmod}
+\end{equation}
+Therefore
+\begin{equation}
+\boxed{
+\Delta H(s;F_b)
+=P(s)+\frac{Q(s)}{F_b-P(s)}-P(s-2/L).
+}
+\label{eq:deltaH}
+\end{equation}
+This is an exact algebraic identity between the two frozen sources on the
+absolute-convergence right edge. The error introduced by replacing the
+pointwise source \eqref{eq:Hex-variable} with \eqref{eq:Hex} is estimated below
+uniformly over the HLP hierarchy.
+
+\begin{lemma}[Exact curvature Dirichlet source]
+\label{lem:curvature-source}
+Put
+\[
+\mathcal C(s):=\zeta(s)^2Q(s).
+\]
+Then the Hardy-gauge curvature satisfies the exact identity
+\begin{equation}
+\boxed{
+C_{\mathscr Z}(s)
+=q(s)^2\bigl(\mathcal C(s)+f'(s)\zeta(s)^2\bigr),
+\qquad q(s)^2=\chi(1-s).
+}
+\label{eq:curvature-source}
+\end{equation}
+Moreover
+\begin{equation}
+\mathcal C(s)=\sum_{n\ge1}\frac{c(n)}{n^s},
+\qquad
+\boxed{
+c(n)=\frac12\sum_{ab=n}\log^2(a/b)\ge0.
+}
+\label{eq:curvature-coefficient}
+\end{equation}
+Consequently, after the global normalization $L^{-2}$ already fixed in
+Section~\ref{sec:common-matrix}, the principal completed right-edge integrand
+has exactly one functional-equation factor $\chi(1-s)$ and scalar Dirichlet
+source $\mathcal C(s)H_{\rm ex}(s;F_b)$. Before freezing the slow factor, the
+exact completed product separates as
+\begin{equation}
+\boxed{
+q(s)^2\left[
+\mathcal C(s)\widehat H_{\rm ex}(s)
++R_{f'}^{\rm src}(s)
+\right],
+}
+\label{eq:exact-fprime-separation}
+\end{equation}
+where
+\begin{equation}
+\boxed{
+R_{f'}^{\rm src}
+=f'\zeta^2\widehat H_{\rm ex}
++\frac{f'}{f-P}\mathcal C
++\frac{(f')^2}{f-P}\zeta^2.
+}
+\label{eq:fprime-source}
+\end{equation}
+Thus every term containing at least one factor $f'$ belongs exactly once to the
+regular $f'$ class, while the principal source contains none.
+\end{lemma}
+
+\begin{proof}
+Since $\mathscr Z=q\zeta$ and $q'/q=f$,
+\[
+\mathscr Z''
+=q\bigl(\zeta''+2f\zeta'+(f'+f^2)\zeta\bigr).
+\]
+Therefore
+\begin{align*}
+C_{\mathscr Z}
+&=\mathscr Z\mathscr Z''-(\mathscr Z')^2\\
+&=q^2\bigl(\zeta\zeta''-(\zeta')^2+f'\zeta^2\bigr).
+\end{align*}
+Because $(\zeta'/\zeta)'=Q$, the first two terms equal
+$\zeta^2Q=\mathcal C$, proving \eqref{eq:curvature-source}. Moreover
+\eqref{eq:Hex-variable} gives the exact completed scalar factor
+\[
+f+L_1=\widehat H_{\rm ex}+\frac{f'}{f-P}.
+\]
+Multiplying this by
+$C_{\mathscr Z}/q^2=\mathcal C+f'\zeta^2$ gives
+\eqref{eq:exact-fprime-separation}--\eqref{eq:fprime-source}. Finally the
+coefficient of $n^{-s}$ in $\zeta\zeta''-(\zeta')^2$ is
+\[
+\sum_{ab=n}\bigl((\log b)^2-\log a\log b\bigr)
+=\frac12\sum_{ab=n}(\log a-\log b)^2,
+\]
+which proves \eqref{eq:curvature-coefficient}.
+\end{proof}
+
+From this point the spectral contour variable and the Perron variable are kept
+separate. The letter $s=\sigma+it$ is reserved for the high spectral contour.
+After stationary phase, the resulting coefficient sequences are represented by
+an independent Perron/Mellin variable $z$. We denote their generating
+functions by $P(z),Q(z),H_{\rm ex}(z;F_b)$ and $H_{\rm mod}(z;F_b)$ using the
+same coefficient formulas as above. All Laurent expansions near $1$ below are
+in $z$; no deformation of the original high spectral contour to $s=1$ is ever
+performed.
+
+\begin{lemma}[Algebraic locator for the translated model scale]
+\label{lem:principal-pole-cluster}
+Write $z=1+u$ and assume $F_b=L/2+O(1)$. As a meromorphic \emph{resummation}
+of the right-edge geometric series, the frozen ratio
+$H_{\rm ex}=F_b-P+Q/(F_b-P)$ has, in a fixed normalized neighbourhood
+$|u|\le C/L$, poles at $u=0$ and at one point $u=u_*(F_b)$, where
+\begin{equation}
+\boxed{
+u_*(F_b)=F_b^{-1}+O(F_b^{-2})
+=\frac2L+O(L^{-2}).}
+\label{eq:translated-local-pole}
+\end{equation}
+Their scalar residues are $-2$ and $+1$. The model source $H_{\rm mod}$ has
+principal parts $-2/u+1/(u-2/L)$.
+
+This lemma is only an algebraic locator for the translated scale. In the
+actual Perron argument the quotient $Q/(F_b-P)$ is \emph{not} transported as
+one meromorphic object through the Perron plane. The exact principal source is
+defined by the absolutely convergent geometric expansion on the safe right
+edge and by complete levelwise Laurent extraction at $u=0$; only the resulting
+leading residue family is resummed. Thus $u_*$ does not appear as a separate residue term in the contour
+decomposition; its role is only to identify the translated scale represented by
+the resummed model.
+\end{lemma}
+
+\begin{proof}
+The Laurent expansion of the logarithmic derivative at the zeta pole is
+\[
+P(1+u)=\frac1u+p_0+O(u),
+\qquad
+Q(1+u)=\frac1{u^2}+O(1).
+\]
+Put $D(u)=F_b-P(1+u)$. Then
+\[
+uD(u)=F_bu-1-p_0u+O(u^2).
+\]
+On a circle $|u-F_b^{-1}|=C_1F_b^{-2}$ with $C_1$ fixed sufficiently large,
+Rouch\'e's theorem gives exactly one zero $u_*$ of $D$ and
+$u_*=F_b^{-1}+O(F_b^{-2})$. Since
+\[
+D'(u)=-P'(1+u)=Q(1+u),
+\]
+the quotient $Q/D$ has residue exactly $1$ at $u_*$. At $u=0$ the Laurent
+expansions above give
+\[
+-P(1+u)=-\frac1u+O(1),
+\qquad
+\frac{Q(1+u)}{F_b-P(1+u)}=-\frac1u+O(1),
+\]
+while $F_b$ is analytic. Hence the frozen Perron source $H_{\rm ex}$ has
+residue $-2$ at $u=0$. This proves the exact-source statement without
+identifying the independent Perron variable with the original spectral
+$Z_1$-function. For $H_{\rm mod}(z;F_b)=F_b-2P(z)+P(z-2/L)$ the principal parts are
+immediately
+\[
+-\frac2u+\frac1{u-2/L}.
+\]
+\end{proof}

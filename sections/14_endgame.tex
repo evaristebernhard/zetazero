@@ -1,0 +1,226 @@
+\section{Multiplicity perturbation and proof of the main theorem}
+\label{sec:multiplicity-endgame}
+
+\begin{lemma}[Generic affine perturbation at fixed height]
+\label{lem:generic-affine}
+Fix $T$, the good horizontal contours, and the admissible $T^{-100}$ intervals
+for the packet centres. Given any real neighbourhood $U_0$ of $(0,0)$, there
+are parameters $(\eta,\varepsilon)\in U_0$, chosen compatibly with the Hardy
+conjugation symmetry, such that
+\[
+H(z)=F(z)+\eta z+\varepsilon
+\]
+has only simple zeros and simple stationary zeros in $\Omega_T$, and $H,H'$ have
+no common zero. Choose one packet centre per stationary node so that
+Lemma~\ref{lem:evaluation-rank} gives an evaluation isomorphism. On this packet
+space define $V_{\rm core}$ by Lemma~\ref{lem:stable-core-frame},
+$V_{\rm mean}$ by \eqref{eq:mean-map}, $V_{\rm end}$ by
+\eqref{eq:end-space}, and $\Pret$ by \eqref{eq:retained-space}. Then
+\eqref{eq:retained-codim} holds. Write
+\[
+\Gfr_T^{\rm ret}:=\Gfr_T|_{\Pret}.
+\]
+Proposition~\ref{prop:source-ledger} is therefore applied to the original
+function $F$ on exactly the same finite packet space on which the zero-side
+evaluation of $H$ is performed. Moreover the perturbation can be chosen so
+small that, on this selected $\Pret$,
+\begin{equation}
+\boxed{
+\left\|
+(\Gfr_T^{\rm ret})^{-1/2}(A_H-A_F)
+(\Gfr_T^{\rm ret})^{-1/2}
+\right\|_{\op}<\frac{c_0}{4}.
+}
+\label{eq:perturb-small}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Fix $T$. The chosen boundary contains no zero of $F$ or $F'$. Intersecting
+$U_0$ with a sufficiently small convex real neighbourhood of the origin gives
+$U\subset U_0$ on which $H$ and $H'$ remain nonvanishing there for every point
+of the line segment from $(0,0)$ to $(\eta,\varepsilon)\in U$. Hence homotopy
+invariance of the argument principle gives
+\[
+N_{\rm good}(H')=N_{\rm good}(F')=:m
+\qquad ((\eta,\varepsilon)\in U).
+\]
+There are only finitely many admissible $m$-coordinate subsets, and each centre
+ranges over a compact $T^{-100}$ interval. The corresponding reference Grams
+are continuous and positive definite by Section~\ref{sec:ledger}; hence
+\[
+\gamma_T:=\inf_{\rm admissible\ centres}\lambda_{\min}(\Gfr_T)>0.
+\]
+Restriction to $\Pret$ can only increase the least eigenvalue. Uniform
+continuity of the contour integrand on the same compact centre set allows $U$
+to be shrunk so that
+\begin{equation}
+\sup_{(\eta,\varepsilon)\in U}
+\sup_{\rm admissible\ centres}\|A_H-A_F\|_{\op}
+<\frac{c_0\gamma_T}{4}.
+\label{eq:uniform-fixedT-perturbation}
+\end{equation}
+No asymptotic lower bound for $\gamma_T$ is required.
+
+It remains to impose genericity inside this fixed neighbourhood. Since
+$H'=F'+\eta$ and $H''=F''$, a multiple stationary zero would satisfy
+\[
+F''(z)=0,\qquad \eta=-F'(z).
+\]
+The zeros of $F''$ in the fixed rectangle are finite, so only finitely many real
+$\eta$ are forbidden. Choose a nonzero real $\eta$ in $U$ outside this set.
+The stationary zeros $z_1,\dots,z_m$ are then simple. For this fixed $\eta$, a
+common zero of $H,H'$ at $z_j$ would force
+\[
+\varepsilon=-F(z_j)-\eta z_j.
+\]
+Only finitely many real $\varepsilon$ are therefore forbidden. Choose a real
+$\varepsilon$ in $U$ outside them. Then $H$ has only simple zeros, $H'$ has only
+simple zeros, and $H,H'$ have no common zero. Real parameters preserve
+$H(\bar z)=\overline{H(z)}$.
+
+Lemma~\ref{lem:packet-dimension} now supplies at least $m$ admissible packet
+intervals after the endpoint collars are removed. Choose $m$ distinct intervals
+and then, by Lemma~\ref{lem:evaluation-rank}, centres for which the evaluation
+map is an isomorphism. Lemma~\ref{lem:coordinate-restriction} preserves all
+preceding arithmetic, frame, rank, and relative-remainder estimates on this
+subfamily. Finally \eqref{eq:uniform-fixedT-perturbation} and
+$\lambda_{\min}(\Gfr_T^{\rm ret})\ge\gamma_T$ give
+\eqref{eq:perturb-small}. The arithmetic evaluation remains that of the original
+function $F$; $H$ is used only for the zero-coordinate representation and this
+finite-matrix comparison.
+\end{proof}
+
+\begin{lemma}[Off-axis zero count for the generic perturbation]
+\label{lem:generic-zero-count}
+Let $D(H)$ be the number of nonreal conjugate zero pairs of the straightened
+generic $H$ in the chosen good rectangle $\Omega_T$. Then
+\begin{equation}
+\boxed{D(H)=B(H)+P(H')+o(N_T).}
+\label{eq:D-H}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Choose the perturbation in Lemma~\ref{lem:generic-affine} within the boundary
+neighbourhood fixed in its proof. Homotopy invariance of the argument principle
+gives exact equality of the zero counts of $F,H$ and of $F',H'$ inside the good
+rectangle:
+\[
+N_{\rm good}(H)=N_{\rm good}(F),
+\qquad
+N_{\rm good}(H')=N_{\rm good}(F').
+\]
+By the good-rectangle form \eqref{eq:z1-zeta-good-decrement}, equivalently its
+$(F',F)$ version, it follows that
+\begin{equation}
+N_{\rm good}(H')-N_{\rm good}(H)=o(N_T).
+\label{eq:Hprime-H-good}
+\end{equation}
+The packet endpoint collar defining $V_{\rm end}$ is a coordinate restriction
+and does not enter this zero count. Because the perturbation preserves the real
+symmetry,
+\[
+N_{\rm good}(H)=R_{\rm good}(H)+2D(H),
+\qquad
+N_{\rm good}(H')=R_{\rm good}(H')+2P(H').
+\]
+Applying Lemma~\ref{lem:real-bookkeeping} on the real interval $[T_1,T_2]$ gives
+\[
+R_{\rm good}(H')=R_{\rm good}(H)+2B(H)+O(1).
+\]
+Subtracting the two good-rectangle count identities and using
+\eqref{eq:Hprime-H-good} yields
+\[
+2\{B(H)+P(H')-D(H)\}=o(N_T),
+\]
+which proves \eqref{eq:D-H}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix the good rectangle. Around each distinct nonreal zero of $F$ in its
+interior choose a closed disk, disjoint from the real axis, from the other
+chosen disks, and from the boundary. There are finitely many such disks at
+fixed $T$. By compactness of their boundaries there is a real neighbourhood
+$U_{\rm disk}$ of $(0,0)$ such that
+\[
+|\eta z+\varepsilon|<|F(z)|
+\]
+on every disk boundary whenever $(\eta,\varepsilon)\in U_{\rm disk}$.
+
+Choose $H$ and the evaluation-isomorphic packet subfamily by
+Lemma~\ref{lem:generic-affine}, with $U_0=U_{\rm disk}$. This fixes the packet
+space, $\Gfr_T$, and $\Pret$ before any inertia comparison, and gives
+\eqref{eq:perturb-small}. Proposition~\ref{prop:source-ledger}, applied to the original Hardy-gauge
+matrix $A_F$ on this packet space, gives on $\Pret$
+\[
+A_F=P_T+E_T^{\rm edge}+R_T^{\rm tri}.
+\]
+Put $\Delta_T:=A_H-A_F$. By \eqref{eq:perturb-small},
+\[
+P_T+\Delta_T\succeq\frac{3c_0}{4}\Gfr_T
+\qquad\text{on }\Pret.
+\]
+Hence, after compression to $\Pret$,
+\[
+A_H|_{\Pret}=(P_T+\Delta_T)|_{\Pret}
++E_T^{\rm edge}|_{\Pret}+R_T^{\rm tri}|_{\Pret}.
+\]
+Set
+\[
+r_T:=\rank(E_T^{\rm edge}|_{\Pret}),
+\qquad
+s_T:=\left\|
+(\Gfr_T^{\rm ret})^{-1/2}(R_T^{\rm tri}|_{\Pret})
+(\Gfr_T^{\rm ret})^{-1/2}
+\right\|_{S_2}^2.
+\]
+By \eqref{eq:total-edge-rank}, \eqref{eq:regular-HS}, and
+\eqref{eq:retained-codim}, one has
+$r_T=o(N_T)$, $s_T=o(N_T)$, and
+$\codim\Pret=o(N_T)$. Apply the ambient-codimension conclusion
+\eqref{eq:minmax-codim} of Lemma~\ref{lem:minmax} with the lemma's floor
+parameter replaced by
+\[
+c_*:=\frac{3c_0}{4}>0.
+\]
+The resulting fixed constant $16c_*^{-2}$ does not affect the $o(N_T)$ bounds,
+and therefore
+\begin{equation}
+\boxed{n_-(A_H)=o(N_T).}
+\label{eq:perturbed-inertia}
+\end{equation}
+
+The zero-coordinate pullback is exact for $H$, so
+\eqref{eq:zero-inertia-generic} and \eqref{eq:perturbed-inertia} give
+\[
+B(H)+P(H')=o(N_T).
+\]
+Lemma~\ref{lem:generic-zero-count} then gives $D(H)=o(N_T)$. By the defining
+choice $(\eta,\varepsilon)\in U_{\rm disk}$, Rouch\'e's theorem preserves, with
+multiplicity, the number of zeros in every chosen disk; all these disks are
+disjoint from the real axis. Consequently
+\[
+D_{\rm good}(F)\le D(H).
+\]
+Let $D_T(F)$ denote the number of reflected nonreal zero pairs of $F$ with
+height in $[T,2T]$. Returning from the good rectangle to this dyadic interval
+changes the zero count only in two strips of length at most one. By
+Lemma~\ref{lem:local-z1-count},
+\[
+D_T(F)\le D(H)+O(\log T)=o(N_T).
+\]
+Because $c>1$, the symmetric rectangle
+\eqref{eq:symmetric-contour-rectangle} contains the whole critical strip; at
+these heights $\zeta$ has no nontrivial zeros on the complementary half-planes.
+Thus every noncritical zero in $[T,2T]$, apart from the endpoint adjustment
+already counted above, belongs to exactly one reflected pair. Hence
+\[
+N_T=N_{0,T}+2D_T(F)+o(N_T),
+\]
+so
+\[
+\frac{N_{0,T}}{N_T}=1-o(1).
+\]
+Dyadic summation gives $N_0(T)/N(T)\to1$.
+\end{proof}

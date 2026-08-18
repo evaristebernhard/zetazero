@@ -1,0 +1,54 @@
+\begin{abstract}
+We construct a finite-dimensional Hermitian contour form from an analytic Hardy
+gauge and a near-lattice packet family. Its zero-side residue representation
+converts off-critical-line stationary geometry into negative inertia. On the
+arithmetic side, the same form admits an exact right-edge decomposition whose
+principal term is the pullback of a completed lag operator through the common
+packet/carrier analysis map. A direct Schur estimate gives a uniform spectral lower bound for
+this lag operator on the mean-zero fibres. The stationary edge contribution
+has rank $o(N_T)$, while the regular remainder is $o(N_T)$ in the relative
+Hilbert--Schmidt metric. A finite-dimensional inertia argument then implies
+that all but $o(N_T)$ zeros in a dyadic interval lie on the critical line, and
+hence that $N_0(T)/N(T)\to1$.
+\end{abstract}
+
+\section{Main theorem and notation}
+
+Let
+\[
+N_T:=N(T,2T)
+\]
+denote the number, with multiplicity, of nontrivial zeros of $\zeta$ with
+imaginary part in $[T,2T]$, and let $N_{0,T}$ denote the number of those zeros
+on the critical line. Thus $N_T\asymp T\log T$. Put
+\[
+L:=\log\frac{T}{2\pi}.
+\]
+
+\begin{theorem}[Density one on the critical line]
+\label{thm:main}
+As $T\to\infty$,
+\[
+\boxed{\frac{N_{0,T}}{N_T}=1-o(1)}.
+\]
+Consequently, by dyadic summation,
+\[
+\boxed{\frac{N_0(T)}{N(T)}\longrightarrow1}.
+\]
+\end{theorem}
+
+Hardy's theorem established infinitely many zeros on the critical line; for the
+classical analytic theory of $\zeta$ we refer to Titchmarsh and Heath-Brown
+\cite{Hardy1914,Titchmarsh}. Quantitative proportion results were developed by
+Levinson \cite{Levinson1974}, Conrey \cite{Conrey1989}, Bui--Conrey--Young
+\cite{BCY2011}, and Feng \cite{Feng2012}. More recently, Alp\"oge and Furman
+\cite{AlpogeFurman2026} obtained an unconditional proportion exceeding two
+thirds for zeros that are both simple and on the critical line, using a finite
+compression of a Hermitian zero form together with inertia. The argument below
+pursues the stronger density-one conclusion through a Hardy-gauge contour form,
+a packetized right-edge decomposition of the same matrix, and relative
+Hilbert--Schmidt control of its regular remainder.
+
+The proof is organized around the normalized contour matrix introduced in
+Section~\ref{sec:common-matrix}, whose zero-side and arithmetic-side
+representations are developed in the subsequent sections.

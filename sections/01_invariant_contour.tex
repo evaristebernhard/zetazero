@@ -1,0 +1,200 @@
+\section{The invariant Hardy-gauge contour matrix}
+\label{sec:common-matrix}
+
+\subsection{The analytic Hardy gauge}
+
+Fix once and for all
+\[
+c:=2.
+\]
+For horizontal heights $T_1<T_2$ avoiding the zeros relevant to the contour,
+let
+\begin{equation}
+\mathcal R_T^{\rm sym}
+:=\{\sigma+it:-1\le\sigma\le2,\ T_1\le t\le T_2\}.
+\label{eq:symmetric-contour-rectangle}
+\end{equation}
+The existence of admissible $T_1\in[T,T+1]$ and
+$T_2\in[2T,2T+1]$ is proved in
+Proposition~\ref{prop:z1-zeta-decrement}. On a simply connected neighbourhood
+of this symmetric high rectangle choose a holomorphic branch
+\[
+q(s):=\chi(1-s)^{1/2}.
+\]
+Fix its sign at one point of the critical line so that the resulting Hardy
+gauge is real there, and put
+\[
+\mathscr Z(s):=q(s)\zeta(s).
+\]
+This normalization determines the branch on the rectangle. Indeed the
+holomorphic function
+\[
+q^\dagger(s):=\overline{q(1-\bar s)}
+\]
+satisfies $(q^\dagger)^2=\chi(s)=q(s)^{-2}$; the chosen sign gives
+$q^\dagger=q^{-1}$ at the base point and hence everywhere. Using the zeta
+functional equation therefore yields the exact reflection law
+\begin{equation}
+\boxed{\mathscr Z(1-\bar s)=\overline{\mathscr Z(s)}.}
+\label{eq:hardy-gauge-reflection}
+\end{equation}
+In particular $F(z)=\mathscr Z(1/2+iz)$ satisfies
+$F(\bar z)=\overline{F(z)}$ and is real on the real axis. The factor $q$ is
+analytic and nonvanishing, so $\mathscr Z$ and $\zeta$ have exactly the same
+zeros with the same multiplicities. Define
+\[
+f(s):=-\frac12\frac{\chi'}{\chi}(s),
+\qquad
+Z_1(s):=\zeta'(s)+f(s)\zeta(s).
+\]
+Since $q'/q=f$, differentiation gives the exact identity
+\begin{equation}
+\boxed{\mathscr Z'(s)=q(s)Z_1(s).}
+\label{eq:gauge-derivative}
+\end{equation}
+Thus the stationary zeros of the Hardy-gauge detector are precisely the zeros
+of the same $Z_1$ which appears on the arithmetic side.
+
+\subsection{Curvature representation of the contour form}
+
+Let $a$ be the physical shift and put
+\[
+p:=La.
+\]
+The curvature source is generated before any right-edge expansion from one
+shifted Hardy product. Algebraically,
+\begin{equation}
+\mathscr Z(s)\mathscr Z''(s)-\mathscr Z'(s)^2
+=\frac12\left.\partial_a^2\bigl(\mathscr Z(s+a)\mathscr Z(s-a)\bigr)\right|_{a=0}.
+\label{eq:curvature-product}
+\end{equation}
+Passing from $a$ to $p$ introduces the positive scalar factor $L^2$. We divide
+the raw matrix by this factor once and for all. Since the rescaling is
+positive, it does not change inertia.
+
+\begin{proposition}[Exact normalized same-form identity]
+\label{prop:same-form-identity}
+Let
+\[
+C_{\mathscr Z}(s):=\mathscr Z(s)\mathscr Z''(s)-\mathscr Z'(s)^2,
+\qquad
+C_{\mathscr Z}^{(p)}(s):=L^{-2}C_{\mathscr Z}(s).
+\]
+Equivalently,
+\[
+C_{\mathscr Z}^{(p)}(s)
+=\frac12\left.\partial_p^2
+\bigl(\mathscr Z(s+p/L)\mathscr Z(s-p/L)\bigr)\right|_{p=0}.
+\]
+Let $\{\psi_\nu\}_{\nu\in\mathcal I_T}$ be the smooth entire packet family
+specified below and write
+\[
+B_v(z):=\sum_{\nu\in\mathcal I_T}v_\nu\psi_\nu(z),
+\qquad B_v^\#(z):=\overline{B_v(\bar z)}.
+\]
+With $z(s):=-i(s-\tfrac12)$ define the holomorphic polarization
+\begin{equation}
+\boxed{\mathcal B_{v,w}(s):=B_w(z(s))B_v^\#(z(s)).}
+\label{eq:packet-polarization}
+\end{equation}
+Then the normalized invariant contour form is exactly
+\begin{equation}
+\boxed{
+\mathcal A_T(v,w)
+=\frac1{2\pi i}\oint_{\partial\mathcal R_T^{\rm sym}}
+\frac{\mathscr Z''}{\mathscr Z'}(s)
+C_{\mathscr Z}^{(p)}(s)\mathcal B_{v,w}(s)\,ds
+=\frac1{2\pi i}\oint_{\partial\mathcal R_T^{\rm sym}}
+\frac{Z_1'}{Z_1}(s)
+C_{\mathscr Z}^{(p)}(s)\mathcal B_{v,w}(s)\,ds.
+}
+\label{eq:same-form-identity}
+\end{equation}
+After straightening the critical line by $s=1/2+iz$, the same form is exactly
+\eqref{eq:zero-kernel}. Thus the zero-side stationary residue detector and the
+arithmetic $Z_1'/Z_1$ source are literally the same Hermitian contour matrix.
+\end{proposition}
+
+\begin{proof}
+Since \eqref{eq:gauge-derivative} gives
+\[
+\frac{\mathscr Z''}{\mathscr Z'}
+=f+\frac{Z_1'}{Z_1},
+\]
+and $f$, $C_{\mathscr Z}^{(p)}$ and $\mathcal B_{v,w}$ are holomorphic on the
+high rectangle, the integral of
+$fC_{\mathscr Z}^{(p)}\mathcal B_{v,w}$ around the closed contour is zero. This proves
+the second equality in \eqref{eq:same-form-identity}.
+
+For the first equality, expand
+\[
+\frac{\mathscr Z''}{\mathscr Z'}C_{\mathscr Z}^{(p)}
+=L^{-2}\left(
+\frac{\mathscr Z\,\mathscr Z''^2}{\mathscr Z'}
+-\mathscr Z'\mathscr Z''\right).
+\]
+The second term, after multiplication by the holomorphic packet polarization,
+is holomorphic and hence has zero closed-contour integral. Put
+$F(z)=\mathscr Z(1/2+iz)$. Then
+\[
+\mathscr Z'=-iF',\qquad \mathscr Z''=-F'',\qquad ds=i\,dz,
+\]
+and therefore the remaining term transforms to
+\[
+\frac1{2\pi i}\oint
+L^{-2}\left(-F(z)\frac{F''(z)^2}{F'(z)}\right)
+ B_w(z)B_v^\#(z)\,dz,
+\]
+which is exactly \eqref{eq:zero-kernel}. Finally, \eqref{eq:curvature-product}
+shows that this same form is generated from one shifted Hardy product before
+any contour movement or stationary reduction.
+\end{proof}
+
+With the packet notation above, the normalized Hermitian contour form is
+\begin{equation}
+\mathcal A_T(v,w)
+:=\frac1{2\pi i}\int_{\partial\mathcal R_T^{\rm sym}}
+\mathcal K(s;B_v,\overline{B_w})\,ds,
+\label{eq:contour-form}
+\end{equation}
+where $\mathcal K$ is the exact Hardy-gauge curvature integrand obtained from
+\eqref{eq:curvature-product}, before Dirichlet expansion, stationary phase,
+Perron inversion, shell analysis, or arithmetic contraction. Define the finite matrix $A_T$ by
+\[
+\langle A_Tv,w\rangle=\mathcal A_T(v,w).
+\]
+The reflection law \eqref{eq:hardy-gauge-reflection} together with
+\eqref{eq:packet-polarization} gives
+\[
+\mathcal A_T(w,v)=\overline{\mathcal A_T(v,w)},
+\]
+so $A_T$ is Hermitian. It is the invariant Hermitian object throughout the
+argument. The positive form $\Gfr_T$ introduced later is not a second invariant
+object; it is the fixed reference metric used for relative operator estimates.
+
+\begin{lemma}[Invariance under standard reductions]
+\label{lem:allowed}
+Every later change of representation used below belongs to one of the
+following four classes.
+\begin{enumerate}[label=(\roman*)]
+\item An exact congruence $A\mapsto U^*AU$ with $U$ invertible; inertia is
+preserved exactly.
+\item Restriction to a subspace of codimension $d$; at most $d$ negative
+directions are lost.
+\item Addition of a matrix of rank $r$; negative inertia changes by at most
+$r$.
+\item Addition of a Hermitian remainder $R$ relative to a positive reference
+Gram $G$, measured by
+\[
+\|G^{-1/2}RG^{-1/2}\|_{S_2}^2.
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The first assertion is Sylvester's law of inertia. The second is the elementary
+dimension inequality for the intersection of a negative subspace with a
+codimension-$d$ subspace. The third follows by applying the same argument to
+$\ker E$, whose codimension is at most $r$. The fourth is quantified in
+Lemma~\ref{lem:minmax} below.
+\end{proof}

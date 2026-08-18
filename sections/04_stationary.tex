@@ -1,0 +1,160 @@
+\section{The physical \texorpdfstring{one-$\chi$}{one-chi} carrier and exact dilation covariance}
+\label{sec:stationary}
+
+A right-edge monomial with total Dirichlet ratio
+\[
+\xi=\frac{m}{k}
+\]
+occurs inside a one-$\chi$ integral. After a logarithmic packet displacement
+$w$, put $\eta=e^w\xi$. The principal oscillatory kernel is
+\[
+K_w(\xi)
+=\frac1{2\pi}\int A(t)\chi(1-c-it)\eta^{-c-it}\,dt.
+\]
+Stirling gives
+\[
+\chi(1-c-it)\eta^{-c-it}
+=\left(\frac{t}{2\pi}\right)^{c-1/2}\eta^{-c}
+ e^{i\Phi_\eta(t)}(1+O(t^{-1})),
+\]
+with
+\[
+\Phi_\eta(t)=t\log\frac{t}{2\pi\eta}-t-\frac\pi4.
+\]
+Hence
+\[
+\Phi_\eta'(t)=\log\frac{t}{2\pi\eta},
+\qquad
+t_*=2\pi\eta,
+\qquad
+\Phi_\eta''(t_*)=\frac1{t_*}.
+\]
+At the saddle,
+\[
+\left(\frac{t_*}{2\pi}\right)^{c-1/2}\eta^{-c}=\eta^{-1/2},
+\]
+whereas the Gaussian Hessian factor is
+\[
+\sqrt{\frac{2\pi}{\Phi_\eta''(t_*)}}
+=\sqrt{2\pi t_*}=2\pi\eta^{1/2}.
+\]
+Thus the powers of $\eta$ cancel exactly. The stationary phase
+$+\pi/4$ cancels the $-\pi/4$ in $\Phi$, and
+\[
+e^{i\Phi_\eta(t_*)}e^{i\pi/4}=e^{-2\pi i\eta}=e(-\eta).
+\]
+Consequently
+\begin{equation}
+\boxed{
+K_w(\xi)=A(2\pi e^w\xi)e(-e^w\xi)+E_w(\xi).
+}
+\label{eq:stationary-dilation}
+\end{equation}
+There is no order-one pair-dependent Hessian weight.
+
+If $D_wF(\xi):=F(e^w\xi)$, the principal stationary map satisfies
+\begin{equation}
+\boxed{\mathcal S_w^{\rm pr}=D_w\mathcal S_0^{\rm pr}.}
+\label{eq:dilation-covariance}
+\end{equation}
+
+A smooth height cutoff transforms by the same dilation:
+\[
+\omega\!\left(\frac{2\pi\xi}{T}\right)
+\mapsto
+\omega\!\left(\frac{2\pi e^w\xi}{T}\right).
+\]
+Thus the phase, the saddle cutoff, and the principal amplitude are all carried
+by the same exact dilation. The higher stationary coefficients, Stirling
+corrections, and nonstationary leakage belong to the regular classes estimated
+in Proposition~\ref{prop:regular-ledger}. The packet centres in the two
+horizontal collars are treated separately by the coordinate restriction
+$V_{\rm end}$ of Lemma~\ref{lem:horizontal-decay}; they do not contribute an
+edge or regular source term.
+
+On a smooth height block of scale $H=T/L^D$, write $t=t_*v$ on the stationary
+sector. There $t_*\asymp T$ uniformly in the shell and arithmetic indices, and
+the rescaled saddle $v=1$ remains in a fixed compact subset of the block after
+the smooth stationary/nonstationary partition. Consequently every fixed-order
+stationary expansion is uniform in the retained indices. Differentiating the
+slow block amplitude contributes only fixed combinations of
+\[
+T^{-1},\qquad H^{-1}=L^D/T,
+\qquad T/H^2=L^{2D}/T,
+\]
+and further fixed derivatives give the same type of $T^{-1}$-times-polylog
+bounds. These terms therefore remain in the regular symbol class after the
+fixed derivative orders used below.
+
+\begin{lemma}[Uniform smooth stationary symbol]
+\label{lem:stationary-symbol}
+Fix integers $r,s\ge0$ and a bounded curvature range $|p|\le P$. After the
+universal carrier $e(-my)$ is extracted, every direct stationary one-$\chi$
+source occurring in the ordinary Hardy term, the summed exact HLP hierarchy,
+the translated/coalescing faces, and the fixed Stirling/Hardy corrections has
+on a retained unit shell $I_j=[J_j,J_j+1]$ the form
+\[
+c_m a_{m,T}(y;p)e(-my),
+\]
+with
+\begin{equation}
+\boxed{
+\sup_{y\in I_j,\ |p|\le P}
+|\partial_y^r\partial_p^s a_{m,T}(y;p)|
+\ll_{r,s,P}L^{C_{r,s}}J_j^{-r}.
+}
+\label{eq:stationary-symbol-bound}
+\end{equation}
+The constants are uniform over the retained arithmetic range and over the
+summed geometric levels.
+\end{lemma}
+
+\begin{proof}
+Call a height factor $g$ a symbol of order $R$ if
+\[
+\sup_{0\le q\le R}t^q|g^{(q)}(t)|\ll_R L^C
+\]
+on $t\asymp T$. This class is closed under finite products and, when a factor
+is bounded below by a negative power of $L$, under reciprocal. Stirling's
+formula shows that
+\[
+\lambda(t),\quad f(t)/L,\quad e^{p\lambda(t)},\quad
+ e^{\pm2\lambda(t)},\quad t^{\pm2/L}
+\]
+and every fixed retained gamma correction are symbols, uniformly for bounded
+$p$. The $f'$ term gains an additional factor $T^{-1}$.
+
+For the exact HLP hierarchy, level $k$ carries a factor $f(t)^{-k}$ and a
+coefficient supported only when $2^k\le m$ by
+Lemma~\ref{lem:alpha-identity}. On stationary support $t_*=2\pi my\asymp T$,
+so $\log m=O(L)$ and hence every contributing $k$ is $O(L)$. A fixed number of
+height derivatives of $f^{-k}$ introduces at most a fixed polynomial in $k$
+divided by the corresponding power of $f$; since $k/f=O(1)$ and the
+coefficient square sums have the factorial majorant
+\eqref{eq:factorial-majorant}, termwise differentiation and summation are
+uniformly legitimate. Thus the complete exact HLP amplitude remains in a
+fixed polylogarithmic height-symbol class.
+
+For one stationary monomial scale $t=t_*v$. After the exact Hessian
+cancellation already proved above, the phase is $t_*\Psi(v)$ with
+$\Psi'(1)=0$, $\Psi''(1)\ne0$, and uniformly bounded higher derivatives near
+$v=1$. Fixed-order stationary phase therefore produces a finite expansion
+whose coefficients are height symbols, with a remainder
+$O(T^{-M}L^{C_M})$ after any prescribed fixed order $M$.
+Finally,
+\[
+\partial_y^r g(2\pi my)
+=(2\pi m)^rg^{(r)}(2\pi my).
+\]
+On the shell $my\asymp T$ and $y\asymp J_j$, so
+\[
+\frac mT\asymp\frac1{J_j}.
+\]
+The height-symbol bound therefore gives
+\[
+|\partial_y^r g(2\pi my)|
+\ll L^CJ_j^{-r}.
+\]
+The same argument is uniform after the fixed number of $p$-derivatives. This
+proves \eqref{eq:stationary-symbol-bound}.
+\end{proof}

@@ -1,0 +1,537 @@
+\section{Stationary-shell frame and spectral compression}
+\label{sec:shell-frame}
+
+The shell transform is built before the stationary restriction. This order is
+important: the full transform is exactly Parseval, and only the explicitly
+omitted nonstationary modes create a defect.
+
+\subsection{Critical packet lattice, translation reserve, and Fourier trim}
+Put
+\[
+R_{\rm pkt}:=\frac{C_{\rm pkt}}2\log L,
+\qquad
+L_{\rm pkt}=L+2R_{\rm pkt}.
+\]
+Use the full flat packet Fourier interval
+\[
+0\le u\le L_{\rm pkt},
+\]
+whose central physical zeta band is
+$R_{\rm pkt}\le u\le R_{\rm pkt}+L$. By Proposition~\ref{prop:trivial-outer-twist}, the invariant contour source has
+no nontrivial outer-denominator translation. The logarithmic reserve is used
+only for the packet-dimension slack and the smooth transition caps; it does not
+encode an arithmetic truncation.
+
+For exact lattice centres
+\[
+\tau_k=\tau_0+\frac{2\pi k}{L_{\rm pkt}}
+\]
+put
+\begin{equation}
+S_v(u):=L_{\rm pkt}^{-1/2}\sum_kv_ke^{i\tau_ku}.
+\label{eq:lattice-synthesis-shell}
+\end{equation}
+Fourier orthogonality gives the exact isometry
+\begin{equation}
+\boxed{
+\int_0^{L_{\rm pkt}}|S_v(u)|^2du=\|v\|_2^2.
+}
+\label{eq:lattice-synthesis-isometry}
+\end{equation}
+Recall $W_T,X_T$ from \eqref{eq:stable-log-core}. Let $C_T$ be the stable-core
+restriction of Definition~\ref{def:PT}. On packet coefficients its positive
+Gram is
+\[
+\langle P_Wv,v\rangle
+:=\int_{R_{\rm pkt}}^{R_{\rm pkt}+W_T}|S_v(u)|^2du
+=\|C_T S_v\|_2^2.
+\]
+This is the same core restriction used in $P_T$, $A_T^G$, and $\Gfr_T$; it is
+not an additional packet-coordinate deletion.
+
+\begin{lemma}[Stable-core packet frame]
+\label{lem:stable-core-frame}
+For every admissible packet-coordinate compression there is a subspace
+$V_{\rm core}$ such that
+\begin{equation}
+\boxed{
+\codim V_{\rm core}\ll T\log L=o(N_T),
+\qquad
+\|C_TS_v\|_2^2\ge c_{\rm core}\|v\|_2^2
+\quad(v\in V_{\rm core}),
+}
+\label{eq:stable-core-frame}
+\end{equation}
+with a fixed $c_{\rm core}>0$. The same lower bound holds after every outer
+packet translation and after the diagonal multiplier $v_\nu\mapsto
+\tau_\nu^{-1}v_\nu$, with the right side multiplied by $T^{-2}$ in the latter
+case.
+\end{lemma}
+
+\begin{proof}
+For exact lattice centres, \eqref{eq:lattice-synthesis-isometry} is Parseval on
+an interval of length $L_{\rm pkt}$. Its complement to the stable core has
+length
+\[
+L_{\rm pkt}-W_T=O(\log L).
+\]
+If $D_{\rm tail}$ is the Gram of restriction to that complement, then each
+coordinate vector contributes $O(\log L/L)$ to its trace. Hence on a packet
+fibre of dimension $O(TL)$,
+\[
+\tr D_{\rm tail}\ll T\log L.
+\]
+Removing the spectral subspace of $D_{\rm tail}$ for eigenvalues at least
+$1/4$ costs $O(T\log L)$ dimensions and leaves the core Gram at least $3/4$ of
+the full flat Gram. Denote this good packet subspace by $V_0$.
+
+By Proposition~\ref{prop:trivial-outer-twist} there is only the identity outer
+translation. For the primitive estimate intersect $V_0$ with
+$D_\tau^{-1}V_0$, where
+$D_\tau v=(\tau_\nu^{-1}v_\nu)_\nu$. Since $D_\tau$ is invertible and
+$T\le\tau_\nu\le2T+O(1)$, this preimage has the same codimension as $V_0$, while
+\[
+\|D_\tau v\|_2^2\asymp T^{-2}\|v\|_2^2.
+\]
+Thus the intersection has codimension $O(T\log L)$ and gives both lower bounds
+in \eqref{eq:stable-core-frame}. Moving every centre by at most $T^{-100}$
+changes these finite Grams by $o(1)$ in operator norm, by the estimate in the
+proof of Lemma~\ref{lem:packet-riesz}; the fixed lower bound therefore persists.
+\end{proof}
+
+\subsection{Logarithmic unitary and exact local Parseval}
+On the retained physical band write
+\[
+\widetilde u:=u-R_{\rm pkt},
+\qquad x=e^{\widetilde u},
+\]
+and define
+\begin{equation}
+F_v(x):=x^{-1/2}S_v(R_{\rm pkt}+\log x),
+\qquad 1\le x\le X_T.
+\label{eq:log-unitary}
+\end{equation}
+Since $dx=x\,d\widetilde u=x\,du$,
+\begin{equation}
+\boxed{
+\int_1^{X_T}|F_v(x)|^2dx
+=\int_{R_{\rm pkt}}^{R_{\rm pkt}+W_T}|S_v(u)|^2du
+=\langle P_Wv,v\rangle.
+}
+\label{eq:log-unitary-norm}
+\end{equation}
+We use an explicit fixed-overlap partition by length-one windows. Choose
+$\vartheta\in C_c^\infty((-1/2,1/2))$ which is positive on
+$[-1/4,1/4]$, put $c_j=j/2$, and define
+\[
+D(x):=\left(\sum_{j\in\mathbb Z}\vartheta(x-c_j)^2\right)^{1/2},
+\qquad
+\psi_j(x):=\frac{\vartheta(x-c_j)}{D(x)}.
+\]
+Because every real number lies within distance $1/4$ of some $c_j$, the
+$1/2$-periodic function $D$ is smooth and bounded above and below by positive
+constants. With
+\[
+I_j=[J_j,J_j+1],
+\qquad J_j:=c_j-\frac12,
+\]
+we therefore have
+\begin{equation}
+\boxed{
+\supp\psi_j\subset I_j,
+\qquad
+\sum_{j\in\mathbb Z}\psi_j(x)^2=1,
+\qquad
+\|\psi_j^{(r)}\|_\infty\ll_r1.
+}
+\label{eq:smooth-shell-partition}
+\end{equation}
+Extend $F_v$ by zero outside $[1,X_T]$ and retain shells with
+$\psi_j\not\equiv0$ on $(1,X_T)$. The $O(1)$ shells meeting the two core
+endpoints remain in the Parseval decomposition; their endpoint jets are treated
+by Proposition~\ref{prop:boundary-endpoint-rank}.
+
+\begin{lemma}[Global triangular metric and shell-local primitives]
+\label{lem:global-local-triangular}
+Let $g$ be Hilbert-valued on $[0,W_T]$ with $\int_0^{W_T}g=0$, and put
+\[
+R(u):=\int_0^u g(v)\,dv,
+\qquad f(x):=x^{-1/2}g(\log x).
+\]
+Then $R(0)=R(W_T)=0$. Extend $f$ and
+$\mathcal R(x):=R(\log x)$ by zero outside $[1,X_T]$. After the normalization
+$r=u/L$, the flat triangular primitive form is
+\begin{equation}
+\mathcal Q_{\rm glob}(g)
+:=\frac{2}{L^2}\int_0^{W_T}\|R(u)\|^2\,du
+=\frac{2}{L^2}\int_1^{X_T}
+\left\|\int_1^x y^{-1/2}f(y)\,dy\right\|^2\frac{dx}{x}.
+\label{eq:global-triangular-log}
+\end{equation}
+Let $\mathcal J_T$ denote these retained shells. For $j\in\mathcal J_T$ define
+\[
+q_j(x):=\psi_j(x)x^{-1/2}f(x),
+\qquad
+Q_j(x):=\int_{J_j}^xq_j(y)\,dy,
+\]
+and
+\begin{equation}
+\mathcal Q_{\rm loc}(f)
+:=\frac{2}{L^2}\sum_{j\in\mathcal J_T}
+\int_{I_j}\|Q_j(x)\|^2\frac{dx}{x}.
+\label{eq:local-triangular-shell}
+\end{equation}
+Then there is an absolute constant $C_\triangle$ such that
+\begin{equation}
+\boxed{\mathcal Q_{\rm loc}(f)\le
+C_\triangle\mathcal Q_{\rm glob}(g).}
+\label{eq:global-local-triangular-comparison}
+\end{equation}
+The same estimate holds after tensoring with all finite arithmetic fibres and
+exact outer translations. If, in addition,
+$\int_{I_j}q_j=0$ for every shell and fibre, then $Q_j$ vanishes at both
+endpoints and may be used in the two-variable primitive identity of
+Lemma~\ref{lem:two-variable-primitive}.
+\end{lemma}
+
+\begin{proof}
+The zero extension of $\mathcal R$ is absolutely continuous because
+$R(0)=R(W_T)=0$, and $\mathcal R'=x^{-1/2}f$ almost everywhere. Thus
+\[
+Q_j(x)=\psi_j(x)\mathcal R(x)
+-\int_{J_j}^x\psi_j'(y)\mathcal R(y)\,dy,
+\]
+because $\psi_j$ vanishes at the shell endpoints. The windows have uniformly
+bounded first derivative and bounded overlap. On the physical part of a
+length-one shell, $x^{-1}\asymp(1+J_j)^{-1}$, so Cauchy--Schwarz gives
+\[
+\int_{I_j}\|Q_j(x)\|^2\frac{dx}{x}
+\ll\int_{I_j}\|\mathcal R(x)\|^2\frac{dx}{x}.
+\]
+Summing in $j$ proves \eqref{eq:global-local-triangular-comparison} and is
+unchanged for Hilbert-valued functions. The final assertion follows directly
+from the definition of $Q_j$.
+\end{proof}
+
+Define
+\begin{equation}
+Q_{j,n}(v):=\int_{I_j}\psi_j(x)F_v(x)e^{-2\pi inx}\,dx.
+\label{eq:shell-coeff}
+\end{equation}
+Because each shell has length one, the integer exponentials are an orthonormal
+basis and Parseval gives
+\[
+\sum_{n\in\mathbb Z}|Q_{j,n}(v)|^2
+=\|\psi_jF_v\|_2^2.
+\]
+Summing in $j$,
+\begin{equation}
+\boxed{
+\|\mathsf Q_{\rm full}v\|_2^2
+=\langle P_Wv,v\rangle.
+}
+\label{eq:full-shell-isometry}
+\end{equation}
+No stationary approximation has entered this identity.
+
+\subsection{Stationary band and nonstationary leakage}
+For one packet centre $\tau$ and one shell Fourier mode $n$, the phase is
+\[
+\Phi_{\tau,n}(x)=\tau\log x-2\pi nx,
+\qquad
+\Phi'_{\tau,n}(x)=\frac\tau x-2\pi n.
+\]
+For $T\le\tau\le2T$ and $x\in I_j$, a stationary point can occur only for
+\begin{equation}
+\mathcal I_j
+:=\left[\frac{T}{2\pi(J_j+1)},
+    \frac{2T}{2\pi J_j}\right].
+\label{eq:stationary-interval}
+\end{equation}
+Choose the shell margin
+\begin{equation}
+R_j:=L^B\left(1+\frac{\sqrt T}{J_j}\right)
+\label{eq:shell-margin}
+\end{equation}
+and let $\mathcal I_j^+$ contain the integers at distance at most $R_j$ from
+$\mathcal I_j$. Let $\mathsf Q_{\rm shell}$ retain only $(j,n)$ with
+$n\in\mathcal I_j^+$ and let $\mathsf Q_{\rm out}$ be its complement.
+
+Fix a packet basis vector $e_k$. On a nonboundary shell put
+$D=\dist(n,\mathcal I_j)\ge R_j$. Then
+\[
+|\Phi'|\ge2\pi D,
+\quad |\Phi^{(r)}|\ll_rT/J_j^r,
+\quad |A_{j,k}^{(r)}|\ll_rL_{\rm pkt}^{-1/2}J_j^{-1/2}L^{Cr}J_j^{-r},
+\quad \frac{T/J_j^2}{D^2}\ll L^{-2B}.
+\]
+Repeated integration by parts gives
+\begin{equation}
+\boxed{|Q_{j,n}(e_k)|
+\ll_NL_{\rm pkt}^{-1/2}J_j^{-1/2}L^{C_N}(1+D)^{-N}.}
+\label{eq:nonstat-shell}
+\end{equation}
+Thus the squared nonboundary contribution is
+\[
+\ll_N\frac{L^{2C_N}}{L_{\rm pkt}}
+\sum_jJ_j^{-1}R_j^{1-2N}.
+\]
+For a boundary shell, split instead at the physical endpoint
+$b\in\{1,X_T\}$. Repeating the same integration by parts $N$ times gives a
+finite endpoint sum plus an interior remainder. The endpoint sum is a linear
+combination of
+\begin{equation}
+\boxed{
+\partial_x^r\!\bigl(\psi_j(x)F_v(x)\bigr)\big|_{x=b},
+\qquad 0\le r<N,
+}
+\label{eq:boundary-shell-jets}
+\end{equation}
+with scalar coefficients depending on the Fourier mode and the phase; the
+interior remainder satisfies the same arbitrary-order bound as
+\eqref{eq:nonstat-shell}. Thus the physical endpoint contributes only finitely
+many packet jet functionals, while every nonstationary interior term remains in
+the regular integration-by-parts class.
+
+The shell enlargement itself has only $o(N_T)$ extra rows. Indeed
+\begin{align*}
+\sum_jR_j
+&\ll X_TL^B+\sqrt T\,L^B\log X_T\\
+&\ll TL^{B-A_0}+\sqrt T\,L^{B+1}=o(N_T)
+\end{align*}
+when $A_0>B+3$.
+
+\begin{proposition}[Terminal logarithmic tail]
+\label{prop:terminal-log-tail}
+Let $X_{\rm full}:=e^L=T/(2\pi)$. On the complementary logarithmic band
+\[
+W_T<u\le L,
+\qquad
+X_T<x\le X_{\rm full},
+\]
+the vertical right-edge source and its adjoint decompose as
+\begin{equation}
+\boxed{
+A_T^{\rm tail}
+=E_T^{\rm tail}+E_T^{\rm bdry,tail}+R_T^{\rm tail},
+}
+\label{eq:terminal-log-tail}
+\end{equation}
+where $E_T^{\rm bdry,tail}$ is the tail-side subfamily of the split endpoint
+jets at $x=X_T$ and is included, exactly once, in the global boundary matrix
+$E_T^{\rm bdry}$ of Proposition~\ref{prop:boundary-endpoint-rank}. Moreover
+\begin{equation}
+\boxed{
+\rank E_T^{\rm tail}
+\ll T\log L=o(N_T),
+}
+\label{eq:terminal-log-tail-rank}
+\end{equation}
+and, on $V_{\rm core}\cap V_{\rm mean}$,
+\begin{equation}
+\boxed{
+\|\Gfr_T^{-1/2}R_T^{\rm tail}\Gfr_T^{-1/2}\|_{S_2}^2=o(N_T).
+}
+\label{eq:terminal-log-tail-bounds}
+\end{equation}
+The same estimates include the core--tail cross terms.
+\end{proposition}
+
+\begin{proof}
+Use the same unit-shell Fourier transform on $X_T<x\le X_{\rm full}$, but put
+only the integers at distance at most $1$ from $\mathcal I_j$ into the tail
+stationary range. Its total number of rows is
+\[
+\sum_{X_T\ll J_j\ll X_{\rm full}}
+\left(1+\frac{T}{J_j}\right)
+\ll T+T\log\frac{X_{\rm full}}{X_T}
+\ll T\log L.
+\]
+By Proposition~\ref{prop:trivial-outer-twist} there is no arithmetic fibre
+multiplicity. Every stationary tail term and every core--tail cross term
+therefore factors through a space of dimension $O(T\log L)$, which proves the
+rank bound.
+
+For the complementary modes let $D=\dist(n,\mathcal I_j)>1$. Since
+$J_j\ge X_T=T/(2\pi L^{A_0})$,
+\[
+\frac{T}{J_j^2}\ll\frac{L^{2A_0}}{T}.
+\]
+The integration-by-parts argument of \eqref{eq:nonstat-shell}, now with the
+fixed tail margin $1$, gives for every fixed $N$
+\[
+|Q_{j,n}(e_k)|
+\ll_N L_{\rm pkt}^{-1/2}J_j^{-1/2}
+\left(\frac{L^{C_N}}{J_j}\right)^N(1+D)^{-N}.
+\]
+Squaring this estimate and summing first in $n$ gives a bounded
+$\sum_{D>1}(1+D)^{-2N}$. Since the retained unit shells satisfy
+$J_j\ge X_T\asymp T L^{-A_0}$,
+\[
+\sum_{J_j\ge X_T}J_j^{-1-2N}\ll X_T^{-2N}.
+\]
+After summing over the $O(TL)$ packet coordinates, with no additional
+arithmetic multiplicity by Proposition~\ref{prop:trivial-outer-twist}, we
+obtain the sufficient absolute estimate
+\begin{equation}
+\boxed{
+\|R_T^{\rm tail}\|_{S_2}^2
+\ll T^{1-2N}L^{C_{N,A_0}}.
+}
+\label{eq:terminal-tail-absolute-HS}
+\end{equation}
+The same estimate holds for the nonstationary core--tail cross terms, since the
+core analysis map has fixed operator norm up to a power of $L$.
+Lemma~\ref{lem:core-reference-floor} gives on
+$V_{\rm core}\cap V_{\rm mean}$
+\[
+\|\Gfr_T^{-1/2}\|_{\op}^2\ll T^2L^{C_G}.
+\]
+Consequently
+\[
+\|\Gfr_T^{-1/2}R_T^{\rm tail}\Gfr_T^{-1/2}\|_{S_2}^2
+\ll T^{5-2N}L^{C_{N,A_0}+2C_G}=o(N_T),
+\]
+because the fixed order $N$ chosen in Section~\ref{sec:retained} is in
+particular larger than $3$. Endpoint jets at the physical endpoint
+$x=X_{\rm full}$ factor through finitely many evaluation functionals and are
+included in $E_T^{\rm tail}$. The tail-side split jets at $x=X_T$ are precisely
+$E_T^{\rm bdry,tail}$ and belong only to the global boundary matrix
+$E_T^{\rm bdry}$ of Proposition~\ref{prop:boundary-endpoint-rank}. This proves
+\eqref{eq:terminal-log-tail} and \eqref{eq:terminal-log-tail-bounds}.
+\end{proof}
+
+\section{Macroscopic \texorpdfstring{one-$\chi$}{one-chi} shifts have low edge rank}
+\label{sec:edge-rank}
+
+For a direct stationary one-$\chi$ source on a unit shell write
+\[
+\sum_mW_{j,m}a_{j,m}(y;p)e(-my),\qquad
+a_{j,m}=\sum_r\widehat a_{j,m}(r;p)e(ry).
+\]
+Here $m\in\mathcal I_j$. The sideband $r$ has effective carrier $q=m-r$, since
+$e(ry)e(-my)=e(-qy)$. If $P_j$ projects onto $\mathcal I_j^+$ and
+$(S_qb)_n=b_{n+q}$, its compression is $P_jS_qP_j$. Only
+$|r|\le R_j^{\rm sb}$ enters the edge matrix; the complement is regular
+class~(vii).
+
+Write
+\[
+A_j:=\frac{T}{2\pi(J_j+1)},
+\qquad
+B_j:=\frac{2T}{2\pi J_j}.
+\]
+If $m\in\mathcal I_j$, then $P_jS_mP_j$ can have nonzero range only on the
+common low-edge interval
+\[
+A_j-R_j\le n\le B_j+R_j-A_j.
+\]
+Thus all forward shifts share one edge space $E_j^-$ with
+\begin{equation}
+\boxed{
+\dim E_j^-
+\ll B_j-2A_j+2R_j+1
+\ll \frac{T}{J_j^2}+R_j+1.
+}
+\label{eq:edge-shell-dimension}
+\end{equation}
+The adjoints lie in a high-edge space $E_j^+$ of the same dimension. Therefore, for arbitrary scalar or packet-operator weights,
+\begin{equation}
+\rank\left(
+\sum_{m\in\mathcal I_j}W_{j,m}P_jS_mP_j+\mathrm{adjoint}
+\right)
+\ll
+\frac{T}{J_j^2}+R_j+1.
+\label{eq:edge-shell-rank}
+\end{equation}
+For the parameter $\epsilon_L=L^{-\sigma}$ fixed in
+Section~\ref{sec:retained}, the low Fourier sidebands of a smooth stationary
+symbol replace $m$ by the effective shift $m-r$ with
+$|r|\le\epsilon_Ld_j$, where $d_j\asymp T/J_j$. Enlarging $E_j^\pm$ by this amount therefore changes the
+right side of \eqref{eq:edge-shell-rank} only by $O(\epsilon_Ld_j)$. Now
+\[
+\sum_j\frac{T}{J_j^2}\ll T,
+\qquad
+\sum_jR_j
+\ll T L^{B-A_0}+\sqrt T\,L^{B+1}=o(T),
+\]
+and
+\[
+\sum_j\epsilon_Ld_j
+\ll \epsilon_LT\log X_T
+\ll T L^{1-\sigma}.
+\]
+Thus the first two geometric edge contributions are $O(T)$. The low-sideband
+enlargement contributes $T L^{1-\sigma}=o(T)$ once $\sigma>2$. Hence
+\begin{proposition}[Uniform rank bound for low-sideband stationary shifts]
+\label{prop:edge-rank}
+Let $E_T^{\rm shift}$ be any finite sum of the low-sideband stationary
+compressed shifts described above, with base carrier indices in the intervals
+$\mathcal I_j$ and sidebands $|r|\le R_j^{\rm sb}$. Then
+\begin{equation}
+\boxed{
+\rank E_T^{\rm shift}
+\ll T=o(N_T).
+}
+\label{eq:edge-rank-detailed}
+\end{equation}
+The estimate depends only on the geometric range of the retained low-sideband
+shifts and is independent of their coefficients or signs. It also holds for
+norm-convergent sums of such shifts, since every partial sum has range in the
+same fixed finite-dimensional edge space. In particular it applies to the
+low-sideband part of each additional translated projector
+$\Pi_{\Sigma_{{\rm tr},k}}$: by Lemma~\ref{lem:hlp-radial-variable}, taking its
+Mellin residue changes only the radial coefficient and leaves the same total
+integer carrier $M$; the smooth stationary amplitude is then split at
+$R_j^{\rm sb}$ exactly as above. The complementary sidebands are not part of
+this rank assertion.
+\end{proposition}
+
+\begin{proposition}[Stable-core endpoint terms have finite rank]
+\label{prop:boundary-endpoint-rank}
+Let $E_T^{\rm bdry}$ be the sum of the endpoint terms produced by the fixed
+$N$ integrations by parts on the $O(1)$ shell windows meeting
+$b\in\{1,X_T\}$, including both one-sided contributions at the split
+$x=X_T$. Denote the contribution from the tail side of this split by
+$E_T^{\rm bdry,tail}$, as in \eqref{eq:terminal-log-tail}. Then
+\begin{equation}
+\boxed{
+\rank E_T^{\rm bdry}
+\ll L^{C_{\rm bdry}}=o(N_T)
+}
+\label{eq:boundary-endpoint-rank}
+\end{equation}
+for a fixed exponent $C_{\rm bdry}$.
+\end{proposition}
+
+\begin{proof}
+For each boundary shell, fixed local-source label $\alpha$, endpoint $b$, and
+$0\le r<N$, let
+\[
+(J_Tv)_{b,r,\alpha}
+:=\partial_x^r\!\bigl(\psi_j(x)F_{v,\alpha}(x)\bigr)\big|_{x=b}.
+\]
+Equation~\eqref{eq:boundary-shell-jets} shows that every endpoint contribution
+with one boundary leg factors as $J_T^*BQ$ for some output operator $B$ and
+some companion analysis $Q$; the reflected term factors as $Q^*B^*J_T$.
+Hence each Hermitian pair has rank at most $2\rank J_T$. There are two physical
+endpoints, $O(1)$ boundary shells, and the derivative order $N$ is fixed. The fixed local-source labels contribute at most $L^{C_{\rm bdry}}$
+coordinates. Thus
+\[
+\rank J_T\ll L^{C_{\rm bdry}}=o(N_T).
+\]
+\end{proof}
+
+Define $E_T^{\rm edge}$ to be the sum of the low-sideband centered stationary
+shift family, the high exact HLP low-sideband matrix $E_T^{\rm HLP,hi}$, the
+low-sideband parts of the additional translated-pole terms, the boundary-shell
+matrix $E_T^{\rm bdry}$, and the terminal logarithmic tail matrix
+$E_T^{\rm tail}$. The auxiliary outer-excess term is zero by
+Proposition~\ref{prop:trivial-outer-twist}; the horizontal packet-centre collars
+are handled only by $V_{\rm end}$. Lemma~\ref{lem:HLP-high-edge} and
+Propositions~\ref{prop:edge-rank}, \ref{prop:boundary-endpoint-rank}, and
+\ref{prop:terminal-log-tail} give
+\begin{equation}
+\boxed{\rank E_T^{\rm edge}\ll T\log L=o(N_T).}
+\label{eq:total-edge-rank}
+\end{equation}

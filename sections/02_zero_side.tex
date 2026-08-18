@@ -1,0 +1,495 @@
+\section{Zero side: stationary residues force negative inertia}
+\label{sec:zero-side}
+
+Straighten the critical line by
+\[
+F(z):=\mathscr Z\!\left(\frac12+iz\right).
+\]
+The symmetric rectangle \eqref{eq:symmetric-contour-rectangle} becomes
+\begin{equation}
+\Omega_T:=\{z:T_1\le\Re z\le T_2,\ |\Im z|\le c-\tfrac12\}.
+\label{eq:zero-rectangle}
+\end{equation}
+Thus $\Omega_T$ is invariant under $z\mapsto\bar z$ and contains both members
+of every reflected off-critical pair in the height range. Moreover
+$F(\bar z)=\overline{F(z)}$ and $F$ is real on $\mathbb R$. For a test
+function $h$ put $h^\#(z)=\overline{h(\bar z)}$. In zero coordinates the same
+normalized contour matrix has kernel
+\begin{equation}
+\mathcal A_F(h_1,h_2)
+=\frac1{2\pi i}\int_{\partial\Omega_T}
+L^{-2}\left(-F(z)\frac{F''(z)^2}{F'(z)}\right)
+ h_2(z)h_1^\#(z)\,dz.
+\label{eq:zero-kernel}
+\end{equation}
+We write $A_F(T):=A_T$ for this original matrix. If $H$ is a sufficiently
+small real-symmetric perturbation of $F$, $A_H(T)$ denotes the same contour
+construction with $F$ replaced by $H$. The residue lemmas below are stated for
+such a generic $H$ and are then applied to the perturbation constructed in
+Section~\ref{sec:multiplicity-endgame}.
+
+\begin{lemma}[Stationary residue blocks]
+\label{lem:stationary-blocks}
+If $H'(c)=0$ and $H''(c)\neq0$, then
+\[
+\Res_{z=c}
+L^{-2}\left(-H(z)\frac{H''(z)^2}{H'(z)}\right)
+=-L^{-2}H(c)H''(c)=:w_c.
+\]
+For $c\in\mathbb R$, the contribution is a negative scalar exactly when
+$H(c)H''(c)>0$. For a nonreal conjugate pair $\rho,\bar\rho$, the residue block
+is
+\[
+\begin{pmatrix}
+0&\overline{w_\rho}\\
+w_\rho&0
+\end{pmatrix},
+\]
+which has exactly one negative eigenvalue whenever $w_\rho\neq0$.
+\end{lemma}
+
+\begin{proof}
+Since
+\[
+H'(z)=H''(c)(z-c)+O((z-c)^2),
+\]
+the residue is $-L^{-2}H(c)H''(c)$. The positive scalar $L^{-2}$ does not
+change its sign. The conjugate-pair block has characteristic
+polynomial $\lambda^2-|w_\rho|^2$.
+\end{proof}
+
+Let $B(H)$ denote the number of real stationary points with
+$H(c)H''(c)>0$, and let $P(H')$ denote the number of nonreal conjugate pairs of
+stationary zeros.
+
+\subsection{Exact packet evaluation rank}
+Let $C_{\rm pkt}>0$ be a fixed constant, chosen first in the global parameter
+hierarchy of Section~\ref{sec:retained}, before the remaining buffer and symbol
+exponents. Put
+\begin{equation}
+\boxed{L_{\rm pkt}:=L+C_{\rm pkt}\log L.}
+\label{eq:packet-bandwidth-reserve}
+\end{equation}
+The central width-$L$ band is the physical zeta band; the additional
+$C_{\rm pkt}\log L$ is a two-sided reserve used for packet-dimension slack and
+the smooth transition caps.
+Choose a real $C^\infty$ function $\phi_L$ which equals
+$L_{\rm pkt}^{-1/2}$ on $[-L_{\rm pkt}/2,L_{\rm pkt}/2]$, satisfies
+$|\phi_L|\le L_{\rm pkt}^{-1/2}$, and is supported in
+$[-L_{\rm pkt}/2-\Delta,L_{\rm pkt}/2+\Delta]$ for one fixed $\Delta>0$. Put
+\[
+\psi_L(z):=\int_{\mathbb R}\phi_L(u)e^{iuz}\,du,
+\qquad
+\psi_{L,\tau}(z):=\psi_L(z-\tau).
+\]
+The reserve supplies more than the $O(T)$ dimensional slack required by the
+Riemann--von Mangoldt secondary term and leaves fixed-width room for the smooth
+transition caps. By Proposition~\ref{prop:trivial-outer-twist}, no arithmetic
+outer translation has to be accommodated. Since
+$L_{\rm pkt}=L+O(\log L)$, all normalized analytic scales below change only by
+$O(\log L/L)$, and on a fixed horizontal strip the larger exponential type
+costs only a fixed power of $L$.
+Repeated integration by parts gives, on every fixed horizontal strip and for
+every fixed $M$,
+\begin{equation}
+|\psi_L(z)|\ll_M L_{\rm pkt}^{1/2}(1+|\Re z|)^{-M}
+ e^{(L_{\rm pkt}/2+\Delta)|\Im z|}.
+\label{eq:packet-decay}
+\end{equation}
+
+\begin{lemma}[Local packet centres give surjective evaluation]
+\label{lem:evaluation-rank}
+Let $z_1,\dots,z_m$ be distinct complex stationary nodes and let
+$I_1,\dots,I_m$ be arbitrary nonempty open intervals of admissible packet
+centres. There exist $\tau_j\in I_j$ such that
+\[
+\det\bigl(\psi_L(z_i-\tau_j)\bigr)_{1\le i,j\le m}\ne0.
+\]
+Hence the packet evaluation map onto the stationary nodes is surjective.
+\end{lemma}
+
+\begin{proof}
+First fix distinct $z_i$. If
+\[
+\sum_i c_i\psi_L(z_i-\tau)=0
+\]
+on a nonempty real interval in $\tau$, analyticity makes the identity global.
+Fourier uniqueness then gives
+\[
+\phi_L(u)\sum_i c_ie^{iuz_i}=0
+\]
+for almost every $u$. Since $\phi_L$ is nonzero on an open interval, the
+exponential polynomial $\sum_i c_ie^{iuz_i}$ vanishes identically. Its first
+$m$ derivatives at one point form a Vandermonde system, so all $c_i=0$.
+Thus the functions $\tau\mapsto\psi_L(z_i-\tau)$ are linearly independent on
+every interval. The determinant above is real analytic in
+$(\tau_1,\dots,\tau_m)$ and is not identically zero; a nonzero real-analytic
+function cannot vanish on the open box $I_1\times\cdots\times I_m$.
+\end{proof}
+
+\begin{lemma}[Near-lattice packet Riesz bounds]
+\label{lem:packet-riesz}
+For lattice centres
+\[
+\tau_j^0=\tau_*+\frac{2\pi n_j}{L_{\rm pkt}}
+\]
+one has, for all large $L$,
+\begin{equation}
+\boxed{
+2\pi\sum_j|c_j|^2
+\le\left\|\sum_jc_j\psi_{L,\tau_j^0}\right\|_2^2
+\le6\pi\sum_j|c_j|^2.
+}
+\label{eq:packet-riesz}
+\end{equation}
+The same inequalities, with slightly weaker fixed constants, hold when every
+centre is moved by at most $T^{-100}$.
+\end{lemma}
+
+\begin{proof}
+Plancherel gives
+\[
+\left\|\sum_jc_j\psi_{L,\tau_j^0}\right\|_2^2
+=2\pi\int |\phi_L(u)|^2
+\left|\sum_jc_je^{-iu\tau_j^0}\right|^2du.
+\]
+On the flat interval $[-L_{\rm pkt}/2,L_{\rm pkt}/2]$, the exponentials
+$e^{-2\pi i n_ju/L_{\rm pkt}}$ are orthogonal; since
+$|\phi_L|^2=L_{\rm pkt}^{-1}$ there, this contributes exactly
+$2\pi\sum_j|c_j|^2$ and proves the lower bound. The full support has length
+$L_{\rm pkt}+2\Delta<2L_{\rm pkt}$ for large $T$. By splitting it into at most
+three intervals of length at most $L_{\rm pkt}$ and using the same period
+orthogonality, together with $|\phi_L|^2\le L_{\rm pkt}^{-1}$, its total
+contribution is at most $6\pi\sum_j|c_j|^2$.
+
+For perturbed centres, the corresponding Gram entries depend continuously on
+the centres. On the support $|u|\ll L_{\rm pkt}\asymp L$ a displacement
+$T^{-100}$ changes one phase by $O(LT^{-100})$. Since the packet dimension is
+$O(TL)$, the crude matrix norm perturbation is $O(T^{-99}L^2)=o(1)$, and the
+fixed Riesz bounds persist. \end{proof}
+
+\begin{lemma}[Packet dimension has logarithmic reserve]
+\label{lem:packet-dimension}
+For the choice \eqref{eq:packet-bandwidth-reserve}, the admissible near-lattice
+packet family has
+\begin{equation}
+d_T=\frac{T}{2\pi}L+\frac{C_{\rm pkt}T}{2\pi}\log L+O(L).
+\label{eq:packet-dimension-reserve}
+\end{equation}
+and therefore contains, for all large $T$, at least as many columns as there are
+zeros of $F'$ in the retained dyadic rectangle even after the $O(T)$ terminal
+packet collars are removed. The reserve itself is only
+$O(T\log L)=o(N_T)$.
+\end{lemma}
+
+\begin{proof}
+The Riemann--von Mangoldt formula gives
+\[
+N(T,2T)=\frac{T}{2\pi}L
++\frac{(2\log2-1)T}{2\pi}+O(\log T).
+\]
+By Proposition~\ref{prop:z1-zeta-decrement} and $F'=iqZ_1$ up to a nonzero
+constant factor,
+\[
+N(F';T_1,T_2)
+=\frac{T}{2\pi}L
++\frac{(2\log2-1)T}{2\pi}+O((\log T)^C).
+\]
+A lattice of spacing $2\pi/L_{\rm pkt}$ on a physical interval of length
+$T+O(1)$ has
+\[
+d_T=\frac{T}{2\pi}\bigl(L+C_{\rm pkt}\log L\bigr)+O(L)
+\]
+columns, proving \eqref{eq:packet-dimension-reserve}. The terminal packet
+collars remove only $C_{\rm del}T+o(T)$ columns for a fixed $C_{\rm del}$.
+Since $C_{\rm pkt}\log L\to\infty$, the reserve term eventually dominates both
+the linear Riemann--von Mangoldt secondary term and the collar loss for every
+fixed $C_{\rm pkt}>0$. No further lower bound on $C_{\rm pkt}$ is required by
+an arithmetic translation. All later frame, mean, shell, and edge restrictions are applied
+after the zero-side evaluation map has been constructed and do not enter this
+surjectivity count.
+\end{proof}
+
+By Lemmas~\ref{lem:evaluation-rank}, \ref{lem:packet-riesz}, and
+\ref{lem:packet-dimension}, the packet centres may therefore be chosen inside
+$T^{-100}$ neighbourhoods of the lattice so that the evaluation map is
+surjective while the packet synthesis retains a uniform Riesz bound.
+
+\begin{lemma}[Coordinate restriction preserves the common proof estimates]
+\label{lem:coordinate-restriction}
+Let $J\subset\mathcal I_T$ be any subset of the admissible packet coordinates
+and let $P_J$ be the corresponding coordinate projection. Replacing the packet
+space by $P_J\mathbb C^{\mathcal I_T}$ replaces every contour/source matrix by
+the compression $P_JAP_J^*$ and every positive reference Gram by
+$P_JGP_J^*$. The packet Riesz lower bound is unchanged, the exact contour
+identities remain valid, all edge ranks do not increase, and absolute
+Hilbert--Schmidt norms of compressed remainder matrices do not increase.
+Moreover the shell/frame trace-defect arguments remain valid with the retained
+coordinate count in place of the full count.
+\end{lemma}
+
+\begin{proof}
+Every contour, stationary, shell, and arithmetic construction is linear in the
+packet synthesis coefficients, so coordinate deletion is literal matrix
+compression. A subsequence of a Riesz sequence inherits the same lower and
+upper Riesz constants. Rank is monotone under compression, and
+$\|P_JRP_J^*\|_{S_2}\le\|R\|_{S_2}$. More importantly, if the common reference
+analysis map is $W$, then on the restricted packet space it is exactly
+$W_J:=WP_J^*$ and
+\[
+G_J=W_J^*W_J=P_JW^*WP_J^*.
+\]
+Since the restriction is on the input space, the least singular value of $W_J$
+is no smaller than the least singular value of $W$ on the original retained
+space. The primitive mixed-derivative and arithmetic transfer bounds used to
+prove the relative $S_2$ estimates are uniform on the output fibres and are
+unchanged by deleting packet inputs. Hence the relative remainder criterion
+may be rerun with $W_J$ and gives the same $o(N_T)$ asymptotic (with the smaller
+packet dimension). The trace-defect proofs are sums of nonnegative diagonal
+contributions over packet coordinate vectors, so deleting coordinates only
+removes summands and gives the same normalized estimate for the smaller
+dimension. Exact algebraic contour/source identities commute with this
+restriction because they hold entrywise.
+\end{proof}
+
+\begin{lemma}[Horizontal connector decay]
+\label{lem:horizontal-decay}
+Delete packet centres within physical distance $T/L$ of the two horizontal
+heights $T_1,T_2$. This costs $O(T)=o(N_T)$ packet directions. On the
+remaining packet space, every fixed curvature derivative of a horizontal
+connector is $O_A(T^{-A})$ after arbitrary prescribed fixed $A$, up to fixed
+polylogarithmic arithmetic factors.
+\end{lemma}
+
+\begin{proof}
+The critical packet spacing is $\asymp L^{-1}$, so a total physical collar of
+length $O(T/L)$ contains $O(T)$ centres. On either horizontal connector the
+straightened packet variable has real separation at least $T/L$ from every
+retained centre, while its imaginary part remains in a fixed strip. Hence
+\eqref{eq:packet-decay}, after any fixed number of curvature derivatives, gives
+\[
+|\psi_{L,\tau}|\ll_M T^{C_M}(T/L)^{-M}.
+\]
+All zeta, gamma, and finite arithmetic factors on the fixed horizontal strip
+have at most polynomial or polylogarithmic size. Choosing $M$ after the fixed
+loss exponent gives $O_A(T^{-A})$. The same estimate holds for the adjoint
+orientation and for the two mixed derivatives used in the relative
+Hilbert--Schmidt criterion.
+\end{proof}
+
+For a generic $H$ with simple stationary nodes and no common zero of $H,H'$,
+the residue theorem gives an exact pullback
+\[
+A_H=\mathcal E_H^*W_H\mathcal E_H,
+\]
+where $W_H$ is the direct sum of the real scalar residues and the $2\times2$
+conjugate-pair blocks of Lemma~\ref{lem:stationary-blocks}. By
+Lemma~\ref{lem:evaluation-rank}, $\mathcal E_H$ is surjective. Restricting to a
+complement of $\ker\mathcal E_H$ and applying Sylvester's law therefore gives
+\begin{equation}
+\boxed{n_-(A_H)=B(H)+P(H').}
+\label{eq:zero-inertia-generic}
+\end{equation}
+
+\begin{lemma}[Real zero/stationary bookkeeping]
+\label{lem:real-bookkeeping}
+For a real analytic function with simple real zeros and stationary points,
+\[
+R(H')=R(H)+2B(H)+O(1),
+\label{eq:rolle-count}
+\]
+where $R$ denotes the number of real zeros in the interval under
+consideration.
+\end{lemma}
+
+\begin{proof}
+Between consecutive real zeros, Rolle's theorem forces at least one stationary
+point. On every zero-free component the stationary extrema alternate. Any
+additional stationary points therefore occur in pairs consisting of one good
+and one bad extremum. Only the two terminal components contribute the
+$O(1)$ error.
+\end{proof}
+
+For the original gauge $\mathscr Z$ and its stationary source $Z_1$, put
+\[
+P(s):=-\frac{\zeta'}\zeta(s),
+\qquad
+R(s):=\frac{Z_1(s)}{\zeta(s)}=f(s)-P(s).
+\]
+The functional equation gives $R(s)=-R(1-s)$. At an $m$-fold zeta zero,
+\[
+\zeta(s)=(s-\rho)^mu(s),\qquad u(\rho)\ne0,
+\]
+so
+\[
+Z_1(s)=m(s-\rho)^{m-1}u(\rho)+O((s-\rho)^m),
+\]
+and $R=Z_1/\zeta$ has a simple pole at every zeta zero, independently of its
+multiplicity. Moreover, for $|t|$ large there are no zeros of $Z_1$ in
+$\Re s\ge2$: there $Z_1=\zeta(f-P)$, with $P=O(1)$ and
+$|f|\asymp\log|t|$. The functional equation \eqref{eq:Z1-FE} then excludes
+zeros in $\Re s\le-1$. Thus every high zero of $Z_1$ relevant to the fixed
+disks below lies in $-1<\Re s<2$; the corresponding assertion for the
+nontrivial zeta zeros is standard from its Euler product and functional
+equation.
+
+\begin{lemma}[Local Jensen count]
+\label{lem:local-z1-count}
+Uniformly for $U\asymp T$,
+\begin{equation}
+\boxed{
+N_{Z_1}([U,U+1])+N_\zeta([U,U+1])\ll\log U.
+}
+\label{eq:local-z1-count}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Center a fixed disk at $s_U=2+iU$. Absolute convergence and Stirling give
+\[
+\zeta(s_U)\asymp1,
+\qquad
+Z_1(s_U)=\zeta(s_U)\{f(s_U)-P(s_U)\},
+\qquad
+|Z_1(s_U)|\gg\log U.
+\]
+On a fixed larger disk, the classical convexity bound for $\zeta$ and the
+Cauchy estimate for $\zeta'$ give polynomial growth $U^{O(1)}$ for both
+$(s-1)\zeta(s)$ and $Z_1(s)$. Jensen's formula therefore bounds the number of
+zeros in the concentric smaller disk by $O(\log U)$. A fixed number of such
+disks covers the strip segment of height one, proving
+\eqref{eq:local-z1-count}.
+\end{proof}
+
+\begin{lemma}[Local logarithmic-derivative factorization]
+\label{lem:local-log-derivative}
+Let $F_0\in\{\zeta,Z_1\}$ and $U\asymp T$. Uniformly for
+$-1\le\sigma\le2$ and $|t-U|\le1/10$, one has
+\begin{equation}
+\frac{F_0'}{F_0}(s)
+=\sum_{\substack{F_0(\rho)=0\\|\rho-(2+iU)|<7/2}}
+\frac1{s-\rho}+O((\log T)^{C_0}),
+\label{eq:local-log-derivative}
+\end{equation}
+whenever $s$ is not a zero of $F_0$. The sum contains $O(\log T)$ terms,
+with multiplicity.
+\end{lemma}
+
+\begin{proof}
+Put $z_U=2+iU$. On the fixed disk $|s-z_U|\le5$, both $\zeta$ and $Z_1$
+are holomorphic for large $U$ and have size $T^{O(1)}$. At the centre,
+absolute convergence and Stirling give
+\[
+|\zeta(z_U)|\asymp1,
+\qquad |Z_1(z_U)|\asymp\log T.
+\]
+Jensen's formula therefore gives $O(\log T)$ zeros, with multiplicity, in
+$|s-z_U|\le4$ for either function.
+
+Choose a radius $r_U\in[7/2,4]$ whose distance from every modulus
+$|\rho-z_U|$ of these zeros is at least $c/\log T$. Such a radius exists
+because there are only $O(\log T)$ forbidden intervals and the ambient radial
+interval has fixed length. Factor all zeros in $|s-z_U|<r_U$:
+\[
+F_0(s)=e^{g_U(s)}
+\prod_{|\rho-z_U|<r_U}(s-\rho)
+\]
+on the simply connected disk $|s-z_U|<r_U$, after removing the zeros from the
+quotient. On $|s-z_U|=r_U$ the polynomial-growth upper bound for $F_0$, the
+separation of the boundary from the zeros, and the $O(\log T)$ zero count give
+\[
+\Re g_U(s)=\log|e^{g_U(s)}|\ll \log T\log\log T.
+\]
+At $z_U$, the lower bounds above and
+$|z_U-\rho|\le4$ give
+$\Re g_U(z_U)\gg-\log T$. Applying Borel--Carath\'eodory to
+$g_U-g_U(z_U)$ and then Cauchy's estimate on the fixed inner disk
+$|s-z_U|\le 31/10$ yields
+\[
+|g_U'(s)|\ll(\log T)^{C_0}.
+\]
+The entire horizontal segment $-1\le\sigma\le2$, $|t-U|\le1/10$, lies in
+that inner disk. Logarithmic differentiation gives the zero sum over
+$|\rho-z_U|<r_U$. The additional zeros with
+$7/2\le|\rho-z_U|<r_U$ are a fixed positive distance from the inner disk and
+there are only $O(\log T)$ of them, so their contribution is absorbed into the
+error in \eqref{eq:local-log-derivative}.
+\end{proof}
+
+\begin{proposition}[Good-height stationary-count decrement]
+\label{prop:z1-zeta-decrement}
+There are heights
+\[
+T_1\in[T,T+1],\qquad T_2\in[2T,2T+1]
+\]
+such that the boundary rectangle $-1\le\sigma\le2$, $T_1\le t\le T_2$
+avoids all zeros and poles of $R$, and already on this good rectangle
+\begin{equation}
+\boxed{
+N(Z_1;T_1,T_2)-N(\zeta;T_1,T_2)
+=O((\log T)^C)=o(N_T).
+}
+\label{eq:z1-zeta-good-decrement}
+\end{equation}
+Returning the two horizontal heights to $T$ and $2T$ gives
+\begin{equation}
+\boxed{
+N(Z_1;T,2T)-N(\zeta;T,2T)
+=O((\log T)^C)=o(N_T).
+}
+\label{eq:z1-zeta-decrement}
+\end{equation}
+Equivalently, because $q$ is nonvanishing, the same two estimates hold with
+$(Z_1,\zeta)$ replaced by $(F',F)$.
+\end{proposition}
+
+\begin{proof}
+Fix $A>4$ and set $\delta_T=(\log T)^{-A}$. By
+Lemma~\ref{lem:local-z1-count}, each unit interval contains only $O(\log T)$
+ordinates of zeros of $\zeta Z_1$. The union of intervals of radius
+$\delta_T$ around them has total length
+\[
+O(\delta_T\log T)=O((\log T)^{1-A})<\frac12.
+\]
+Hence $T_1,T_2$ can be chosen as stated, with the two horizontal sides at
+distance at least $\delta_T$ from every zero or pole of $R$ in the fixed strip.
+
+On $\Re s=2$, absolute convergence and Stirling give
+\[
+R(2+it)=\frac12\log\frac{t}{2\pi}+O(1),
+\qquad T\le t\le2T+1.
+\]
+For large $T$ this lies in a fixed acute sector around the positive real axis,
+so the change of argument on the right vertical side is $O(1)$. The symmetry
+$R(s)=-R(1-s)$ gives the same bound on the left side.
+
+Consider one good horizontal side, at height $U\in\{T_1,T_2\}$. Since
+\[
+\frac{R'}R=\frac{Z_1'}{Z_1}-\frac{\zeta'}\zeta,
+\]
+Lemma~\ref{lem:local-log-derivative} applies separately to $Z_1$ and $\zeta$.
+The selected horizontal line stays at distance at least $\delta_T$ from every
+zero of either function in the fixed strip, and each local zero sum has only
+$O(\log T)$ terms. Therefore, uniformly for $-1\le\sigma\le2$,
+\begin{equation}
+\left|\frac{R'}R(\sigma+iU)\right|
+\ll (\log T)^{C_0}+\delta_T^{-1}\log T
+\ll(\log T)^{A+C_1}.
+\label{eq:good-horizontal-logderivative}
+\end{equation}
+Integrating over the bounded horizontal length gives a polylogarithmic argument
+variation. Thus the total boundary variation of $\arg R$ is
+$O((\log T)^C)$.
+
+The argument principle identifies this variation divided by $2\pi$ with the
+number of zeros of $R$ minus its poles. Since the divisor of $R=Z_1/\zeta$ is
+exactly the divisor difference of $Z_1$ and $\zeta$, this proves
+\eqref{eq:z1-zeta-good-decrement}. Returning to $T,2T$ changes
+either zero count by only $O(\log T)$ by Lemma~\ref{lem:local-z1-count}, proving
+\eqref{eq:z1-zeta-decrement}.
+\end{proof}
+
+Section~\ref{sec:multiplicity-endgame} transfers the generic zero-side inertia
+identity \eqref{eq:zero-inertia-generic} back to the original Hardy-gauge form.
+All arithmetic estimates are proved for the unperturbed form $A_F$; the generic
+perturbation is used only in the final finite-dimensional inertia comparison.

@@ -1,0 +1,356 @@
+\section{The completed global model and its spectral lower bound}
+\label{sec:model-floor}
+
+By Proposition~\ref{prop:completed-local-profile}, the frozen completed local
+profile is the source-derived function $G$ of \eqref{eq:G-from-source}. Let
+$C(x):=G(1-x)$ on the retained interior lag interval. If $q$ is mean zero
+and
+\[
+Q(x):=\int_0^xq(t)\,dt,
+\]
+then two integrations by parts give the exact primitive identity
+\begin{equation}
+\boxed{
+\langle K_Cq,q\rangle
+=-2C'(0+)\|Q\|_2^2
+-\iint C''(|x-y|)Q(x)\overline{Q(y)}\,dx\,dy.
+}
+\label{eq:primitive-identity}
+\end{equation}
+Define the triangular primitive form
+\[
+Q_\triangle(q):=2\|Q\|_2^2.
+\]
+Let $\mathcal U_T^{\rm flat}$ denote the common positive analysis map into the
+straightened normalized packet-lag fibre, including the full smooth packet
+synthesis. By Proposition~\ref{prop:trivial-outer-twist}, the outer translations
+and common-divisor map specialize to the identity for the invariant contour
+source. Let $C_T$ be the stable
+core restriction from Definition~\ref{def:PT}, put
+\[
+R_T^{\rm core}:=\frac{W_T}{L}=1-\frac{A_0\log L}{L},
+\qquad
+\mathcal U_T^{\rm core}:=C_T\mathcal U_T^{\rm flat},
+\]
+and normalize the core coordinate by $r=u/L$, so
+$0\le r\le R_T^{\rm core}$. Define $A_T^G$ as the pullback through
+$\mathcal U_T^{\rm core}$ of the frozen kernel
+\[
+K_G(r,s):=G(1-|r-s|),
+\]
+and define $\Gfr_T$ through the same core map by the triangular primitive form
+$Q_\triangle$. Thus
+\begin{equation}
+\boxed{
+\Gfr_T=(\mathcal W_T^{\rm glob})^*\mathcal W_T^{\rm glob},
+}
+\label{eq:global-reference-Gram}
+\end{equation}
+where $\mathcal W_T^{\rm glob}$ is obtained from
+$\mathcal U_T^{\rm core}$ by adjoining the primitive on
+$0\le u\le W_T$ and the factor $\sqrt2$; the endpoint mean constraint is imposed
+only on $V_{\rm mean}$. Lemma~\ref{lem:global-local-triangular}
+compares the shell-local primitive metric with this same global reference
+metric. Hence $A_T^G$ and $\Gfr_T$ are pullbacks from one fixed core analysis
+map and differ only in the final lag form.
+
+The coefficient extraction in \eqref{eq:G-from-source} gives the closed form
+\begin{equation}
+\boxed{
+G(\rho)=\frac1{12}\left[
+-14\rho^4+32\rho^3-24\rho^2+6\rho
++e^2\left((6\rho^2-12\rho+9)\sinh^2\rho-3\rho^2\right)
+\right].
+}
+\label{eq:G-closed}
+\end{equation}
+
+\begin{proposition}[Explicit spectral floor on the stable core]
+\label{prop:model-floor}
+On each mean-zero core fibre $0\le r\le R_T^{\rm core}$, the frozen completed
+lag form satisfies
+\[
+K_G\succeq0.06\,Q_\triangle.
+\]
+Consequently
+\begin{equation}
+\boxed{A_T^G\succeq0.06\,\Gfr_T.}
+\label{eq:model-floor}
+\end{equation}
+on the full packet space subject only to the core mean-zero constraint. No
+additional model spectral deletion is required.
+\end{proposition}
+
+\begin{proof}
+Extend a core input $q$ by zero from $[0,R_T^{\rm core}]$ to $[0,1]$. Its
+mean remains zero, and both $K_G$ and $Q_\triangle$ restrict to the original
+core forms. It therefore suffices to prove the inequality on $[0,1]$.
+Apply \eqref{eq:primitive-identity} to
+$C(|x-y|)=G(1-|x-y|)$ and put $g(r):=G''(r)$. Direct differentiation of
+\eqref{eq:G-closed} gives
+\begin{align}
+g(r)={}&-14r^2+16r-4\notag\\
+&+\frac{e^2}{2}\left[
+4(r-1)\sinh(2r)+(2r^2-4r+4)\cosh(2r)-2
+\right].
+\label{eq:g-second}
+\end{align}
+The cusp coefficient is
+\begin{equation}
+\boxed{
+a_G:=-2C'(0+)=2G'(1)
+=\frac{-2+3e^2(\sinh2-2)}6>5.677.
+}
+\label{eq:cusp-coeff}
+\end{equation}
+
+For $0\le x\le4$ and $m+2>x$, the positive Taylor series gives the rational
+bounds
+\begin{equation}
+\sum_{j=0}^{m}\frac{x^j}{j!}
+\le e^x\le
+\sum_{j=0}^{m}\frac{x^j}{j!}
++\frac{x^{m+1}}{(m+1)!}\frac1{1-x/(m+2)}.
+\label{eq:exp-rational-bound}
+\end{equation}
+Using $m=64$ and exact rational arithmetic in the formulas for $G',g,g'$ gives
+\begin{equation}
+\begin{gathered}
+g(0.16)>0.025,\quad g(0.1625)<-0.010,\\
+g(0.6145)<-0.0004,\quad g(0.6146)>0.0012,\\
+g'(0.39)<-0.41,\quad g'(0.40)>0.19,\\
+g(0)<3.39,\quad g(0.8375)>6.9,\\
+g'(0.3854)>-0.70,\quad g'(0.5)>6.8,\\
+g(0.3144)+g(0.6856)>0.0019,\\
+g(0.3145)+g(0.6855)<-0.0010,
+\end{gathered}
+\label{eq:g-rational-signs}
+\end{equation}
+and
+\begin{equation}
+\begin{gathered}
+2.8385<G'(1)<2.8386,\qquad G'(0)=\tfrac12,\\
+0.7440<G'(a)<0.7442,\qquad
+0.2361<G'(b)<0.2364,\\
+G'(0.3144)<0.6142,\qquad G'(0.6855)>0.2846,
+\end{gathered}
+\label{eq:Gprime-rational-bounds}
+\end{equation}
+where $a\in(0.16,0.1625)$ and $b\in(0.6145,0.6146)$ are the two zeros of
+$g$. To see that these are the only zeros, differentiate twice more:
+\[
+G''''(r)=2\left[
+e^2\bigl((2r^2-4r+9)\cosh(2r)+(8r-8)\sinh(2r)\bigr)-14
+\right].
+\]
+Writing $x=1-r$ and using $\tanh y\le y$ gives
+\[
+7+2x^2-8x\tanh(2r)
+\ge18x^2-16x+7\ge\frac{31}{9},
+\]
+so $G''''(r)>20$ on $[0,1]$. Thus $g$ is strictly convex and
+\eqref{eq:g-rational-signs} gives exactly the two roots $a,b$ and a unique
+minimum between $0.39$ and $0.40$.
+
+The regular primitive kernel has Schur row sum
+\[
+M(x):=\int_0^1|g(1-|x-y|)|\,dy.
+\]
+It is symmetric about $1/2$. For $0\le x\le1/2$ write
+\[
+M(x)=A+D(x),\qquad A:=\int_0^1|g(r)|\,dr,
+\]
+\[
+D(x):=\int_{1-x}^1|g(r)|\,dr-\int_0^x|g(r)|\,dr.
+\]
+We determine the maximum of $D$ directly from the sign pattern of $g$ and the
+strict convexity established above.
+For $0\le x\le a$, both $g(x)$ and $g(1-x)$ are positive. Since the unique
+minimum of $g$ lies in $(0.39,0.40)$, $g$ decreases on $[0,a]$ and increases on
+$[0.8375,1]$. Hence \eqref{eq:g-rational-signs} gives
+\[
+D'(x)=g(1-x)-g(x)
+\ge g(0.8375)-g(0)>0.
+\]
+For $a<x<1-b$, one has $g(x)<0<g(1-x)$ and therefore
+\[
+D'(x)=g(x)+g(1-x)=:h(x).
+\]
+Strict convexity makes $g'$ strictly increasing, so, because $x<1-x$,
+\[
+h'(x)=g'(x)-g'(1-x)<0.
+\]
+The last two sign tests in \eqref{eq:g-rational-signs} give
+$h(0.3144)>0>h(0.3145)$, hence a unique zero
+$x_0\in(0.3144,0.3145)$.
+Finally, for $1-b\le x<1/2$, both values of $g$ are negative. Put
+$t=1/2-x\in(0,b-1/2]$. The function
+\[
+H(t):=g(1/2+t)-g(1/2-t)
+\]
+satisfies $H(0)=0$ and, throughout this range,
+\[
+H'(t)=g'(1/2+t)+g'(1/2-t)
+\ge g'(0.5)+g'(0.3854)>0.
+\]
+Thus $g(1-x)>g(x)$ and
+$D'(x)=g(x)-g(1-x)<0$. Consequently $x_0$ is the unique maximizer of $D$ on
+$[0,1/2]$, and symmetry gives the only other maximizer of $M$ at $1-x_0$.
+Since
+\[
+A=G'(1)-G'(0)+2G'(a)-2G'(b)
+\]
+and
+\[
+D(x_0)=G'(1)-G'(1-x_0)-2G'(a)+G'(0)+G'(x_0),
+\]
+\eqref{eq:Gprime-rational-bounds} yields
+\begin{equation}
+\boxed{A<3.3548,\qquad D(x_0)<2.1802,\qquad
+\sup_{x\in[0,1]}M(x)<5.535.}
+\label{eq:schur-certified}
+\end{equation}
+All decimal inequalities above are rigorous rational interval consequences of
+\eqref{eq:exp-rational-bound}; no floating-point estimate is used in
+\eqref{eq:schur-certified}.
+
+The primitive identity is therefore
+\[
+Q_G(q)=a_G\|Q\|_2^2-
+\iint g(1-|x-y|)Q(x)\overline{Q(y)}\,dx\,dy.
+\]
+Schur's test and \eqref{eq:cusp-coeff}--\eqref{eq:schur-certified} give
+\[
+Q_G(q)>(5.677-5.535)\|Q\|_2^2
+>0.142\|Q\|_2^2
+>0.06Q_\triangle(q).
+\]
+By Lemma~\ref{lem:internal-principal-contraction} the internal Dirichlet index
+has already been contracted by the principal Laurent functional. By
+Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer arithmetic
+coordinate remains in the invariant contour source. Thus $A_T^G$ and
+$\Gfr_T$ are pullbacks through the same packet/core analysis map, and congruence
+preserves the whole-space Loewner inequality. This proves
+\eqref{eq:model-floor} without deleting any model spectral subspace.
+\end{proof}
+
+\begin{lemma}[The whole-space floor survives restriction]
+\label{lem:model-compression}
+Let $V$ be any subspace of the finite model coordinate space after the common
+positive pullback, and let $P_V$ be its orthogonal projection. Then
+\begin{equation}
+\boxed{
+P_V A_T^G P_V\succeq0.06\,P_V\Gfr_TP_V
+\quad\text{on }V.
+}
+\label{eq:model-compression}
+\end{equation}
+Thus every retained spectral restriction inherits the same numerical floor.
+\end{lemma}
+
+\begin{proof}
+For $v\in V$, one has $P_Vv=v$. Proposition~\ref{prop:model-floor} gives
+\[
+\langle P_VA_T^GP_Vv,v\rangle
+=\langle A_T^Gv,v\rangle
+\ge0.06\langle\Gfr_Tv,v\rangle
+=0.06\langle P_V\Gfr_TP_Vv,v\rangle.
+\]
+This is exactly \eqref{eq:model-compression}.
+\end{proof}
+
+\begin{remark}[Global positivity]
+Positivity of the finite-interval covariance for each fixed scalar $\rho$ does
+not by itself imply positivity after replacing $\rho$ by the pairwise lag
+$\rho(r-s)$. Proposition~\ref{prop:model-floor} instead applies the primitive
+identity \eqref{eq:primitive-identity} directly to the whole completed lag
+kernel, which yields the required global Loewner bound.
+\end{remark}
+
+\begin{lemma}[Stability under the finite-$T$ principal parameters]
+\label{lem:principal-parameter-stability}
+Let $K_{\lambda,\mu,\theta}$ be the mean-zero lag form obtained from
+\eqref{eq:two-parameter-profile} after normalized curvature with
+\[
+\rho(x,y)=1+\theta-|x-y|,
+\qquad 0\le x,y\le1.
+\]
+Uniformly for
+\[
+|\lambda-1|+|\mu-1|+\theta\le\eta,
+\qquad \theta\ge0,
+\]
+one has
+\begin{equation}
+\boxed{
+\|K_{\lambda,\mu,\theta}-K_{1,1,0}\|_{\op,\triangle}
+\ll |\lambda-1|+|\mu-1|+\theta.
+}
+\label{eq:principal-parameter-stability}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+After taking $[p^2]$, the profile \eqref{eq:two-parameter-profile} is analytic
+in $(\lambda,\mu,\rho)$ on a fixed neighbourhood of
+$(1,1,[0,1])$. For $\theta\ge0$ sufficiently small,
+$\rho(x,y)$ remains in the fixed compact interval $[0,1+\eta]$. Differentiation
+with respect to $\lambda$, $\mu$, or $\theta$ therefore gives kernels whose
+diagonal derivative jumps and regular second lag derivatives are uniformly
+bounded. In particular, changing $\theta$ changes the cusp coefficient by
+$O(\theta)$ and the regular primitive kernel by $O(\theta)$ in Schur norm.
+Applying the primitive identity \eqref{eq:two-variable-primitive} and the
+mean-value theorem yields
+\[
+|\langle(K_{\lambda,\mu,\theta}-K_{1,1,0})q,q\rangle|
+\ll (|\lambda-1|+|\mu-1|+\theta)Q_\triangle(q),
+\]
+which is \eqref{eq:principal-parameter-stability}.
+\end{proof}
+
+\begin{proposition}[Finite-$T$ principal comparison]
+\label{prop:finiteT-principal-comparison}
+On $V_{\rm mean}$ of \eqref{eq:mean-map},
+\begin{equation}
+\boxed{
+\left\|\Gfr_T^{-1/2}(P_T-A_T^G)\Gfr_T^{-1/2}\right\|_{\op}
+\ll L^{-1}=o(1).
+}
+\label{eq:principal-finiteT-comparison}
+\end{equation}
+Consequently, for all sufficiently large $T$,
+\begin{equation}
+\boxed{P_T\succeq c_0\Gfr_T}
+\label{eq:principal-floor}
+\end{equation}
+with any fixed $c_0<0.06$; in particular one may take $c_0=0.03$.
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{prop:trivial-outer-twist}, the invariant contour source has
+no nontrivial outer translation, divisor deformation, or outer-prefix excess.
+Moreover the HLZ finite Euler factor at $k=1$ is the empty Euler product and is
+identically one for all retained shifts. Thus the only finite-$T$ deformation
+of the principal lag form is archimedean. Uniformly on the retained stable
+interior,
+\[
+\lambda(\tau)=\frac{\log(\tau/2\pi)}L=1+O(L^{-1}),
+\qquad
+\mu_b=\lambda(\tau)+O(L^{-D-1})+O((TL)^{-1}),
+\]
+and, by \eqref{eq:finiteT-common-endpoint},
+\[
+\theta_T:=\nu_T-1=\lambda(\tau)-1=O(L^{-1}),
+\qquad \theta_T\ge0.
+\]
+Lemma~\ref{lem:principal-parameter-stability} therefore gives an
+$O(L^{-1})$ perturbation in the triangular metric. The smooth endcaps are
+identically one away from the terminal collar, while the finite Cauchy kernels
+belong to the exact residue functional on both sides and are not frozen.
+This proves \eqref{eq:principal-finiteT-comparison}. The
+exact--model local discrepancy \eqref{eq:local-model-error} is excluded from
+this comparison by definition and belongs only to $R_T^{\rm tri}$. Combining
+\eqref{eq:principal-finiteT-comparison} with
+Proposition~\ref{prop:model-floor} gives \eqref{eq:principal-floor}; no model
+spectral subspace is deleted.
+\end{proof}

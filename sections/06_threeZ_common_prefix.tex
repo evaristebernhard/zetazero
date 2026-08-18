@@ -1,0 +1,863 @@
+\section{The completed three-\texorpdfstring{$Z$}{Z} master and common-prefix geometry}
+\label{sec:threeZ}
+
+The three principal $Z$-faces are not three independent sources. We use the
+completed three-face Cauchy master and diagonal Mellin representation of
+Heap--Li--Zhao~\cite{HLZ}. At fixed height the three faces arise from one
+completed shifted product and one joint three-variable residue. Only after
+this completion is the diagonal Mellin variable introduced. In the general
+HLZ twisted formula the auxiliary outer Dirichlet polynomial produces indices
+$h,k$ and the diagonal relation $hm=kn$. For $(h,k)=1$ this is
+\begin{equation}
+\boxed{m=k\ell,\qquad n=h\ell.}
+\label{eq:hlz-diagonal}
+\end{equation}
+The invariant contour form of this paper, however, contains no such auxiliary
+outer Dirichlet polynomial: its additional test factor is the packet
+polarization $\mathcal B_{v,w}$, which is retained as a smooth holomorphic
+height/Mellin weight. Thus the actual source specialization used below is
+$h=k=1$, and \eqref{eq:hlz-diagonal} reduces to $m=n=\ell$.
+
+\begin{proposition}[Trivial outer twist of the invariant packet source]
+\label{prop:trivial-outer-twist}
+In the application of the HLZ diagonal calculation to the contour matrix
+$A_T$, the auxiliary outer Dirichlet polynomial is identically one. Hence its
+outer indices satisfy
+\[
+\boxed{g=h=k=1.}
+\]
+If this source is embedded in any finite auxiliary divisor range $d\le Y$, its
+Hilbert-valued coefficient family has only the coordinate $d=1$ nonzero.
+Consequently the outer packet translations are the identity, the common
+divisor map of Proposition~\ref{prop:common-divisor-feature} restricts to the
+identity, and the factor $de/g$ equals $1$. In particular the outer excess
+annulus \eqref{eq:outer-excess-annulus} is empty for the invariant contour
+source.
+\end{proposition}
+
+\begin{proof}
+The exact same-form identity \eqref{eq:same-form-identity} contains the shifted
+Hardy product and the packet polarization, but no factor of the form
+$Q_{\rm out}(s)\overline{Q_{\rm out}}(1-s)$. The HLP series in
+\eqref{eq:Hex-variable} belongs to the logarithmic-derivative source and is not
+an auxiliary outer test polynomial. In the HLZ twisted formula the indices
+$g,h,k$ arise only after expanding such an outer Dirichlet polynomial and its
+adjoint. Therefore the present contour form is the specialization
+$Q_{\rm out}\equiv1$, giving $g=h=k=1$. The packet polarization remains in the
+analytic weight before the finite shift residues, so no discrete outer index is
+created by it. The remaining assertions follow immediately from the definitions
+of the translation and common-divisor maps.
+\end{proof}
+
+\begin{remark}[Scope of the HLZ input]
+We use only the completed three-face residue formula and diagonal calculation of
+Heap--Li--Zhao~\cite{HLZ}, specialized as in
+Proposition~\ref{prop:trivial-outer-twist}; the packet polarization is not
+identified with their auxiliary Dirichlet polynomial. Because the packet
+factor is holomorphic in the shift variables, it commutes exactly with the
+finite Cauchy residues. At $h=k=1$ the finite Euler factor below is identically
+one. The packet-stable contour error retains the superlogarithmic/arbitrary-log
+saving after the fixed packet derivatives. All packet-uniform stationary and
+sideband estimates used below are proved directly rather than imported from the
+scalar moment theorem.
+\end{remark}
+
+\begin{lemma}[Packet-stable HLZ diagonalization]
+\label{lem:packet-HLZ-diagonal}
+Let $H_0(u,\mathbf z)$ be the auxiliary entire factor in the diagonal lemma of
+Heap--Li--Zhao, normalized by $H_0(0,\mathbf z)=1$ and vanishing at the two
+moving divisors
+\[
+2u=z_2-z_1,\qquad 2u=z_2-z_3.
+\]
+Let $W(u,\mathbf z)$ be a packet Mellin weight of
+Lemma~\ref{lem:smooth-mellin-class}. Put
+$\log_3T:=\log\log\log T$. Uniformly for the retained shifts, the invariant-source specialization
+$h=k=1$ of the HLZ diagonal contour with auxiliary factor $H_0W$ satisfies
+\begin{equation}
+\boxed{
+W(0,\mathbf z)Z_{\mathbf z,1,1}
+=\widetilde Z_{\mathbf z,1,1}[H_0W]
++\mathcal E_{\rm diag}(\mathbf z;1,1),
+}
+\label{eq:packet-HLZ-diagonal}
+\end{equation}
+where, after any fixed number of normalized shift derivatives and any fixed
+number of the packet derivatives $\partial_\rho,\partial_p$ used below,
+\begin{equation}
+\mathcal E_{\rm diag}
+\ll L^{C_W}
+\left[
+T^{-2/\log_3T}
+(\log T)^C\log_3T+(\log T)^{-A}
+\right]
+\label{eq:packet-HLZ-error}
+\end{equation}
+for every prescribed fixed $A>0$. The constant $C_W$ depends only on the
+finite packet derivative orders. Thus insertion of the physical packet weight
+before the three finite shift residues changes the main diagonal by its exact
+value $W(0,\mathbf z)$ and costs only the same superlogarithmic/arbitrary-log
+error class as the unweighted diagonal lemma.
+\end{lemma}
+
+\begin{proof}
+The packet weight has the form
+\[
+W(u,\mathbf z)=\int_0^{C_*}a_{\rho,p,\mathbf z,T}(t)e^{Lut}\,dt
+\]
+(or a finite product of such factors). Lemma~\ref{lem:smooth-mellin-class}
+shows that every fixed $\partial_\rho,\partial_p$ derivative has the same
+polylogarithmic $L^1$ bounds. On the strip used in the HLZ contour argument,
+\[
+-\frac1{\log_3T}\le\Re u\le\frac1L,
+\]
+its absolute value and every fixed normalized shift/packet derivative are
+$O(L^{C_W})$: on the right edge this follows from
+$e^{L\Re(u)t}\le e^{C_*}$ and the $L^1$ bounds of
+Lemma~\ref{lem:smooth-mellin-class}, while on the left part of the strip the
+exponential factor only decreases. Hence multiplication by $W$ changes all
+vertical and horizontal contour estimates in the proof of the HLZ diagonal
+lemma by at most a fixed polylogarithmic factor.
+
+The zeros of $H_0$ at the two moving divisors are unchanged after multiplication
+by $W$. The same contour deformation therefore crosses only $u=0$. Its residue in the invariant-source specialization is exactly
+\[
+W(0,\mathbf z)Z_{\mathbf z,1,1},
+\]
+because $H_0(0,\mathbf z)=1$. The left vertical and truncated horizontal
+integrals are bounded exactly as in the HLZ proof, with the additional factor
+$L^{C_W}$ noted above. This gives
+\eqref{eq:packet-HLZ-diagonal}--\eqref{eq:packet-HLZ-error}. Cauchy's formula on
+shift circles of radius comparable to $1/L$ shows that any fixed normalized
+shift derivatives introduce only further fixed powers of $L$, which are
+absorbed in $C_W$.
+\end{proof}
+
+\begin{lemma}[Normalization of the finite HLZ Euler factor]
+\label{lem:HLZ-finite-factor}
+In the notation of the completed HLZ diagonal, the finite local factor attached
+to $k$ is
+\begin{equation}
+\mathcal E_{\alpha,\beta,\gamma}(k)
+:=\prod_{p^{\kappa_p}\parallel k}
+\frac{\displaystyle\sum_{m\ge0}
+ f_{\alpha,\gamma}(p^{m+\kappa_p})p^{-m(1+\beta)}}
+{\displaystyle\sum_{m\ge0}
+ f_{\alpha,\gamma}(p^m)p^{-m(1+\beta)}},
+\label{eq:HLZ-finite-factor}
+\end{equation}
+where
+\[
+f_{\alpha,\gamma}=\mu* n^{-\alpha}*n^{-\gamma}
+\]
+in Dirichlet-convolution notation. Then
+\begin{equation}
+\boxed{\mathcal E_{0,0,0}(k)=1.}
+\label{eq:HLZ-factor-zero}
+\end{equation}
+Moreover, uniformly for $k\le Y=L^\kappa$ and
+$|\alpha|+|\beta|+|\gamma|\le C/L$,
+\begin{equation}
+\boxed{
+\mathcal E_{\alpha,\beta,\gamma}(k)
+=1+O_C\!\left(\frac{\log Y}{L}\right),
+}
+\label{eq:HLZ-factor-small}
+\end{equation}
+and every fixed derivative with respect to the normalized variables
+$L\alpha,L\beta,L\gamma$ is bounded by a fixed power of
+$\log Y/L$ (with the zeroth derivative bounded uniformly).
+\end{lemma}
+
+\begin{proof}
+For one prime put $z=p^{-(1+\beta)}$. The local generating series is
+\[
+\sum_{m\ge0}f_{\alpha,\gamma}(p^m)z^m
+=\frac{1-z}{(1-p^{-\alpha}z)(1-p^{-\gamma}z)}.
+\]
+At $\alpha=\beta=\gamma=0$ this is $(1-z)^{-1}$, so every local coefficient is
+$1$ and the numerator and denominator in
+\eqref{eq:HLZ-finite-factor} coincide. This proves
+\eqref{eq:HLZ-factor-zero}.
+
+On the stated shift polydisc one has $|z|\le p^{-1+o(1)}$, uniformly for
+$p\le Y$. Hence the local series and its reciprocal are analytic and uniformly
+bounded on a fixed slightly larger polydisc. Differentiating a local factor
+$j$ times in the unnormalized shifts costs at most
+$O_j((\kappa_p+1)^j(\log p)^j)$. Summing logarithmic derivatives over
+$p^{\kappa_p}\parallel k$ and using
+\[
+\sum_{p^{\kappa_p}\parallel k}\kappa_p\log p=\log k\le\log Y
+\]
+shows that the first logarithmic derivative is $O(\log Y)$ and every fixed
+higher derivative is bounded by a fixed power of $\log Y$. Passing to the
+normalized variables divides each derivative by $L$. The mean-value theorem,
+together with \eqref{eq:HLZ-factor-zero}, gives
+\eqref{eq:HLZ-factor-small} and the asserted derivative bounds.
+\end{proof}
+
+\begin{proposition}[Height versus fibre endpoint]
+\label{prop:X-tagging}
+In the completed three-$Z$ source, every explicit power of the interpolation
+height $X$ belongs to the functional-equation/archimedean factor, whereas the
+packet-dependent finite endpoint is produced by the diagonal Mellin factor.
+More precisely,
+\[
+X_{\rm arch}=\frac{t}{2\pi},
+\qquad
+\lambda(t):=\frac{\log X_{\rm arch}}L=1+O(L^{-1})
+\]
+on a retained dyadic height block, while the diagonal factor
+\[
+T^{2u}(mn)^{-u}
+=\left(\frac{T^2}{hk\ell^2}\right)^u
+\]
+produces the moving fibre endpoint. After the two Hermitian stationary cutoffs are intersected, the full-fibre
+scale is the same local height,
+\[
+Y_{\rm fib}:=X_{\rm arch}=\frac{t}{2\pi},
+\qquad
+\frac{\log Y_{\rm fib}}L=\lambda(t)=1+O(L^{-1}).
+\]
+Then
+\[
+\ell\le Y_{\rm fib}e^{-|v|},
+\qquad
+v=w+\log(h/k),
+\]
+so
+\begin{equation}
+\boxed{
+\rho(v)=\frac{\log Y_{\rm fib}-|v|}{L}
+=1-\frac{|v|}{L}+O(L^{-1}).
+}
+\label{eq:rho-v}
+\end{equation}
+The symbol $Y_{\rm fib}\asymp T$ is unrelated to the arithmetic truncation
+$Y=L^\kappa$ introduced later. This is the \emph{raw} stationary coordinate:
+the term $\log(h/k)=\log h-\log k$ is removed later by an exact pair of packet
+translations in the common positive analysis map, not by a small endpoint
+approximation. Consequently packet lag changes the finite endpoint $\rho$ but
+does not replace the explicit archimedean powers by powers of $\rho$.
+\end{proposition}
+
+\begin{proof}
+Before the arithmetic master is contracted, the three-face interpolation
+contains the common monomial
+\[
+X^{-(\alpha+\beta+\gamma)/2}
+X^{(z_1-z_2+z_3)/2}.
+\]
+Taking the finite Cauchy residues gives the explicit factors
+\[
+1,\qquad X^{-\alpha-\beta},\qquad X^{-\beta-\gamma}.
+\]
+These factors are present even after the smooth Mellin cutoff has been
+suppressed from the displayed fixed-fibre coefficient, so their $X$ is the
+physical height $X_{\rm arch}=t/(2\pi)$. By contrast, after
+\eqref{eq:hlz-diagonal} the Mellin variable occurs through
+\[
+T^{2u}(mn)^{-u}
+=\left(T^2/(hk\ell^2)\right)^u,
+\]
+which is the source of the diagonal cutoff. The packet dilation of
+Section~\ref{sec:stationary} changes the two oriented cutoffs to
+$Y_{\rm fib}e^{-v}$ and $Y_{\rm fib}e^v$; their common part is
+$Y_{\rm fib}e^{-|v|}$, proving \eqref{eq:rho-v}.
+
+The distinction survives differentiation. For instance,
+\[
+\partial_\gamma
+\left[X^{-q-\gamma}A^\gamma\right]_{\gamma=0}
+=X^{-q}\log(A/X),
+\]
+so the $X^{-q}$ and the $-\log X$ term have the same archimedean provenance,
+whereas the $A=h\ell$ contribution is a fibre variable. Likewise, for
+$\delta=2/L$,
+\[
+\left(\frac{kX}{h n_2n_3}\right)^\delta
+=\left(\frac kh\right)^\delta X^\delta(n_2n_3)^{-\delta},
+\]
+with
+\[
+X^\delta=e^{2\lambda}=e^2(1+O(L^{-1})),
+\]
+while only the last factor is integrated over the common fibre. Hence the
+archimedean and endpoint roles are distinct already at the source level.
+\end{proof}
+
+\begin{lemma}[Exact outer-ratio translation intertwiner]
+\label{lem:outer-translation-intertwiner}
+On the raw stationary coordinate the common-prefix lag is
+\[
+v=w+\log h-\log k.
+\]
+On the ambient packet Fourier space $L^2(\mathbb R,du)$ let
+\[
+(U_hF)(u):=F(u-\log h),
+\qquad
+(U_kF)(u):=F(u-\log k).
+\]
+Then $U_h,U_k$ are unitary, and the raw pair kernel depending on
+$w+\log(h/k)$ is exactly the pullback by $U_h^*U_k$ of the universal kernel in
+$w$. This identity holds for the full smooth packet profile, including its
+transition caps; no flat-amplitude approximation is involved. The reserve
+condition \eqref{eq:packet-bandwidth-reserve} is used only later when the
+physical stationary band is represented inside the flat plateau for shell
+analysis.
+\end{lemma}
+
+\begin{proof}
+Multiplication of a Dirichlet monomial by $h^{-it}$ translates the packet
+Fourier coordinate by $\log h$; the adjoint $k$-orientation gives the analogous
+translation by $\log k$. Translation on $L^2(\mathbb R)$ preserves Lebesgue
+measure and the full translated packet profile, so the relative displacement is
+exactly $\log h-\log k$ and conjugation by $U_h,U_k$ replaces
+$w+\log(h/k)$ by $w$ without a cutoff error. These ambient unitaries are part
+of the common packet analysis map in both $A_T^G$ and $\Gfr_T$. When the later
+shell representation is restricted to the physical stationary band,
+$|\log h|,|\log k|\le\kappa\log L$ and the chosen reserve keep the translated
+physical copies strictly inside the constant plateau.
+\end{proof}
+
+\begin{proposition}[The critical-$J$ self diagonal has the same full fibre]
+\label{prop:J-full-fibre}
+At the pointwise principal diagonal, the primal and dual approximate-functional-
+equation halves of the critical-$J$ self source glue to the same full finite
+interval as the completed three-$Z$ diagonal. In particular, if
+\[
+U:=\frac{\log X}{L},
+\qquad X=\frac{t}{2\pi},
+\]
+and $A:=L\alpha$, $B:=L\beta$, then for $h=k=1$ the two diagonal halves are
+\[
+E_{U/2}(A+B)
+\]
+and
+\[
+e^{-U(A+B)}E_{U/2}(-(A+B)),
+\]
+whose sum is exactly
+\begin{equation}
+\boxed{
+E_{U/2}(A+B)
++e^{-U(A+B)}E_{U/2}(-(A+B))
+=E_U(A+B).
+}
+\label{eq:J-half-glue}
+\end{equation}
+The three-$Z$ diagonal with the same local height $X$ has the radial factor
+\[
+\left(\frac{X^2}{hk\ell^2}\right)^u,
+\]
+so it uses the same full logarithmic endpoint. The factors $h,k$ do not create
+a separate principal endpoint after the common analysis map is fixed: by
+Lemma~\ref{lem:outer-translation-intertwiner} their logarithms are absorbed by
+exact packet translations, leaving the universal packet lag. Thus no
+$O(\log L/L)$ scalar endpoint approximation is used here.
+\end{proposition}
+
+\begin{proof}
+For the shifted product
+\[
+\zeta(1/2+it+\alpha)\zeta(1/2-it+\beta),
+\]
+a smoothed pointwise approximate functional equation has radial conductor
+$mn/X$, not $mn/X^2$. On the diagonal
+\eqref{eq:hlz-diagonal}, $mn=hk\ell^2$. With $h=k=1$, one AFE half therefore
+has $\ell^2\lesssim X$, i.e.
+\[
+0\le \frac{\log\ell}{L}\le\frac U2.
+\]
+Its local continuum factor is $E_{U/2}(a+b)$. The dual half has the opposite
+shift and the functional-equation factor $e^{-U(a+b)}$; changing variables
+$v=U-r$ converts its interval to $[U/2,U]$, proving
+\eqref{eq:J-half-glue}.
+
+The completed three-$Z$ master is represented before scalar contraction by a
+single diagonal Perron integral. After $m=k\ell,n=h\ell$, its Mellin factor is
+$(X^2/(hk\ell^2))^u$. Taking the same local height $X=t/(2\pi)$ therefore
+produces the full interval $0\le\log\ell/L\le U$, exactly the glued interval of
+\eqref{eq:J-half-glue}. The smooth Mellin window can be chosen consistently in
+both representations, so the equality is at the principal feature level, not
+only after scalar summation.
+\end{proof}
+
+\begin{proposition}[Auxiliary unsummed common-divisor feature]
+\label{prop:common-divisor-feature}
+For comparison with the general twisted formula, let $d,e\le Y$ be auxiliary
+outer Dirichlet-polynomial indices, with coefficients
+$c_d,c_e$, and let $m,n$ be the two zeta indices. For the invariant contour
+source Proposition~\ref{prop:trivial-outer-twist} specializes this family to
+$d=e=1$; the general finite-range identity below is auxiliary. On the stationary diagonal
+\begin{equation}
+\boxed{dm=en=:N,}
+\label{eq:common-product-N}
+\end{equation}
+the base principal shifted product has the exact positive factorization
+\begin{equation}
+\boxed{
+\sum_NN^{-1-2a}
+\left|\sum_{\substack{d\mid N\\d\le Y}}c_dd^a\right|^2,
+\qquad a=\frac pL.
+}
+\label{eq:common-divisor-gram}
+\end{equation}
+The translated principal master with $\delta=2/L$, inner shifts
+$a+\delta,a-\delta$, and reciprocal outer deformation
+$c_d\mapsto c_dd^{-\delta}$, $c_e\mapsto c_ee^{\delta}$ has exactly the same
+factor \eqref{eq:common-divisor-gram}. The critical-$J$ self slot acts through
+the same outer-divisor feature. The factorization is Hilbert-valued as well: if
+$b_d\in\mathcal H$ and $U_d$ are unitaries on $\mathcal H$, then the corresponding
+outer feature is
+\begin{equation}
+\boxed{
+\sum_NN^{-1-2a}
+\left\|\sum_{\substack{d\mid N\\d\le Y}}d^aU_db_d\right\|_{\mathcal H}^2
+\ge0.
+}
+\label{eq:common-divisor-Hilbert-gram}
+\end{equation}
+Thus the exact packet translations, including the full smooth packet profile,
+may be retained inside the common positive analysis map. Hence, before scalar
+contraction, the completed signed principal dependence is radial and the outer
+arithmetic factor is one common positive congruence.
+
+If $d=gh$, $e=gk$, $(h,k)=1$, and
+$m=k\ell$, $n=h\ell$, then
+\begin{equation}
+\boxed{\ell=\frac{Ng}{de}.}
+\label{eq:ell-N-displacement}
+\end{equation}
+Consequently, if this auxiliary finite family is parametrized by
+$Y=L^\kappa$ for a fixed $\kappa>0$, then
+\begin{equation}
+0\le\frac{\log N-\log\ell}{L}
+=\frac{\log(de/g)}{L}
+\ll_\kappa\frac{\log L}{L}.
+\label{eq:outer-endpoint-displacement}
+\end{equation}
+The same $O(\log L/L)$ scale controls the $p$-dependence of the positive outer
+divisor map. Moreover $\mathcal W_a$ itself has an explicit finite M\"obius
+inverse on the outer range: restricting its output to $N\le Y$,
+\begin{equation}
+\boxed{
+ c_dd^a=\sum_{e\mid d}\mu(d/e)(\mathcal W_ac)(e),
+ \qquad d\le Y.
+}
+\label{eq:Wa-mobius}
+\end{equation}
+Consequently the weighted map
+$c\mapsto(N^{-1/2-a}(\mathcal W_ac)(N))_{N\le Y}$ is injective and has inverse
+norm $Y^{1+o(1)}$. The same inverse bound holds for the Hilbert-valued map in
+\eqref{eq:common-divisor-Hilbert-gram}: if
+$S_N=\sum_{d\mid N}d^aU_db_d$, then
+\[
+d^aU_db_d=\sum_{e\mid d}\mu(d/e)S_e,
+\]
+so $b_d$ is recovered by applying the unitary $U_d^*$ and the scalar weight
+$d^{-a}$. The deformation of this positive divisor map has entrywise
+normalized size $O(\log L/L)$. To avoid relying on one-sided factorization in
+any later comparison, we measure it with the uniform two-sided arithmetic
+transfer bound of Lemma~\ref{lem:arithmetic-loss}; hence
+\begin{equation}
+\boxed{O\!\left(L^{-1+10\kappa+o(1)}\log L\right)=o(1),
+\qquad \kappa<\frac1{10}.}
+\label{eq:outer-divisor-deformation}
+\end{equation}
+For the invariant contour source, $d=e=1$ and hence the divisor-map
+$p$-deformation, the endpoint displacement
+\eqref{eq:outer-endpoint-displacement}, and the outer annulus all vanish
+identically. For the auxiliary general finite family, the endpoint displacement
+is pair dependent and extends the stationary endpoint in the common
+$N$-coordinate; Proposition~\ref{prop:outer-excess-edge} records its separate
+sideband decomposition. None of these auxiliary losses is needed for the exact
+source specialization.
+\end{proposition}
+
+\begin{proof}
+A base diagonal monomial is
+\[
+c_d\overline{c_e}\,
+d^{-s}e^{-(1-s)}m^{-(s+a)}n^{-(1-s+a)}.
+\]
+Using $dm=en=N$, equivalently $m=N/d$ and $n=N/e$, this is exactly
+\[
+N^{-1-2a}c_dd^a\,\overline{c_ee^a}.
+\]
+Summing first over divisors of $N$ proves \eqref{eq:common-divisor-gram}. More
+generally, replacing the scalar factors by
+$x_d=d^aU_db_d\in\mathcal H$ gives
+\[
+\sum_{d,e\mid N}\langle x_d,x_e\rangle
+=\left\|\sum_{d\mid N}x_d\right\|^2,
+\]
+which proves \eqref{eq:common-divisor-Hilbert-gram}. For the translated master
+the extra scalar factor is
+\[
+d^{-\delta}e^{\delta}m^{-a-\delta}n^{-a+\delta}
+=N^{-2a}d^ae^a,
+\]
+so the same divisor Gram is obtained identically. The critical-$J$ source
+multiplies the same shifted product, and Proposition~\ref{prop:J-full-fibre}
+shows that its primal and dual halves glue before scalar contraction; therefore
+its outer analysis map is the same one.
+
+For the inverse statement, write
+$S_N=(\mathcal W_ac)(N)$. Then
+$S_N=\sum_{d\mid N}c_dd^a$ for $N\le Y$, and ordinary M\"obius inversion gives
+\eqref{eq:Wa-mobius}. Cauchy--Schwarz and the divisor bound
+$\tau(n)=n^{o(1)}$ give
+\[
+\sum_{d\le Y}|c_d|^2
+\ll Y^{1+o(1)}\sum_{N\le Y}|S_N|^2
+\ll Y^{2+o(1)}\sum_{N\le Y}N^{-1-2a}|S_N|^2,
+\]
+which is the asserted $Y^{1+o(1)}$ inverse norm.
+
+Finally $N=ghk\ell$ and $de=g^2hk$, proving
+\eqref{eq:ell-N-displacement}. Since $d,e\le Y$, one has
+$de/g\le Y^2$, giving \eqref{eq:outer-endpoint-displacement}. In particular,
+the physical cutoff
+\[
+\ell\le Y_{\rm fib}e^{-|v|}
+\]
+is equivalent in the common-divisor coordinate to
+\begin{equation}
+N\le \frac{de}{g}Y_{\rm fib}e^{-|v|}.
+\label{eq:N-actual-endpoint}
+\end{equation}
+Thus the pair-independent range
+\begin{equation}
+N\le Y_{\rm fib}e^{-|v|}
+\label{eq:N-common-core}
+\end{equation}
+is a genuine common sub-prefix for every arithmetic pair; the difference
+between \eqref{eq:N-actual-endpoint} and \eqref{eq:N-common-core} is an outer
+annulus, not a shortening of the common core. After applying
+Lemma~\ref{lem:outer-translation-intertwiner}, the raw lag $v$ is straightened
+to the universal packet lag $w$. Imposing the common core then simply truncates
+the outer sum in \eqref{eq:common-divisor-gram}:
+\begin{equation}
+\boxed{
+\sum_{N\le Y_{\rm fib}e^{-|w|}}
+N^{-1-2a}
+\left|\sum_{\substack{d\mid N\\d\le Y}}c_dd^a\right|^2\ge0.
+}
+\label{eq:common-core-positive-gram}
+\end{equation}
+Thus the passage to the pair-independent core preserves the exact positive
+arithmetic congruence; only the discarded annulus is treated separately.
+For a fixed exponent $A_0>0$, whose lower bounds are imposed in
+Section~\ref{sec:retained}, define
+\begin{equation}
+\boxed{
+W_T:=L-A_0\log L,
+\qquad
+X_T:=e^{W_T}=\frac{T}{2\pi L^{A_0}}.
+}
+\label{eq:stable-log-core}
+\end{equation}
+The same truncation also preserves the coordinates needed for the finite
+M\"obius inverse. Indeed, on this stable core,
+\[
+|w|\le W_T,
+\]
+while $\log Y_{\rm fib}=L+O(1)$. Hence uniformly on the retained core
+\begin{equation}
+Y_{\rm fib}e^{-|w|}
+\ge L^{A_0+o(1)}.
+\label{eq:common-core-inverse-range}
+\end{equation}
+For this auxiliary comparison one may, after $A_0$ is fixed, choose any
+$0<\kappa<\min\{1/10,A_0-1\}$ and set $Y=L^\kappa$. Then the right side exceeds
+$Y$ for all sufficiently large $T$. Consequently every coordinate
+$1\le N\le Y$ used in \eqref{eq:Wa-mobius} remains present after the common-core
+restriction, and the inverse bounds for $\mathcal W_a$ and
+$\widetilde{\mathcal W}_a$ remain valid. Moreover
+$d^a=\exp(p\log d/L)$, so each fixed $p$-derivative of the positive divisor
+map costs at most a fixed power of $\log Y/L$. Applying the uniform two-sided
+transfer estimate \eqref{eq:arithmetic-two-sided-transfer} gives
+\eqref{eq:outer-divisor-deformation}. This optional auxiliary choice is not part
+of the invariant-source parameter hierarchy.
+\end{proof}
+
+\begin{proposition}[Auxiliary outer common-prefix excess]
+\label{prop:outer-excess-edge}
+For the invariant contour source this contribution is identically zero by
+Proposition~\ref{prop:trivial-outer-twist}. For a general auxiliary retained
+outer pair $(d,e)$, first restrict to the stable logarithmic
+band $0\le u\le W_T$. On this band decompose the actual $N$-range
+\eqref{eq:N-actual-endpoint} into the common core \eqref{eq:N-common-core} and
+the excess annulus
+\begin{equation}
+Y_{\rm fib}e^{-|v|}<N
+\le \frac{de}{g}Y_{\rm fib}e^{-|v|}.
+\label{eq:outer-excess-annulus}
+\end{equation}
+Let $A_T^{\rm out}$ denote this stable-band annulus and its adjoint; the part on
+$W_T<u\le L$ belongs only to \eqref{eq:terminal-log-tail}. After returning to
+the physical stationary carrier $\ell=Ng/(de)$, expand the smooth unit-shell
+stationary symbol in Fourier sidebands and write
+\begin{equation}
+\boxed{A_T^{\rm out}=E_T^{\rm out}+R_T^{\rm out,hi},}
+\label{eq:outer-excess-sideband-split}
+\end{equation}
+where $E_T^{\rm out}$ contains the sidebands
+$|r|\le R_j^{\rm sb}$ and $R_T^{\rm out,hi}$ the complementary sidebands.
+Then
+\begin{equation}
+\boxed{
+\rank E_T^{\rm out}
+\ll T Y^{3+o(1)}=o(N_T).
+}
+\label{eq:outer-excess-edge-rank}
+\end{equation}
+The term $R_T^{\rm out,hi}$ belongs to the direct high-sideband regular
+class~(vii) of Proposition~\ref{prop:regular-ledger}. No estimate of the annulus
+width is needed for the low-sideband rank bound.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:ell-N-displacement} maps the annulus back to positive integer
+carriers $\ell$ satisfying the original stationary saddle relation
+$t_*=2\pi\ell y$. If $y\in[J_j,J_j+1]$ and $t_*\in[T,2T]$, then
+\[
+\frac{T}{2\pi(J_j+1)}\le \ell\le \frac{2T}{2\pi J_j},
+\]
+which is precisely the stationary carrier interval used in
+Section~\ref{sec:edge-rank}, up to the fixed shell buffer already present there.
+Lemma~\ref{lem:stationary-symbol} gives a smooth symbol uniformly on the
+annulus. Its low Fourier sidebands replace $\ell$ by effective shifts within
+$R_j^{\rm sb}$ of this stationary interval. Proposition~\ref{prop:edge-rank}
+therefore places all low-sideband terms in the same shell-edge spaces and gives
+total geometric rank $O(T)$ per fixed arithmetic multiplicity. Multiplying by
+the conservative $Y^{3+o(1)}$ outer label count proves
+\eqref{eq:outer-excess-edge-rank}. The high sidebands are not included in this
+rank assertion; their coefficient square sum is no larger than that of the full
+direct family and their Fourier decay is estimated in class~(vii).
+\end{proof}
+
+For a packet pair $r,s$, let $I_r$ and $I_s$ be the two physical logarithmic
+prefix intervals determined by the packet displacement and put
+\[
+J_{rs}:=I_r\cap I_s,
+\qquad
+\rho_{rs}^{(T)}:=|J_{rs}|.
+\]
+In the invariant-source specialization there is no outer translation and
+$N=\ell$. Propositions~\ref{prop:J-full-fibre} and \ref{prop:X-tagging} show
+that the principal full-fibre scale is the local archimedean height
+$Y_{\rm fib}=X_{\rm arch}=\tau/(2\pi)$. Hence
+\[
+\nu_T:=\frac{\log Y_{\rm fib}}{L}=\lambda(\tau)
+=1+O(L^{-1}),
+\qquad \nu_T\ge1
+\]
+on the dyadic interval.
+The actual normalized common-prefix endpoint is
+\begin{equation}
+\boxed{
+\rho_{rs}^{(T)}=\nu_T-\frac{|w_r-w_s|}{L}.
+}
+\label{eq:finiteT-common-endpoint}
+\end{equation}
+The frozen global model replaces only the scalar full-fibre length
+$\nu_T$ by $1$; this $O(L^{-1})$ endpoint deformation is estimated in
+Lemma~\ref{lem:principal-parameter-stability}. In the finite-$T$ local formulas
+below we write $\rho_{rs}$ for $\rho_{rs}^{(T)}$. Since $d=e=g=1$ in the
+invariant source, there is no additional arithmetic endpoint displacement.
+The intersection $I_r\cap I_s$ is formed at the packet level before the local
+Perron residue is evaluated. Thus $\rho_{rs}$ is determined by the global
+packet geometry rather than introduced as an independent positivity parameter.
+
+Before the $u$-residue and the three shift residues are taken, the packet pair
+contributes one joint analytic weight on the pair-independent common $N$-core.
+Here $t$ denotes the normalized logarithmic $N$-coordinate after translating
+that core interval to its local origin; it is not the physical height variable.
+Thus
+\begin{equation}
+W_{rs,L}(u,\mathbf z)
+=\int_{J_{rs}}a(t,\mathbf z)e^{Lut}\,dt,
+\label{eq:joint-weight}
+\end{equation}
+where $a$ contains the smooth packet, slow archimedean, and fixed shift factors.
+For every fixed multi-index $\nu$,
+\begin{equation}
+\left|\partial_{\mathbf z}^{\nu}[u^n]W_{rs,L}(u,\mathbf z)\right|
+\ll_\nu \frac{(CL)^n(1+n)^C}{n!}.
+\label{eq:joint-factorial}
+\end{equation}
+If
+\[
+\mathcal F(u,\mathbf z)=\sum_{j=-J}^\infty F_j(\mathbf z)u^j,
+\]
+then
+\[
+\Res_{u=0}(W\mathcal F)
+=\sum_{n=0}^{J-1}[u^n]W\,F_{-n-1}.
+\]
+This is a finite sum, hence the $u$-residue and the finite three-$Z$ shift
+residues commute exactly:
+\begin{equation}
+\boxed{
+\Res_{\mathbf z}\Res_{u=0}(W\mathcal F)
+=\Res_{u=0}\Res_{\mathbf z}(W\mathcal F).
+}
+\label{eq:residue-commute}
+\end{equation}
+The standard auxiliary factor in the completed three-$Z$ master cancels the
+moving divisors $2u=z_2-z_1$ and $2u=z_2-z_3$; multiplication by the holomorphic
+packet factor \eqref{eq:joint-weight} does not recreate them.
+
+For the basic local pole feature,
+\[
+\int_{J_{rs}}e^{-pt}\,dt
+\]
+becomes, after translation of $J_{rs}$ to $[0,\rho_{rs}]$,
+\[
+E_{\rho_{rs}}(p):=\int_0^{\rho_{rs}}e^{-pt}\,dt.
+\]
+This explains the appearance of $E_\rho$ in the local model without asserting
+that a pointwise fixed-$\rho$ positive form globalizes to a positive packet
+matrix.
+
+\begin{proposition}[Completed principal local profile]
+\label{prop:completed-local-profile}
+Let $\tau\asymp T$ be the physical height and let $\tau_b$ be the reference
+height of its smooth block, of length $H=T/L^D$. Write
+\[
+\lambda(\tau):=\frac{\log(\tau/2\pi)}L,
+\qquad
+\mu_b:=\frac{2F_b}{L},
+\]
+where $F_b$ is the frozen value of the half-self factor $f$ on that block.
+Stirling's formula and the mean-value theorem give, uniformly for
+$|\tau-\tau_b|\ll H$,
+\begin{equation}
+\mu_b=\lambda(\tau)+O(L^{-D-1})+O((TL)^{-1}).
+\label{eq:mu-lambda-close}
+\end{equation}
+Let $\rho$ be the pair-independent common $N$-prefix endpoint. Before taking
+the normalized curvature coefficient, the completed model principal source has
+local profile
+\begin{equation}
+\boxed{
+\mathscr G_{\lambda(\tau),\mu_b,\rho}(p)
+=e^{\lambda(\tau)p}\left[
+\mu_b E_\rho(2p)-2E_\rho(p)^2
++e^{2\lambda(\tau)}E_\rho(p+2)E_\rho(p-2)
+\right].
+}
+\label{eq:two-parameter-profile}
+\end{equation}
+Consequently the frozen profile $\lambda=\mu_b=1$ is
+\begin{equation}
+\boxed{
+G(\rho)=[p^2]\,e^p\left[
+E_\rho(2p)-2E_\rho(p)^2
++e^2E_\rho(p+2)E_\rho(p-2)
+\right].
+}
+\label{eq:G-from-source}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Use the completed per-orientation source
+$H_{\rm mod}=F_b-2P+P(s-2/L)$ from \eqref{eq:Hmod}. By
+Proposition~\ref{prop:trivial-outer-twist}, the invariant source has
+$d=e=g=h=k=1$ and hence $N=\ell$; there is no outward arithmetic annulus.
+The common-prefix projection is taken before the local residue, so after
+translating the normalized logarithmic carrier coordinate every principal fibre
+integral is over the same interval $0\le t\le\rho$.
+
+The self term is read after the two Hermitian orientations are reassembled.
+Before freezing, the full $J$ source is $2f=-\chi'/\chi$; on the block under
+consideration its principal frozen value is $2F_b$. The local pole extraction
+has the same common positive $L^2$ Perron amplitude as the other principal
+faces, so after this common amplitude is factored out the self coefficient is
+exactly
+\[
+\frac{2F_b}{L}=\mu_b.
+\]
+Proposition~\ref{prop:J-full-fibre} gives the full glued fibre and
+Proposition~\ref{prop:X-tagging} keeps the explicit Hardy shift factor at the
+physical height. Hence the normalized full-$J$ contribution is
+\[
+\mu_b e^{\lambda(\tau)p}E_\rho(2p).
+\]
+The approximation \eqref{eq:mu-lambda-close} is used only in the later
+comparison with the frozen model; no factor $2$ is absorbed into the definition
+of \eqref{eq:two-parameter-profile}.
+The two unshifted logarithmic-derivative faces lie on the common diagonal
+\eqref{eq:hlz-diagonal}. Their two one-sided fibre integrals are both
+$E_\rho(p)$; the coefficient $-2P$ therefore gives
+\[
+-2e^{\lambda(\tau)p}E_\rho(p)^2.
+\]
+Finally the translated source $P(s-2/L)$ contributes the internal shifts
+$+2$ and $-2$ in the two diagonal fibre variables. The explicit
+functional-equation factor is archimedean, hence
+$X^{2/L}=e^{2\lambda(\tau)}$ by Proposition~\ref{prop:X-tagging}. Its
+contribution is therefore
+\[
+e^{\lambda(\tau)p}e^{2\lambda(\tau)}
+E_\rho(p+2)E_\rho(p-2).
+\]
+Adding the three contributions proves
+\eqref{eq:two-parameter-profile}. Setting $\lambda=\mu_b=1$ and extracting the
+coefficient of $p^2$ gives \eqref{eq:G-from-source}. By
+Proposition~\ref{prop:trivial-outer-twist}, no auxiliary outer arithmetic label
+is present in this invariant-source calculation.
+\end{proof}
+
+\begin{lemma}[The local projector contracts the internal Dirichlet fibre]
+\label{lem:internal-principal-contraction}
+Fix a packet pair. In the invariant-source specialization the common
+shifted-zeta and packet analysis maps are fixed before the internal HLP index is
+exposed; there is no separate outer arithmetic map. After the common diagonal
+is imposed, every exact HLP level has a radial Dirichlet series
+\[
+\mathcal D_k(z)=\sum_{M\ge1}a_{k,M}M^{-z}.
+\]
+The index $M$ is a summation index of the contour coefficient, not a coordinate
+of the packet Hermitian space. For $k\le K_0$, the actual packet Mellin weight
+$W$ enters the scalar residue functional
+\begin{equation}
+\boxed{
+\mathcal L_{\rm pr,\le K_0}^{\rm ex}[W]
+=\sum_{0\le k\le K_0}\omega_{k,L}
+\Res_{u=0}\bigl(\mathcal F_{k,L}(1+u;p)W(u)\bigr).
+}
+\label{eq:internal-principal-functional}
+\end{equation}
+Thus no vector indexed by $M$ remains in the exact low-level principal fibre.
+The levels $k>K_0$ are not acted on by this projector and retain their direct
+$M$-carriers as in Lemma~\ref{lem:HLP-high-edge}. Replacing the level factors by
+their leading Laurent jets and extending the resulting \emph{model} sum over
+all $k$ gives the model projector \eqref{eq:model-PP-projector} and the radial
+profile of Proposition~\ref{prop:completed-local-profile}. The extension beyond
+$K_0$ is $K_{\rm lead,\infty}^{\rm pkt}-K_{\rm lead,\le K_0}^{\rm pkt}$; the
+signed correction required in the exact-minus-model decomposition is its
+negative, namely \eqref{eq:model-truncation-tail}.
+\end{lemma}
+
+\begin{proof}
+On the safe spectral right edge the internal Dirichlet sums and the geometric
+HLP hierarchy are absolutely convergent. After stationary phase the packet
+cutoff is represented by $W$. For the exact source, perform the local contour
+move only for $k\le K_0$. Lemma~\ref{lem:cluster-levelwise} permits the internal
+Dirichlet sum and contour integral to be interchanged levelwise, and the finite
+sum of complete residues is exactly \eqref{eq:internal-principal-functional}.
+The levels $k>K_0$ remain on the direct right-edge representation and therefore
+retain their $M$-carriers.
+
+For the model comparison, replace the level factors by their leading Laurent
+jets. The resulting infinite model series is absolutely convergent and
+Lemma~\ref{lem:leading-jet-resummation} gives the self, base, and translated
+coefficients of Proposition~\ref{prop:completed-local-profile}, hence
+$\mathscr G_{\lambda,\mu_b,\rho}$. Its portion beyond $K_0$ is the radial model
+truncation error \eqref{eq:model-truncation-tail}; it does not alter the
+ownership of the exact high-level carriers.
+\end{proof}

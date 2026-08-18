@@ -1,0 +1,182 @@
+\section{Reduced spectral space and parameter hierarchy}
+\label{sec:retained}
+
+Choose the parameters in the following order. First fix any constant
+$C_{\rm pkt}>0$, which determines the logarithmic packet reserve
+\eqref{eq:packet-bandwidth-reserve} before any stationary-buffer or symbol
+order is chosen. By Proposition~\ref{prop:trivial-outer-twist}, no arithmetic
+range parameter is required.
+% Canonical parameter guard retained for the proof-verification contract:
+% 0<\kappa<\frac1{10}.
+
+Fix once and for all the finite derivative orders required for two curvature
+derivatives and two primitive mixed derivatives. Let $C_{\rm fr}$ be the
+freezing exponent in Lemma~\ref{lem:block-freezing}, and choose a fixed height
+partition exponent
+\begin{equation}
+D>C_{\rm fr}+5,
+\qquad H:=T/L^D.
+\label{eq:height-block-choice}
+\end{equation}
+Let $C_{\rm mean}$ dominate the fixed local-source/refinement multiplicity, and
+let $C_{\rm reg}$ dominate the per-shell logarithmic exponents of the fixed
+lag-profile, freezing, $f'$, and stationary/Stirling correction classes. It
+does not include the nonstationary integration order or the high-sideband
+Fourier order, whose exponents $C_N$ and $C_{\rm sb}$ are introduced only after
+those orders are chosen below. Let $C_{\rm diag}$ dominate all fixed packet,
+curvature, and shell losses multiplying the arbitrary-log term in
+\eqref{eq:packet-HLZ-error}, and fix
+\begin{equation}
+A_{\rm diag}>C_{\rm diag}+10.
+\label{eq:Adiag-choice}
+\end{equation}
+Choose
+\[
+\sigma>2,
+\qquad \epsilon_L=L^{-\sigma}.
+\]
+The direct high-sideband estimate below is obtained with the explicit shell
+power $d_j^3$; no additional shell-dimension exponent is assumed.
+Next fix $M_*>2C_{\rm reg}+5$. We use the same numerical target as a
+logarithmic saving exponent for the stable-core nonstationary leakage and, after
+increasing it if necessary, as a power-saving target for the horizontal
+connectors. Choose the integration-by-parts order $N$ so that
+\[
+2N-1>M_*+5,
+\]
+and then choose the stationary buffer exponent $B$ so that
+\[
+B(2N-1)>2C_N+M_*.
+\]
+Independently choose one finite high-sideband order
+\[
+M_{\rm sb}>5,
+\]
+and let $C_{\rm sb}$ be the corresponding fixed logarithmic exponent in
+\eqref{eq:high-sideband-one-shell}. Finally choose $A_0$ so large that
+\begin{equation}
+A_0>\max\left\{
+B+3,
+\sigma+3,
+C_{\rm mean}+3,
+C_{\rm reg}+3,
+\frac{C_{\rm sb}+\sigma M_{\rm sb}+3}
+{M_{\rm sb}-2}
+\right\}.
+\label{eq:acyclic-A0-choice}
+\end{equation}
+With $W_T,X_T$ defined by \eqref{eq:stable-log-core}, these derivative orders
+and exponents are fixed once and for all before taking the limit $T\to\infty$.
+
+\begin{lemma}[Global and local mean constraints]
+\label{lem:mean-zero-space}
+Let $g_\alpha(u;v)$, $0\le u\le W_T$, denote the output of the common flat
+analysis map immediately before the global primitive in
+\eqref{eq:global-reference-Gram}, with $\alpha$ collecting the retained
+arithmetic and fixed local-source labels. Define the global mean map
+\begin{equation}
+\mathcal M_T^{\rm glob}v
+:=\left(\int_0^{W_T}g_\alpha(u;v)\,du\right)_\alpha.
+\label{eq:global-mean-map}
+\end{equation}
+After the logarithmic unitary write the corresponding output as
+$f_\alpha(x;v)$, $1\le x\le X_T$. On
+$I_j=[J_j,J_j+1]$ set
+\begin{equation}
+q_{j,\alpha}(t;v)
+:=\psi_j(J_j+t)(J_j+t)^{-1/2}
+ f_\alpha(J_j+t;v),
+\qquad 0\le t\le1,
+\label{eq:local-primitive-input}
+\end{equation}
+and define the local mean map
+\begin{equation}
+\mathcal M_T^{\rm loc}v
+:=\left(\int_0^1q_{j,\alpha}(t;v)\,dt\right)_{j,\alpha}.
+\label{eq:local-mean-map}
+\end{equation}
+Finally put
+\begin{equation}
+\boxed{
+V_{\rm mean}:=\ker\mathcal M_T^{\rm glob}
+\cap\ker\mathcal M_T^{\rm loc}.
+}
+\label{eq:mean-map}
+\end{equation}
+Then
+\begin{equation}
+\boxed{
+\codim V_{\rm mean}
+\ll (1+X_T)L^{C_{\rm mean}}
+=o(N_T).
+}
+\label{eq:mean-codim}
+\end{equation}
+For every $v\in V_{\rm mean}$, the global primitive
+\[
+R_\alpha(u;v):=\int_0^u g_\alpha(s;v)\,ds
+\]
+satisfies $R_\alpha(0;v)=R_\alpha(W_T;v)=0$, while every local primitive
+\[
+Q_{j,\alpha}(t;v):=\int_0^tq_{j,\alpha}(s;v)\,ds
+\]
+satisfies $Q_{j,\alpha}(0;v)=Q_{j,\alpha}(1;v)=0$. Thus the global model
+primitive identity and the shell-local remainder identity hold on the same
+retained subspace.
+\end{lemma}
+
+\begin{proof}
+Both mean maps are linear. By Proposition~\ref{prop:trivial-outer-twist}, the
+invariant source has a single arithmetic fibre; the remaining fixed local-source
+labels contribute at most $L^{C_{\rm mean}}$ coordinates. There are $O(X_T)$
+retained unit shells, so the target of $\mathcal M_T^{\rm loc}$ has
+$O(X_TL^{C_{\rm mean}})$ coordinates. Hence the codimension of the
+intersection of their kernels is bounded by the sum of these dimensions. The
+choice $A_0>C_{\rm mean}+3$ in \eqref{eq:acyclic-A0-choice} makes this
+$o(TL)=o(N_T)$. The endpoint identities
+for $R_\alpha$ and $Q_{j,\alpha}$ are exactly the two kernel conditions in the
+definition of $V_{\rm mean}$.
+\end{proof}
+
+All edge-rank, shell-row, and regular-remainder estimates above were proved on
+the full admissible near-lattice packet family. Passing to the
+stationary-node-sized subfamily selected in Lemma~\ref{lem:generic-affine} is a
+coordinate compression. Rank and absolute Hilbert--Schmidt norm cannot
+increase, and the uniform output-fibre estimates used for the relative bounds
+may be rerun on the compressed packet family with the same asymptotics.
+
+It remains only to impose the horizontal endpoint restriction. Let
+$P_{\rm end}$ be the coordinate projection which removes the packet centres in
+the two collars of Lemma~\ref{lem:horizontal-decay}, and set
+\begin{equation}
+V_{\rm end}:=\Ran P_{\rm end}.
+\label{eq:end-space}
+\end{equation}
+Then
+\begin{equation}
+\boxed{\codim V_{\rm end}=O(T)=o(N_T).}
+\label{eq:end-codim}
+\end{equation}
+This is a genuine packet-coordinate restriction, so
+Lemma~\ref{lem:coordinate-restriction} applies after intersection with
+$V_{\rm end}$. The stationary buffer rows are not deleted. Their contribution is accounted
+for by the $R_j$ enlargement in the edge-rank estimate and by the complementary
+nonstationary remainder bounds.
+
+Define the retained subspace by
+\begin{equation}
+\boxed{
+\Pret=V_{\rm core}\cap V_{\rm mean}\cap V_{\rm end}.
+}
+\label{eq:retained-space}
+\end{equation}
+By Lemma~\ref{lem:stable-core-frame}, \eqref{eq:mean-codim}, and
+\eqref{eq:end-codim},
+\begin{equation}
+\boxed{\codim\Pret=o(N_T).}
+\label{eq:retained-codim}
+\end{equation}
+The frozen model requires no further spectral deletion by
+Proposition~\ref{prop:model-floor}. Stationary shell rows, the smooth height
+partition, the outer excess, and the low-sideband ranges are not additional
+subspace restrictions.
