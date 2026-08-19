@@ -6,8 +6,6 @@ $C_{\rm pkt}>0$, which determines the logarithmic packet reserve
 \eqref{eq:packet-bandwidth-reserve} before any stationary-buffer or symbol
 order is chosen. By Proposition~\ref{prop:trivial-outer-twist}, no arithmetic
 range parameter is required.
-% Canonical parameter guard retained for the proof-verification contract:
-% 0<\kappa<\frac1{10}.
 
 Fix once and for all the finite derivative orders required for two curvature
 derivatives and two primitive mixed derivatives. Let $C_{\rm fr}$ be the
@@ -18,14 +16,17 @@ D>C_{\rm fr}+5,
 \qquad H:=T/L^D.
 \label{eq:height-block-choice}
 \end{equation}
-Let $C_{\rm mean}$ dominate the fixed local-source/refinement multiplicity, and
-let $C_{\rm reg}$ dominate the per-shell logarithmic exponents of the fixed
-lag-profile, freezing, $f'$, and stationary/Stirling correction classes. It
-does not include the nonstationary integration order or the high-sideband
-Fourier order, whose exponents $C_N$ and $C_{\rm sb}$ are introduced only after
-those orders are chosen below. Let $C_{\rm diag}$ dominate all fixed packet,
-curvature, and shell losses multiplying the arbitrary-log term in
-\eqref{eq:packet-HLZ-error}, and fix
+Let $C_{\rm mean}$ dominate the fixed local-source/refinement multiplicity. Let
+$C_{\rm reg}$ dominate the logarithmic exponents of the \emph{squared}
+per-shell relative Hilbert--Schmidt contributions of the fixed lag-profile,
+freezing, $f'$, and stationary/Stirling correction classes, as well as the
+squared fixed loss in the shell primitive normalization. It does not include
+the nonstationary integration order or the high-sideband Fourier order, whose
+exponents $C_N$ and $C_{\rm sb}$ are introduced only after those orders are
+chosen below. Let $C_{\rm diag}$ dominate all fixed packet,
+curvature, shell, and fixed local-source/refinement-fibre losses (including the
+square root of that polylogarithmic fibre dimension in Hilbert--Schmidt norm)
+multiplying the arbitrary-log term in \eqref{eq:packet-HLZ-error}, and fix
 \begin{equation}
 A_{\rm diag}>C_{\rm diag}+10.
 \label{eq:Adiag-choice}
@@ -70,18 +71,18 @@ and exponents are fixed once and for all before taking the limit $T\to\infty$.
 
 \begin{lemma}[Global and local mean constraints]
 \label{lem:mean-zero-space}
-Let $g_\alpha(u;v)$, $0\le u\le W_T$, denote the output of the common flat
-analysis map immediately before the global primitive in
-\eqref{eq:global-reference-Gram}, with $\alpha$ collecting the retained
-arithmetic and fixed local-source labels. Define the global mean map
+Let $g(u;v)$, $0\le u\le W_T$, denote the single packet-fibre output of
+\eqref{eq:explicit-flat-analysis} immediately before the global primitive.
+Define the global mean map
 \begin{equation}
 \mathcal M_T^{\rm glob}v
-:=\left(\int_0^{W_T}g_\alpha(u;v)\,du\right)_\alpha.
+:=\int_0^{W_T}g(u;v)\,du.
 \label{eq:global-mean-map}
 \end{equation}
-After the logarithmic unitary write the corresponding output as
-$f_\alpha(x;v)$, $1\le x\le X_T$. On
-$I_j=[J_j,J_j+1]$ set
+For the shell-local remainder analysis, let $f_\alpha(x;v)$,
+$1\le x\le X_T$, denote the finite-dimensional output components immediately
+before the local primitives, with $\alpha$ collecting the fixed local-source
+and bounded-overlap refinement labels. On $I_j=[J_j,J_j+1]$ set
 \begin{equation}
 q_{j,\alpha}(t;v)
 :=\psi_j(J_j+t)(J_j+t)^{-1/2}
@@ -114,9 +115,9 @@ Then
 \end{equation}
 For every $v\in V_{\rm mean}$, the global primitive
 \[
-R_\alpha(u;v):=\int_0^u g_\alpha(s;v)\,ds
+R(u;v):=\int_0^u g(s;v)\,ds
 \]
-satisfies $R_\alpha(0;v)=R_\alpha(W_T;v)=0$, while every local primitive
+satisfies $R(0;v)=R(W_T;v)=0$, while every local primitive
 \[
 Q_{j,\alpha}(t;v):=\int_0^tq_{j,\alpha}(s;v)\,ds
 \]
@@ -126,16 +127,15 @@ retained subspace.
 \end{lemma}
 
 \begin{proof}
-Both mean maps are linear. By Proposition~\ref{prop:trivial-outer-twist}, the
-invariant source has a single arithmetic fibre; the remaining fixed local-source
-labels contribute at most $L^{C_{\rm mean}}$ coordinates. There are $O(X_T)$
-retained unit shells, so the target of $\mathcal M_T^{\rm loc}$ has
-$O(X_TL^{C_{\rm mean}})$ coordinates. Hence the codimension of the
-intersection of their kernels is bounded by the sum of these dimensions. The
-choice $A_0>C_{\rm mean}+3$ in \eqref{eq:acyclic-A0-choice} makes this
-$o(TL)=o(N_T)$. The endpoint identities
-for $R_\alpha$ and $Q_{j,\alpha}$ are exactly the two kernel conditions in the
-definition of $V_{\rm mean}$.
+Both mean maps are linear. The global mean map has one output component. The
+fixed local-source/refinement labels contribute at most $L^{C_{\rm mean}}$
+components per retained shell, and there are $O(X_T)$ retained unit shells.
+Thus the target of $\mathcal M_T^{\rm loc}$ has
+$O(X_TL^{C_{\rm mean}})$ coordinates, and the codimension of the intersection
+of the two kernels is bounded by $1+O(X_TL^{C_{\rm mean}})$. The choice
+$A_0>C_{\rm mean}+3$ in \eqref{eq:acyclic-A0-choice} makes this
+$o(TL)=o(N_T)$. The endpoint identities for $R$ and $Q_{j,\alpha}$ are exactly
+the two kernel conditions in the definition of $V_{\rm mean}$.
 \end{proof}
 
 All edge-rank, shell-row, and regular-remainder estimates above were proved on
@@ -178,5 +178,6 @@ By Lemma~\ref{lem:stable-core-frame}, \eqref{eq:mean-codim}, and
 \end{equation}
 The frozen model requires no further spectral deletion by
 Proposition~\ref{prop:model-floor}. Stationary shell rows, the smooth height
-partition, the outer excess, and the low-sideband ranges are not additional
-subspace restrictions.
+partition, and the low-sideband ranges are not additional subspace restrictions.
+The auxiliary outer-excess family is absent for the invariant source by
+Proposition~\ref{prop:trivial-outer-twist}.

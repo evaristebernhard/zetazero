@@ -69,37 +69,41 @@ $C_G$ such that
 \end{lemma}
 
 \begin{proof}
-By Proposition~\ref{prop:trivial-outer-twist}, the global reference map has a
-single packet fibre. Write its stable-core synthesis, up to the fixed positive
-normalizing weights already included in $\Gfr_T$, as
+By \eqref{eq:explicit-flat-analysis}, after translating the flat core to
+$0\le u\le W_T$ the global reference input is exactly
 \[
-g(u)=\sum_\nu c_\nu e^{i\tau_\nu u}.
+g(u)=L_{\rm pkt}^{-1/2}\sum_\nu
+\widetilde v_\nu e^{i\tau_\nu u},
+\qquad
+\widetilde v_\nu=e^{i\tau_\nu u_0}v_\nu.
 \]
-The construction of $V_{\rm core}$ in Lemma~\ref{lem:stable-core-frame}
-contains the identity packet translation and its componentwise
-$\tau_\nu^{-1}$ multiple. Hence the stable-core frame inequality applies both
-to $(c_\nu)$ and to $(c_\nu/\tau_\nu)$.
+The phase $v\mapsto\widetilde v$ is unitary and commutes with
+$D_\tau v=(\tau_\nu^{-1}v_\nu)_\nu$. Hence the two inequalities in
+Lemma~\ref{lem:stable-core-frame}, after translating the integration interval,
+apply directly to this synthesis and to its $D_\tau$ multiple.
 
 Write
 \[
 R(u)=\int_0^u g(s)\,ds
-=a+\sum_\nu\frac{c_\nu}{i\tau_\nu}e^{i\tau_\nu u}.
+=a+L_{\rm pkt}^{-1/2}\sum_\nu
+\frac{\widetilde v_\nu}{i\tau_\nu}e^{i\tau_\nu u}.
 \]
-Since $T\le\tau_\nu\le2T+O(1)$,
-Lemma~\ref{lem:stable-core-frame} gives
+Since $T\le\tau_\nu\le2T+O(1)$, Lemma~\ref{lem:stable-core-frame} gives
 \[
-\left\|\sum_\nu\frac{c_\nu}{i\tau_\nu}e^{i\tau_\nu u}\right\|_{L^2(0,W_T)}^2
-\gg T^{-2}\sum_\nu|c_\nu|^2.
+\left\|L_{\rm pkt}^{-1/2}\sum_\nu
+\frac{\widetilde v_\nu}{i\tau_\nu}e^{i\tau_\nu u}
+\right\|_{L^2(0,W_T)}^2
+\gg T^{-2}\|v\|_2^2.
 \]
 The constant $a$ cannot cancel this oscillatory norm. Indeed
-$|\int_0^{W_T}e^{i\tau_\nu u}du|\le2/|\tau_\nu|$, so the squared norm of the
+$|\int_0^{W_T}e^{i\tau_\nu u}du|\le2/|\tau_\nu|$; using
+$d_T=O(TL)$ and $L_{\rm pkt}\asymp W_T\asymp L$, the squared norm of the
 projection of the oscillatory sum onto the constants is
-$O(T^{-3})\sum|c_\nu|^2$. Hence
+$O(T^{-3})\|v\|_2^2$. Hence
 \[
-\|R\|_{L^2(0,W_T)}^2\gg T^{-2}\sum_\nu|c_\nu|^2.
+\|R\|_{L^2(0,W_T)}^2\gg T^{-2}\|v\|_2^2.
 \]
-The fixed common weights cost at most a power of $L$. Inserting the factor
-$2L^{-2}$ in the normalized triangular primitive therefore gives
+Inserting the factor $2L^{-2}$ in the normalized triangular primitive gives
 \eqref{eq:core-reference-floor}, after enlarging the fixed exponent $C_G$.
 \end{proof}
 
@@ -121,8 +125,8 @@ g(u)\overline{g(v)}\,du\,dv.
 After $x=e^u$, the logarithmic unitary and the input factor
 $x^{-1/2}$ in \eqref{eq:local-primitive-input} cancel the measure Jacobians.
 Thus every normalized local lag term carries the same external factor $L^{-1}$;
-all remaining height, stationary, and arithmetic factors are contained in its
-smooth operator-valued amplitude.
+all remaining height, stationary, and fixed local-source factors are contained
+in its smooth operator-valued amplitude.
 
 \begin{lemma}[Shell transport of the triangular normalization]
 \label{lem:shell-normalization-transfer}
@@ -131,7 +135,7 @@ Let $I_j=[J_j,J_j+1]$, $x=J_j+t$, $y=J_j+s$, and let
 \rho_j(t,s)=\nu-\frac{|\log x-\log y|}{L},
 \qquad |\nu-1|\ll L^{-1}.
 \]
-Suppose an arithmetic-whitened shell kernel is a finite sum of terms
+Suppose a Hilbert-valued shell kernel is a finite sum of terms
 \begin{equation}
 D_j(t,s)=\frac1L\,a_j(t,s)H(\rho_j(t,s)),
 \label{eq:normalized-shell-kernel}
@@ -163,9 +167,8 @@ D_{j,ts}^{\rm reg}(t,s)
 }
 \label{eq:shell-mixed-normalization}
 \end{equation}
-for a fixed $C'$. The same conclusions hold for finite sums with
-operator-valued $a_j$, and after fixed arithmetic tensor factors have been
-whitened.
+for a fixed $C'$. The same conclusions hold for finite sums with finite-dimensional
+operator-valued amplitudes $a_j$.
 \end{lemma}
 
 \begin{proof}
@@ -226,25 +229,25 @@ and two integrations by parts give
 \label{eq:two-variable-primitive}
 \end{equation}
 For the global application, let $D_{j,T}$ be the corresponding
-operator-valued kernel on the finite arithmetic fibre of the $j$th retained
-unit shell, with positive arithmetic Gram $G_{{\rm ar},j,T}$. In the local
-coordinate $0\le t\le1$ put
+operator-valued kernel on the finite output fibre of the $j$th retained unit
+shell. All common positive output weights are already included in
+$\mathcal W_T^{\rm loc}$; by Proposition~\ref{prop:trivial-outer-twist} there is
+no additional outer arithmetic metric. In the local coordinate $0\le t\le1$
+put
 \begin{equation}
 \omega_j(t):=\frac{2}{L^2(J_j+t)}.
 \label{eq:local-primitive-weight}
 \end{equation}
-By \eqref{eq:local-triangular-shell},
-$\omega_j(t)G_{{\rm ar},j,T}$ is the exact primitive reference density on this
-shell. Define the fully normalized jump and regular mixed kernel by
+By \eqref{eq:local-triangular-shell}, $\omega_j(t)$ is the exact scalar
+primitive reference density on this output fibre. Define the normalized jump
+and regular mixed kernel by
 \[
 \mathcal J_{j,T}(t)
-:=\omega_j(t)^{-1}G_{{\rm ar},j,T}^{-1/2}
-J_{D_{j,T}}(t)G_{{\rm ar},j,T}^{-1/2},
+:=\omega_j(t)^{-1}J_{D_{j,T}}(t),
 \]
 \[
 \mathcal K_{j,T}(t,s)
-:=\omega_j(t)^{-1/2}G_{{\rm ar},j,T}^{-1/2}
-D_{j,T,ts}^{\rm reg}(t,s)G_{{\rm ar},j,T}^{-1/2}
+:=\omega_j(t)^{-1/2}D_{j,T,ts}^{\rm reg}(t,s)
 \omega_j(s)^{-1/2}.
 \]
 If
@@ -281,12 +284,10 @@ The endpoint conditions kill all boundary terms in the two integrations by
 parts, proving \eqref{eq:two-variable-primitive}. On the $j$th local primitive
 space the exact reference quadratic form is
 \[
-\int_0^1\omega_j(t)
-\langle G_{{\rm ar},j,T}Q(t),Q(t)\rangle\,dt.
+\int_0^1\omega_j(t)\|Q(t)\|^2\,dt.
 \]
-Conjugating by multiplication with
-$\omega_j(t)^{1/2}G_{{\rm ar},j,T}^{1/2}$ turns the diagonal term in
-\eqref{eq:two-variable-primitive} into the multiplication operator
+Conjugating by multiplication with $\omega_j(t)^{1/2}$ turns the diagonal term
+in \eqref{eq:two-variable-primitive} into the multiplication operator
 $M_{\mathcal J_{j,T}}$ and the regular term into the integral operator
 $T_{\mathcal K_{j,T}}$. On the orthogonal direct sum of shell outputs put
 \[
@@ -320,9 +321,9 @@ whereas the ideal property of the Hilbert--Schmidt norm gives
 \|V^*B_{\rm reg}V\|_{S_2}
 \le\|B_{\rm reg}\|_{S_2}\le M_T^{1/2}.
 \]
-The nonunitary finite arithmetic loss has already been included in
-$\mathcal J_{j,T}$ and $\mathcal K_{j,T}$. Since the pulled-back remainder is
-$V^*(B_{\rm jump}+B_{\rm reg})V$, we obtain
+Since all common output weights are already contained in
+$\mathcal W_T^{\rm loc}$, the pulled-back remainder is
+$V^*(B_{\rm jump}+B_{\rm reg})V$, and we obtain
 \[
 \|G_{\rm loc}^{-1/2}R_TG_{\rm loc}^{-1/2}\|_{S_2}^2
 \ll\delta_T^2N_T+M_T.
@@ -376,8 +377,8 @@ the exponents chosen in Section~\ref{sec:retained}.
 \emph{(i) Exact/model local discrepancy.}
 The matrix $R_T^{\rm loc}$ is the low-level exact/model discrepancy defined by
 \eqref{eq:local-model-error}; it includes the model truncation tail
-\eqref{eq:model-truncation-tail}. Its arithmetic whitening and shell-local
-primitive estimate are exactly \eqref{eq:local-HS}. The exact levels $k>K_0$
+\eqref{eq:model-truncation-tail}. Its shell-local primitive normalization and relative estimate are exactly
+\eqref{eq:local-HS}. The exact levels $k>K_0$
 are not part of class~(i): Lemma~\ref{lem:HLP-high-edge} assigns their low
 sidebands to $E_T^{\rm edge}$ and their high sidebands to class~(vii).
 
@@ -434,7 +435,7 @@ is already class (i). What remains here consists only of the first omitted
 stationary-phase and Stirling coefficients attached to the same local lag
 profiles. By the stationary expansion in Lemma~\ref{lem:stationary-symbol} and
 Stirling's formula, each carries an additional factor $T^{-1}L^C$ after the
-fixed derivatives and arithmetic transfer. Lemma~\ref{lem:shell-normalization-transfer}
+fixed derivatives. Lemma~\ref{lem:shell-normalization-transfer}
 therefore gives
 \[
 \|\mathcal J_{\rm corr}\|_{\op}\ll T^{-1}L^C=o(1),
@@ -445,9 +446,10 @@ The order-one complementary pole-free direct source is not included in this
 class; it is treated by the sideband decomposition in (vii).
 
 \emph{(vi) Nonstationary and smooth height-partition terms.}
-Differentiate first. On every nonboundary shell, use the integration-by-parts
-order $N$ and buffer exponent $B$ fixed in Section~\ref{sec:retained}. On a
-boundary shell, first remove the finite endpoint sum
+Differentiate first. On every retained nonboundary shell $j\in\mathcal J_T$,
+use the integration-by-parts order $N$ and buffer exponent $B$ fixed in
+Section~\ref{sec:retained}. On a retained boundary shell meeting
+$\{1,X_T\}$, first remove the finite endpoint sum
 \eqref{eq:boundary-shell-jets}; Proposition~\ref{prop:boundary-endpoint-rank}
 assigns those terms only to $E_T^{\rm edge}$. The remaining interior integral
 obeys the same repeated integration-by-parts estimate. By
@@ -457,7 +459,7 @@ the squared leakage before the fixed relative-normalization loss is
 \ll N_TL^{2C_N-B(2N-1)+o(1)}.
 \]
 After the primitive normalization, whose squared fixed loss is at most
-$L^{2C_{\rm reg}}$, the choice of $B$ and $M_*$ in
+$L^{C_{\rm reg}}$, the choice of $B$ and $M_*$ in
 Section~\ref{sec:retained} gives
 \begin{equation}
 \boxed{
@@ -500,11 +502,11 @@ $R_j^{\rm sb}\ge L^3$ on every retained shell. Place
 $|r|\le R_j^{\rm sb}$ in the common low-sideband edge range.
 
 For the high sidebands choose Fourier decay order $M_{\rm sb}+4$. Let
-$c_{j,m}$ be the normalized arithmetic coefficient after the fixed mixed
-kernel derivatives. Since the stationary interval has upper endpoint
-$B_j\asymp d_j$, Lemma~\ref{lem:direct-carrier-square} gives
+$c_{j,m}$ be the normalized coefficient on the finite output fibre after the
+fixed mixed-kernel derivatives. Since the stationary interval has upper
+endpoint $B_j\asymp d_j$, Lemma~\ref{lem:direct-carrier-square} gives
 \begin{equation}
-\sum_{m\in\mathcal I_j}\|c_{j,m}\|_{S_2({\rm ar})}^2
+\sum_{m\in\mathcal I_j}\|c_{j,m}\|_{S_2}^2
 \ll d_jL^{C_{\rm sb}}.
 \label{eq:carrier-square-one-shell}
 \end{equation}
@@ -520,7 +522,7 @@ The Fourier decay gives both row and column Schur bounds
 \]
 Hence the Hilbert-space-valued Schur estimate implies
 \[
-\sum_q\left\|\sum_mH_{q,m}c_{j,m}\right\|_{S_2({\rm ar})}^2
+\sum_q\left\|\sum_mH_{q,m}c_{j,m}\right\|_{S_2}^2
 \ll L^{C_{\rm sb}}d_j(R_j^{\rm sb})^{-2M_{\rm sb}-6}.
 \]
 Distinct compressed shifts $P_jS_qP_j$ occupy distinct matrix diagonals and are
@@ -562,20 +564,30 @@ contributes no additional remainder.
 
 \emph{(ix) HLZ diagonalization error.}
 Choose the arbitrary logarithmic exponent $A=A_{\rm diag}$ in
-\eqref{eq:packet-HLZ-error}. In the invariant-source specialization $h=k=1$,
-the superlogarithmic term $L^{O(1)}T^{-2/\log_3T}$ is smaller than every fixed
-negative power of $L$. The packet-stable lemma, including its fixed
-$(\rho,p)$ derivatives, therefore gives
+\eqref{eq:packet-HLZ-error}. Under the trivial outer-twist specialization of
+Proposition~\ref{prop:trivial-outer-twist}, the superlogarithmic term
+$L^{O(1)}T^{-2/\log_3T}$ is smaller than every fixed negative power of $L$.
+The error in Lemma~\ref{lem:packet-HLZ-diagonal} remains in the common
+lag-profile channel: after the diagonal Mellin sum has been taken it has no
+independent stationary carrier index.  Hence its fixed $(\rho,p)$ derivatives
+produce a scalar smooth lag-profile error on each fixed local-source/refinement
+component.  The number of such components is only polylogarithmic, and its
+Hilbert--Schmidt square-root loss is included in $C_{\rm diag}$ by definition.
+Consequently the packet-stable lemma gives
 \[
 \varepsilon_{\rm diag}
-\ll L^{-A_{\rm diag}+C_{\rm diag}+o(1)}=o(1).
+\ll L^{-A_{\rm diag}+C_{\rm diag}+o(1)}=o(1),
 \]
-There is no arithmetic transfer. Thus $\delta_T\ll\varepsilon_{\rm diag}$ and
-on one shell
+and Lemma~\ref{lem:shell-normalization-transfer} yields
 \[
+\delta_T\ll\varepsilon_{\rm diag},
+\qquad
 \|\mathcal K_{j,\rm diag}\|_{L^2(S_2)}
-\ll \varepsilon_{\rm diag}.
+\ll \varepsilon_{\rm diag}
 \]
+on one shell.  In particular there is no factor $d_j$: such a factor belongs to
+the direct one-$\chi$ carrier families of class~(vii), not to the completed
+diagonal error.
 Consequently
 \[
 \sum_{j\in\mathcal J_T}
@@ -593,8 +605,9 @@ satisfies the required relative Hilbert--Schmidt bound. Its stationary and
 endpoint parts belong only to $E_T^{\rm edge}$.
 
 Class (i) has the relative bound \eqref{eq:local-HS}. For (ii)--(v) and the
-smooth height-partition corrections in (vi), the whitened mixed derivative is
-$L^{C_{\rm reg}+o(1)}$ per shell, so the total is
+smooth height-partition corrections in (vi), the squared relative
+Hilbert--Schmidt contribution is $L^{C_{\rm reg}+o(1)}$ per shell, so the total
+is
 \[
 \ll X_TL^{C_{\rm reg}+o(1)}
 =T L^{C_{\rm reg}-A_0+o(1)}=o(N_T)
@@ -635,8 +648,8 @@ Here $P_T$ is Definition~\ref{def:PT}, $E_T^{\rm edge}$ is the edge matrix
 of \eqref{eq:total-edge-rank}, and $R_T^{\rm tri}$ is the regular remainder of
 Proposition~\ref{prop:regular-ledger}. Their disjointness is fixed first by the level split at $K_0$: for
 $k\le K_0$ use \eqref{eq:canonical-local-decomp}, while
-Lemma~\ref{lem:HLP-high-edge} splits $k>K_0$ into low- and high-sideband
-owners. The signed passage from the truncated leading family to the full model
+Lemma~\ref{lem:HLP-high-edge} splits $k>K_0$ into its low- and high-sideband
+parts. The signed passage from the truncated leading family to the full model
 is \eqref{eq:model-truncation-tail}. Independently, the geometric source is
 split at the stable logarithmic core and its terminal complement. By
 Proposition~\ref{prop:trivial-outer-twist}, there is no additional outer
@@ -646,7 +659,7 @@ arithmetic annulus in the invariant source.
 \begin{proof}
 Start from the exact same-form identity \eqref{eq:same-form-identity} and the
 right-edge split \eqref{eq:J-I-source-split}. Proposition~\ref{prop:trivial-outer-twist}
-first fixes the actual HLZ outer specialization $g=h=k=1$, so no outer
+first fixes all auxiliary HLZ outer indices at their trivial values, so no outer
 arithmetic annulus or outer-translation source is present. On the stable
 logarithmic band, Proposition~\ref{prop:uniform-twisted-replacement} gives the
 principal term, the low-sideband edge pieces of every direct one-$\chi$ family,

@@ -73,8 +73,8 @@ $V_{\rm end}$ of Lemma~\ref{lem:horizontal-decay}; they do not contribute an
 edge or regular source term.
 
 On a smooth height block of scale $H=T/L^D$, write $t=t_*v$ on the stationary
-sector. There $t_*\asymp T$ uniformly in the shell and arithmetic indices, and
-the rescaled saddle $v=1$ remains in a fixed compact subset of the block after
+sector. There $t_*\asymp T$ uniformly in the shell and fixed local-source labels,
+and the rescaled saddle $v=1$ remains in a fixed compact subset of the block after
 the smooth stationary/nonstationary partition. Consequently every fixed-order
 stationary expansion is uniform in the retained indices. Differentiating the
 slow block amplitude contributes only fixed combinations of
@@ -105,7 +105,7 @@ with
 }
 \label{eq:stationary-symbol-bound}
 \end{equation}
-The constants are uniform over the retained arithmetic range and over the
+The constants are uniform over the fixed local-source labels and over the
 summed geometric levels.
 \end{lemma}
 
@@ -124,16 +124,42 @@ formula shows that
 and every fixed retained gamma correction are symbols, uniformly for bounded
 $p$. The $f'$ term gains an additional factor $T^{-1}$.
 
-For the exact HLP hierarchy, level $k$ carries a factor $f(t)^{-k}$ and a
-coefficient supported only when $2^k\le m$ by
-Lemma~\ref{lem:alpha-identity}. On stationary support $t_*=2\pi my\asymp T$,
-so $\log m=O(L)$ and hence every contributing $k$ is $O(L)$. A fixed number of
-height derivatives of $f^{-k}$ introduces at most a fixed polynomial in $k$
-divided by the corresponding power of $f$; since $k/f=O(1)$ and the
-coefficient square sums have the factorial majorant
-\eqref{eq:factorial-majorant}, termwise differentiation and summation are
-uniformly legitimate. Thus the complete exact HLP amplitude remains in a
-fixed polylogarithmic height-symbol class.
+For the exact HLP hierarchy, level $k$ carries the coefficient
+$\alpha_k(m)f(t)^{-k}$ and is supported only when $2^k\le m$ by
+Lemma~\ref{lem:alpha-identity}. Choose a fixed constant $C_{\rm H}>2$ so large
+that, on the stationary strip and for all sufficiently large $T$,
+\[
+q_{\rm H}:=\sup_t\left|\frac{L}{C_{\rm H}f(t)}\right|<1.
+\]
+Set
+\[
+b_{k,m}:=\alpha_k(m)\left(\frac{C_{\rm H}}L\right)^k,
+\qquad
+c_m:=\sum_{k\ge1}b_{k,m}.
+\]
+The coefficients $b_{k,m}$ are nonnegative. If $c_m\ne0$, the summed hierarchy
+can therefore be written as $c_ma_{m,T}(t)$ with
+\[
+a_{m,T}(t)
+=\sum_{k\ge1}\frac{b_{k,m}}{c_m}
+\left(\frac{L}{C_{\rm H}f(t)}\right)^k.
+\]
+The weights $b_{k,m}/c_m$ form a probability vector. Every fixed height
+derivative of the last factor is bounded by a fixed polynomial in $k$ times
+$q_{\rm H}^k$, because $t^rf^{(r)}(t)/f(t)=O(L^{-1})$ for $r\ge1$.
+Hence $a_{m,T}$ is a height symbol uniformly in $m$, without using an
+$\ell^2$ estimate pointwise. Separately, the factorial majorant gives
+\[
+\left(\sum_{m\le x}c_m^2\right)^{1/2}
+\le \sum_{k\ge1}\left(\frac{C_{\rm H}}L\right)^k
+\left(\sum_{m\le x}\alpha_k(m)^2\right)^{1/2}
+\ll (xL)^{1/2}
+\sum_{k\ge1}\frac{C_1^k}{\sqrt{k!}},
+\]
+so the coefficient sequence has the required quadratic bound. Fixed
+$p$-derivatives and translated factors contribute only the already controlled
+polylogarithmic symbols and factors $(\log m)/L=O(1)$. Thus the complete exact
+HLP amplitude remains in a fixed polylogarithmic height-symbol class.
 
 For one stationary monomial scale $t=t_*v$. After the exact Hessian
 cancellation already proved above, the phase is $t_*\Psi(v)$ with

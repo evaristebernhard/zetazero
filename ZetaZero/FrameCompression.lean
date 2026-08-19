@@ -1,6 +1,8 @@
 import ZetaZero.ZeroSideStationaryGeometry
 import ZetaZero.GlobalModelSpectralFloor
 import ZetaZero.DivisorGramArithmeticTransfer
+import ZetaZero.FrameCompression.FiniteFeatureRank
+import ZetaZero.FrameCompression.TranslatedPoleFeatureRank
 
 /-!
 # M08: Frame compression, edge rank, and regular remainder

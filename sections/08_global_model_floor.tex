@@ -21,25 +21,45 @@ Define the triangular primitive form
 \[
 Q_\triangle(q):=2\|Q\|_2^2.
 \]
-Let $\mathcal U_T^{\rm flat}$ denote the common positive analysis map into the
-straightened normalized packet-lag fibre, including the full smooth packet
-synthesis. By Proposition~\ref{prop:trivial-outer-twist}, the outer translations
-and common-divisor map specialize to the identity for the invariant contour
-source. Let $C_T$ be the stable
-core restriction from Definition~\ref{def:PT}, put
+After the internal principal contraction of
+Lemma~\ref{lem:internal-principal-contraction} and the trivial outer-twist
+specialization of Proposition~\ref{prop:trivial-outer-twist}, the principal
+analysis has a single packet fibre and no nontrivial packet-coordinate
+multiplier. On the central flat plateau of $\phi_L$, translate the physical
+Fourier coordinate by its fixed left endpoint $u_0$. The common flat analysis
+is exactly
+\begin{equation}
+\boxed{
+(\mathcal U_T^{\rm flat}v)(u)
+=L_{\rm pkt}^{-1/2}\sum_\nu
+ e^{i\tau_\nu u_0}v_\nu e^{i\tau_\nu u}.
+}
+\label{eq:explicit-flat-analysis}
+\end{equation}
+The phase $v_\nu\mapsto e^{i\tau_\nu u_0}v_\nu$ is unitary and commutes with
+the diagonal multiplier $v_\nu\mapsto\tau_\nu^{-1}v_\nu$. Let $C_T$ be the
+stable-core restriction from Definition~\ref{def:PT}, put
 \[
 R_T^{\rm core}:=\frac{W_T}{L}=1-\frac{A_0\log L}{L},
 \qquad
 \mathcal U_T^{\rm core}:=C_T\mathcal U_T^{\rm flat},
 \]
 and normalize the core coordinate by $r=u/L$, so
-$0\le r\le R_T^{\rm core}$. Define $A_T^G$ as the pullback through
-$\mathcal U_T^{\rm core}$ of the frozen kernel
+$0\le r\le R_T^{\rm core}$. Introduce the unitary rescaling of the core output
+\begin{equation}
+\boxed{
+(\widehat{\mathcal U}_T^{\rm core}v)(r)
+:=L^{1/2}(\mathcal U_T^{\rm core}v)(Lr).
+}
+\label{eq:normalized-core-analysis}
+\end{equation}
+Define $A_T^G$ as the pullback through
+$\widehat{\mathcal U}_T^{\rm core}$ of the frozen kernel
 \[
 K_G(r,s):=G(1-|r-s|),
 \]
-and define $\Gfr_T$ through the same core map by the triangular primitive form
-$Q_\triangle$. Thus
+and define $\Gfr_T$ through the same normalized core map by the triangular
+primitive form $Q_\triangle$. Thus
 \begin{equation}
 \boxed{
 \Gfr_T=(\mathcal W_T^{\rm glob})^*\mathcal W_T^{\rm glob},
@@ -48,8 +68,12 @@ $Q_\triangle$. Thus
 \end{equation}
 where $\mathcal W_T^{\rm glob}$ is obtained from
 $\mathcal U_T^{\rm core}$ by adjoining the primitive on
-$0\le u\le W_T$ and the factor $\sqrt2$; the endpoint mean constraint is imposed
-only on $V_{\rm mean}$. Lemma~\ref{lem:global-local-triangular}
+$0\le u\le W_T$ and multiplying the primitive output by $\sqrt2/L$. Indeed,
+after $r=u/L$ this gives exactly
+\[
+Q_\triangle=\frac{2}{L^2}\int_0^{W_T}|R(u)|^2\,du.
+\]
+The endpoint mean constraint is imposed only on $V_{\rm mean}$. Lemma~\ref{lem:global-local-triangular}
 compares the shell-local primitive metric with this same global reference
 metric. Hence $A_T^G$ and $\Gfr_T$ are pullbacks from one fixed core analysis
 map and differ only in the final lag form.
@@ -227,10 +251,12 @@ Q_G(q)>(5.677-5.535)\|Q\|_2^2
 \]
 By Lemma~\ref{lem:internal-principal-contraction} the internal Dirichlet index
 has already been contracted by the principal Laurent functional. By
-Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer arithmetic
-coordinate remains in the invariant contour source. Thus $A_T^G$ and
-$\Gfr_T$ are pullbacks through the same packet/core analysis map, and congruence
-preserves the whole-space Loewner inequality. This proves
+Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer coordinate
+remains in the invariant contour source. Thus $A_T^G$ and $\Gfr_T$ are
+pullbacks through the same normalized core map
+$\widehat{\mathcal U}_T^{\rm core}$ of
+\eqref{eq:normalized-core-analysis}, and congruence preserves the whole-space
+Loewner inequality. This proves
 \eqref{eq:model-floor} without deleting any model spectral subspace.
 \end{proof}
 
@@ -266,6 +292,15 @@ $\rho(r-s)$. Proposition~\ref{prop:model-floor} instead applies the primitive
 identity \eqref{eq:primitive-identity} directly to the whole completed lag
 kernel, which yields the required global Loewner bound.
 \end{remark}
+
+For a Hermitian lag form $B$ on the mean-zero fibre define its triangular form
+norm by
+\begin{equation}
+\|B\|_{\op,\triangle}
+:=\sup_{\substack{q\ne0\\ \int q=0}}
+\frac{|\langle Bq,q\rangle|}{Q_\triangle(q)}.
+\label{eq:triangular-form-norm}
+\end{equation}
 
 \begin{lemma}[Stability under the finite-$T$ principal parameters]
 \label{lem:principal-parameter-stability}
@@ -329,9 +364,9 @@ with any fixed $c_0<0.06$; in particular one may take $c_0=0.03$.
 \begin{proof}
 By Proposition~\ref{prop:trivial-outer-twist}, the invariant contour source has
 no nontrivial outer translation, divisor deformation, or outer-prefix excess.
-Moreover the HLZ finite Euler factor at $k=1$ is the empty Euler product and is
-identically one for all retained shifts. Thus the only finite-$T$ deformation
-of the principal lag form is archimedean. Uniformly on the retained stable
+The finite HLZ Euler factor attached to the trivial outer twist is the empty
+Euler product and is identically one for all retained shifts. Thus the only
+finite-$T$ deformation of the principal lag form is archimedean. Uniformly on the retained stable
 interior,
 \[
 \lambda(\tau)=\frac{\log(\tau/2\pi)}L=1+O(L^{-1}),
@@ -344,10 +379,14 @@ and, by \eqref{eq:finiteT-common-endpoint},
 \qquad \theta_T\ge0.
 \]
 Lemma~\ref{lem:principal-parameter-stability} therefore gives an
-$O(L^{-1})$ perturbation in the triangular metric. The smooth endcaps are
-identically one away from the terminal collar, while the finite Cauchy kernels
-belong to the exact residue functional on both sides and are not frozen.
-This proves \eqref{eq:principal-finiteT-comparison}. The
+$O(L^{-1})$ perturbation in the triangular metric. Pulling this form inequality
+back through the common normalized map
+$\widehat{\mathcal U}_T^{\rm core}$ and using the definition of $\Gfr_T$
+converts it exactly into the relative operator norm in
+\eqref{eq:principal-finiteT-comparison}. The full smooth packet profile and the
+finite Cauchy factors are contained in the common analysis and residue maps on
+both sides of the comparison, so they create no additional error. This proves
+\eqref{eq:principal-finiteT-comparison}. The
 exact--model local discrepancy \eqref{eq:local-model-error} is excluded from
 this comparison by definition and belongs only to $R_T^{\rm tri}$. Combining
 \eqref{eq:principal-finiteT-comparison} with

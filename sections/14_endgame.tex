@@ -83,12 +83,12 @@ Lemma~\ref{lem:packet-dimension} now supplies at least $m$ admissible packet
 intervals after the endpoint collars are removed. Choose $m$ distinct intervals
 and then, by Lemma~\ref{lem:evaluation-rank}, centres for which the evaluation
 map is an isomorphism. Lemma~\ref{lem:coordinate-restriction} preserves all
-preceding arithmetic, frame, rank, and relative-remainder estimates on this
+preceding source, frame, rank, and relative-remainder estimates on this
 subfamily. Finally \eqref{eq:uniform-fixedT-perturbation} and
 $\lambda_{\min}(\Gfr_T^{\rm ret})\ge\gamma_T$ give
-\eqref{eq:perturb-small}. The arithmetic evaluation remains that of the original
-function $F$; $H$ is used only for the zero-coordinate representation and this
-finite-matrix comparison.
+\eqref{eq:perturb-small}. The right-edge source evaluation remains that of the
+original function $F$; $H$ is used only for the zero-coordinate representation
+and this finite-matrix comparison.
 \end{proof}
 
 \begin{lemma}[Off-axis zero count for the generic perturbation]
@@ -138,10 +138,10 @@ which proves \eqref{eq:D-H}.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-Fix the good rectangle. Around each distinct nonreal zero of $F$ in its
-interior choose a closed disk, disjoint from the real axis, from the other
-chosen disks, and from the boundary. There are finitely many such disks at
-fixed $T$. By compactness of their boundaries there is a real neighbourhood
+Fix the good rectangle, and let $D_{\rm good}(F)$ denote the number, with
+multiplicity, of reflected nonreal zero pairs of $F$ in its interior. Around each distinct nonreal zero of $F$ choose a closed disk, disjoint from
+the real axis, the other chosen disks, and the boundary. There are finitely many
+such disks at fixed $T$. By compactness of their boundaries there is a real neighbourhood
 $U_{\rm disk}$ of $(0,0)$ such that
 \[
 |\eta z+\varepsilon|<|F(z)|
@@ -203,8 +203,9 @@ disjoint from the real axis. Consequently
 \[
 D_{\rm good}(F)\le D(H).
 \]
-Let $D_T(F)$ denote the number of reflected nonreal zero pairs of $F$ with
-height in $[T,2T]$. Returning from the good rectangle to this dyadic interval
+Let $D_T(F)$ denote the number, with multiplicity, of reflected nonreal zero
+pairs of $F$ with height in $[T,2T]$. Returning from the good rectangle to this
+dyadic interval
 changes the zero count only in two strips of length at most one. By
 Lemma~\ref{lem:local-z1-count},
 \[

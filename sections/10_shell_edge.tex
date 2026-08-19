@@ -62,10 +62,9 @@ $V_{\rm core}$ such that
 }
 \label{eq:stable-core-frame}
 \end{equation}
-with a fixed $c_{\rm core}>0$. The same lower bound holds after every outer
-packet translation and after the diagonal multiplier $v_\nu\mapsto
-\tau_\nu^{-1}v_\nu$, with the right side multiplied by $T^{-2}$ in the latter
-case.
+with a fixed $c_{\rm core}>0$. The corresponding bound for the diagonal
+multiplier $v_\nu\mapsto\tau_\nu^{-1}v_\nu$ holds with the right side multiplied
+by $T^{-2}$.
 \end{lemma}
 
 \begin{proof}
@@ -187,9 +186,8 @@ Then there is an absolute constant $C_\triangle$ such that
 C_\triangle\mathcal Q_{\rm glob}(g).}
 \label{eq:global-local-triangular-comparison}
 \end{equation}
-The same estimate holds after tensoring with all finite arithmetic fibres and
-exact outer translations. If, in addition,
-$\int_{I_j}q_j=0$ for every shell and fibre, then $Q_j$ vanishes at both
+The estimate is Hilbert-valued. If, in addition,
+$\int_{I_j}q_j=0$ for every shell and output component, then $Q_j$ vanishes at both
 endpoints and may be used in the two-variable primitive identity of
 Lemma~\ref{lem:two-variable-primitive}.
 \end{lemma}
@@ -435,7 +433,8 @@ Thus all forward shifts share one edge space $E_j^-$ with
 }
 \label{eq:edge-shell-dimension}
 \end{equation}
-The adjoints lie in a high-edge space $E_j^+$ of the same dimension. Therefore, for arbitrary scalar or packet-operator weights,
+The adjoints lie in a high-edge space $E_j^+$ of the same dimension. Therefore,
+for arbitrary scalar weights $W_{j,m}$,
 \begin{equation}
 \rank\left(
 \sum_{m\in\mathcal I_j}W_{j,m}P_jS_mP_j+\mathrm{adjoint}
@@ -444,6 +443,9 @@ The adjoints lie in a high-edge space $E_j^+$ of the same dimension. Therefore, 
 \frac{T}{J_j^2}+R_j+1.
 \label{eq:edge-shell-rank}
 \end{equation}
+The same conclusion holds with coefficients acting on an auxiliary common fibre
+only when they preserve this shell-coordinate edge range; no such extra fibre is
+present in the invariant source by Proposition~\ref{prop:trivial-outer-twist}.
 For the parameter $\epsilon_L=L^{-\sigma}$ fixed in
 Section~\ref{sec:retained}, the low Fourier sidebands of a smooth stationary
 symbol replace $m$ by the effective shift $m-r$ with

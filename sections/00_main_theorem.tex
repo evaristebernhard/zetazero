@@ -37,17 +37,48 @@ Consequently, by dyadic summation,
 \]
 \end{theorem}
 
-Hardy's theorem established infinitely many zeros on the critical line; for the
-classical analytic theory of $\zeta$ we refer to Titchmarsh and Heath-Brown
-\cite{Hardy1914,Titchmarsh}. Quantitative proportion results were developed by
-Levinson \cite{Levinson1974}, Conrey \cite{Conrey1989}, Bui--Conrey--Young
-\cite{BCY2011}, and Feng \cite{Feng2012}. More recently, Alp\"oge and Furman
-\cite{AlpogeFurman2026} obtained an unconditional proportion exceeding two
-thirds for zeros that are both simple and on the critical line, using a finite
-compression of a Hermitian zero form together with inertia. The argument below
-pursues the stronger density-one conclusion through a Hardy-gauge contour form,
-a packetized right-edge decomposition of the same matrix, and relative
-Hilbert--Schmidt control of its regular remainder.
+Hardy's theorem established infinitely many zeros on the critical line, and
+Selberg proved that a positive proportion lie there
+\cite{Hardy1914,Selberg1942,Titchmarsh}.  The modern quantitative line begins
+with Levinson's mollifier method and its later refinements
+\cite{Levinson1974,Young2010,Conrey1989,BCY2011,Feng2012,
+PrattRobles2018,PrattRoblesZaharescuZeindler2020}.  Closely related work on
+simple and distinct zeros, pair correlation, and finite-dimensional positivity
+includes
+\cite{HeathBrown1979,Anderson1983,Montgomery1973,ConreyGhoshGonek1998,
+BuiHeathBrown2013,ChirreGoncalvesDeLaat2020,Aryan2022,
+BaluyotGoldstonSuriajayaTurnage2024,GoldstonSuriajaya2025,
+GoldstonSuriajaya2026,AlpogeFurman2026}.  In particular, Alp\"oge and Furman
+obtained an unconditional proportion exceeding two thirds for zeros that are
+both simple and on the critical line by combining a finite compression of a
+Hermitian zero form with inertia.
+
+A second strand concerns the size and statistics of $\zeta$, its derivatives,
+and the Hardy $Z$-function.  Mean-value and discrete-moment methods were developed
+through the work of Gonek, Conrey--Ghosh, Conrey--Ghosh--Gonek, Ng,
+Garunk\v{s}tis--Steuding, Hughes, Milinovich, and later authors
+\cite{Gonek1984,ConreyGhosh1985,ConreyGhosh1989,Conrey1988,
+ConreyGhosh1998,GarunkstisSteuding2005,Ng2007,Hughes2002,
+Milinovich2010,Milinovich2011,HughesMartinPearceCrump2024,
+HughesPearceCrump2025,PearceCrump2025,HLP}.  These results are especially close
+to the present zero-side use of stationary points of the Hardy gauge and to the
+right-edge expansion through $Z_1'/Z_1$.
+
+The arithmetic side also intersects the extensive literature on twisted moments,
+Dirichlet-polynomial mean values, mollifiers, and ratios of $L$-functions
+\cite{BalasubramanianConreyHeathBrown1985,Farmer1993,
+DeshouillersIwaniec1987,BettinChandee2018,BettinChandeeRadziwill2017,
+BettinGonek2017,ConreyFarmerKeatingRubinsteinSnaith2003,CFKRS2005,
+ConreyFarmerZirnbauer2008,ConreySnaith2007,ConreyGonek2001,
+ConreyIwaniecSoundararajan2013,Sono2018,HLZ}.  Adjacent work on zero gaps,
+derivative zeros, and critical-line geometry includes
+\cite{Conrey1983,Bui2011,BuiMilinovichNg2010,BuiMilinovich2018,
+FengWu2012,ChaubeyMalikRoblesZaharescu2018,Ivic1977,KeatingSnaith2000,
+Kirila2018,Odlyzko1987,RudnickSarnak1996}.  The argument below uses a different
+assembly: the same Hardy-gauge contour matrix is represented on the zero side
+and on the packetized right edge, its principal lag operator is given a uniform
+spectral floor, and the remaining terms are separated into low-rank and relative
+Hilbert--Schmidt classes.
 
 The proof is organized around the normalized contour matrix introduced in
 Section~\ref{sec:common-matrix}, whose zero-side and arithmetic-side

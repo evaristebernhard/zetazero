@@ -1,6 +1,8 @@
 import ZetaZero.FiniteDimensionalInertiaReduction
 import ZetaZero.ZeroSideStationaryGeometry
 import ZetaZero.RetainedSpace
+import ZetaZero.GenericPerturbationMinMaxEndgame.PerturbationStability
+import ZetaZero.GenericPerturbationMinMaxEndgame.PerturbedWhitenedMinMax
 
 /-!
 # M10: Generic perturbation, min--max, and density-one endgame

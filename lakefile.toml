@@ -15,3 +15,10 @@ rev = "3d425859e73fcfbef85b9638c2a91708ef4a22d4"
 [[lean_lib]]
 name = "ZetaZero"
 moreLeanArgs = ["-DwarningAsError=true"]
+
+# Local reference formalization cloned into this workspace.  Exposing it as a
+# second source-root lets ZetaZero reuse its mature rectangle residue / zero-count
+# machinery against the same Mathlib revision as the main project.
+[[lean_lib]]
+name = "Zeta23"
+srcDir = "zeta-23-lean"

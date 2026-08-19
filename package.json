@@ -1,0 +1,19 @@
+{
+  "name": "zetazero-verification",
+  "private": true,
+  "scripts": {
+    "test": "python3 -m pytest",
+    "test:lean": "python3 -m pytest lean",
+    "typecheck": "~/.elan/bin/lake env lean ZetaZero/ZeroSideStationaryGeometry/StraighteningBridge.lean && ~/.elan/bin/lake env lean ZetaZero/FrameCompression/FiniteFeatureRank.lean && ~/.elan/bin/lake env lean ZetaZero/FrameCompression/TranslatedPoleFeatureRank.lean && ~/.elan/bin/lake env lean ZetaZero/HLPLocalModel/LeadingJetResummation.lean && ~/.elan/bin/lake env lean ZetaZero/DivisorGramArithmeticTransfer/OperatorGramLift.lean && ~/.elan/bin/lake env lean ZetaZero/Analytic/ReflectionPairing.lean && ~/.elan/bin/lake env lean ZetaZero/Analytic/OffCriticalPairing.lean && ~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/CurvatureAlgebra.lean && ~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/CurvatureDerivativeBridge.lean && ~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/GaugeDerivative.lean && ~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/GaugeSecondDerivative.lean && ~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/ZetaCurvature.lean && ~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/ContourCancellation.lean && ~/.elan/bin/lake env lean ZetaZero/HLPLocalModel/ArithmeticHierarchy.lean && ~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/Zeta23HardyBridge.lean && ~/.elan/bin/lake env lean ZetaZero/ZeroSideStationaryGeometry/StationaryDictionary.lean && ~/.elan/bin/lake env lean ZetaZero/FrameCompression/FiniteFeatureRank.lean && ~/.elan/bin/lake env lean ZetaZero/FrameCompression/TranslatedPoleFeatureRank.lean && ~/.elan/bin/lake env lean ZetaZero/HLPLocalModel/LeadingJetResummation.lean",
+    "lean:reflection": "~/.elan/bin/lake env lean ZetaZero/Analytic/ReflectionPairing.lean",
+    "lean:offcritical": "~/.elan/bin/lake env lean ZetaZero/Analytic/OffCriticalPairing.lean",
+    "lean:curvature": "~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/CurvatureAlgebra.lean",
+    "lean:contour": "~/.elan/bin/lake env lean ZetaZero/HardyGaugeInvariantContourForm/ContourCancellation.lean",
+    "lean:feature-rank": "~/.elan/bin/lake env lean ZetaZero/FrameCompression/FiniteFeatureRank.lean",
+    "lean:operator-gram": "~/.elan/bin/lake env lean ZetaZero/DivisorGramArithmeticTransfer/OperatorGramLift.lean",
+    "lean:hlp-meansquare": "~/.elan/bin/lake env lean ZetaZero/HLPLocalModel/MeanSquareRecurrence.lean",
+    "build:zeta23-hardy": "~/.elan/bin/lake build Zeta23.XiPrime.Hardy.Basic",
+    "build:stationary-source": "~/.elan/bin/lake build ZetaZero.ZeroSideStationaryGeometry.StationarySourceBridge",
+    "build:right-edge-source": "~/.elan/bin/lake build ZetaZero.RightEdgeArithmeticSource.CurvatureCoefficient ZetaZero.RightEdgeArithmeticSource.TranslatedPoleResidue ZetaZero.RightEdgeArithmeticSource.FreezingEstimate ZetaZero.RightEdgeArithmeticSource.StationaryPhaseGeometry ZetaZero.RightEdgeArithmeticSource.StationaryNormalization ZetaZero.RightEdgeArithmeticSource.NonstationaryPhaseBounds ZetaZero.RightEdgeArithmeticSource.StationaryQuadraticControl ZetaZero.RightEdgeArithmeticSource.StationaryLocalGeometry ZetaZero.RightEdgeArithmeticSource.StationaryGaussianScaling ZetaZero.RightEdgeArithmeticSource.StationaryOscillationControl ZetaZero.RightEdgeArithmeticSource.QuadraticOscillatoryTail"
+  }
+}

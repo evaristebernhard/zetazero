@@ -1,4 +1,5 @@
 import ZetaZero.FrameCompression
+import ZetaZero.RetainedSpace.KernelBudget
 
 /-!
 # M09: Retained space and parameter hierarchy

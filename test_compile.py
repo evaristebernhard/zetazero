@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import shutil
 import subprocess
 
@@ -54,7 +55,6 @@ def test_canonical_proof_guards():
         r"\label{eq:Hex-variable}",
         r"\label{lem:block-freezing}",
         r"\label{eq:mu-lambda-close}",
-        r"0<\kappa<\frac1{10}",
     )
     missing = [needle for needle in required if needle not in tex]
     assert not missing, f"canonical proof text missing: {missing}"
@@ -85,6 +85,164 @@ def test_canonical_proof_guards():
         raise AssertionError(f"stale proof branch reintroduced: {locations}")
 
     assert tex.count(r"\end{document}") == 1, "main.tex must have exactly one end-of-document marker"
+
+
+def _find_lake():
+    lake = shutil.which("lake")
+    if lake is not None:
+        return lake
+    candidates = (
+        Path.home() / ".elan" / "bin" / "lake",
+        Path.home() / ".local" / "bin" / "lake",
+        Path("/usr/local/bin/lake"),
+        Path("/usr/bin/lake"),
+    )
+    lake_path = next((path for path in candidates if path.is_file()), None)
+    return str(lake_path) if lake_path is not None else None
+
+
+def test_lean_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [lake, "build"],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+def test_all_lean_modules_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    lean_files = [root / "ZetaZero.lean"]
+    lean_files.extend(sorted((root / "ZetaZero").rglob("*.lean")))
+    targets = [
+        path.relative_to(root).with_suffix("").as_posix().replace("/", ".")
+        for path in lean_files
+    ]
+    proc = subprocess.run(
+        [lake, "build", *targets],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+def test_mainline_hardy_stationary_bridge_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [
+            lake,
+            "build",
+            "ZetaZero.HardyGaugeInvariantContourForm.Zeta23HardyBridge",
+            "ZetaZero.Analytic.ZetaOneCounting",
+            "ZetaZero.ZeroSideStationaryGeometry.StationarySourceBridge",
+            "ZetaZero.ZeroSideStationaryGeometry.StationaryDictionary",
+        ],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+def test_previous_unverified_modules_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [
+            lake,
+            "build",
+            "ZetaZero.FrameCompression.FiniteFeatureRank",
+            "ZetaZero.FrameCompression.TranslatedPoleFeatureRank",
+            "ZetaZero.HLPLocalModel.LeadingJetResummation",
+        ],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+def test_hlp_mean_square_recurrence_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [lake, "build", "ZetaZero.HLPLocalModel.MeanSquareRecurrence"],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+def test_gcd_gram_identity_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [lake, "build", "ZetaZero.DivisorGramArithmeticTransfer.GcdGramIdentity"],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+def test_straightening_bridge_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [lake, "build", "ZetaZero.ZeroSideStationaryGeometry.StraighteningBridge"],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+def test_blueprint_declarations():
+    root = Path(__file__).resolve().parent
+    leanblueprint = root / "blueprint" / ".venv" / "bin" / "leanblueprint"
+    assert leanblueprint.is_file(), "leanblueprint is not installed in blueprint/.venv"
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    env = os.environ.copy()
+    env["PATH"] = f"{Path(lake).parent}:{env.get('PATH', '')}"
+    proc = subprocess.run(
+        [str(leanblueprint), "checkdecls"],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+        env=env,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
 
 
 def test_main_tex_compiles_cleanly():

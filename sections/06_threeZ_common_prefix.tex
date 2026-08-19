@@ -45,8 +45,12 @@ $g,h,k$ arise only after expanding such an outer Dirichlet polynomial and its
 adjoint. Therefore the present contour form is the specialization
 $Q_{\rm out}\equiv1$, giving $g=h=k=1$. The packet polarization remains in the
 analytic weight before the finite shift residues, so no discrete outer index is
-created by it. The remaining assertions follow immediately from the definitions
-of the translation and common-divisor maps.
+created by it. This specialization removes only the auxiliary outer indices
+$g,h,k$; it does not by itself contract the internal HLP radial carrier $M$.
+That carrier is contracted only in the low-level common principal functional of
+Lemma~\ref{lem:internal-principal-contraction}, while the direct translated and
+high-level terms retain it. The remaining assertions follow immediately from
+the definitions of the translation and common-divisor maps.
 \end{proof}
 
 \begin{remark}[Scope of the HLZ input]
@@ -94,7 +98,7 @@ T^{-2/\log_3T}
 \label{eq:packet-HLZ-error}
 \end{equation}
 for every prescribed fixed $A>0$. The constant $C_W$ depends only on the
-finite packet derivative orders. Thus insertion of the physical packet weight
+fixed shift and packet derivative orders. Thus insertion of the physical packet weight
 before the three finite shift residues changes the main diagonal by its exact
 value $W(0,\mathbf z)$ and costs only the same superlogarithmic/arbitrary-log
 error class as the unweighted diagonal lemma.
@@ -115,22 +119,38 @@ its absolute value and every fixed normalized shift/packet derivative are
 $O(L^{C_W})$: on the right edge this follows from
 $e^{L\Re(u)t}\le e^{C_*}$ and the $L^1$ bounds of
 Lemma~\ref{lem:smooth-mellin-class}, while on the left part of the strip the
-exponential factor only decreases. Hence multiplication by $W$ changes all
-vertical and horizontal contour estimates in the proof of the HLZ diagonal
-lemma by at most a fixed polylogarithmic factor.
+exponential factor only decreases.  The auxiliary factor $H_0$ in the HLZ
+lemma supplies the required Gaussian decay in $|\Im u|$.  Multiplication by
+$W$ therefore preserves that Gaussian decay, with only the fixed
+polylogarithmic factor $L^{C_W}$ in front.  Thus every vertical and horizontal
+estimate used in the original contour deformation remains in the same error
+class after insertion of the packet weight.
 
 The zeros of $H_0$ at the two moving divisors are unchanged after multiplication
-by $W$. The same contour deformation therefore crosses only $u=0$. Its residue in the invariant-source specialization is exactly
+by $W$.  Although the HLZ diagonal lemma is stated with the normalization
+$H(0)=1$, its contour identity is linear in the auxiliary entire factor.  Applying
+the same proof to $H_0W$ therefore gives the residue
 \[
-W(0,\mathbf z)Z_{\mathbf z,1,1},
+(H_0W)(0,\mathbf z)Z_{\mathbf z,1,1}
+=W(0,\mathbf z)Z_{\mathbf z,1,1},
 \]
-because $H_0(0,\mathbf z)=1$. The left vertical and truncated horizontal
-integrals are bounded exactly as in the HLZ proof, with the additional factor
-$L^{C_W}$ noted above. This gives
-\eqref{eq:packet-HLZ-diagonal}--\eqref{eq:packet-HLZ-error}. Cauchy's formula on
-shift circles of radius comparable to $1/L$ shows that any fixed normalized
-shift derivatives introduce only further fixed powers of $L$, which are
-absorbed in $C_W$.
+without dividing by $W(0,\mathbf z)$.  The same contour deformation crosses
+only $u=0$, and the left vertical and truncated horizontal integrals acquire at
+most the factor $L^{C_W}$ above.  This proves the undifferentiated form of
+\eqref{eq:packet-HLZ-diagonal}--\eqref{eq:packet-HLZ-error}.
+
+For the fixed normalized shift derivatives used in the paper, apply Cauchy's
+formula on circles of radius comparable to $1/L$.  A fixed number of such
+derivatives costs only a fixed power $L^{C_{\rm sh}}$.  Since the logarithmic
+remainder in the HLZ lemma is available with an arbitrary prescribed exponent,
+we first invoke that lemma with exponent $A+C_{\rm sh}+C_W+2$ and only then
+differentiate.  After absorbing the resulting fixed powers into $C_W$, the
+final differentiated estimate has the displayed exponent $A$.  The same
+argument applies to the fixed $\partial_\rho,\partial_p$ derivatives because
+Lemma~\ref{lem:smooth-mellin-class} gives the required uniform $L^1$ bounds for
+the differentiated packet amplitudes.  In particular the packet weight is
+bounded uniformly in $\Im u$ on each vertical line used in the deformation, so
+it introduces no additional vertical exponential growth.
 \end{proof}
 
 \begin{lemma}[Normalization of the finite HLZ Euler factor]
@@ -383,6 +403,19 @@ both representations, so the equality is at the principal feature level, not
 only after scalar summation.
 \end{proof}
 
+For the remainder of the proof fix the stable logarithmic core
+\begin{equation}
+\boxed{
+W_T:=L-A_0\log L,
+\qquad
+X_T:=e^{W_T}=\frac{T}{2\pi L^{A_0}},
+}
+\label{eq:stable-log-core}
+\end{equation}
+where the fixed lower bounds on $A_0$ are imposed in
+Section~\ref{sec:retained}. This definition belongs to the invariant-source
+geometry and is independent of the auxiliary divisor comparison below.
+
 \begin{proposition}[Auxiliary unsummed common-divisor feature]
 \label{prop:common-divisor-feature}
 For comparison with the general twisted formula, let $d,e\le Y$ be auxiliary
@@ -548,16 +581,6 @@ N^{-1-2a}
 \end{equation}
 Thus the passage to the pair-independent core preserves the exact positive
 arithmetic congruence; only the discarded annulus is treated separately.
-For a fixed exponent $A_0>0$, whose lower bounds are imposed in
-Section~\ref{sec:retained}, define
-\begin{equation}
-\boxed{
-W_T:=L-A_0\log L,
-\qquad
-X_T:=e^{W_T}=\frac{T}{2\pi L^{A_0}}.
-}
-\label{eq:stable-log-core}
-\end{equation}
 The same truncation also preserves the coordinates needed for the finite
 M\"obius inverse. Indeed, on this stable core,
 \[
@@ -766,8 +789,9 @@ E_\rho(2p)-2E_\rho(p)^2
 \begin{proof}
 Use the completed per-orientation source
 $H_{\rm mod}=F_b-2P+P(s-2/L)$ from \eqref{eq:Hmod}. By
-Proposition~\ref{prop:trivial-outer-twist}, the invariant source has
-$d=e=g=h=k=1$ and hence $N=\ell$; there is no outward arithmetic annulus.
+Proposition~\ref{prop:trivial-outer-twist}, all auxiliary outer indices are
+trivial, so the common-product coordinate reduces to $N=\ell$ and there is no
+outward arithmetic annulus.
 The common-prefix projection is taken before the local residue, so after
 translating the normalized logarithmic carrier coordinate every principal fibre
 integral is over the same interval $0\le t\le\rho$.
@@ -832,9 +856,13 @@ $W$ enters the scalar residue functional
 }
 \label{eq:internal-principal-functional}
 \end{equation}
-Thus no vector indexed by $M$ remains in the exact low-level principal fibre.
-The levels $k>K_0$ are not acted on by this projector and retain their direct
-$M$-carriers as in Lemma~\ref{lem:HLP-high-edge}. Replacing the level factors by
+Thus no vector indexed by $M$ remains in the exact low-level common principal
+fibre. The additional translated residues in
+\eqref{eq:completed-level-contour-residues} are not part of
+\eqref{eq:internal-principal-functional}; they remain direct one-$\chi$ terms
+and retain their $M$-carriers. The levels $k>K_0$ are likewise not acted on by
+this projector and retain their direct $M$-carriers as in
+Lemma~\ref{lem:HLP-high-edge}. Replacing the level factors by
 their leading Laurent jets and extending the resulting \emph{model} sum over
 all $k$ gives the model projector \eqref{eq:model-PP-projector} and the radial
 profile of Proposition~\ref{prop:completed-local-profile}. The extension beyond
@@ -848,8 +876,10 @@ On the safe spectral right edge the internal Dirichlet sums and the geometric
 HLP hierarchy are absolutely convergent. After stationary phase the packet
 cutoff is represented by $W$. For the exact source, perform the local contour
 move only for $k\le K_0$. Lemma~\ref{lem:cluster-levelwise} permits the internal
-Dirichlet sum and contour integral to be interchanged levelwise, and the finite
-sum of complete residues is exactly \eqref{eq:internal-principal-functional}.
+Dirichlet sum and contour integral to be interchanged levelwise. Taking the
+$u=0$ component of \eqref{eq:completed-level-contour-residues} and summing over
+$k\le K_0$ gives exactly \eqref{eq:internal-principal-functional}; the
+translated-residue component remains in the direct one-$\chi$ decomposition.
 The levels $k>K_0$ remain on the direct right-edge representation and therefore
 retain their $M$-carriers.
 
@@ -858,6 +888,6 @@ jets. The resulting infinite model series is absolutely convergent and
 Lemma~\ref{lem:leading-jet-resummation} gives the self, base, and translated
 coefficients of Proposition~\ref{prop:completed-local-profile}, hence
 $\mathscr G_{\lambda,\mu_b,\rho}$. Its portion beyond $K_0$ is the radial model
-truncation error \eqref{eq:model-truncation-tail}; it does not alter the
-ownership of the exact high-level carriers.
+truncation error \eqref{eq:model-truncation-tail}; the exact high-level carriers
+remain in the direct decomposition of Lemma~\ref{lem:HLP-high-edge}.
 \end{proof}

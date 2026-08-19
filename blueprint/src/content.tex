@@ -2,32 +2,46 @@
 
 The labels M01--M10 and their Lean facade modules are stable.  The checklists
 inside each node are provisional implementation guides rather than additional
-global dependency nodes.  No node carries a formalization-complete marker
-during initialization.
+global dependency nodes.  Major nodes receive a formalization-complete marker
+only after the Lean declarations and Blueprint links satisfy the project green
+policy.
 
 \begin{definition}[\nodeid{M01}: Finite-dimensional inertia reduction]
 \label{node:m01}
 \notready
-Formalize Hermitian forms and operators, restriction and finite-rank
-perturbation, negative inertia dimension, positive-Gram whitening, the
-Hilbert--Schmidt threshold estimate, and the rank-plus-relative-Hilbert--Schmidt
-min--max conclusion.  Paper source: \texttt{sections/13\_minmax.tex}.
+\lean{ZetaZero.FiniteDimensionalInertiaReduction.rank_plus_hilbertSchmidt_minmax_after_linearEquiv}
+The Lean core now formalizes codimension restriction, finite-rank deletion,
+Hermitian spectral thresholding, the Hilbert--Schmidt dimension budget, and
+transport of the resulting min--max theorem back to physical coordinates.
+Blueprint statement/proof certification is the remaining integration step, so
+this node is not yet marked green.  Paper source:
+\texttt{sections/13\_minmax.tex}.
 \end{definition}
 
 \begin{definition}[\nodeid{M02}: Hardy gauge and invariant contour form]
 \label{node:m02}
 \notready
-Formalize the analytic Hardy gauge and the invariant curvature representation
-of the contour form.  Paper source: \texttt{sec:common-matrix}.
+\lean{ZetaZero.HardyGaugeInvariantContourForm.deriv_hardyGauge_eq_branch_mul_zetaOne}
+The analytic Hardy-gauge layer is now formalized: the functional-equation
+factor, holomorphic square-root branch on an open high rectangle, exact
+reflection law, and derivative identity $\mathscr Z'=qZ_1$.  The symmetric-shift
+curvature identity is also formalized at the two-jet algebra level.  The
+analytic second-shift derivative and invariant contour-integral representation
+remain before M02 can be marked green.  Paper source: \texttt{sec:common-matrix}.
 \end{definition}
 
 \begin{definition}[\nodeid{M03}: Zero-side stationary geometry and packet evaluation]
 \label{node:m03}
 \notready
 \uses{node:m02}
-Formalize stationary blocks, exact packet evaluation rank, packet Riesz bounds,
-coordinate restriction, horizontal decay, and zero-side inertia bookkeeping.
-Paper source: \texttt{sec:zero-side}.
+\lean{ZetaZero.Analytic.offCritical_reflection_pair}
+The zero-side analytic foundation now formalizes zeta-zero multiplicity and
+finite ordinate windows, critical-line reflection with multiplicity-preserving
+off-line pairs, and the finite-set avoidance lemma used to choose good
+horizontal heights.  Stationary residue blocks, the $Z_1$ local Jensen and
+logarithmic-derivative estimates, exact packet evaluation rank, packet Riesz
+bounds, and zero-side inertia bookkeeping remain.  Paper source:
+\texttt{sec:zero-side}.
 \end{definition}
 
 \begin{definition}[\nodeid{M04}: Right-edge arithmetic source and dilation covariance]
@@ -43,9 +57,12 @@ Paper sources: \texttt{sec:right-edge} and \texttt{sec:stationary}.
 \label{node:m05}
 \notready
 \uses{node:m04}
-Formalize the completed three-Z master, common-prefix geometry, exact HLP
-levels, local pole projection, smooth packet Mellin class, and the principal
-operator replacement.  Paper sources: \texttt{sec:threeZ},
+\lean{ZetaZero.HLPLocalModel.mangoldtConvolutionPower_support}
+The independent arithmetic foundation now formalizes the von Mangoldt
+Dirichlet-convolution hierarchy and its support growth.  The completed three-Z
+master, common-prefix geometry, exact HLP levels, local pole projection, smooth
+packet Mellin class, and principal operator replacement still depend on the M04
+analytic source layer.  Paper sources: \texttt{sec:threeZ},
 \texttt{sec:hlp-local}, and \texttt{sec:local-projector}.
 \end{definition}
 

@@ -11,15 +11,23 @@ $f(s)=\frac12L+O_\delta(1)$ on $t\asymp T$. Hence
 \[
 \left|\frac{P(s)}{f(s)}\right|\ll_\delta L^{-1},
 \]
-Hughes--Lugmayer--Pearce-Crump~\cite{HLP} identify the corresponding
-logarithmic-derivative series. Their paper assumes RH globally, and one of
-their bounds near this expansion invokes a Littlewood estimate under RH. We do
-not import that estimate: on the present fixed safe line $\Re s=1+\delta$,
-absolute convergence gives the stronger bounds above and therefore makes the
-same geometric expansion unconditional. Since $f'(s)=O(T^{-1})$, its
-separated $f'$ contribution is also $O_\delta((T L)^{-1})$ on this line. The exact
-HLP multiplier at level $k$ changes only the Dirichlet coefficient sequence. If the total convolution index is $M$, the
-stationary phase remains
+The coefficient organization is the one appearing in the local-extrema analysis
+of Hughes--Lugmayer--Pearce-Crump~\cite{HLP}, but no RH-dependent estimate from
+that paper is used here.  Indeed, on the present fixed safe line the exact
+identity
+\begin{equation}
+\boxed{
+\frac{Q(s)}{f(s)-P(s)}
+=\sum_{k\ge1}f(s)^{-k}P(s)^{k-1}Q(s)
+}
+\label{eq:safe-line-HLP-expansion}
+\end{equation}
+follows directly from the geometric series, and converges absolutely and
+uniformly because $|P/f|\ll_\delta L^{-1}$.  Thus the levelwise expansion used
+below is unconditional before any contour movement.  Since $f'(s)=O(T^{-1})$,
+its separated $f'$ contribution is also $O_\delta((T L)^{-1})$ on this line.
+The exact multiplier at level $k$ changes only the Dirichlet coefficient
+sequence. If the total convolution index is $M$, the stationary phase remains
 \begin{equation}
 t_*=2\pi My,
 \qquad
@@ -144,16 +152,18 @@ variants, uniformly for $x\le T$ and $0\le q\le2$,
 \label{eq:direct-carrier-square}
 \end{equation}
 The same bound holds for any subset of the HLP levels, in particular
-$k>K_0$, for any support restriction of these direct carriers, and for the
-finitely many translated principal-part families in
-\eqref{eq:canonical-local-decomp}.
+$k>K_0$, for any support restriction of these direct carriers, and uniformly
+for the translated principal-part subfamilies arising from the locally
+projected levels $k\le K_0$ in \eqref{eq:canonical-local-decomp}.
 \end{lemma}
 
 \begin{proof}
-By Lemma~\ref{lem:internal-principal-contraction} and
-Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer arithmetic map
-remains when the internal HLP index is exposed. Thus for $k\ge1$ the changing
-internal multiplier is exactly $f^{-k}P^{k-1}Q$, with coefficient
+By Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer arithmetic
+map remains. The direct terms considered here are precisely the terms for which
+Lemma~\ref{lem:internal-principal-contraction} leaves the radial carrier $M$
+uncontracted: the additional translated residues and the exact levels above
+$K_0$ retain their direct carrier. Thus for $k\ge1$ the changing internal
+multiplier is exactly $f^{-k}P^{k-1}Q$, with coefficient
 $f^{-k}\alpha_k(m)$. Since $|f|\asymp L$ and $\log(ex)\ll L$ for $x\le T$,
 \eqref{eq:factorial-majorant} gives
 \[
@@ -167,11 +177,17 @@ summing any subset of levels. The ordinary $k=0$ coefficient is controlled by
 $\sum_{m\le x}\Lambda(m)^2\le (\log x)\psi(x)\ll xL$; translated factors
 $m^{O(1/L)}$ are uniformly bounded. A support restriction only sets some of the
 Hilbert-valued coefficient coordinates to zero and therefore cannot increase
-the square sum. Each additional translated principal part is obtained by a
-fixed finite residue functional on a normalized local contour. Cauchy's estimate
-and Lemma~\ref{lem:smooth-mellin-class} show that this operation costs only a
-fixed power of $L$ and does not introduce a new carrier index, so the same
-quadratic estimate holds after enlarging $C_{\rm dir}$.
+the square sum. For a fixed level $k$, each additional translated principal part
+is obtained by a finite residue functional on a normalized local contour and
+does not introduce a new carrier index. Cauchy's estimate and the fixed-factor
+bounds used in \eqref{eq:uniform-Hk} give at most
+$L^C C_1^k(1+k)^C$ beyond the level coefficient bound. Hence Minkowski's
+inequality reduces the complete translated family to the convergent series
+\[
+\sum_{k\ge1}\frac{C_2^k(1+k)^C}{\sqrt{k!}}<\infty.
+\]
+Thus the translated principal-part contribution is uniform in $K_0$ and obeys
+\eqref{eq:direct-carrier-square} after enlarging $C_{\rm dir}$.
 \end{proof}
 
 \begin{lemma}[Uniform freezing of the slow half-self factor]
@@ -287,8 +303,10 @@ $u=0$, including the actual multiplicity created by coalescing faces. Define
 \label{eq:levelwise-PP-projector}
 \end{equation}
 If that completed level has additional translated one-$\chi$ poles separated
-from the common local cluster, let $\Sigma_{{\rm tr},k}$ be their finite set and
-put
+from the common local cluster, let $\Sigma_{{\rm tr},k}$ be their finite set.
+Its cardinality is bounded independently of $k$: these poles arise only from
+the fixed three-$Z$/Cauchy completion, while the HLP level changes the pole
+multiplicity at the common point $u=0$. Put
 \begin{equation}
 \Pi_{\Sigma_{{\rm tr},k}}F
 :=\sum_{u_0\in\Sigma_{{\rm tr},k}}
@@ -315,8 +333,8 @@ $k\le K_0$. Thus the exact locally projected functional is the finite sum
 \Res_{u=0}\!\bigl(\mathcal F_{k,L}(1+u;p)W(u)\bigr).
 \label{eq:truncated-exact-principal-functional}
 \end{equation}
-The levels $k>K_0$ are not projected and retain the direct sideband ownership of
-Lemma~\ref{lem:HLP-high-edge}.
+The levels $k>K_0$ are not projected and remain in the direct sideband
+decomposition of Lemma~\ref{lem:HLP-high-edge}.
 
 For comparison with the positive model, replace the leading Laurent factor at
 each level and resum the resulting \emph{model} hierarchy over all $k$. This is
@@ -411,11 +429,14 @@ change the stationary variable. \end{proof}
 
 \begin{lemma}[Cluster contour and levelwise residues]
 \label{lem:cluster-levelwise}
-Fix a sufficiently large constant $C_*>4$ and let
+Fix a sufficiently large constant $C_*>4$. Since the completed
+three-$Z$/Cauchy construction has only finitely many normalized translated
+shifts, $C_*$ may be chosen once so that every local translated pole in
+$\Sigma_{{\rm tr},k}$, uniformly in $k$, lies inside
 \[
 \Gamma_{L}:=\{u:|u|=C_*/L\}.
 \]
-For all large $T$, $\Gamma_L$ encloses $u=0$, the algebraic locator
+For all large $T$, $\Gamma_L$ also encloses $u=0$, the algebraic locator
 $u_*(F_b)$ of Lemma~\ref{lem:principal-pole-cluster}, and the model point
 $2/L$, while
 \begin{equation}
@@ -424,13 +445,22 @@ $2/L$, while
 \label{eq:cluster-geometric-ratio}
 \end{equation}
 with a fixed $q$. Hence, for every packet Mellin weight $W$ analytic inside
-$\Gamma_L$, the boundary integral of the resummed quotient equals the absolutely
-convergent sum of the geometric-level contour integrals, and each levelwise
-contour integral is its complete residue functional at $u=0$. This is an
-algebraic identity on the common local contour, not the source-ownership
-decomposition: exact local projectors are used only for $k\le K_0$, while the
-full infinite leading sum is used only on the model side. No resummed exact
-quotient is transported from the original Perron line through $u_*$.
+$\Gamma_L$, the boundary integral of the bare resummed quotient equals the
+absolutely convergent sum of the geometric-level contour integrals, each of
+which has only the pole at $u=0$. After the fixed completed Cauchy/shift factors
+are adjoined, termwise contour integration remains valid, but any additional
+enclosed translated poles are retained explicitly. For $k\le K_0$ one has
+\begin{equation}
+\frac{1}{2\pi i}\int_{\Gamma_L}W(u)\mathcal F_{k,L}(1+u;p)\,du
+=\Res_{u=0}\bigl(W\mathcal F_{k,L}\bigr)
++\sum_{u_0\in\Sigma_{{\rm tr},k}}
+\Res_{u=u_0}\bigl(W\mathcal F_{k,L}\bigr).
+\label{eq:completed-level-contour-residues}
+\end{equation}
+The holomorphic complement contributes zero. Exact local projectors are used
+only for $k\le K_0$, while the full infinite leading sum is used only on the
+model side. No resummed exact quotient is transported from the original Perron
+line through $u_*$.
 \end{lemma}
 
 \begin{proof}
@@ -448,15 +478,18 @@ the identity
 \]
 therefore converges uniformly. Multiplication by the analytic $W$ preserves
 uniform convergence, so contour integration may be interchanged with the sum.
-Every term on the right is meromorphic inside $\Gamma_L$ only at $u=0$.
-Cauchy's theorem consequently identifies the \emph{boundary integral} of the
-resummed quotient on $\Gamma_L$ with the sum of the complete levelwise residues
-at $u=0$. This equality is used only after the safe levelwise deformation has
-produced those residues; it is not used to transport the resummed quotient from
-the original Perron line. The model cluster $(0,2/L)$ is enclosed by the same
-circle, so the resummed leading family is represented on the same local contour.
-The same argument applies after adjoining the fixed Cauchy, curvature, and
-packet factors. \end{proof}
+Every bare geometric term on the right is meromorphic inside $\Gamma_L$ only
+at $u=0$. Cauchy's theorem therefore identifies the boundary integral of the
+bare resummed quotient with the sum of these complete levelwise residues. After
+the fixed completed factors are restored, uniform convergence on $\Gamma_L$
+still permits termwise integration. Cauchy's theorem then adds exactly the
+residues of the finitely many enclosed translated poles, giving
+\eqref{eq:completed-level-contour-residues}; the remaining part is holomorphic
+and integrates to zero. This equality is used only after the safe levelwise
+deformation and is not used to transport the resummed quotient from the
+original Perron line. The model cluster $(0,2/L)$ is enclosed by the same
+circle, so the resummed leading family is represented on the same local
+contour. \end{proof}
 
 \begin{lemma}[Leading HLP jet resums to the translated model cluster]
 \label{lem:leading-jet-resummation}
@@ -517,55 +550,63 @@ C(u):=u^2\zeta(1+u)^2.
 \]
 On a fixed disk $|u|\le r_0$, the Laurent expansions at the zeta pole show that
 $A,B,C$ are analytic, $A(0)=B(0)=C(0)=1$, and all fixed derivatives are
-bounded. Before extracting the normalized curvature coefficient $[p^2]$, the
-level-$k$ generating singular core contains the two shifted zeta factors and one
-HLP factor $QP^{k-1}$; at zero shift its $u$-singularity is therefore
-\begin{equation}
-Q(1+u)P(1+u)^{k-1}\zeta(1+u)^2
-=u^{-k-3}A(u)^{k-1}B(u)C(u).
-\label{eq:uniform-level-factorization}
-\end{equation}
-The second $Q$ in the differentiated identity
-$\mathcal C\,QP^{k-1}=\zeta^2Q^2P^{k-1}$ appears only when the common curvature
-coefficient is extracted. For $k\le K_0$ it is contained among the fixed
-$p$-derivatives below; the levels $k>K_0$ are not locally projected, by
-Lemma~\ref{lem:HLP-high-edge}. The moving shift divisors are canceled before
-this coefficient extraction. Thus the remaining Cauchy, outer, curvature, and
-HLP factors require only finitely many derivatives. Outside the explicit power $A(u)^{k-1}$, the
-level normalization $F_b^{-k}$ and its finitely differentiated slow-height
-versions cost at most an exponential fixed-base factor times a polynomial in
-$k$. Hence Leibniz' rule and Cauchy's estimate give an analytic factor
-$H_k(u,p)$ satisfying
-\begin{equation}
-|\partial_u^a\partial_p^jH_k(u,p)|
-\ll L^{o(1)}A_0^k(1+k)^C
-\label{eq:uniform-Hk}
-\end{equation}
-for every fixed $a,j$ used below. Writing
-\[
-H_k(u,p)=H_k(0,p)+u\int_0^1\partial_uH_k(\theta u,p)\,d\theta
-\]
-therefore gives
-\begin{equation}
-\mathcal F_{k,L}^{\rm ex}(1+u;p)
-=u^{-k-3}\bigl(H_{k,0}(p)+u\Theta_{k,L}(u,p)\bigr),
-\label{eq:level-Laurent}
-\end{equation}
-with
+bounded. For $k\ge1$ and $0\le q\le2$, differentiate the completed level $q$
+times with respect to the normalized curvature shift $p$ and then set $p=0$.
+A derivative falling on a factor shifted by $a=p/L$ contributes one factor
+$L^{-1}$ and can raise the local pole order by one; derivatives falling on the
+normalized archimedean or packet factors do not raise the pole order and need
+not carry this factor. In particular the twice pole-raising contribution is
+fixed by the exact curvature identity \eqref{eq:curvature-source}:
 \begin{equation}
 \boxed{
-|\partial_u^a\partial_p^j\Theta_{k,L}(u,p)|
-\ll L^{o(1)}A_1^k(1+k)^C.
+L^{-2}Q(1+u)^2P(1+u)^{k-1}\zeta(1+u)^2
+=L^{-2}u^{-k-5}A(u)^{k-1}B(u)^2C(u).
 }
-\label{eq:theta-bound}
+\label{eq:uniform-level-factorization}
 \end{equation}
-Thus the constants in the local Laurent error are uniform through
-$k\le L^{1/8}$; no fixed-$k$ asymptotic is being summed.
-Define first the \emph{intermediate leading model} by keeping the actual
-$F_b$-dependent level weight but freezing only the analytic Laurent factor:
-\[
-\mathcal F_{k,L}^{\rm lead}(1+u;p)=u^{-k-3}H_{k,0}(p).
-\]
+The fixed shift residues commute with these derivatives by
+\eqref{eq:residue-commute}. After the moving shift divisors have been canceled,
+Leibniz' rule and Cauchy's estimate therefore give, for $k\le K_0$,
+\begin{equation}
+\boxed{
+\left.\partial_p^q\mathcal F_{k,L}^{\rm ex}(1+u;p)\right|_{p=0}
+=\sum_{\ell=0}^qL^{-\ell}u^{-k-3-\ell}
+\bigl(H_{k,q,\ell,0}+u\Theta_{k,q,\ell,L}(u)\bigr),
+\qquad 0\le q\le2.
+}
+\label{eq:level-Laurent}
+\end{equation}
+Here $\ell$ records the number of derivatives that actually raise the local
+pole order. For every fixed $a$ used below,
+\begin{equation}
+\boxed{
+|H_{k,q,\ell,0}|+|\partial_u^a\Theta_{k,q,\ell,L}(u)|
+\ll L^{o(1)}C_H^k(1+k)^C,
+\qquad 0\le\ell\le q\le2.
+}
+\label{eq:uniform-Hk}
+\end{equation}
+The separate ordinary face $k=0$ has fixed pole order and is covered by the
+same finite estimate after enlarging the constant. The levels $k>K_0$ are not
+locally projected, by Lemma~\ref{lem:HLP-high-edge}. Hence the constants in the
+local Laurent error are uniform through $k\le L^{1/8}$; no fixed-$k$ asymptotic
+is being summed. Package the three required curvature coefficients into the
+order-two intermediate leading Taylor jet
+\begin{equation}
+\boxed{
+\mathcal F_{k,L}^{\rm lead,(2)}(1+u;p)
+:=\sum_{q=0}^2\frac{p^q}{q!}
+\sum_{\ell=0}^qL^{-\ell}u^{-k-3-\ell}H_{k,q,\ell,0}.
+}
+\label{eq:intermediate-leading-jet}
+\end{equation}
+Its derivatives through order two at $p=0$ are exactly the leading terms in
+\eqref{eq:level-Laurent}. This jet is not resummed from arbitrary
+$k$-dependent coefficients: it is obtained by taking the same finite
+$p$-derivatives of the absolutely convergent leading geometric family in
+Lemma~\ref{lem:leading-jet-resummation}. Hence differentiation and geometric
+resummation commute, and the translated-pole parameter remains the one given
+there. No higher $p$-jet is used in the proof.
 The level weight obeys
 \[
 \omega_{k,L}\ll C_0^kL^{-k}.
@@ -580,41 +621,37 @@ The finite-interval Laplace representation gives, for $r,j\le2$,
 \le C L^nB^n\frac{(1+n)^C}{n!}.
 \label{eq:packet-weight-bound}
 \end{equation}
-Define the packet-local residue by
+Define the packet-local residue before curvature extraction by
 \[
-\mathcal L_{k,L}^{\rm pkt}
+\mathcal L_{k,L}^{\rm pkt}(\rho,p)
 :=\omega_{k,L}\Res_{u=0}
 \bigl[\mathcal F_{k,L}(1+u;p)W_{L,\rho,p}(u)\bigr].
 \]
-Then
+All $p$-derivatives in the estimates below are evaluated at $p=0$. For a term
+in $\partial_p^q\mathcal L_{k,L}^{\rm pkt}$ with $q_1$ derivatives falling on
+$\mathcal F_{k,L}$ and $q-q_1$ on $W$, decompose the first factor according to
+\eqref{eq:level-Laurent}. Its error part is a finite sum over
+$0\le\ell\le q_1$ of
 \[
-\Delta\mathcal L_{k,L}^{\rm pkt}
-=\omega_{k,L}\Res_{u=0}
-\left[u^{-k-2}\Theta_{k,L}(u,p)W_{L,\rho,p}(u)\right].
+\omega_{k,L}L^{-\ell}\Res_{u=0}
+\left[u^{-k-2-\ell}\Theta_{k,q_1,\ell,L}(u)
+\,\partial_p^{q-q_1}W_{L,\rho,p}(u)\big|_{p=0}\right].
 \]
-Expanding $\Theta_{k,L}=\sum_j\theta_{k,j}u^j$ and applying Cauchy's estimate to
-\eqref{eq:theta-bound},
+Expanding $\Theta_{k,q_1,\ell,L}=\sum_j\theta_{k,q_1,\ell,j}u^j$ and using
+\eqref{eq:uniform-Hk} and \eqref{eq:packet-weight-bound} gives, for each
+$\ell$,
 \[
-|\theta_{k,j}|
-\ll L^{o(1)}A^k(1+k)^Cr_0^{-j}.
+\ll L^{-k-\ell+o(1)}C^k(1+k)^C
+\sum_{j=0}^{k+1+\ell}r_0^{-j}
+\frac{(BL)^{k+1+\ell-j}(1+k)^C}
+{(k+1+\ell-j)!}.
 \]
-Therefore
-\[
-|\Delta\mathcal L_{k,L}^{\rm pkt}|
-\ll C_0^kL^{-k}L^{o(1)}A^k(1+k)^C
-\sum_{j=0}^{k+1}r_0^{-j}
-\frac{(BL)^{k+1-j}(1+k)^C}{(k+1-j)!}.
-\]
-Since $k/L=o(1)$,
-\[
-\frac{(k+1)!}{(k+1-j)!}(BLr_0)^{-j}
-\le\left(\frac{k+1}{BLr_0}\right)^j,
-\]
-and the last geometric sum is uniformly bounded. Hence, uniformly for
-$r,q\le2$,
+Because $\ell\le q_1\le2$ is fixed and $k/L=o(1)$, the same factorial
+comparison as above makes the sum uniformly bounded after factoring its $j=0$
+term. Hence, uniformly for $r,q\le2$,
 \begin{equation}
 \boxed{
-|\partial_\rho^r\partial_p^q\Delta\mathcal L_{k,L}^{\rm pkt}|
+|\partial_\rho^r\partial_p^q\Delta\mathcal L_{k,L}^{\rm pkt}(\rho,0)|
 \ll L^{1+o(1)}
 \frac{C_1^k(1+k)^{C_1}}{(k+1)!}.
 }
@@ -624,36 +661,39 @@ Only the levels $k\le K_0$ enter this local comparison. By
 Lemma~\ref{lem:HLP-high-edge}, the higher exact levels retain their direct
 one-$\chi$ representation: their low sidebands belong to
 $E_T^{\rm HLP,hi}$ and their high sidebands belong to regular class~(vii).
-We now make
-explicit the normalization used in passing from \eqref{eq:level-local-error} to
-the final kernel. The quantity
-$\mathcal L_{k,L}^{\rm pkt}$ above is still measured in \emph{local Perron
-amplitude units}. For the leading term $u^{-k-3}H_{k,0}W$, residue extraction
-uses $w_{k+2}$ and therefore has the natural size
+
+The normalization is now explicit. For the component indexed by $\ell$, the
+leading jet has pole order $k+3+\ell$, so residue extraction uses
+$w_{k+2+\ell}$. Its natural size is
 \[
-L^{-k}\frac{L^{k+2}}{(k+2)!}
-=L^2\frac1{(k+2)!}
+L^{-k-\ell}\frac{L^{k+2+\ell}}{(k+2+\ell)!}
+=L^2\frac1{(k+2+\ell)!}.
 \]
-up to the fixed-base, polynomial-in-$k$, and bounded normalized fibre factors.
-Let $K_{\rm lead,\le K_0}^{\rm pkt}$ be the sum of these leading residues for
+Thus every increase of the local pole order is paired with exactly the same
+power of $L^{-1}$ from the normalized shift. In particular, the twice
+pole-raising curvature contribution in \eqref{eq:uniform-level-factorization}
+uses $w_{k+4}$ together with $L^{-2}$ and still has the common $L^2$ Perron
+scale. Let $K_{\rm lead,\le K_0}^{\rm pkt}$ be the sum of these leading jets for
 $k\le K_0$. After the common positive Perron amplitude $L^2$ is divided out,
 \eqref{eq:level-local-error} gives
 \begin{equation}
 \partial_\rho^r\partial_p^q
 \bigl(K_{\rm ex,\le K_0}^{\rm pkt}-K_{\rm lead,\le K_0}^{\rm pkt}\bigr)
 =O(L^{-1+o(1)}),
-\qquad r,q\le2.
+\qquad r,q\le2,
 \label{eq:local-leading-error}
 \end{equation}
-Let $K_{\rm lead,\infty}^{\rm pkt}$ denote the full leading Laurent family before
-freezing the translated pole. The normalized level-$k$ leading residue uses
-$w_{k+2}$, so \eqref{eq:packet-weight-bound}, \eqref{eq:uniform-Hk}, and
-$\omega_{k,L}\ll C_0^kL^{-k}$ give
+Here and in all derivative estimates through
+\eqref{eq:local-model-error}, the $p$-derivatives are evaluated at $p=0$. Let
+$K_{\rm lead,\infty}^{\rm pkt}$ denote the full leading Laurent family before
+freezing the translated pole. The same calculation, together with
+\eqref{eq:packet-weight-bound} and \eqref{eq:uniform-Hk}, gives
 \[
 \left|\partial_\rho^r\partial_p^qK_{{\rm lead},k}^{\rm pkt}\right|
 \ll \frac{C^k(1+k)^C}{(k+2)!},
-\qquad r,q\le2.
+\qquad r,q\le2,
 \]
+after the common $L^2$ normalization.
 Therefore, for every fixed $A>0$,
 \begin{equation}
 \boxed{
@@ -724,9 +764,11 @@ $A_0>C_{\rm reg}+3$ in \eqref{eq:acyclic-A0-choice}, therefore gives
 \label{def:PT}
 Let $W_T$ be the stable logarithmic core length fixed in
 \eqref{eq:stable-log-core}, and let $C_T$ denote restriction of the straightened
-physical logarithmic coordinate to $0\le u\le W_T$. Define $P_T$ to be the
-pullback, through the exact packet and diagonal maps and through
-$C_T$, of the \emph{model} principal-part projector
+physical logarithmic coordinate to $0\le u\le W_T$. After this restriction use
+the normalized lag coordinate $r=u/L$ and the unitary output rescaling
+$g(u)\mapsto L^{1/2}g(Lr)$. Define $P_T$ to be the pullback, through the exact
+packet and diagonal maps, this core restriction, and this rescaling, of the
+\emph{model} principal-part projector
 $\Pi_{\Sigma_0^{\rm mod}}$ on the pair-independent common carrier core. By
 Proposition~\ref{prop:trivial-outer-twist}, the auxiliary arithmetic map
 specializes to its $d=1$ coordinate and every outer-ratio translation is the
@@ -764,10 +806,8 @@ principal parts, and the remaining direct stationary sources. The auxiliary
 outer-excess family is zero for the invariant contour source.
 Its rank is bounded by Proposition~\ref{prop:edge-rank}. Every complementary
 high-sideband part belongs instead to $R_T^{\rm src}$, together with the other
-mutually exclusive regular source classes identified in the proof below. Their
-relative Hilbert--Schmidt bounds are established, for the first time, in
-Proposition~\ref{prop:regular-ledger}; no such bound is assumed in the present
-decomposition.
+mutually exclusive regular source classes identified in the proof below. Their relative Hilbert--Schmidt bounds are established in
+Proposition~\ref{prop:regular-ledger}.
 \end{proposition}
 
 \begin{proof}
@@ -800,14 +840,15 @@ by \eqref{eq:height-block-choice}; it belongs only to $R_T^{\rm src}$. It remain
 to analyze the frozen low-level source on one block.
 
 For each $k\le K_0$, apply the canonical decomposition
-\eqref{eq:canonical-local-decomp}. On the closed local contour $\Gamma_L$ of
-Lemma~\ref{lem:cluster-levelwise}, the complete Laurent operator
-$\Pi_0^{(k)}$ is paired with the actual joint packet weight of
-\eqref{eq:joint-weight}. Every genuine additional translated projector
-$\Pi_{\Sigma_{{\rm tr},k}}$ remains a direct stationary one-$\chi$ source and is
-therefore expanded in unit-shell Fourier sidebands: its low sidebands are
-assigned to the edge term and its high sidebands to regular class~(vii). After
-these principal parts have been subtracted, the remaining function
+\eqref{eq:canonical-local-decomp} on the closed contour $\Gamma_L$ of
+Lemma~\ref{lem:cluster-levelwise}. The exact residue identity
+\eqref{eq:completed-level-contour-residues} pairs the complete Laurent operator
+$\Pi_0^{(k)}$ with the actual joint packet weight of
+\eqref{eq:joint-weight} and retains every enclosed translated projector
+$\Pi_{\Sigma_{{\rm tr},k}}$ separately. Each translated term remains a direct
+stationary one-$\chi$ source and is expanded in unit-shell Fourier sidebands:
+its low sidebands belong to the edge term and its high sidebands to regular
+class~(vii). After these principal parts have been subtracted, the remaining function
 $\mathcal F_{k,L}^{\rm hol}$ is holomorphic throughout the interior of
 $\Gamma_L$. Hence, for every analytic packet weight $W$,
 \begin{equation}
@@ -837,10 +878,12 @@ local contour to the complementary Mellin contour is supported away from the
 pole cluster and is included in $\mathcal D_k^{\rm dir}$.
 
 After removing the unprojected levels $k>K_0$ by
-Lemma~\ref{lem:HLP-high-edge}, Proposition~\ref{prop:trivial-outer-twist}
-specializes the remaining invariant-source diagonal to $g=h=k=d=e=1$.
-Accordingly the auxiliary common-divisor map is the identity and the outward
-annulus of Proposition~\ref{prop:outer-excess-edge} is empty. On the resulting
+Lemma~\ref{lem:HLP-high-edge}, apply the trivial HLZ outer-twist specialization
+of Proposition~\ref{prop:trivial-outer-twist}. Its outer indices are all equal
+to $1$ and the auxiliary divisor coordinate is the identity; this notation is
+independent of the HLP level index $k$ used throughout the present section.
+Accordingly the outward annulus of Proposition~\ref{prop:outer-excess-edge} is
+empty. On the resulting
 common carrier core, replace \eqref{eq:level-Laurent} first by its intermediate
 leading jet and then replace the resummed pole parameter $c_b=L/F_b$ by the
 fixed model value $2$. The resulting principal family, with the actual

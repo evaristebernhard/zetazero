@@ -204,8 +204,8 @@ columns, proving \eqref{eq:packet-dimension-reserve}. The terminal packet
 collars remove only $C_{\rm del}T+o(T)$ columns for a fixed $C_{\rm del}$.
 Since $C_{\rm pkt}\log L\to\infty$, the reserve term eventually dominates both
 the linear Riemann--von Mangoldt secondary term and the collar loss for every
-fixed $C_{\rm pkt}>0$. No further lower bound on $C_{\rm pkt}$ is required by
-an arithmetic translation. All later frame, mean, shell, and edge restrictions are applied
+fixed $C_{\rm pkt}>0$. No further lower bound on $C_{\rm pkt}$ is required.
+All later frame, mean, shell, and edge restrictions are applied
 after the zero-side evaluation map has been constructed and do not enter this
 surjectivity count.
 \end{proof}
@@ -229,7 +229,7 @@ coordinate count in place of the full count.
 \end{lemma}
 
 \begin{proof}
-Every contour, stationary, shell, and arithmetic construction is linear in the
+Every contour, stationary, shell, and source construction is linear in the
 packet synthesis coefficients, so coordinate deletion is literal matrix
 compression. A subsequence of a Riesz sequence inherits the same lower and
 upper Riesz constants. Rank is monotone under compression, and
@@ -241,9 +241,9 @@ G_J=W_J^*W_J=P_JW^*WP_J^*.
 \]
 Since the restriction is on the input space, the least singular value of $W_J$
 is no smaller than the least singular value of $W$ on the original retained
-space. The primitive mixed-derivative and arithmetic transfer bounds used to
-prove the relative $S_2$ estimates are uniform on the output fibres and are
-unchanged by deleting packet inputs. Hence the relative remainder criterion
+space. The primitive mixed-derivative bounds used to prove the relative $S_2$
+estimates are uniform on the output fibres and are unchanged by deleting packet
+inputs. Hence the relative remainder criterion
 may be rerun with $W_J$ and gives the same $o(N_T)$ asymptotic (with the smaller
 packet dimension). The trace-defect proofs are sums of nonnegative diagonal
 contributions over packet coordinate vectors, so deleting coordinates only
@@ -258,7 +258,7 @@ Delete packet centres within physical distance $T/L$ of the two horizontal
 heights $T_1,T_2$. This costs $O(T)=o(N_T)$ packet directions. On the
 remaining packet space, every fixed curvature derivative of a horizontal
 connector is $O_A(T^{-A})$ after arbitrary prescribed fixed $A$, up to fixed
-polylogarithmic arithmetic factors.
+polylogarithmic local-source factors.
 \end{lemma}
 
 \begin{proof}
@@ -270,8 +270,8 @@ retained centre, while its imaginary part remains in a fixed strip. Hence
 \[
 |\psi_{L,\tau}|\ll_M T^{C_M}(T/L)^{-M}.
 \]
-All zeta, gamma, and finite arithmetic factors on the fixed horizontal strip
-have at most polynomial or polylogarithmic size. Choosing $M$ after the fixed
+All zeta, gamma, and fixed local-source factors on the horizontal strip have at
+most polynomial or polylogarithmic size. Choosing $M$ after the fixed
 loss exponent gives $O_A(T^{-A})$. The same estimate holds for the adjoint
 orientation and for the two mixed derivatives used in the relative
 Hilbert--Schmidt criterion.
@@ -491,5 +491,6 @@ either zero count by only $O(\log T)$ by Lemma~\ref{lem:local-z1-count}, proving
 
 Section~\ref{sec:multiplicity-endgame} transfers the generic zero-side inertia
 identity \eqref{eq:zero-inertia-generic} back to the original Hardy-gauge form.
-All arithmetic estimates are proved for the unperturbed form $A_F$; the generic
-perturbation is used only in the final finite-dimensional inertia comparison.
+All right-edge and remainder estimates are proved for the unperturbed form
+$A_F$; the generic perturbation is used only in the final finite-dimensional
+inertia comparison.
