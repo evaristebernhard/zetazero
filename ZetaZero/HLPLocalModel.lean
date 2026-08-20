@@ -2,6 +2,9 @@ import ZetaZero.HLPLocalModel.ArithmeticHierarchy
 import ZetaZero.HLPLocalModel.ConvolutionRecurrence
 import ZetaZero.HLPLocalModel.WeightedCauchy
 import ZetaZero.HLPLocalModel.MeanSquareRecurrence
+import ZetaZero.HLPLocalModel.AlphaFactorialMajorant
+import ZetaZero.HLPLocalModel.FiniteDirectCarrier
+import ZetaZero.HLPLocalModel.FactorialLevelSummability
 import ZetaZero.HLPLocalModel.FiniteResolventExpansion
 import ZetaZero.HLPLocalModel.LeadingJetResummation
 import ZetaZero.RightEdgeArithmeticSource

@@ -185,7 +185,14 @@ def test_hlp_mean_square_recurrence_build():
     lake = _find_lake()
     assert lake is not None, "lake is not installed or not discoverable"
     proc = subprocess.run(
-        [lake, "build", "ZetaZero.HLPLocalModel.MeanSquareRecurrence"],
+        [
+            lake,
+            "build",
+            "ZetaZero.HLPLocalModel.MeanSquareRecurrence",
+            "ZetaZero.HLPLocalModel.AlphaFactorialMajorant",
+            "ZetaZero.HLPLocalModel.FiniteDirectCarrier",
+            "ZetaZero.HLPLocalModel.FactorialLevelSummability",
+        ],
         cwd=root,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
