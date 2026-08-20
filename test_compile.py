@@ -195,6 +195,26 @@ def test_hlp_mean_square_recurrence_build():
     assert proc.returncode == 0, proc.stdout[-20000:]
 
 
+def test_stationary_oscillatory_approximation_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [
+            lake,
+            "build",
+            "ZetaZero.RightEdgeArithmeticSource.StationaryOscillatoryApproximation",
+            "ZetaZero.RightEdgeArithmeticSource.StationaryMainTermError",
+        ],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
 def test_gcd_gram_identity_build():
     root = Path(__file__).resolve().parent
     lake = _find_lake()

@@ -33,11 +33,10 @@ theorem norm_cexp_I_mul_real_sub_le
           (Complex.exp (Complex.I * (a - b)) - 1) := by
     rw [mul_sub, mul_one, ← Complex.exp_add]
     congr 2
-    push_cast
     ring
-  rw [hfactor, norm_mul, Complex.norm_exp_ofReal_mul_I]
-  simp only [one_mul, Real.norm_eq_abs]
-  exact Real.norm_exp_I_mul_ofReal_sub_one_le
+  rw [hfactor, norm_mul, Complex.norm_exp_I_mul_ofReal]
+  simp only [one_mul]
+  simpa using (Real.norm_exp_I_mul_ofReal_sub_one_le (x := a - b))
 
 /-- The exact centered stationary phase in Gaussian coordinates. -/
 def stationaryGaussianPhase (eta y : ℝ) : ℝ :=
@@ -82,7 +81,7 @@ theorem stationaryOscillatoryKernel_sub_quadratic_norm_le_on_window
     · rw [abs_le]
       exact ⟨by linarith [hy.1], hy.2⟩
     · rw [abs_le]
-      exact ⟨by linarith [hy.2], hy.1⟩
+      exact ⟨by linarith [hy.1, hy.2, hR0], by linarith [hy.1, hy.2, hR0]⟩
   have hlocal : |y| ≤ Real.sqrt (stationaryScale eta) / 2 := hyabs.trans hR
   have hpoint := stationaryOscillatoryKernel_sub_quadratic_norm_le heta hlocal
   have hsqrtpos : 0 < Real.sqrt (stationaryScale eta) :=
@@ -109,10 +108,10 @@ theorem norm_intervalIntegral_stationary_sub_quadratic_le
     (f := fun y : ℝ => stationaryOscillatoryKernel eta y - quadraticOscillatoryKernel y)
     (fun y hy =>
       stationaryOscillatoryKernel_sub_quadratic_norm_le_on_window
-        heta hR0 hR hy)
+        heta hR0 hR (Set.uIoc_subset_uIcc hy))
   have hwidth : |R - (-R)| = 2 * R := by
-    rw [sub_neg_eq_add, add_self, abs_of_nonneg]
-    positivity
+    rw [sub_neg_eq_add, ← two_mul,
+      abs_of_nonneg (mul_nonneg (by norm_num) hR0)]
   rw [hwidth] at hbound
   calc
     ‖(∫ y in (-R)..R,

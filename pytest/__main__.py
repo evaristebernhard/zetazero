@@ -13,6 +13,7 @@ from test_compile import (
     test_straightening_bridge_build,
     test_main_tex_compiles_cleanly,
     test_source_profile_symbolic_certificate,
+    test_stationary_oscillatory_approximation_build,
 )
 
 
@@ -28,6 +29,7 @@ def main():
         "mainline-bridge": test_mainline_hardy_stationary_bridge_build,
         "previous-unverified": test_previous_unverified_modules_build,
         "straightening": test_straightening_bridge_build,
+        "stationary-oscillatory": test_stationary_oscillatory_approximation_build,
         "blueprint-decls": test_blueprint_declarations,
         "latex": test_main_tex_compiles_cleanly,
     }

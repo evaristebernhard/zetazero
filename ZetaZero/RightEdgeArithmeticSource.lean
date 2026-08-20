@@ -11,6 +11,8 @@ import ZetaZero.RightEdgeArithmeticSource.StationaryLocalGeometry
 import ZetaZero.RightEdgeArithmeticSource.StationaryGaussianScaling
 import ZetaZero.RightEdgeArithmeticSource.StationaryOscillationControl
 import ZetaZero.RightEdgeArithmeticSource.StationaryGaussianTail
+import ZetaZero.RightEdgeArithmeticSource.StationaryFresnelAbel
+import ZetaZero.RightEdgeArithmeticSource.StationaryMainTermError
 
 /-!
 # M04: Right-edge arithmetic source and dilation covariance
