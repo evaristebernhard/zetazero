@@ -22,7 +22,15 @@ named `zetazero`; its public library and root namespace are `ZetaZero`.
 See [roadmap.md](roadmap.md) for the major-node dependency graph and paper
 mapping, [status.md](status.md) for the current node states, and
 [workflow.md](workflow.md) for the definition of a green node and the
-node-by-node integration policy.
+node-by-node integration policy.  The implementation-facing stabilization and
+density-one interface plan is in
+[lean_formalization_plan.md](lean_formalization_plan.md).
+`main.tex` 到 Lean 的分层映射、M01--M03 详译与 gap 记录见
+[main_tex_to_lean_system.md](main_tex_to_lean_system.md)；全部 `ZetaZero/`
+目录、文件和 facade 覆盖清单见
+[lean_directory_inventory.md](lean_directory_inventory.md)。
+下一轮选定的 gap 及执行顺序记录于
+[lean_gap_closure_plan.md](lean_gap_closure_plan.md)。
 
 ## Local setup
 
@@ -38,7 +46,7 @@ PATH="$PWD/blueprint/.venv/bin:$PATH" leanblueprint all
 npm test -- lean
 npm test -- lean-all
 npm test -- blueprint-decls
-python3 -m pytest -q
+python3 -m pytest
 ```
 
 The checked-in toolchain and Lake manifest make Lean and package revisions

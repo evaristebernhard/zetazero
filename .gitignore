@@ -10,6 +10,7 @@ route_b_density_one/
 # Python and documentation environments
 .venv/
 venv/
+node_modules/
 __pycache__/
 *.py[cod]
 .pytest_cache/

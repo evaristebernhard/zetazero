@@ -22,3 +22,19 @@ moreLeanArgs = ["-DwarningAsError=true"]
 [[lean_lib]]
 name = "Zeta23"
 srcDir = "zeta-23-lean"
+# Zeta23 is an external reference library.  Expose only the modules imported by
+# ZetaZero so project builds and Blueprint declaration checks do not enumerate
+# or compile the reference project's headline root (and its unrelated theorem
+# branches).
+roots = [
+  "Zeta23.Analytic.RectangleLogDeriv",
+  "Zeta23.Chebyshev",
+  "Zeta23.FromPNTPlus.Mertens",
+  "Zeta23.FromPNTPlus.ZetaBounds",
+  "Zeta23.XiPrime.Coeff.Basic",
+  "Zeta23.XiPrime.Coeff.PowerSums",
+  "Zeta23.XiPrime.Hardy.Basic",
+  "Zeta23.XiPrime.Hardy.Count",
+  "Zeta23.XiPrime.Hardy.ZFunction",
+  "Zeta23.XiPrime.Hardy.ZeroFree"
+]

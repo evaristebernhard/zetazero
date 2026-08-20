@@ -153,3 +153,47 @@ principle is now reused in this way through
 `ZetaZero.Analytic.RectangleArgumentPrinciple`, yielding the global finite zero
 sum in `PacketZeroSum`.  The generic Blaschke/Jensen `ZerosBound` machinery
 remains the next major candidate for reuse on the good-height strand.
+
+## Parallel algebraic layers: M05 to M08
+
+Several later nodes now have verified algebraic cores even though their analytic
+inputs are not yet complete:
+
+```text
+M05:
+ArithmeticHierarchy / ConvolutionRecurrence / WeightedCauchy
+  -> MeanSquareRecurrence
+  -> FiniteResolventExpansion
+  -> LeadingJetResummation
+
+M07:
+PositiveGram / OperatorGramLift
+  -> GcdGramIdentity
+  -> OperatorGcdGramLift
+
+M08:
+FiniteFeatureRank
+  -> TranslatedPoleFeatureRank / FixedEdgeRange
+```
+
+The current targeted gates `hlp-meansquare`, `previous-unverified`, and the
+extended `gcd-gram` all pass.  In particular, the finite-feature rank theorem
+now carries the required finite-dimensional hypotheses explicitly, the leading
+translated-pole resolvent identity is verified by exact field algebra, and the
+concrete gcd kernel has a totient-weighted Hilbert/operator Gram decomposition.
+
+The implementation-facing stabilization and density-one interface plan is
+recorded in `doc/lean_formalization_plan.md`.  The external `Zeta23` tree is a
+reference dependency only: project gates build selected imported modules, not
+the external `Zeta23` root library.
+
+M06 has also started with the verified abstract interface in
+`PrimitiveSchurFloor.lean`; it records the cusp-minus-Schur mechanism and the
+`0.06` to `0.03` relative-error transfer, not the concrete analytic estimates.
+Likewise, these algebraic foundations do not by themselves make any later node
+green.
+
+M10 now also exports a proved `density_one_critical_line` normalization
+interface.  Its off-critical little-o estimate remains an explicit input from
+the future zero-side/source-ledger certificate; the declaration does not make
+the overall density-one theorem green.
