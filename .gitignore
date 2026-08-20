@@ -4,6 +4,9 @@
 # Local agent coordination state
 .ai-bridge/
 
+# Local research archive (source conclusions must be distilled into doc/)
+route_b_density_one/
+
 # Python and documentation environments
 .venv/
 venv/

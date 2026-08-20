@@ -19,15 +19,42 @@ partially proved nodes use non-green graph colors.
 
 ## Integration rule
 
-- Complete one major node at a time.
+- Work in complete theorem chains, normally 3--10 closely related declarations
+  ending in one acceptance theorem; do not iterate or report lemma by lemma.
+- Before starting, read `status.md`, `roadmap.md`, and the relevant manuscript
+  paragraph, and identify the major node, paper label, dependencies, stable
+  facade, and acceptance theorem.
 - Develop unfinished work off the green main line; never use a placeholder to
   make it appear complete.
 - A node turns green in one change containing its finished Lean declarations,
   valid `\lean` links, and statement/proof `\leanok` markers.
 - Internal nodes may be split, merged, and renamed.  Major IDs M01--M10 and the
   facade modules listed in `roadmap.md` stay stable.
-- Run `lake build`, `python3 scripts/check_lean_placeholders.py`, `leanblueprint all`,
-  `leanblueprint checkdecls`, and `python3 -m pytest -q` before merging.
+- During development build the target module, then its facade after integration.
+  Run the relevant directed gate before each focused commit.  After every 2--4
+  focused commits run `npm test -- lean-all` and all related directed gates.
+- Commit implementation, facade import, directed test, and status/insight update
+  atomically by theorem chain.  Keep broad manuscript-route edits in a separate
+  documentation commit containing no new Lean proofs.
+- Stage only the theorem chain being committed.  Do not commit build output,
+  `.ai-bridge`, `route_b_density_one/`, Zone.Identifier files, raw research logs,
+  or unrelated formatting.
+
+## Commit subjects
+
+Use scoped imperative subjects such as `feat(M04): ...`, `fix(M02-M03): ...`,
+`docs(paper): ...`, and `chore(repo): ...`.
+
+## Insight policy
+
+Only record an insight when it strengthens a theorem, changes a proof interface,
+identifies a manuscript gap, or materially simplifies later work.  Routine
+tactic/compilation repairs are not recorded.  Reusable observations go in
+`main_tex_formalization_notes.md` under date/node, observation, Lean evidence,
+paper impact, and next interface.  Durable blockers go in
+`analytic_frontier.md`; node state and dependencies go in `status.md` and
+`roadmap.md` respectively.  Raw Route-B/contact/zero-lag notes stay in the local
+ignored archive.
 
 ## Current integration status
 
