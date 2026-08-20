@@ -21,7 +21,7 @@ namespace FiniteDimensionalInertiaReduction
 section FiniteFeatureRank
 
 variable {𝕜 V F₁ F₂ W : Type*} [DivisionRing 𝕜]
-  [AddCommGroup V] [Module 𝕜 V] [FiniteDimensional 𝕜 V]
+  [AddCommGroup V] [Module 𝕜 V]
   [AddCommGroup F₁] [Module 𝕜 F₁]
   [AddCommGroup F₂] [Module 𝕜 F₂]
   [AddCommGroup W] [Module 𝕜 W]
@@ -38,6 +38,7 @@ theorem ker_le_ker_comp_of_feature
 /-- A single finite-feature family can be deleted at the rank cost of its
 feature map, independently of the size of the operator acting on the features. -/
 theorem finiteFeature_kernel_budget
+    [FiniteDimensional 𝕜 V]
     (M : V →ₗ[𝕜] F₁) (N : F₁ →ₗ[𝕜] W) {r : ℕ}
     (hM : Module.finrank 𝕜 (LinearMap.range M) ≤ r) :
     codim (LinearMap.ker M) ≤ r ∧
@@ -61,6 +62,7 @@ theorem inf_ker_le_ker_add_comp_of_features
 /-- Two finite-feature families have additive deletion cost and kill the sum of
 all errors factoring through them. -/
 theorem twoFiniteFeature_kernel_budget
+    [FiniteDimensional 𝕜 V]
     (M₁ : V →ₗ[𝕜] F₁) (N₁ : F₁ →ₗ[𝕜] W)
     (M₂ : V →ₗ[𝕜] F₂) (N₂ : F₂ →ₗ[𝕜] W)
     {r₁ r₂ : ℕ}

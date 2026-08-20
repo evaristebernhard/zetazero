@@ -27,6 +27,8 @@ theorem range_comp_le_range (M : V →ₗ[𝕜] F) (N : F →ₗ[𝕜] W) :
   rintro y ⟨x, rfl⟩
   exact ⟨M x, rfl⟩
 
+variable [FiniteDimensional 𝕜 F]
+
 /-- The rank of a linear map is at most the dimension of its domain. -/
 theorem finrank_range_le_domain (N : F →ₗ[𝕜] W) :
     Module.finrank 𝕜 (LinearMap.range N) ≤ Module.finrank 𝕜 F := by
@@ -75,8 +77,6 @@ theorem finrank_range_nine_features_per_block_le
     Module.finrank 𝕜 (LinearMap.range (N.comp M)) ≤ 9 * Fintype.card β := by
   exact finrank_range_block_features_le M N
 
-variable [FiniteDimensional 𝕜 W]
-
 /-- The range of a sum of two operators lies in the sum of their ranges. -/
 theorem range_add_le_sup (A B : V →ₗ[𝕜] W) :
     LinearMap.range (A + B) ≤ LinearMap.range A ⊔ LinearMap.range B := by
@@ -88,6 +88,8 @@ theorem range_add_le_sup (A B : V →ₗ[𝕜] W) :
     (show B x ∈ LinearMap.range A ⊔ LinearMap.range B from
       (show LinearMap.range B ≤ LinearMap.range A ⊔ LinearMap.range B from le_sup_right) ⟨x, rfl⟩)
 
+variable [FiniteDimensional 𝕜 W]
+
 /-- Ranks are subadditive under addition of linear operators. -/
 theorem finrank_range_add_le (A B : V →ₗ[𝕜] W) :
     Module.finrank 𝕜 (LinearMap.range (A + B)) ≤
@@ -98,8 +100,8 @@ theorem finrank_range_add_le (A B : V →ₗ[𝕜] W) :
   lia
 
 variable {F₁ F₂ : Type*}
-  [AddCommGroup F₁] [Module 𝕜 F₁]
-  [AddCommGroup F₂] [Module 𝕜 F₂]
+  [AddCommGroup F₁] [Module 𝕜 F₁] [FiniteDimensional 𝕜 F₁]
+  [AddCommGroup F₂] [Module 𝕜 F₂] [FiniteDimensional 𝕜 F₂]
 
 /-- Two finite-feature operators cost at most the sum of their feature-space
 sizes.  This is the abstract rank bookkeeping needed after Hermitianizing a
