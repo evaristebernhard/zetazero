@@ -15,7 +15,7 @@ major node changes state.
 | M07 | Concrete gcd/operator Gram foundation verified; arithmetic deformation awaits M05 | 0 | For a finite complex analysis map `W`, Lean formalizes the pullback Gram quadratic and its positivity. The gcd kernel now also has an exact totient-weighted Hilbert Gram decomposition and an operator-valued lift through arbitrary labelled linear maps. The actual divisor/Euler comparison and its quantitative two-sided deformation remain pending. |
 | M08 | Abstract feature and fixed-edge rank bookkeeping started; analytic compression awaits M03/M06/M07 | 0 | Finite-feature and translated-pole jet rank bounds are joined by a coefficient-free fixed-edge theorem: a finite sum of operators landing in one fixed subspace costs only that subspace's dimension, not the number of summands. Concrete packet feature maps and the regular-remainder compression remain open. |
 | M09 | Abstract retained-space bookkeeping started; analytic maps await M08 | 0 | The reusable kernel/intersection budget now proves `codim(ker M₁ ∩ ker M₂) ≤ rank M₁ + rank M₂` and the threefold retained-intersection codimension bound. The actual global/local mean maps and their asymptotic rank estimates still depend on M08. |
-| M10 | Abstract perturbation/min--max glue started; zero-side endgame pending | 0 | Perturbation stability `P ≥ cG`, `|Δ| ≤ εG` ⇒ `P+Δ ≥ (c-ε)G` is formalized, including the manuscript's `ε=c/4` floor, and is connected to the existing rank-plus-Hilbert--Schmidt min--max theorem. The remaining work is the analytic `F→H` perturbation/zero-count transfer and insertion of the actual M09 retained space. |
+| M10 | Abstract perturbation/min--max glue and density-one normalization interface started | 1 | Perturbation stability `P ≥ cG`, `|Δ| ≤ εG` ⇒ `P+Δ ≥ (c-ε)G` is formalized, including the manuscript's `ε=c/4` floor, and is connected to the existing rank-plus-Hilbert--Schmidt min--max theorem. `density_one_critical_line` now proves the final ratio normalization from an explicit off-critical little-o input. The analytic `F→H` perturbation/zero-count transfer and insertion of the actual M09 retained space remain open. |
 
 No major node is green yet.  M01 is already linked and passes `checkdecls`, but
 project policy still requires `\leanok` certification and a complete Blueprint
@@ -23,3 +23,8 @@ build before the node can turn green.  Both the default Lean build and the
 all-source `lean-all` gate currently pass; the latter explicitly compiles every
 `ZetaZero/**/*.lean` file so unimported modules cannot remain silently broken.
 
+The implementation-facing stabilization plan is recorded in
+`doc/lean_formalization_plan.md`.  The exported M10 density-one theorem is a
+checked final-normalization interface: its off-critical little-o estimate
+remains an explicit analytic input and is not counted as a completed
+density-one proof.

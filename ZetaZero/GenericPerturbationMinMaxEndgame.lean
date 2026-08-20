@@ -3,6 +3,7 @@ import ZetaZero.ZeroSideStationaryGeometry
 import ZetaZero.RetainedSpace
 import ZetaZero.GenericPerturbationMinMaxEndgame.PerturbationStability
 import ZetaZero.GenericPerturbationMinMaxEndgame.PerturbedWhitenedMinMax
+import ZetaZero.GenericPerturbationMinMaxEndgame.DensityOne
 
 /-!
 # M10: Generic perturbation, min--max, and density-one endgame
@@ -16,4 +17,3 @@ namespace GenericPerturbationMinMaxEndgame
 
 end GenericPerturbationMinMaxEndgame
 end ZetaZero
-

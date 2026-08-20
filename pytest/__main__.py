@@ -16,6 +16,7 @@ from test_compile import (
     test_main_tex_compiles_cleanly,
     test_source_profile_symbolic_certificate,
     test_stationary_oscillatory_approximation_build,
+    test_density_one_endgame_interface_build,
 )
 
 
@@ -34,6 +35,7 @@ def main():
         "previous-unverified": test_previous_unverified_modules_build,
         "straightening": test_straightening_bridge_build,
         "stationary-oscillatory": test_stationary_oscillatory_approximation_build,
+        "density-one": test_density_one_endgame_interface_build,
         "blueprint-decls": test_blueprint_declarations,
         "latex": test_main_tex_compiles_cleanly,
     }
