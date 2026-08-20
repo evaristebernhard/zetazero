@@ -265,6 +265,22 @@ def test_global_model_floor_build():
 
 
 
+def test_fixed_edge_range_build():
+    root = Path(__file__).resolve().parent
+    lake = _find_lake()
+    assert lake is not None, "lake is not installed or not discoverable"
+    proc = subprocess.run(
+        [lake, "build", "ZetaZero.FrameCompression"],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=180,
+    )
+    assert proc.returncode == 0, proc.stdout[-20000:]
+
+
+
 def test_straightening_bridge_build():
     root = Path(__file__).resolve().parent
     lake = _find_lake()
