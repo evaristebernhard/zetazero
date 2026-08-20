@@ -130,7 +130,10 @@ theorem deriv_straighten_hardyGauge_eq_zero_of_zetaOne_zero
 @[simp] theorem hardyReflect_spectralOfZeroCoordinate (z : ℂ) :
     hardyReflect (spectralOfZeroCoordinate z) =
       spectralOfZeroCoordinate (conj z) := by
-  apply Complex.ext <;> simp [hardyReflect, spectralOfZeroCoordinate] <;> ring
+  apply Complex.ext
+  · simp [hardyReflect, spectralOfZeroCoordinate]
+    ring
+  · simp [hardyReflect, spectralOfZeroCoordinate]
 
 /-- Real zero coordinates parametrize the critical line used by the manuscript. -/
 @[simp] theorem spectralOfZeroCoordinate_real (t : ℝ) :

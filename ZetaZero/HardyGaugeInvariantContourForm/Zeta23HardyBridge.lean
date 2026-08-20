@@ -44,7 +44,8 @@ theorem hardyF_eq_gammaLogDeriv {s : ℂ} (hs : s.im ≠ 0) :
         -logDeriv Gammaℝ (1 - s) := by
     rw [logDeriv_apply, logDeriv_apply, deriv_comp_const_sub]
     ring
-  rw [hardyF, Analytic.chiOneSub, logDeriv_div _ hG hG1 hdG hdG1, hden]
+  unfold hardyF Analytic.chiOneSub
+  rw [logDeriv_div _ hG hG1 hdG hdG1, hden]
   ring
 
 /-- Exact identification `f = L₂` at every non-real point. -/

@@ -109,13 +109,14 @@ FunctionalEquationFactor
 ```
 
 Thus the holomorphic branch `q^2 = chiOneSub`, reflection, `𝒵' = q Z₁`, the
-second derivative bridge, the exact curvature source, symmetric-shift generation,
-and the actual packet-polarized same-form boundary identity are formalized on the
-high rectangle.  If `Z₁` has no zero on the contour, boundary integrability is now
-derived rather than assumed, and the simple-zero coefficient of the
-packet-polarized `Z₁'/Z₁` source is also available.  The remaining M02
-responsibility is genuinely meromorphic/global: assemble the internal residues
-and straighten the common boundary form to the zero-side stationary kernel.
+second derivative bridge, exact curvature source, symmetric-shift generation,
+and the packet-polarized same-form boundary identity are formalized on the high
+rectangle.  The vendored weighted argument principle assembles the internal
+residues into a finite multiplicity-weighted `Z₁` zero sum.  The normalization
+bridge to Zeta23 is also verified off the real axis (`hardyF = L₂`, hence
+`Z₁ = hardyW`), so derivative and analytic-order transport are available.  The
+remaining M02 responsibility is to specialize the global zero-sum weights to the
+stationary packet kernel and complete the good-height/log-derivative estimates.
 
 For M03, two independent strands are now visible.  The zero-count/good-height
 strand still requires local control of both `zeta` and `Z1`, while the stationary
@@ -135,7 +136,9 @@ simple stationary zero
   -> local coefficient  -H(c) H''(c)
   -> real / conjugate-pair residue blocks
   -> pair-block NegativeIndexLE <= 1 + explicit negative direction
-  -> global residue sum
+  -> zero-coordinate straightening / Schwarz reflection
+  -> Z₁ simple-zero <-> straightened simple stationary point
+  -> global packet-weight specialization
   -> packet-evaluation surjectivity
 ```
 
