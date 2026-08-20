@@ -7,6 +7,8 @@ import ZetaZero.HLPLocalModel.FiniteDirectCarrier
 import ZetaZero.HLPLocalModel.FactorialLevelSummability
 import ZetaZero.HLPLocalModel.FiniteResolventExpansion
 import ZetaZero.HLPLocalModel.LeadingJetResummation
+import ZetaZero.HLPLocalModel.ResolventTailBound
+import ZetaZero.HLPLocalModel.ZetaPoleLaurentBridge
 import ZetaZero.RightEdgeArithmeticSource
 
 /-!
@@ -21,4 +23,3 @@ namespace HLPLocalModel
 
 end HLPLocalModel
 end ZetaZero
-
