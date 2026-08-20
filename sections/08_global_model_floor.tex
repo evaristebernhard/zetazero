@@ -21,13 +21,13 @@ Define the triangular primitive form
 \[
 Q_\triangle(q):=2\|Q\|_2^2.
 \]
-After the internal principal contraction of
-Lemma~\ref{lem:internal-principal-contraction} and the trivial outer-twist
-specialization of Proposition~\ref{prop:trivial-outer-twist}, the principal
-analysis has a single packet fibre and no nontrivial packet-coordinate
-multiplier. On the central flat plateau of $\phi_L$, translate the physical
-Fourier coordinate by its fixed left endpoint $u_0$. The common flat analysis
-is exactly
+By the common-core factorization of
+Proposition~\ref{prop:common-core-congruence} and the trivial outer-twist
+specialization of Proposition~\ref{prop:trivial-outer-twist}, the fully frozen
+principal analysis has one packet fibre and no nontrivial arithmetic
+packet-coordinate multiplier.  On the central flat plateau of $\phi_L$,
+translate the physical Fourier coordinate by its fixed left endpoint $u_0$.
+The common flat analysis is exactly
 \begin{equation}
 \boxed{
 (\mathcal U_T^{\rm flat}v)(u)
@@ -37,29 +37,37 @@ is exactly
 \label{eq:explicit-flat-analysis}
 \end{equation}
 The phase $v_\nu\mapsto e^{i\tau_\nu u_0}v_\nu$ is unitary and commutes with
-the diagonal multiplier $v_\nu\mapsto\tau_\nu^{-1}v_\nu$. Let $C_T$ be the
+the diagonal multiplier $v_\nu\mapsto\tau_\nu^{-1}v_\nu$.  Let $C_T$ be the
 stable-core restriction from Definition~\ref{def:PT}, put
 \[
 R_T^{\rm core}:=\frac{W_T}{L}=1-\frac{A_0\log L}{L},
 \qquad
 \mathcal U_T^{\rm core}:=C_T\mathcal U_T^{\rm flat},
 \]
-and normalize the core coordinate by $r=u/L$, so
-$0\le r\le R_T^{\rm core}$. Introduce the unitary rescaling of the core output
+and normalize the core coordinate by $r=u/L$.  Introduce the unitary rescaling
 \begin{equation}
 \boxed{
 (\widehat{\mathcal U}_T^{\rm core}v)(r)
-:=L^{1/2}(\mathcal U_T^{\rm core}v)(Lr).
+:=L^{1/2}(\mathcal U_T^{\rm core}v)(Lr),
+\qquad 0\le r\le R_T^{\rm core}.
 }
 \label{eq:normalized-core-analysis}
 \end{equation}
-Define $A_T^G$ as the pullback through
-$\widehat{\mathcal U}_T^{\rm core}$ of the frozen kernel
+This is the map $\widehat{\mathcal A}_T^{\rm core}$ of
+\eqref{eq:normalized-common-core-analysis}, up to the common one-sided factors
+already included there.
+
+Define $A_T^G$ as the pullback through this common normalized map of
 \[
-K_G(r,s):=G(1-|r-s|),
+K_G(r,s):=G(1-|r-s|).
 \]
-and define $\Gfr_T$ through the same normalized core map by the triangular
-primitive form $Q_\triangle$. Thus
+By Definition~\ref{def:PT} and \eqref{eq:PT-frozen-definition},
+\begin{equation}
+\boxed{P_T=A_T^G.}
+\label{eq:PT-equals-frozen-model}
+\end{equation}
+Define $\Gfr_T$ through the same map by the triangular primitive form
+$Q_\triangle$.  Thus
 \begin{equation}
 \boxed{
 \Gfr_T=(\mathcal W_T^{\rm glob})^*\mathcal W_T^{\rm glob},
@@ -67,16 +75,18 @@ primitive form $Q_\triangle$. Thus
 \label{eq:global-reference-Gram}
 \end{equation}
 where $\mathcal W_T^{\rm glob}$ is obtained from
-$\mathcal U_T^{\rm core}$ by adjoining the primitive on
-$0\le u\le W_T$ and multiplying the primitive output by $\sqrt2/L$. Indeed,
-after $r=u/L$ this gives exactly
+$\mathcal U_T^{\rm core}$, together with the same common one-sided factors, by
+adjoining the primitive on $0\le u\le W_T$ and multiplying the primitive output
+by $\sqrt2/L$.  After $r=u/L$ this gives exactly
 \[
 Q_\triangle=\frac{2}{L^2}\int_0^{W_T}|R(u)|^2\,du.
 \]
-The endpoint mean constraint is imposed only on $V_{\rm mean}$. Lemma~\ref{lem:global-local-triangular}
-compares the shell-local primitive metric with this same global reference
-metric. Hence $A_T^G$ and $\Gfr_T$ are pullbacks from one fixed core analysis
-map and differ only in the final lag form.
+The endpoint mean constraint is imposed only on $V_{\rm mean}$.
+Lemma~\ref{lem:global-local-triangular} compares the shell-local primitive
+metric with this same global reference metric.  The actual finite-$T$ parameter
+defect is not part of this positive congruence; it remains the separate source
+$R_T^{\rm par}$ of \eqref{eq:common-core-principal-congruence} and is estimated
+in the regular ledger.
 
 The coefficient extraction in \eqref{eq:G-from-source} gives the closed form
 \begin{equation}
@@ -249,15 +259,16 @@ Q_G(q)>(5.677-5.535)\|Q\|_2^2
 >0.142\|Q\|_2^2
 >0.06Q_\triangle(q).
 \]
-By Lemma~\ref{lem:internal-principal-contraction} the internal Dirichlet index
-has already been contracted by the principal Laurent functional. By
-Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer coordinate
-remains in the invariant contour source. Thus $A_T^G$ and $\Gfr_T$ are
-pullbacks through the same normalized core map
-$\widehat{\mathcal U}_T^{\rm core}$ of
-\eqref{eq:normalized-core-analysis}, and congruence preserves the whole-space
-Loewner inequality. This proves
-\eqref{eq:model-floor} without deleting any model spectral subspace.
+By Proposition~\ref{prop:common-core-congruence}, the finite model faces and
+the frozen comparison have the same one-sided packet/core analysis.  By
+Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer arithmetic
+coordinate remains in the invariant contour source.  Thus $A_T^G$ and
+$\Gfr_T$ are pullbacks through the same normalized core map
+$\widehat{\mathcal U}_T^{\rm core}$ of, respectively, $K_G$ and
+$Q_\triangle$.  Congruence therefore preserves the whole-space inequality
+$K_G\succeq0.06Q_\triangle$.  This proves \eqref{eq:model-floor} without
+introducing a height-block mean constraint and without deleting any model
+spectral subspace.
 \end{proof}
 
 \begin{lemma}[The whole-space floor survives restriction]
@@ -302,94 +313,41 @@ norm by
 \label{eq:triangular-form-norm}
 \end{equation}
 
-\begin{lemma}[Stability under the finite-$T$ principal parameters]
-\label{lem:principal-parameter-stability}
-Let $K_{\lambda,\mu,\theta}$ be the mean-zero lag form obtained from
-\eqref{eq:two-parameter-profile} after normalized curvature with
-\[
-\rho(x,y)=1+\theta-|x-y|,
-\qquad 0\le x,y\le1.
-\]
-Uniformly for
-\[
-|\lambda-1|+|\mu-1|+\theta\le\eta,
-\qquad \theta\ge0,
-\]
-one has
-\begin{equation}
-\boxed{
-\|K_{\lambda,\mu,\theta}-K_{1,1,0}\|_{\op,\triangle}
-\ll |\lambda-1|+|\mu-1|+\theta.
-}
-\label{eq:principal-parameter-stability}
-\end{equation}
-\end{lemma}
+\begin{remark}[No variable-parameter positivity transfer]
+The scalar family obtained by keeping constant parameters
+$\lambda,\mu,\theta$ near $(1,1,0)$ is analytic and therefore Lipschitz in the
+triangular form norm.  We do \emph{not} use that constant-parameter fact to
+infer positivity for a height-dependent or block-dependent operator.  Physical
+height remains tied to the stationary carrier after the shell transform, and no
+scalar field $\lambda(r,s)$ is introduced.  Instead the whole finite-$T$
+parameter deformation is the separate source $R_T^{\rm par}$ of
+\eqref{eq:common-core-principal-congruence}; its small diagonal cusp and its
+regular mixed derivative are estimated directly in
+Lemma~\ref{lem:finiteT-parameter-regular}.
+\end{remark}
 
-\begin{proof}
-After taking $[p^2]$, the profile \eqref{eq:two-parameter-profile} is analytic
-in $(\lambda,\mu,\rho)$ on a fixed neighbourhood of
-$(1,1,[0,1])$. For $\theta\ge0$ sufficiently small,
-$\rho(x,y)$ remains in the fixed compact interval $[0,1+\eta]$. Differentiation
-with respect to $\lambda$, $\mu$, or $\theta$ therefore gives kernels whose
-diagonal derivative jumps and regular second lag derivatives are uniformly
-bounded. In particular, changing $\theta$ changes the cusp coefficient by
-$O(\theta)$ and the regular primitive kernel by $O(\theta)$ in Schur norm.
-Applying the primitive identity \eqref{eq:two-variable-primitive} and the
-mean-value theorem yields
-\[
-|\langle(K_{\lambda,\mu,\theta}-K_{1,1,0})q,q\rangle|
-\ll (|\lambda-1|+|\mu-1|+\theta)Q_\triangle(q),
-\]
-which is \eqref{eq:principal-parameter-stability}.
-\end{proof}
-
-\begin{proposition}[Finite-$T$ principal comparison]
+\begin{proposition}[Frozen principal floor]
 \label{prop:finiteT-principal-comparison}
 On $V_{\rm mean}$ of \eqref{eq:mean-map},
 \begin{equation}
 \boxed{
-\left\|\Gfr_T^{-1/2}(P_T-A_T^G)\Gfr_T^{-1/2}\right\|_{\op}
-\ll L^{-1}=o(1).
+P_T=A_T^G\succeq0.06\,\Gfr_T.
 }
 \label{eq:principal-finiteT-comparison}
 \end{equation}
-Consequently, for all sufficiently large $T$,
+Consequently
 \begin{equation}
 \boxed{P_T\succeq c_0\Gfr_T}
 \label{eq:principal-floor}
 \end{equation}
-with any fixed $c_0<0.06$; in particular one may take $c_0=0.03$.
+for any fixed $c_0<0.06$; in particular one may take $c_0=0.03$.
 \end{proposition}
 
 \begin{proof}
-By Proposition~\ref{prop:trivial-outer-twist}, the invariant contour source has
-no nontrivial outer translation, divisor deformation, or outer-prefix excess.
-The finite HLZ Euler factor attached to the trivial outer twist is the empty
-Euler product and is identically one for all retained shifts. Thus the only
-finite-$T$ deformation of the principal lag form is archimedean. Uniformly on the retained stable
-interior,
-\[
-\lambda(\tau)=\frac{\log(\tau/2\pi)}L=1+O(L^{-1}),
-\qquad
-\mu_b=\lambda(\tau)+O(L^{-D-1})+O((TL)^{-1}),
-\]
-and, by \eqref{eq:finiteT-common-endpoint},
-\[
-\theta_T:=\nu_T-1=\lambda(\tau)-1=O(L^{-1}),
-\qquad \theta_T\ge0.
-\]
-Lemma~\ref{lem:principal-parameter-stability} therefore gives an
-$O(L^{-1})$ perturbation in the triangular metric. Pulling this form inequality
-back through the common normalized map
-$\widehat{\mathcal U}_T^{\rm core}$ and using the definition of $\Gfr_T$
-converts it exactly into the relative operator norm in
-\eqref{eq:principal-finiteT-comparison}. The full smooth packet profile and the
-finite Cauchy factors are contained in the common analysis and residue maps on
-both sides of the comparison, so they create no additional error. This proves
-\eqref{eq:principal-finiteT-comparison}. The
-exact--model local discrepancy \eqref{eq:local-model-error} is excluded from
-this comparison by definition and belongs only to $R_T^{\rm tri}$. Combining
-\eqref{eq:principal-finiteT-comparison} with
-Proposition~\ref{prop:model-floor} gives \eqref{eq:principal-floor}; no model
-spectral subspace is deleted.
+The identity $P_T=A_T^G$ is \eqref{eq:PT-equals-frozen-model}, and
+Proposition~\ref{prop:model-floor} gives
+$A_T^G\succeq0.06\Gfr_T$.  No finite-$T$ parameter transfer is used in this
+step.  All such deformations, together with the critical-$J$ smooth-to-sharp
+remainder, belong to the regular ledger and are measured only after the frozen
+positive floor has been established.
 \end{proof}

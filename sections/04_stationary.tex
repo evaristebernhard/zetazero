@@ -52,6 +52,40 @@ K_w(\xi)=A(2\pi e^w\xi)e(-e^w\xi)+E_w(\xi).
 \end{equation}
 There is no order-one pair-dependent Hessian weight.
 
+For clarity, the oscillatory Gaussian constant implicit in this stationary
+normalization can be obtained without any formal analytic continuation of a
+positive-real-part Gaussian integral.  One integration by parts gives, for
+$0<R\le S$,
+\begin{equation}
+\boxed{
+\left|\int_R^S e^{iy^2/2}\,dy\right|\le\frac2R.
+}
+\label{eq:fresnel-tail}
+\end{equation}
+Apply the ordinary complex Gaussian formula first to the Abel-damped kernel
+$e^{-(\varepsilon-i/2)y^2}$ with $\varepsilon>0$.  The same reciprocal-weight
+integration by parts gives
+\[
+\left|\int_R^S e^{-(\varepsilon-i/2)y^2}\,dy\right|\le\frac2R
+\qquad(\varepsilon\ge0),
+\]
+uniformly in the damping parameter, while on each fixed finite window dominated
+convergence is immediate.  Letting $\varepsilon\downarrow0$ therefore gives the
+genuine oscillatory limit
+\begin{equation}
+\boxed{
+\lim_{R\to\infty}\int_{-R}^R e^{iy^2/2}\,dy
+=\sqrt\pi(1+i),
+\qquad
+\left|\int_{-R}^R e^{iy^2/2}\,dy-\sqrt\pi(1+i)\right|
+\le\frac4R.
+}
+\label{eq:fresnel-window}
+\end{equation}
+Thus the usual factor $\sqrt{2\pi}\,e^{i\pi/4}$ in the stationary calculation
+is a bona fide conditional oscillatory integral with an explicit finite-window
+error, not a substitution outside the hypotheses of the Gaussian theorem.
+
 If $D_wF(\xi):=F(e^w\xi)$, the principal stationary map satisfies
 \begin{equation}
 \boxed{\mathcal S_w^{\rm pr}=D_w\mathcal S_0^{\rm pr}.}

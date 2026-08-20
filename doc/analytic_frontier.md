@@ -1,5 +1,10 @@
 # Analytic-number-theory formalization frontier
 
+The project-wide stabilization and density-one interface plan is maintained in
+`doc/lean_formalization_plan.md`.  This frontier note records analytic theorem
+content; it does not treat the external `zeta-23-lean/` root target as part of
+the ZetaZero build.
+
 This note records the difficult analytic route beyond the currently implemented
 local contour/residue interfaces.  It separates exact algebra that is already
 formalized from theorem-sized analytic input that is still missing.  The purpose
@@ -145,9 +150,8 @@ returning 502 rather than Lean diagnostics.
 
   and the exact dilation law for packet displacement.  After `t=t_* v` it
   proves the universal normalized phase `Psi(v)=v log(v)-v`, with
-  `Psi'(v)=log(v)` and `Psi''(v)=1/v`; the latest extension also states strict
-  convexity and uniqueness of the positive saddle `v=1` and is awaiting the
-  post-extension re-gate;
+  `Psi'(v)=log(v)` and `Psi''(v)=1/v`, together with strict convexity and
+  uniqueness of the positive saddle `v=1`;
 - `StationaryNormalization` proves the exact stationary main-term cancellation
 
   ```text
@@ -159,27 +163,81 @@ returning 502 rather than Lean diagnostics.
 
   Thus the paper's absence of an extra pair-dependent Hessian weight is already
   an exact Lean identity, not a heuristic cancellation;
-- `NonstationaryPhaseBounds` has now been written for the complement of the
-  saddle window.  It gives the explicit normalized margins
+- `NonstationaryPhaseBounds` controls the complement of the saddle window by the
+  explicit normalized margins
 
   ```text
   v >= 1+delta  -> |Psi'(v)| >= log(1+delta),
   0 < v <= 1-delta -> |Psi'(v)| >= -log(1-delta),
   ```
 
-  and transfers the same inequalities to the physical `Phi_eta`.  This file is
-  pending its first Lean gate because the execution connector failed with 502
-  immediately after it was added.
+  and transfers them to the physical `Phi_eta`;
+- `QuadraticOscillatoryTail` and `StationaryFresnelAbel` now give a rigorous
+  oscillatory Gaussian route rather than a formal imaginary-parameter
+  substitution into the positive-real-part Gaussian theorem.  In particular,
 
-These close the local coefficient, simple translated-residue coefficient,
-algebra-to-norm, exact saddle geometry, and main-term normalization parts of the
-right-edge transfer.  The actual oscillatory-integral asymptotic and its uniform
-remainder remain genuinely analytic.
+  ```text
+  || integral_R^S exp(i y^2/2) dy || <= 2/R,
+  integral_{-R}^R exp(i y^2/2) dy -> sqrt(pi)*(1+i),
+  || integral_{-R}^R exp(i y^2/2) dy - sqrt(pi)*(1+i) || <= 4/R.
+  ```
 
-**Missing analytic chain**
+  `StationaryFresnelAbel` is included in the successful fresh all-source build;
+- `StationaryOscillatoryApproximation` transfers the cubic real-phase remainder
+  through the unit-circle Lipschitz estimate and proves, on `[-R,R]`,
+
+  ```text
+  || exactKernel(eta,y) - exp(i y^2/2) ||
+      <= (2/3) * |y|^3 / sqrt(t_*),
+  || integral_{-R}^R (exactKernel - quadraticKernel) ||
+      <= (4/3) * R^4 / sqrt(t_*).
+  ```
+
+- `StationaryMainTermError.lean` now closes the finite-window main term itself.
+  It proves the exact stationary kernel is Borel measurable and has norm one,
+  hence is interval-integrable on every finite window, and then combines the
+  previous replacement estimate with the quantitative Fresnel tail:
+
+  ```text
+  || integral_{-R}^R exactKernel(eta,y) - sqrt(pi)*(1+i) ||
+    <= (4/3) * R^4 / sqrt(t_*) + 4/R.
+  ```
+
+  Moreover, under the transparent balancing condition
+
+  ```text
+  R^5 <= sqrt(t_*),
+  ```
+
+  Lean obtains the single error
+
+  ```text
+  || integral_{-R}^R exactKernel(eta,y) - sqrt(pi)*(1+i) ||
+    <= 16/(3R).
+  ```
+
+  Thus finite-window integrability/linearity is no longer a hidden hypothesis.
+  The extended `stationary-oscillatory` gate and fresh `lean-all` both pass.
+
+These close the local coefficient, exact saddle geometry/normalization, Fresnel
+constant, and the complete finite-window stationary main-term estimate.  The
+genuinely analytic frontier is now the uniform choice/insertion of this window
+inside the actual packet source, its combination with the nonstationary
+complement, and the subsequent Perron/arithmetic transfer.
+
+**Missing analytic/formalization chain**
+
+The manuscript-level left/right reflection seam has now been repaired: the
+correct scalar identity retains the conjugation at
+`iota(s)=1-conj(s)`, while the complete Hardy source
+`H=f+L1=Z''/Z'`, the curvature factor, the packet polarization, and the reversed
+left-edge orientation combine into an exact matrix-adjoint identity.  What is
+still missing on the Lean side is the corresponding sesquilinear contour
+transport theorem; it should not be formalized as a scalar rewrite of
+`L1(1-conj(s))`.
 
 ```text
-left/right contour reflection
+matrix-adjoint left/right contour transport (Lean)
   -> completed right-edge source
   -> prove blockwise bounds for f(s)-F_b and the resolvent factor
   -> one-chi stationary phase
@@ -218,61 +276,160 @@ modules and never encode stationary phase as an algebraic rewrite.
 hence an exact decomposition of `Q/(F-P)` into a finite HLP hierarchy plus one
 explicit tail.
 
-The factorial-majorant chain now reaches a genuinely global finite recurrence.
-Finite weighted Cauchy--Schwarz is specialized to the HLP recurrence and the
-first weight factor is simplified by the exact Mathlib identity
-`sum_{d|n} Lambda(d) = log n`, giving
+The factorial-majorant chain is now closed through the actual `P^k Q`
+coefficients.  It is useful to distinguish the auxiliary Mangoldt square sum
 
 ```text
-alpha_{k+2}(n)^2
-  <= log(n) * sum_{ab=n} Lambda(a) * alpha_{k+1}(b)^2.
+S_k(X) = sum_{1 <= n <= X} Lambda_k(n)^2
 ```
 
-`MeanSquareRecurrence.lean` then sums this over `1 <= n <= X`, bounds the outer
-logarithm by `log X`, and uses Mathlib's finite Dirichlet-hyperbola identity to
-rearrange the divisor antidiagonals.  With
-
-```text
-S_k(X) = sum_{1 <= n <= X} alpha_{k+1}(n)^2,
-```
-
-Lean now proves the exact global recurrence
+from the final HLP coefficient square sum.  `LambdaMeanSquareRecurrence.lean`
+proves the exact finite recurrence
 
 ```text
 S_{k+1}(X)
   <= log(X) * sum_{a <= X} Lambda(a) * S_k(X / a).
 ```
 
-The same module reuses the vendored `Zeta23.FromPNTPlus.Mertens` proof of
-Mertens' first theorem to obtain
+`WeightedChebyshev.lean` then specializes the vendored Abel--Mertens machinery
+to the decreasing polynomial weight and keeps the decisive denominator visible:
 
 ```text
-sum_{a <= X} Lambda(a) / a <= log(X) + log(4) + 4,
+sum_{d <= exp(y)} Lambda(d)/d * (1+y-log d)^m
+  <= (1 + KM*B) * (1+y)^(m+1)/(m+1)
 ```
 
-and packages this into a one-step propagation theorem: any linear envelope for
-`S_k(Y)` on `Y <= X` yields an explicit linear-logarithmic envelope for
-`S_{k+1}(X)`.
+whenever `m+1 <= B(1+y)`.  The support implication `S_k != 0 -> 2^k <= X` is
+now connected to this hypothesis in `FactorialMajorant.lean`: at the exponential
+cutoff `X=floor(exp y)`, nonvanishing implies the explicit bound
+
+```text
+2*k <= 4*(1+y).
+```
+
+Thus the manuscript's qualitative condition `m << log(ex)` is no longer an
+informal uniformity clause in Lean.  `FactorialInduction.lean` uses the support
+bound and the `1/(m+1)` gain to prove the level-uniform estimate
+
+```text
+lambdaMeanSquareExp (k+1) y
+  <= KM * D^k/k! * exp(y) * (1+y)^(2*k+1),
+D = 1 + 4*KM.
+```
+
+Finally `AlphaFactorialMajorant.lean` identifies our `P^k Q` hierarchy with the
+vendored Xi-prime `lamLogConv k` coefficients and uses the already-proved
+pointwise inequality
+
+```text
+alpha_{k+1}(n) <= log(n) * Lambda_{k+1}(n)
+```
+
+to obtain the actual HLP square-sum majorant
+
+```text
+sum_{n <= floor(exp y)} alpha_{k+1}(n)^2
+  <= KM * D^k/k! * exp(y) * (1+y)^(2*k+3).
+```
+
+This entire chain is included in the targeted `hlp-meansquare` Lean gate.
+`AlphaDerivativeIdentity.lean` now also proves the sharper manuscript identity
+
+```text
+(k+1) * alpha_{k+1}(n) = log(n) * Lambda_{k+1}(n),
+```
+
+purely from the logarithmic derivation rule for Dirichlet convolution.  Thus the
+formalization now has both routes: the exact coefficient identity used in the
+paper, and the shorter `lamLogConv_le` comparison sufficient for the factorial
+square-sum conclusion.  The exact identity is no longer a paper-alignment gap.
+
+The safe-line normalization layer has now also been formalized.  First,
+`NaturalCutoffFactorialMajorant.lean` converts the exponential cutoff exactly to
+an ordinary natural cutoff `X`.  Then `NormalizedDirectCarrier.lean` proves that
+under
+
+```text
+1 + log X <= L,
+```
+
+the deterministic factor `(C/L)^(k+1)` absorbs all but one logarithmic factor:
+
+```text
+sum_{n<=X} |(C/L)^(k+1) alpha_{k+1}(n)|^2
+  <= KM * D^k/(k+1)! * X * C^(2(k+1)) * (1+log X).
+```
+
+`FiniteLevelMinkowski.lean`, `FiniteCarrierAssembly.lean`, and
+`DirectCarrierAssembly.lean` now assemble an arbitrary finite set `K` of HLP
+levels without assuming orthogonality and then remove the dependence on `K`:
+
+```text
+sqrt(sum_n |sum_{k in K} normalized_alpha_k(n)|^2)
+  <= sqrt(KM * X * (1+log X)) * tsum_k directCarrierWeight(C,k).
+```
+
+`FactorialLevelSummability.lean` proves the weight series is summable and that
+multiplication by any fixed `(k+1)^q` remains summable after enlarging the
+exponential parameter.  Thus fixed derivative losses in the HLP level are
+already harmless before the contour deformation.
+
+The exact finite-resolvent remainder is also quantitatively closed at the scalar
+level.  `ResolventTailBound.lean` combines the exact algebraic expansion with the
+strict safe-line gap: if `||P/F|| <= rho < 1`, then
+
+```text
+|| (P/F)^(K+1) * (1-P/F)^(-1) ||
+  <= rho^(K+1)/(1-rho),
+```
+
+and hence
+
+```text
+|| Q/(F-P) - (Q/F) * sum_{k<=K} (P/F)^k ||
+  <= ||Q/F|| * rho^(K+1)/(1-rho).
+```
+
+The same theorem is exposed directly for the completed exact source.  No
+infinite geometric-series identity is used: finite algebra and the norm gap are
+separate Lean lemmas.
+
+These modules are included in both the targeted `hlp-meansquare` gate and the
+latest successful fresh `lean-all`.
 
 **Missing analytic/arithmetic chain**
 
 ```text
-exploit the sharper k/log(n) coefficient structure
-  -> choose a level-dependent majorant C_k
-  -> factorial majorant uniform in k
-  -> geometric/factorial control of the resolvent tail
-  -> packet-uniform stationary-phase estimates.
+factorial square-sum bound for P^k Q                 [closed]
+  -> safe-line normalization of each HLP level       [closed]
+  -> subset-independent finite carrier assembly      [closed]
+  -> scalar sqrt-factorial level summability         [closed]
+  -> exact geometric resolvent truncation bound      [closed]
+  -> prove the actual safe-line ratio |P/F_b| <= q<1 and derivative bounds
+  -> carrier-preserving HLZ / Perron / stationary transfer.
 ```
 
-Thus finite summation, divisor reindexing, the basic mean-square recurrence, and
-the Mertens harmonic Mangoldt input are no longer gaps.  The remaining issue is
-the genuinely level-uniform factorial induction rather than finite-sum algebra.
+Accordingly, the remaining M05 gap is no longer a formal resolvent-tail problem.
+It is the manuscript's genuine analytic estimate at
+`eq:cluster-geometric-ratio` (together with `HLP-zero-free-derivatives`) and its
+transport through the actual packet carrier without discarding the coordinates
+required later by HLZ.
 
 ## F5. HLZ bilinear and carrier-preserving lift
 
-This remains a major analytic frontier.  The needed statement is not a scalar
-mean-value theorem: it must retain the packet/carrier dependence through the
-small-moduli arithmetic decomposition.
+This remains a major analytic frontier.  The manuscript now exposes it
+explicitly as `Hypothesis~\ref{hyp:packet-bilinear-HLZ}` and states the
+density-one theorem conditionally on that hypothesis.  The former collision
+problem in the scalar auxiliary factor has been removed separately: the HLZ
+Cauchy variables are put on separated nested circles and, for fixed
+$\mathbf z$, one uses
+$H_{\mathbf z}(u)=e^{u^2}(2u-z_2+z_1)(2u-z_2+z_3)/((z_1-z_2)(z_3-z_2))$.
+Thus the scalar HLZ step no longer asks one jointly analytic function to equal
+both $0$ and $1$ at a colliding shift triple.
+
+The remaining needed statement is not a scalar mean-value theorem: it must
+retain the packet/carrier dependence through the small-moduli arithmetic
+decomposition.
 
 The formal target should separate three outputs:
 

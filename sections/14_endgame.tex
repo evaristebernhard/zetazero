@@ -223,5 +223,32 @@ so
 \[
 \frac{N_{0,T}}{N_T}=1-o(1).
 \]
-Dyadic summation gives $N_0(T)/N(T)\to1$.
+We finish by spelling out the dyadic summation.  Put
+\[
+M(T):=N(T)-N_0(T),
+\]
+and, for a half-open height interval $I$, write
+$M(I):=N(I)-N_0(I)$ for the corresponding off-line count.
+Use half-open height intervals; by Lemma~\ref{lem:local-z1-count}, changing the
+endpoint convention costs $O(\log X)=o(N(X,2X))$.  Given $\varepsilon>0$,
+choose $X_\varepsilon$ so that for every $X\ge X_\varepsilon$,
+\[
+M([X,2X))\le\varepsilon N([X,2X)).
+\]
+Partition $[X_\varepsilon,T)$ into the half-open dyadic blocks
+\[
+I_j:=\left[\frac{T}{2^{j+1}},\frac{T}{2^j}\right)
+\]
+whose lower endpoints are at least $X_\varepsilon$; the one remaining bounded
+initial segment contributes $O_\varepsilon(1)$.  The blocks are disjoint, hence
+\[
+M(T)
+\le\varepsilon\sum_jN(I_j)+O_\varepsilon(1)
+\le\varepsilon N(T)+O_\varepsilon(1).
+\]
+Since $N(T)\to\infty$, division by $N(T)$ gives
+\[
+\limsup_{T\to\infty}\frac{N(T)-N_0(T)}{N(T)}\le\varepsilon.
+\]
+Letting $\varepsilon\to0$ proves $N_0(T)/N(T)\to1$.
 \end{proof}

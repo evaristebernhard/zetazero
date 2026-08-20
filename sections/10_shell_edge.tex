@@ -211,6 +211,30 @@ unchanged for Hilbert-valued functions. The final assertion follows directly
 from the definition of $Q_j$.
 \end{proof}
 
+\begin{corollary}[Tensor stability of the global/local Gram comparison]
+\label{cor:tensor-global-local-triangular}
+Let $\mathcal H$ be any Hilbert space, with no restriction on its finite
+compression dimension.  If $g:[0,W_T]\to\mathcal H$ and the corresponding
+$f,Q_j$ satisfy the hypotheses of
+Lemma~\ref{lem:global-local-triangular}, then
+\[
+\mathcal Q_{\rm loc}(f)\le
+C_\triangle\mathcal Q_{\rm glob}(g)
+\]
+with the same constant $C_\triangle$, independently of $\dim\mathcal H$.
+Consequently the comparison remains valid after adjoining any packet-independent
+finite source, refinement, Cauchy, or carrier output fibre by Hilbert tensor
+product or orthogonal direct sum.
+\end{corollary}
+
+\begin{proof}
+The proof of Lemma~\ref{lem:global-local-triangular} uses only the Hilbert norm,
+Bochner integration, Cauchy--Schwarz, and the bounded overlap of the scalar
+windows $\psi_j$.  Each step is dimension free.  Applying the same argument in
+$\mathcal H$, or equivalently first on finite orthogonal sums and then by
+completion, gives the assertion.
+\end{proof}
+
 Define
 \begin{equation}
 Q_{j,n}(v):=\int_{I_j}\psi_j(x)F_v(x)e^{-2\pi inx}\,dx.
@@ -348,7 +372,11 @@ stationary range. Its total number of rows is
 By Proposition~\ref{prop:trivial-outer-twist} there is no arithmetic fibre
 multiplicity. Every stationary tail term and every core--tail cross term
 therefore factors through a space of dimension $O(T\log L)$, which proves the
-rank bound.
+rank bound independently of its direct-source coefficients.  For the full
+exact--model residual, Lemmas~\ref{lem:direct-carrier-square} and
+\ref{lem:stationary-symbol} give a uniform polylogarithmic coefficient-square
+and symbol-derivative loss; this is absorbed into the logarithmic constants
+below.
 
 For the complementary modes let $D=\dist(n,\mathcal I_j)>1$. Since
 $J_j\ge X_T=T/(2\pi L^{A_0})$,
@@ -480,13 +508,11 @@ $\mathcal I_j$ and sidebands $|r|\le R_j^{\rm sb}$. Then
 The estimate depends only on the geometric range of the retained low-sideband
 shifts and is independent of their coefficients or signs. It also holds for
 norm-convergent sums of such shifts, since every partial sum has range in the
-same fixed finite-dimensional edge space. In particular it applies to the
-low-sideband part of each additional translated projector
-$\Pi_{\Sigma_{{\rm tr},k}}$: by Lemma~\ref{lem:hlp-radial-variable}, taking its
-Mellin residue changes only the radial coefficient and leaves the same total
-integer carrier $M$; the smooth stationary amplitude is then split at
-$R_j^{\rm sb}$ exactly as above. The complementary sidebands are not part of
-this rank assertion.
+same fixed finite-dimensional edge space.  In the invariant-source final route
+this proposition is applied to the genuinely direct stationary carrier
+families, in particular the entire exact--model residual
+\eqref{eq:direct-exact-model-residual} with its full norm-summable HLP
+hierarchy. The complementary sidebands are not part of this rank assertion.
 \end{proposition}
 
 \begin{proposition}[Stable-core endpoint terms have finite rank]
@@ -524,15 +550,16 @@ coordinates. Thus
 \]
 \end{proof}
 
-Define $E_T^{\rm edge}$ to be the sum of the low-sideband centered stationary
-shift family, the high exact HLP low-sideband matrix $E_T^{\rm HLP,hi}$, the
-low-sideband parts of the additional translated-pole terms, the boundary-shell
-matrix $E_T^{\rm bdry}$, and the terminal logarithmic tail matrix
-$E_T^{\rm tail}$. The auxiliary outer-excess term is zero by
+Define $E_T^{\rm edge}$ to be the sum of the low-sideband stationary shifts of
+the entire direct exact--model residual \eqref{eq:direct-exact-model-residual}
+and of the other genuinely direct stationary sources, together with the
+boundary-shell matrix $E_T^{\rm bdry}$ and the terminal logarithmic tail matrix
+$E_T^{\rm tail}$.  Proposition~\ref{prop:edge-rank} applies to the full
+norm-convergent HLP sum because its range bound is independent of coefficients
+and signs.  The auxiliary outer-excess term is zero by
 Proposition~\ref{prop:trivial-outer-twist}; the horizontal packet-centre collars
-are handled only by $V_{\rm end}$. Lemma~\ref{lem:HLP-high-edge} and
-Propositions~\ref{prop:edge-rank}, \ref{prop:boundary-endpoint-rank}, and
-\ref{prop:terminal-log-tail} give
+are handled only by $V_{\rm end}$.  Propositions~\ref{prop:edge-rank},
+\ref{prop:boundary-endpoint-rank}, and \ref{prop:terminal-log-tail} give
 \begin{equation}
 \boxed{\rank E_T^{\rm edge}\ll T\log L=o(N_T).}
 \label{eq:total-edge-rank}

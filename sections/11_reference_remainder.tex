@@ -109,8 +109,9 @@ Inserting the factor $2L^{-2}$ in the normalized triangular primitive gives
 
 The final perturbation will use only fixed-$T$ compactness, but
 \eqref{eq:core-reference-floor} is used for the direct terminal-tail estimate.
-All $p$-dependence excluded above belongs only to the principal comparison
-\eqref{eq:principal-finiteT-comparison}.
+The reference metric itself contains no curvature parameter.  The finite-$T$
+$p$-dependent deformation of the completed model belongs instead to
+$R_T^{\rm par}$ and the AFE/stationary regular classes estimated below.
 
 The factor used in the shell normalization is fixed by the change from the
 normalized flat lag coordinate to the physical logarithmic coordinate. If
@@ -146,7 +147,9 @@ where, for integers $a,b\ge0$ with $a+b\le2$,
 \ll L^C J_j^{-a-b},
 \]
 and $H,H',H''$ are bounded by a fixed power of $L$ on the relevant compact
-interval. Then the diagonal derivative jump satisfies
+interval.  Here $H$ may be scalar-valued or may take values in the bounded
+operators on an auxiliary Hilbert output fibre, with the displayed derivative
+bounds interpreted in operator norm. Then the diagonal derivative jump satisfies
 \begin{equation}
 \boxed{
 J_{D_j}(t)=\omega_j(t)\,a_j(t,t)H'(\nu),
@@ -201,9 +204,9 @@ Since
 \]
 division by the reference weights leaves at most a fixed factor
 $L^{C'}$ (indeed the first class costs only $O(L/J_j)$). This proves
-\eqref{eq:shell-mixed-normalization}. The argument is unchanged for
-finite-dimensional operator coefficients after taking operator or
-Hilbert--Schmidt norms.
+\eqref{eq:shell-mixed-normalization}. The calculation is purely algebraic in the
+output operators, so it is unchanged for operator-valued $H$ and amplitudes;
+after finite compression one may take operator or Hilbert--Schmidt norms.
 \end{proof}
 
 \begin{lemma}[Two-variable primitive remainder criterion]
@@ -342,12 +345,328 @@ Thus global whitening costs only the fixed factor $C_\triangle$, proving
 \eqref{eq:primitive-HS-criterion}.
 \end{proof}
 
+\begin{lemma}[Operator lift of the finite-model HLZ contour error]
+\label{lem:HLZ-diagonal-operator-lift}
+Choose the arbitrary logarithmic exponent $A=A_{\rm diag}$ in
+Lemma~\ref{lem:packet-HLZ-diagonal} large enough to absorb all fixed packet,
+shift, curvature, shell, and Cauchy-residue derivative losses, and put
+\[
+\varepsilon_{\rm diag}
+:=L^{-A_{\rm diag}+C_{\rm diag}+o(1)}=o(1).
+\]
+Let $R_T^{\rm com}$ denote the scalar HLZ diagonalization error of the finite
+model source after the physical-shift Cauchy residues. After restriction to the
+stable core and compression to any retained packet space of dimension
+$d_T=O(N_T)$,
+\begin{equation}
+\boxed{
+\left\|\Gfr_T^{-1/2}R_T^{\rm com}\Gfr_T^{-1/2}\right\|_{S_2}^2
+\ll N_T\varepsilon_{\rm diag}^2=o(N_T).
+}
+\label{eq:HLZ-diagonal-relative-HS}
+\end{equation}
+No packet-dimension factor is lost before the final Hilbert--Schmidt conversion.
+\end{lemma}
+
+\begin{proof}
+Lemma~\ref{lem:model-HLZ-Fubini-lift} gives the error before packet pullback in
+the form of a packet-label-independent multiplication operator on the same
+one-sided output fibre as the finite model main term.  Its multiplier
+$\varepsilon_T$ satisfies
+\[
+\|\varepsilon_T\|_{\infty}
+\ll\varepsilon_{\rm diag}
+\]
+after all fixed derivatives and finite Cauchy residues.  Let
+$\mathscr C_T$ be the normalized output analysis from
+Lemma~\ref{lem:model-HLZ-Fubini-lift} and put
+$G_{\rm out}=\mathscr C_T^*\mathscr C_T$.  Then on the support of
+$G_{\rm out}$
+\[
+\|G_{\rm out}^{-1/2}\mathscr C_T^*M_{\varepsilon_T}\mathscr C_T
+G_{\rm out}^{-1/2}\|_{\op}
+\le\|\varepsilon_T\|_\infty.
+\]
+The local-to-global Gram comparison costs only the fixed factor
+$C_\triangle$. Compression to $d_T=O(N_T)$ dimensions and
+$\|B\|_{S_2}^2\le d_T\|B\|_{\op}^2$ therefore give
+\eqref{eq:HLZ-diagonal-relative-HS}.  No levelwise exact-HLP Perron deformation
+is used in this route.
+\end{proof}
+
+\begin{lemma}[Finite-$T$ parameter deformation is relative-regular]
+\label{lem:finiteT-parameter-regular}
+Let $R_T^{\rm par}$ be the finite-$T$ parameter defect in
+\eqref{eq:common-core-principal-congruence}.  After compression to the retained
+mean-zero space, its normalized diagonal jump and regular mixed kernel satisfy
+\begin{equation}
+\boxed{
+\sup_{j,t}\|\mathcal J^{\rm par}_{j,T}(t)\|_{\op}\ll L^{-1}=o(1),
+\qquad
+\iint\|\mathcal K^{\rm par}_{j,T}(t,s)\|_{S_2}^2\,dt\,ds
+\ll L^{C_{\rm par}}
+}
+\label{eq:finiteT-parameter-shell-bounds}
+\end{equation}
+for one fixed exponent $C_{\rm par}$.  Consequently
+\begin{equation}
+\boxed{
+\left\|\Gfr_T^{-1/2}R_T^{\rm par}\Gfr_T^{-1/2}\right\|_{S_2}^2
+=o(N_T).
+}
+\label{eq:finiteT-parameter-relative-HS}
+\end{equation}
+No blockwise mean-zero condition and no scalar variable-coefficient kernel in
+the final lag variables is used.
+\end{lemma}
+
+\begin{proof}
+Put
+\[
+H_{b,\tau}^{\rm par}(\rho)
+:=[p^2]\,\Delta_{b,\tau}(\rho;p),
+\]
+with $\Delta_{b,\tau}$ from \eqref{eq:finiteT-parameter-defect}.  The derivative
+bound \eqref{eq:finiteT-parameter-defect-derivatives} gives
+\begin{equation}
+\max_{0\le a\le2}\sup_{b,\tau,\rho}
+|\partial_\rho^aH_{b,\tau}^{\rm par}(\rho)|\ll L^{-1}.
+\label{eq:finiteT-parameter-profile-small}
+\end{equation}
+We now work shell by shell and keep the physical height inside the ordinary
+smooth stationary amplitude; we do not promote it to a new output coordinate.
+For one retained shell and one of the finitely many local source/refinement
+labels, let $\tau_{j,\alpha}(t,s)\asymp T$ denote the physical height sampled by
+the principal stationary parametrization.  Before differentiating, sum the
+slow height blocks at that physical height and set
+\begin{equation}
+\mathcal H^{\rm par}_{j,\alpha,T}(t,s;\rho)
+:=\sum_b\omega_b\!\left(\tau_{j,\alpha}(t,s)\right)
+ H^{\rm par}_{b,\tau_{j,\alpha}(t,s)}(\rho).
+\label{eq:finiteT-parameter-shell-profile}
+\end{equation}
+The partition was inserted linearly in the contour integral, so this is the
+actual block recombination: there are no products
+$\omega_b\omega_{b'}$.  Since the weights are nonnegative and sum to one,
+\eqref{eq:finiteT-parameter-profile-small} gives, uniformly in the shell
+variables and labels,
+\begin{equation}
+\boxed{
+\max_{0\le a\le2}
+\|\partial_\rho^a\mathcal H^{\rm par}_{j,\alpha,T}(t,s;\rho)\|_{\op}
+\ll L^{-1}.
+}
+\label{eq:finiteT-parameter-operator-profile}
+\end{equation}
+This statement is local in the stationary variables and makes no assertion
+that physical height is a function only of the final lag.
+
+After the logarithmic unitary and common stationary normalization, collect the
+fixed local labels in the existing finite shell output fibre.  The parameter
+defect is a finite sum of terms
+\begin{equation}
+D_{j,T}^{\rm par}(t,s)
+=\frac1L\,a_{j,T}(t,s)
+ \mathcal H^{\rm par}_{j,T}\!\left(t,s;
+ 1-\frac{|\log(J_j+t)-\log(J_j+s)|}{L}\right),
+\label{eq:finiteT-parameter-shell-kernel}
+\end{equation}
+with all common positive one-sided factors already included in the local
+reference map.  The dependence of $\tau_{j,\alpha}$ and of the block weights on
+$t,s$ is smooth.  Lemma~\ref{lem:stationary-symbol},
+\eqref{eq:principal-field-symbol-bound}, and
+\eqref{eq:height-partition-derivatives}, followed by the chain rule, give
+through the two derivatives used by the primitive identity
+\begin{equation}
+\|\partial_t^a\partial_s^b a_{j,T}(t,s)\|_{\op}
++\|\partial_t^a\partial_s^b
+  \mathcal H^{\rm par}_{j,T}(t,s;\rho)\|_{\op}
+\ll L^{C_{\rm par}}J_j^{-a-b},
+\qquad a+b\le2,
+\label{eq:finiteT-parameter-amplitude-symbol}
+\end{equation}
+uniformly for $\rho$ in the relevant compact interval.  Only a fixed
+polylogarithmic bound is asserted for the $t,s$ derivatives; their smallness is
+not needed.
+
+There is one stronger zeroth-order fact on the diagonal.  After the common
+positive one-sided weights are placed in $\mathcal W_T^{\rm loc}$ as in
+\eqref{eq:local-reference-Gram}, the remaining relative amplitude satisfies
+\begin{equation}
+\boxed{
+\sup_{j,t}\|a_{j,T}(t,t)\|_{\op}\ll1.
+}
+\label{eq:finiteT-parameter-diagonal-amplitude}
+\end{equation}
+Indeed $R_T^{\rm par}$ changes only the scalar completed profile
+\eqref{eq:finiteT-parameter-defect}; its two one-sided packet/stationary factors
+are the same as those used in the reference output.
+
+All $t,s$ dependence in $a_{j,T}$,
+$\tau_{j,\alpha}$, and $\omega_b(\tau_{j,\alpha})$ is smooth across the
+diagonal.  Hence their first derivatives have the same two one-sided limits.
+The only source of a diagonal derivative jump in
+\eqref{eq:finiteT-parameter-shell-kernel} is therefore the derivative of the
+absolute lag.  The calculation in
+Lemma~\ref{lem:shell-normalization-transfer} gives, after division by the exact
+reference density,
+\[
+\|\mathcal J^{\rm par}_{j,T}(t)\|_{\op}
+\ll
+\|a_{j,T}(t,t)\|_{\op}
+\|\partial_\rho\mathcal H^{\rm par}_{j,T}(t,t;1)\|_{\op}
+\ll L^{-1}.
+\]
+This is the first estimate in \eqref{eq:finiteT-parameter-shell-bounds}.  For
+the regular mixed derivative, Leibniz' rule together with
+\eqref{eq:finiteT-parameter-operator-profile} and
+\eqref{eq:finiteT-parameter-amplitude-symbol} gives the second estimate in
+\eqref{eq:finiteT-parameter-shell-bounds}.  In this step only a fixed
+polylogarithmic per-shell bound is required, not an $O(L^{-1})$ bound.
+
+Apply Lemma~\ref{lem:two-variable-primitive}.  The jump part contributes at
+most
+\[
+O(L^{-2}N_T)=o(N_T)
+\]
+to the squared relative Hilbert--Schmidt norm.  The regular mixed part is
+bounded by
+\[
+\sum_{j\in\mathcal J_T}L^{C_{\rm par}}
+\ll X_TL^{C_{\rm par}}
+=TL^{C_{\rm par}-A_0+O(1)}=o(N_T),
+\]
+after enlarging the fixed regular exponent $C_{\rm reg}$, before $A_0$ is
+chosen, so that it dominates $C_{\rm par}$ in
+\eqref{eq:acyclic-A0-choice}.  Finally
+\eqref{eq:local-global-Gram-comparison} transfers the shell-local estimate to
+$\Gfr_T$ with only the fixed factor $C_\triangle$.  This proves
+\eqref{eq:finiteT-parameter-relative-HS}.
+\end{proof}
+
+\begin{lemma}[The critical-$J$ AFE and polar discrepancy is relative-regular]
+\label{lem:J-AFE-relative-regular}
+Let $R_{J,\rm AFE}$ denote the difference between the exact smoothed
+critical-$J$ self contribution and the sharp full-fibre contribution retained
+in the frozen model.  Here ``exact'' includes all four remote residues
+$u=-s_1,1-s_1,-s_2,1-s_2$ in
+\eqref{eq:AFE-four-polar-residues}, with their sign in
+\eqref{eq:exact-shifted-product-AFE}.  Put
+\[
+\varepsilon_{\rm AFE}:=L^3/T+T^{-10}.
+\]
+On the retained mean-zero space,
+\begin{equation}
+\boxed{
+\sup_{j,t}\|\mathcal J^{J,\rm AFE}_{j,T}(t)\|_{\op}
+\ll\varepsilon_{\rm AFE}=o(1),
+\qquad
+\iint\|\mathcal K^{J,\rm AFE}_{j,T}(t,s)\|_{S_2}^2\,dt\,ds
+\ll L^{C_{\rm AFE}}
+}
+\label{eq:J-AFE-shell-regular}
+\end{equation}
+for a fixed exponent $C_{\rm AFE}$.  Consequently
+\begin{equation}
+\boxed{
+\left\|\Gfr_T^{-1/2}R_{J,\rm AFE}\Gfr_T^{-1/2}\right\|_{S_2}^2
+=o(N_T).
+}
+\label{eq:J-AFE-relative-HS}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Work on one retained shell after the common logarithmic unitary, but keep every
+physical-height factor inside the ordinary smooth stationary amplitude.  For a
+fixed local source/refinement label let
+$\tau_{j,\alpha}(t,s)\asymp T$ be the physical height sampled by the principal
+stationary parametrization, and define the local AFE error profile by inserting
+that height into the two-variable remainder
+$\mathcal R^J_{U,T}(A,B;\tau)$ of
+\eqref{eq:J-AFE-sharp-transfer} before the shell lag is substituted.  This
+remainder includes the four Gaussian-small polar terms.  After normalized
+curvature extraction write the resulting profile as
+\[
+\mathcal H^{J,\rm AFE}_{j,\alpha,T}(t,s;\rho;A,B,\tau).
+\]
+Lemma~\ref{lem:J-AFE-sharp-transfer}, in particular the joint gamma-ratio,
+dual-multiplier, and polar estimates
+\eqref{eq:AFE-joint-gamma-ratio}, \eqref{eq:AFE-joint-dual-factor}, and
+\eqref{eq:AFE-polar-Gaussian-bound}, gives uniformly in the shell variables
+\begin{equation}
+\boxed{
+\max_{a+b+c+m\le2}
+\|\partial_A^a\partial_B^b\partial_\rho^c(T\partial_\tau)^m
+ \mathcal H^{J,\rm AFE}_{j,\alpha,T}
+ (t,s;\rho;A,B,\tau)\|_{\op}
+\ll\varepsilon_{\rm AFE}.
+}
+\label{eq:J-AFE-local-profile-small}
+\end{equation}
+Here the $\rho$ derivatives are the independent endpoint derivatives in
+\eqref{eq:J-AFE-sharp-error}.  On imposing
+$\tau=2\pi e^{L\rho}$, total endpoint differentiation is
+$\partial_\rho+L\tau\partial_\tau$; through second order the sharper
+$O(L^j/T)$ estimate in \eqref{eq:J-AFE-sharp-error} is still bounded by
+$\varepsilon_{\rm AFE}$.  No characteristic-function replacement is made
+inside the shell argument, and curvature derivatives are allowed to hit
+$A$, $B$, the gamma ratios, and the dual multiplier separately.
+
+Collecting the fixed local labels in the existing shell output fibre, the AFE
+smoothing discrepancy is a finite sum of kernels
+\begin{equation}
+D^{J,\rm AFE}_{j,T}(t,s)
+=\frac1L\,a^J_{j,T}(t,s)
+ \mathcal H^{J,\rm AFE}_{j,T}\!\left(t,s;
+ 1-\frac{|\log(J_j+t)-\log(J_j+s)|}{L};
+ A,B,\tau_{j,\alpha}(t,s)\right).
+\label{eq:J-AFE-shell-kernel}
+\end{equation}
+The two one-sided packet/stationary factors are exactly those of the sharp
+critical-$J$ term.  Hence, after the common positive weights have been placed in
+$\mathcal W_T^{\rm loc}$, their relative diagonal amplitude is uniformly
+bounded as in \eqref{eq:finiteT-parameter-diagonal-amplitude}.  Moreover the
+$t,s$ dependence of the physical height, the height cutoff, and the stationary
+amplitude is smooth across the diagonal.  Lemma~\ref{lem:stationary-symbol},
+\eqref{eq:height-partition-derivatives}, and the chain rule give fixed
+polylogarithmic bounds for their first two $t,s$ derivatives.
+
+Consequently the only one-sided diagonal jump in
+\eqref{eq:J-AFE-shell-kernel} comes from differentiating the absolute lag.
+The calculation of Lemma~\ref{lem:shell-normalization-transfer}, together with
+\eqref{eq:J-AFE-local-profile-small}, gives
+\[
+\|\mathcal J^{J,\rm AFE}_{j,T}(t)\|_{\op}
+\ll\varepsilon_{\rm AFE}.
+\]
+For the regular mixed derivative, Leibniz' rule uses the same fixed stationary
+symbol bounds and the endpoint/curvature derivatives in
+\eqref{eq:J-AFE-local-profile-small}; in particular, the chain rule may
+differentiate the physical height and the dual multiplier.  After reference
+normalization it yields a fixed polylogarithmic per-shell Hilbert--Schmidt bound.
+The four polar profiles are smaller than every power of $T$ with the same
+derivatives and are therefore absorbed by the displayed $T^{-10}$ term.  This proves
+\eqref{eq:J-AFE-shell-regular}.  Notice that physical height has remained a
+smooth shell parameter throughout; no extra continuum output fibre and no
+heightwise mean-zero constraint has been introduced.
+
+Lemma~\ref{lem:two-variable-primitive} now bounds the squared relative norm by
+\[
+O(\varepsilon_{\rm AFE}^2N_T)
++O(X_TL^{C_{\rm AFE}})=o(N_T),
+\]
+after $C_{\rm reg}$ is chosen to dominate $C_{\rm AFE}$ before $A_0$ in
+\eqref{eq:acyclic-A0-choice}.  The local-to-global Gram comparison finishes the
+proof.
+\end{proof}
+
 \begin{proposition}[Relative Hilbert--Schmidt bound for the regular remainder]
 \label{prop:regular-ledger}
-After the complete principal cluster has been extracted and every additional
-nonprincipal translated pole has been separated from it and subjected to the
-same direct sideband split, the regular remainder is a sum of mutually exclusive
-pieces. After quadratic-form compression to $\Pret$, it
+After the finite model principal source has been extracted and the exact--model
+difference has been retained as the direct residual
+\eqref{eq:direct-exact-model-residual}, the regular remainder is a sum of
+mutually exclusive pieces. After quadratic-form compression to $\Pret$, it
 satisfies
 \begin{equation}
 \boxed{
@@ -374,27 +693,27 @@ previously established lag-profile derivative bounds into these shell-normalized
 quantities. All remaining fixed losses are powers of $L$ and are included in
 the exponents chosen in Section~\ref{sec:retained}.
 
-\emph{(i) Exact/model local discrepancy.}
-The matrix $R_T^{\rm loc}$ is the low-level exact/model discrepancy defined by
-\eqref{eq:local-model-error}; it includes the model truncation tail
-\eqref{eq:model-truncation-tail}. Its shell-local primitive normalization and relative estimate are exactly
-\eqref{eq:local-HS}. The exact levels $k>K_0$
-are not part of class~(i): Lemma~\ref{lem:HLP-high-edge} assigns their low
-sidebands to $E_T^{\rm edge}$ and their high sidebands to class~(vii).
+\emph{(i) No exact-HLP local-projection remainder.}
+In the final source route no exact HLP level is locally projected and no
+exact/leading/model telescope is inserted into the contour identity.  Hence the
+former class $R_T^{\rm loc}$ is absent from the final decomposition.  The
+local-Laurent comparison \eqref{eq:local-model-error} remains available only in
+the optional stronger exact-HLP route and contributes nothing to
+$R_T^{\rm tri}$ here.
 
-\emph{(ii) Low-level freezing of the slow half-self factor.}
-This class contains only the locally projected hierarchy $k\le K_0$; the exact
-levels $k>K_0$ are never frozen and are owned by Lemma~\ref{lem:HLP-high-edge}.
-By Lemma~\ref{lem:block-freezing}, the normalized jump and mixed kernel satisfy
+\emph{(ii) Slow self-freezing discrepancy.}
+The exact algebraic split \eqref{eq:direct-model-source-split} leaves only the
+scalar self difference $f-F_b$ outside the finite model and the direct residual;
+no HLP level is frozen.  By the unconditional critical-$J$ estimate
+\eqref{eq:self-freezing-kernel}, the normalized jump and mixed kernel satisfy
 \[
 \delta_T\ll L^{-D-1+C_{\rm fr}}=o(1),
 \qquad
 \|\mathcal K_{\rm freeze}\|_{L^2(S_2)}
 \ll L^{-D-1+C_{\rm fr}}=o(1).
 \]
-The bounded overlap of the smooth height partition preserves these estimates.
-Thus \eqref{eq:primitive-HS-criterion} applies to the complete block-freezing
-error.
+The bounded overlap of the smooth height partition preserves these estimates,
+so \eqref{eq:primitive-HS-criterion} applies.
 
 \emph{(iii) Hardy-gauge $f'$ source.}
 This class is exactly $R_{f'}^{\rm src}$ from \eqref{eq:fprime-source}, including
@@ -427,16 +746,45 @@ from the finite pullbacks and mixed derivatives. Hence
 \]
 No further decay order is chosen later.
 
-\emph{(v) First stationary and Stirling corrections to the lag-profile terms.}
-The finite-$T$ principal deformations of $\lambda$ and the common endpoint
-remain inside $P_T$ and are compared with $A_T^G$ only in
-\eqref{eq:principal-finiteT-comparison}; the exact/model Laurent discrepancy
-is already class (i). What remains here consists only of the first omitted
-stationary-phase and Stirling coefficients attached to the same local lag
-profiles. By the stationary expansion in Lemma~\ref{lem:stationary-symbol} and
-Stirling's formula, each carries an additional factor $T^{-1}L^C$ after the
-fixed derivatives. Lemma~\ref{lem:shell-normalization-transfer}
-therefore gives
+\emph{(v) Finite-$T$ parameter deformation, first stationary/Stirling
+corrections, and the critical-$J$ AFE smooth-to-sharp and polar remainder.}
+The finite-$T$ parameters $\lambda(\tau),\mu_b$ and the moving common endpoint
+do not remain inside $P_T$.  Their exact sharp-model difference from the frozen
+profile is $R_T^{\rm par}$ of \eqref{eq:common-core-principal-congruence}, and
+Lemma~\ref{lem:finiteT-parameter-regular} gives directly
+\begin{equation}
+\boxed{
+\left\|\Gfr_T^{-1/2}R_T^{\rm par}\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T).
+}
+\label{eq:finiteT-parameter-ledger}
+\end{equation}
+This estimate is performed shell-locally with the physical-height dependence
+retained inside the smooth stationary amplitude, so it does not use a
+constant-parameter stability lemma or a global variable-coefficient lag
+kernel.
+
+The exact--model difference itself is not part of this class: it remains a
+direct one-$\chi$ family and is split by sidebands in class~(vii).  The first
+omitted stationary-phase and Stirling coefficients attached to the finite model
+lag profiles carry an additional factor $T^{-1}L^C$ after the fixed derivatives,
+by Lemma~\ref{lem:stationary-symbol} and Stirling's formula.
+
+The other completed-model term in this class is the critical-$J$
+smooth-to-sharp discrepancy together with the four remote AFE residues.
+Lemma~\ref{lem:J-AFE-relative-regular}, based on
+the exact four-residue AFE, explicit Mellin complement, joint gamma-ratio
+estimates, and dual-multiplier derivatives of
+Lemma~\ref{lem:J-AFE-sharp-transfer}, gives
+\[
+\left\|\Gfr_T^{-1/2}R_{J,\rm AFE}\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T).
+\]
+This estimate, like the parameter-defect estimate, keeps the physical-height
+dependence inside the smooth shell amplitude until the primitive normalization
+has been applied.  Thus neither the finite-$T$ parameter deformation nor the
+AFE smoothing/polar error is silently absorbed into the positive principal kernel.
+
+For the stationary/Stirling part,
+Lemma~\ref{lem:shell-normalization-transfer} gives
 \[
 \|\mathcal J_{\rm corr}\|_{\op}\ll T^{-1}L^C=o(1),
 \qquad
@@ -446,8 +794,13 @@ The order-one complementary pole-free direct source is not included in this
 class; it is treated by the sideband decomposition in (vii).
 
 \emph{(vi) Nonstationary and smooth height-partition terms.}
-Differentiate first. On every retained nonboundary shell $j\in\mathcal J_T$,
-use the integration-by-parts order $N$ and buffer exponent $B$ fixed in
+The height-symbol argument in Lemma~\ref{lem:stationary-symbol}, before the
+stationary expansion is taken, is uniform for the complete summed HLP
+hierarchy; together with Lemma~\ref{lem:direct-carrier-square} it gives the same
+fixed derivative and coefficient-square bounds for the direct residual in the
+nonstationary sector.  Differentiate first. On every retained nonboundary shell
+$j\in\mathcal J_T$, use the integration-by-parts order $N$ and buffer exponent
+$B$ fixed in
 Section~\ref{sec:retained}. On a retained boundary shell meeting
 $\{1,X_T\}$, first remove the finite endpoint sum
 \eqref{eq:boundary-shell-jets}; Proposition~\ref{prop:boundary-endpoint-rank}
@@ -470,23 +823,28 @@ Section~\ref{sec:retained} gives
 }
 \label{eq:nonstat-relative-HS}
 \end{equation}
-For the slow height decomposition choose a smooth partition
-$\sum_b\omega_b(t)=1$ on scale $H=T/L^D$ and insert it in the linear contour
-integral before stationary phase. The leading pieces sum exactly to the
-original amplitude. Every differentiated partition factor satisfies
+For the slow height decomposition use the partition fixed in
+\eqref{eq:height-principal-partition}--\eqref{eq:height-partition-derivatives}
+and insert it in the linear contour integral before stationary phase.  The
+leading pieces sum exactly to the original amplitude because
+$\sum_b\omega_b=1$.  Every differentiated partition factor satisfies
 \[
 \partial_t^r\omega_b(t)=O_r(H^{-r})
 =O_r(T^{-r}L^{Dr}),
 \]
-so the non-leading partition terms have zero principal cusp and satisfy the
-same regular criterion. No block-boundary packet deletion is introduced.
+so the non-leading differentiated-partition terms have zero principal cusp and
+satisfy the same regular criterion.  No affine-reproduction identity is needed
+in the final proof, and no block-boundary packet deletion is introduced.
 
-\emph{(vii) High sidebands of the direct one-$\chi$ source.}
-This class contains the high sidebands of every stable direct one-$\chi$
-family: exact HLP levels $k>K_0$, the pole-free $\mathcal D_k^{\rm dir}$ and
-transition factors, and additional translated principal parts. The auxiliary
-outer-excess family is zero for the invariant source. Lemmas~\ref{lem:stationary-symbol} and
-\ref{lem:direct-carrier-square} cover all these families. On
+\emph{(vii) High sidebands of the direct one-$\chi$ residual.}
+This class contains the high sidebands of the entire direct exact--model
+residual \eqref{eq:direct-exact-model-residual}, including the full
+norm-summable HLP hierarchy, the ordinary $P$ term, and the translated
+coefficient shift $-P(s-2/L)$, together with the other genuinely direct
+stationary sources.  No exact HLP level has been locally projected.  The
+auxiliary outer-excess family is zero for the invariant source.
+Lemmas~\ref{lem:stationary-symbol} and \ref{lem:direct-carrier-square} cover all
+the direct families occurring here. On
 $I_j=[J_j,J_j+1]$ write
 \[
 a_{j,m}(y;p)=\sum_{r\in\mathbb Z}\widehat a_{j,m}(r;p)e(ry).
@@ -554,49 +912,24 @@ less than $-3$, so the right side is $o(TL)=o(N_T)$. No derivative order is
 chosen at this stage. This piece has no diagonal jump because the local symbol
 is $C^\infty$.
 
-\emph{(viii) Local holomorphic complement.}
-After the common and translated principal parts are removed, the local Mellin
-source is holomorphic inside the closed contour $\Gamma_L$. Its local contour
-contribution therefore vanishes identically by
-\eqref{eq:local-holomorphic-zero}. The smooth transition to the complementary pole-free contour belongs to the
-direct one-$\chi$ source whose high sidebands are class (vii), so this step
-contributes no additional remainder.
+\emph{(viii) No local holomorphic/Perron complement.}
+The final route never moves an exact HLP Dirichlet series to a local Perron
+representation.  Hence there is no exact low-level holomorphic complement and
+no levelwise Perron connector in the source ledger.  This class is identically
+zero.
 
-\emph{(ix) HLZ diagonalization error.}
-Choose the arbitrary logarithmic exponent $A=A_{\rm diag}$ in
-\eqref{eq:packet-HLZ-error}. Under the trivial outer-twist specialization of
-Proposition~\ref{prop:trivial-outer-twist}, the superlogarithmic term
-$L^{O(1)}T^{-2/\log_3T}$ is smaller than every fixed negative power of $L$.
-The error in Lemma~\ref{lem:packet-HLZ-diagonal} remains in the common
-lag-profile channel: after the diagonal Mellin sum has been taken it has no
-independent stationary carrier index.  Hence its fixed $(\rho,p)$ derivatives
-produce a scalar smooth lag-profile error on each fixed local-source/refinement
-component.  The number of such components is only polylogarithmic, and its
-Hilbert--Schmidt square-root loss is included in $C_{\rm diag}$ by definition.
-Consequently the packet-stable lemma gives
+\emph{(ix) Finite-model scalar HLZ contour error.}
+This class is controlled at the operator level by
+Lemma~\ref{lem:HLZ-diagonal-operator-lift}.  The common-core congruence of
+Proposition~\ref{prop:common-core-congruence} and the Fubini lift of
+Lemma~\ref{lem:model-HLZ-Fubini-lift} place the packet polarization in the
+analysis map before the scalar error is applied. Thus, with $R_T^{\rm com}$
+denoting only the finite-model HLZ diagonalization error,
 \[
-\varepsilon_{\rm diag}
-\ll L^{-A_{\rm diag}+C_{\rm diag}+o(1)}=o(1),
+\left\|\Gfr_T^{-1/2}R_T^{\rm com}\Gfr_T^{-1/2}\right\|_{S_2}^2
+\ll N_T\varepsilon_{\rm diag}^2=o(N_T).
 \]
-and Lemma~\ref{lem:shell-normalization-transfer} yields
-\[
-\delta_T\ll\varepsilon_{\rm diag},
-\qquad
-\|\mathcal K_{j,\rm diag}\|_{L^2(S_2)}
-\ll \varepsilon_{\rm diag}
-\]
-on one shell.  In particular there is no factor $d_j$: such a factor belongs to
-the direct one-$\chi$ carrier families of class~(vii), not to the completed
-diagonal error.
-Consequently
-\[
-\sum_{j\in\mathcal J_T}
-\|\mathcal K_{j,\rm diag}\|_{L^2(S_2)}^2
-\ll X_TL^{-2A_{\rm diag}+2C_{\rm diag}+o(1)}
-=o(N_T)
-\]
-by $A_{\rm diag}>C_{\rm diag}+10$. The error has no extracted local pole, so
-Lemma~\ref{lem:two-variable-primitive} applies with these bounds.
+There is no levelwise exact-HLP Perron contour error in the final route.
 
 \emph{(x) Terminal logarithmic tail.}
 The nonstationary part of the complementary band $W_T<u\le L$ is exactly
@@ -604,35 +937,42 @@ $R_T^{\rm tail}$ of Proposition~\ref{prop:terminal-log-tail}, and already
 satisfies the required relative Hilbert--Schmidt bound. Its stationary and
 endpoint parts belong only to $E_T^{\rm edge}$.
 
-Class (i) has the relative bound \eqref{eq:local-HS}. For (ii)--(v) and the
-smooth height-partition corrections in (vi), the squared relative
-Hilbert--Schmidt contribution is $L^{C_{\rm reg}+o(1)}$ per shell, so the total
-is
+Class (i) is absent and class (viii) vanishes. For (ii)--(v) and the smooth
+height-partition corrections in (vi), the squared relative Hilbert--Schmidt
+contribution is $L^{C_{\rm reg}+o(1)}$ per shell, so the total is
 \[
 \ll X_TL^{C_{\rm reg}+o(1)}
 =T L^{C_{\rm reg}-A_0+o(1)}=o(N_T)
 \]
 by \eqref{eq:acyclic-A0-choice}. The nonstationary interior of (vi) is accounted
-for only by \eqref{eq:nonstat-relative-HS}; its endpoint part is not a regular
-term at all and belongs to $E_T^{\rm bdry}$ by
-Proposition~\ref{prop:boundary-endpoint-rank}. Class (vii) has
-\eqref{eq:high-sideband-one-shell} and its global sum, while (viii) vanishes.
-The primitive-controlled jump bounds are uniformly $o(1)$, so
-Lemma~\ref{lem:two-variable-primitive} applies to those classes. Adding the
-separately controlled classes (i), the nonstationary part of (vi), (vii), (ix),
-and (x) gives squared Hilbert--Schmidt norm $o(N_T)$, proving
-\eqref{eq:regular-HS}.
+for by \eqref{eq:nonstat-relative-HS}; its endpoint part belongs instead to
+$E_T^{\rm bdry}$ by Proposition~\ref{prop:boundary-endpoint-rank}. Class (vii)
+has \eqref{eq:high-sideband-one-shell} and its global sum, and class (ix) has
+\eqref{eq:HLZ-diagonal-relative-HS}.  The primitive-controlled jump bounds in
+(ii)--(v) are uniformly $o(1)$, so Lemma~\ref{lem:two-variable-primitive}
+applies.  Adding these classes together with (vi), (vii), (ix), and (x) gives
+squared Hilbert--Schmidt norm $o(N_T)$, proving \eqref{eq:regular-HS}.
 \end{proof}
 
 \begin{proposition}[Finite-$T$ decomposition of the contour form]
 \label{prop:source-ledger}
-For the same normalized contour matrix $A_T$ of
-\eqref{eq:contour-form}, the exact source evaluation has the identity
+For the normalized contour matrix $A_T$ of \eqref{eq:contour-form}, let $P_T$ be
+Definition~\ref{def:PT}, let $E_T^{\rm edge}$ be the explicitly assembled edge
+matrix of \eqref{eq:total-edge-rank}, and define the residual operator by the
+exact algebraic difference
 \begin{equation}
-\boxed{A_T=P_T+E_T^{\rm edge}+R_T^{\rm tri},}
+\boxed{R_T^{\rm tri}:=A_T-P_T-E_T^{\rm edge}.}
+\label{eq:tri-remainder-definition}
+\end{equation}
+Then, identically,
+\begin{equation}
+\boxed{A_T=P_T+E_T^{\rm edge}+R_T^{\rm tri}.}
 \label{eq:source-ledger}
 \end{equation}
-where, after quadratic-form compression to $\Pret$ of
+Moreover the sequential source splits in the proof below identify this
+$R_T^{\rm tri}$ with the mutually exclusive regular classes of
+Proposition~\ref{prop:regular-ledger}; hence, after quadratic-form compression
+to $\Pret$ of
 \eqref{eq:retained-space},
 \begin{align}
 P_T|_{\Pret}&\succeq c_0\,\Gfr_T|_{\Pret},\notag\\
@@ -644,32 +984,80 @@ P_T|_{\Pret}&\succeq c_0\,\Gfr_T|_{\Pret},\notag\\
 \right\|_{S_2}^2
 &=o(N_T).
 \end{align}
-Here $P_T$ is Definition~\ref{def:PT}, $E_T^{\rm edge}$ is the edge matrix
-of \eqref{eq:total-edge-rank}, and $R_T^{\rm tri}$ is the regular remainder of
-Proposition~\ref{prop:regular-ledger}. Their disjointness is fixed first by the level split at $K_0$: for
-$k\le K_0$ use \eqref{eq:canonical-local-decomp}, while
-Lemma~\ref{lem:HLP-high-edge} splits $k>K_0$ into its low- and high-sideband
-parts. The signed passage from the truncated leading family to the full model
-is \eqref{eq:model-truncation-tail}. Independently, the geometric source is
-split at the stable logarithmic core and its terminal complement. By
-Proposition~\ref{prop:trivial-outer-twist}, there is no additional outer
-arithmetic annulus in the invariant source.
+The point of the definition \eqref{eq:tri-remainder-definition} is that the
+operator identity is not inferred from an informal ledger.  What remains to be
+proved is the identification of this algebraic difference with the estimated
+regular classes.  The ownership order is fixed as follows.  On the original
+absolute-convergence right edge use the exact source split
+\eqref{eq:direct-model-source-split}.  In the finite model, first perform the
+residue-preserving local-height HLZ rescaling and the critical-$J$
+smooth-to-sharp transfer.  The resulting sharp completed model is then split
+exactly as $P_T+R_T^{\rm par}$ by
+\eqref{eq:common-core-principal-congruence}.  Thus only the fully frozen part is
+assigned to $P_T$; the parameter defect and the AFE smoothing discrepancy
+belong only to regular class~(v).  The entire exact--model residual remains a
+direct physical one-$\chi$ family; its low sidebands belong to
+$E_T^{\rm edge}$ and its high sidebands to regular class~(vii).  The scalar self
+difference $f-F_b$ belongs only to regular class~(ii), while the finite-model
+scalar HLZ error belongs only to class~(ix).  No exact HLP local projector,
+exact/model Laurent telescope, or levelwise Perron connector is used.
+Independently, the physical logarithmic source is split into the stable core
+and its terminal complement. By Proposition~\ref{prop:trivial-outer-twist},
+there is no additional outer arithmetic annulus in the invariant source.
 \end{proposition}
 
 \begin{proof}
-Start from the exact same-form identity \eqref{eq:same-form-identity} and the
-right-edge split \eqref{eq:J-I-source-split}. Proposition~\ref{prop:trivial-outer-twist}
-first fixes all auxiliary HLZ outer indices at their trivial values, so no outer
-arithmetic annulus or outer-translation source is present. On the stable
-logarithmic band, Proposition~\ref{prop:uniform-twisted-replacement} gives the
-principal term, the low-sideband edge pieces of every direct one-$\chi$ family,
-and the complementary high-sideband/regular stationary pieces. The separated
-$f'$, horizontal, and nonstationary pieces are classes (iii), (iv), and (vi) of
-Proposition~\ref{prop:regular-ledger}. Finally split $0\le u\le L$ at $W_T$;
-the complementary terminal band is \eqref{eq:terminal-log-tail}. These source
-classes are disjoint and exhaust the contour source, proving
-\eqref{eq:source-ledger}.
+The identity \eqref{eq:source-ledger} itself is immediate from the definition
+\eqref{eq:tri-remainder-definition}.  We verify that this algebraic remainder
+is exactly the sum estimated in Proposition~\ref{prop:regular-ledger}.
 
-The three estimates are respectively \eqref{eq:principal-floor},
-\eqref{eq:total-edge-rank}, and \eqref{eq:regular-HS}.
+Start with the exact same-form identity \eqref{eq:same-form-identity} and the
+matrix-level right/left decomposition \eqref{eq:J-I-source-split}.  On the
+right edge, \eqref{eq:exact-fprime-separation} is an algebraic identity: the
+principal factor $\mathcal C\widehat H_{\rm ex}$ and the $f'$ source are
+separated without approximation.  Horizontal and nonstationary pieces are
+then separated by the literal contour and stationary/nonstationary partitions,
+so their sum with the stationary right-edge source is still the original
+matrix.
+
+On each retained stable height block use the exact identity
+\eqref{eq:direct-model-source-split}.  For the finite model term, the self face
+is treated by the critical-$J$ identity and the logarithmic-derivative faces by
+the scalar three-$Z$ master.  Lemma~\ref{lem:HLZ-local-height-rescaling} first
+puts the three-$Z$ diagonal on the local physical scale, and
+Lemma~\ref{lem:J-AFE-sharp-transfer} splits the critical-$J$ face into its sharp
+full fibre plus its smoothing discrepancy.  Proposition~\ref{prop:common-core-congruence}
+then splits the sharp completed model as $P_T+R_T^{\rm par}$; the former is the
+fully frozen positive term, while $R_T^{\rm par}$ and the AFE discrepancy are
+assigned exactly once to regular class~(v).  Lemma~\ref{lem:model-HLZ-Fubini-lift}
+keeps the scalar HLZ contour error of the three-$Z$ faces in regular class~(ix).
+The scalar difference $f-F_b$ is assigned exactly once to class~(ii).
+
+The remaining source is precisely $\Delta H_{\rm dir}$.  By
+Proposition~\ref{prop:direct-exact-model-residual} its complete HLP hierarchy
+and the two $P$-terms retain the original direct physical carrier.  Apply the
+literal disjoint sideband indicators $|r|\le R_j^{\rm sb}$ and
+$|r|>R_j^{\rm sb}$ to this whole norm-convergent family.  The low sidebands
+belong exactly once to $E_T^{\rm edge}$, while the high sidebands belong exactly
+once to regular class~(vii).  No exact HLP term is also represented inside
+$P_T$.  The endpoint integrations by parts likewise split into their finite jet
+terms and an interior remainder, assigning the former exactly once to
+$E_T^{\rm bdry}$.
+
+Independently split the physical logarithmic coordinate at $W_T$.  The core
+piece is the one used in $P_T$ and in the preceding stable-band decomposition;
+Proposition~\ref{prop:terminal-log-tail} partitions the complementary band into
+its stationary edge, boundary, and nonstationary regular pieces, including the
+core--tail cross terms stated there.  Proposition~\ref{prop:trivial-outer-twist}
+sets the auxiliary outer indices to $1$, so no fourth arithmetic annulus is
+left over.
+
+Every step above is either an exact algebraic identity, a contour identity with
+its connector term retained, or a disjoint index/support partition.  Hence the
+pieces assigned to $P_T$ and $E_T^{\rm edge}$ leave precisely the ten regular
+classes enumerated in Proposition~\ref{prop:regular-ledger}.  By
+\eqref{eq:tri-remainder-definition} their sum is $R_T^{\rm tri}$.  The three
+estimates in the proposition are therefore
+\eqref{eq:principal-floor}, \eqref{eq:total-edge-rank}, and
+\eqref{eq:regular-HS}, respectively.
 \end{proof}

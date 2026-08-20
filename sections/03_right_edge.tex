@@ -17,35 +17,106 @@ L_1(s)+L_1(1-s)=\frac{\chi'}{\chi}(s),
 \label{eq:Z1-log-FE}
 \end{equation}
 The two vertical sides are related by the Hermitian reflection
-$\iota(s):=1-\bar s$, which preserves the positive height and maps the left
-vertical side onto the right one. The holomorphic map $s\mapsto1-s$ alone
-would reverse the sign of the height and is not used as a geometric contour
-substitution. By \eqref{eq:hardy-gauge-reflection}, the curvature and packet
-polarizations on the left are the adjoints of their values at $\iota(s)$.
-Because the left boundary has the opposite orientation, its pullback to the
-upward right side carries the scalar factor
+$\iota(s):=1-\bar s$, which preserves positive height.  The holomorphic map
+$s\mapsto1-s$ alone reverses the sign of the height and is not used as a
+geometric contour substitution.  We keep the complex conjugation in the
+reflection formula explicitly.  Conjugation symmetry and
+\eqref{eq:Z1-log-FE} give
+\begin{equation}
+\boxed{
+-L_1(1-\bar s)
+=\overline{\,L_1(s)-\frac{\chi'}{\chi}(s)\,}.
+}
+\label{eq:L1-hermitian-reflection}
+\end{equation}
+Thus one must not replace $1-\bar s$ by $1-s$ at the scalar level.
+
+The cancellation becomes transparent only for the complete Hermitian
+integrand.  Put
 \[
--\overline{L_1(1-\bar s)}=-L_1(1-s)
-=L_1(s)-\frac{\chi'}{\chi}(s),
+H(s):=f(s)+L_1(s)=\frac{\mathscr Z''}{\mathscr Z'}(s).
 \]
-where the last equality is \eqref{eq:Z1-log-FE}. Hence the vertical
-contribution is exactly
+Differentiating \eqref{eq:hardy-gauge-reflection} gives
+\[
+\mathscr Z'(\iota(s))=-\overline{\mathscr Z'(s)},
+\qquad
+\mathscr Z''(\iota(s))=\overline{\mathscr Z''(s)},
+\]
+and hence
+\begin{equation}
+\boxed{H(\iota(s))=-\overline{H(s)}.}
+\label{eq:hardy-source-adjoint}
+\end{equation}
+The same reflection law gives
+\begin{equation}
+\boxed{
+C_{\mathscr Z}^{(p)}(\iota(s))
+=\overline{C_{\mathscr Z}^{(p)}(s)},
+\qquad
+\mathcal B_{v,w}(\iota(s))
+=\overline{\mathcal B_{w,v}(s)}.
+}
+\label{eq:curvature-packet-adjoint}
+\end{equation}
+Indeed $z(\iota(s))=\overline{z(s)}$, and for a real shift $a$ the whole
+shifted Hardy product satisfies
+\[
+\mathscr Z(\iota(s)+a)\mathscr Z(\iota(s)-a)
+=\overline{\mathscr Z(s+a)\mathscr Z(s-a)};
+\]
+therefore the same identity survives the curvature extraction at $a=0$.
+
+Let $\Gamma_c^+$ denote the right vertical side oriented upward and let
+$\Gamma_{1-c}^-$ denote the left vertical side with its boundary orientation,
+namely downward.  The reflection $\iota$ maps the underlying right segment onto
+the underlying left segment but reverses these chosen orientations.  Define
+\[
+\mathfrak I_H(v,w)
+:=\frac1{2\pi i}\int_{\Gamma_c^+}
+H(s)C_{\mathscr Z}^{(p)}(s)\mathcal B_{v,w}(s)\,ds,
+\qquad
+\mathfrak I_{\rm left}(v,w)
+:=\frac1{2\pi i}\int_{\Gamma_{1-c}^-}
+H(s)C_{\mathscr Z}^{(p)}(s)\mathcal B_{v,w}(s)\,ds.
+\]
+Then parametrizing $s=c+it$ and using
+\eqref{eq:hardy-source-adjoint}--\eqref{eq:curvature-packet-adjoint} gives the
+exact matrix-adjoint identity
+\begin{equation}
+\boxed{
+\mathfrak I_{\rm left}(v,w)
+=\overline{\mathfrak I_H(w,v)}
+=\mathfrak I_H^*(v,w).
+}
+\label{eq:right-left-matrix-adjoint}
+\end{equation}
+The minus sign in \eqref{eq:hardy-source-adjoint} is exactly cancelled by the
+reversed orientation of the left boundary.
+
+Now expand $H=f+L_1$ only after this matrix identity has been established.
+Writing $I_{\rm right}$ for the right-edge form with scalar source $L_1$ and
+\[
+J_{\rm arch}:=I_f+I_f^*,
+\]
+where $I_f$ is the same right-edge form with scalar source $f$, the two vertical
+sides contribute exactly
 \begin{equation}
 \boxed{
 I_{\rm right}+I_{\rm right}^*+J_{\rm arch},
 \qquad
-J_{\rm arch}\text{ has scalar source }
--\frac{\chi'}{\chi}=2f.
+2f=-\frac{\chi'}{\chi}.
 }
 \label{eq:J-I-source-split}
 \end{equation}
-Here $I_{\rm right}$ contains the right-edge logarithmic derivative $L_1$ and
-all stationary arithmetic information. No $L_1$ contour is pushed through an
-interior stationary zero. The separate archimedean self source is holomorphic
-in the high rectangle and may be moved by Cauchy's theorem. For the completed
-Hermitian representation we distribute $J_{\rm arch}$ equally between the two
-adjoint orientations; hence each completed right-edge orientation carries the
-scalar source $f+L_1$.
+Thus $J_{\rm arch}$ consists of one $f$-half on each adjoint orientation; in the
+combined Hermitian bookkeeping this is precisely the full archimedean self
+source $2f=-\chi'/\chi$.  The final decomposition is therefore unchanged, but
+its justification is now matrix-level rather than a scalar shortcut that
+obscures the conjugation and adjoint structure.  Here $I_{\rm right}$ contains all stationary arithmetic
+information. No $L_1$ contour is pushed through an interior stationary zero.
+The separate archimedean self source is holomorphic in the high rectangle and
+may be moved by Cauchy's theorem.  Equivalently, each completed right-edge
+orientation carries the scalar source $f+L_1$.
 
 For bounded normalized curvature $p$, put $a=p/L$ and let
 $\mathcal B_{v,w}(s)$ denote the holomorphic packet-polarization multiplier.
@@ -83,9 +154,11 @@ R_{{\rm hor},T}(a)
  -\int_{\mathcal H_T^-}\Phi_J(s;a)\,ds.
 \]
 The reflected Hermitian orientation gives the adjoint identity. Summing the two
-orientations doubles $\Phi_J=f\mathcal S_a$ and therefore reconstructs the full
-self source $-\chi'/\chi=2f$ in \eqref{eq:J-I-source-split}, with the
-corresponding doubled right-edge and horizontal terms. Because all fixed $p$-derivatives remain holomorphic in
+orientations forms the Hermitian pair $\mathcal J_f+\mathcal J_f^*$; in the
+symmetric source bookkeeping this is one copy of $f$ on each orientation and
+therefore reconstructs the full self source $-\chi'/\chi=2f$ in
+\eqref{eq:J-I-source-split}, together with the corresponding adjoint pair of
+right-edge and horizontal terms. Because all fixed $p$-derivatives remain holomorphic in
 the same rectangle,
 \begin{equation}
 \partial_p^j\mathcal J_{{\rm crit},T}(p)

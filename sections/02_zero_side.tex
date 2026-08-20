@@ -158,9 +158,20 @@ $e^{-2\pi i n_ju/L_{\rm pkt}}$ are orthogonal; since
 $|\phi_L|^2=L_{\rm pkt}^{-1}$ there, this contributes exactly
 $2\pi\sum_j|c_j|^2$ and proves the lower bound. The full support has length
 $L_{\rm pkt}+2\Delta<2L_{\rm pkt}$ for large $T$. By splitting it into at most
-three intervals of length at most $L_{\rm pkt}$ and using the same period
-orthogonality, together with $|\phi_L|^2\le L_{\rm pkt}^{-1}$, its total
-contribution is at most $6\pi\sum_j|c_j|^2$.
+three intervals $I$ of length at most $L_{\rm pkt}$, choose for each $I$ an
+interval $J\supset I$ of length exactly $L_{\rm pkt}$.  The integrand is
+nonnegative, so
+\[
+\int_I\left|\sum_jc_je^{-2\pi i n_ju/L_{\rm pkt}}\right|^2du
+\le
+\int_J\left|\sum_jc_je^{-2\pi i n_ju/L_{\rm pkt}}\right|^2du
+=L_{\rm pkt}\sum_j|c_j|^2.
+\]
+The last equality is period orthogonality on an arbitrary full-period interval;
+no orthogonality on the shorter interval $I$ is asserted.  Together with
+$|\phi_L|^2\le L_{\rm pkt}^{-1}$ and the factor $2\pi$ in Plancherel, summing
+the at most three pieces gives the upper bound
+$6\pi\sum_j|c_j|^2$.
 
 For perturbed centres, the corresponding Gram entries depend continuously on
 the centres. On the support $|u|\ll L_{\rm pkt}\asymp L$ a displacement
@@ -461,7 +472,13 @@ R(2+it)=\frac12\log\frac{t}{2\pi}+O(1),
 \]
 For large $T$ this lies in a fixed acute sector around the positive real axis,
 so the change of argument on the right vertical side is $O(1)$. The symmetry
-$R(s)=-R(1-s)$ gives the same bound on the left side.
+$R(s)=-R(1-s)$, together with
+$R(\overline s)=\overline{R(s)}$, gives explicitly
+\[
+R(-1+it)=-R(2-it)=-\overline{R(2+it)}.
+\]
+Hence the left vertical image is the reflected right vertical image (with the
+boundary orientation reversed), and its change of argument is also $O(1)$.
 
 Consider one good horizontal side, at height $U\in\{T_1,T_2\}$. Since
 \[
