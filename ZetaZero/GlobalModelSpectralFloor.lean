@@ -1,4 +1,5 @@
 import ZetaZero.HLPLocalModel
+import ZetaZero.GlobalModelSpectralFloor.PrimitiveSchurFloor
 
 /-!
 # M06: Global model and spectral floor
