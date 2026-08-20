@@ -1,6 +1,8 @@
 import ZetaZero.HLPLocalModel
 import ZetaZero.DivisorGramArithmeticTransfer.PositiveGram
 import ZetaZero.DivisorGramArithmeticTransfer.OperatorGramLift
+import ZetaZero.DivisorGramArithmeticTransfer.GcdGramIdentity
+import ZetaZero.DivisorGramArithmeticTransfer.OperatorGcdGramLift
 
 /-!
 # M07: Divisor Gram and arithmetic transfer

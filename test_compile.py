@@ -233,7 +233,13 @@ def test_gcd_gram_identity_build():
     lake = _find_lake()
     assert lake is not None, "lake is not installed or not discoverable"
     proc = subprocess.run(
-        [lake, "build", "ZetaZero.DivisorGramArithmeticTransfer.GcdGramIdentity"],
+        [
+            lake,
+            "build",
+            "ZetaZero.DivisorGramArithmeticTransfer.GcdGramIdentity",
+            "ZetaZero.DivisorGramArithmeticTransfer.OperatorGcdGramLift",
+            "ZetaZero.DivisorGramArithmeticTransfer",
+        ],
         cwd=root,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,

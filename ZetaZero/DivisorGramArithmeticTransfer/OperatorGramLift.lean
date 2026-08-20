@@ -39,19 +39,19 @@ kernel through a labelled family of linear maps. -/
 def liftedGramForm
     (x : κ → ι → ℂ) (a : ι → ℂ) (U : ι → V →ₗ[ℂ] W) (v : V) : ℂ :=
   ∑ m, ∑ n,
-    conj (a m) * a n * scalarGramKernel x m n * ⟪U m v, U n v⟫_ℂ
+    conj (a m) * a n * scalarGramKernel x m n * inner ℂ (U m v) (U n v)
 
 /-- Expanding the Gram channels gives exactly the lifted kernel quadratic
 form.  This is the algebraic identity behind the operator-valued positive
 lift in the manuscript. -/
 theorem sum_inner_gramChannel_eq_liftedGramForm
     (x : κ → ι → ℂ) (a : ι → ℂ) (U : ι → V →ₗ[ℂ] W) (v : V) :
-    (∑ j, ⟪gramChannel x a U v j, gramChannel x a U v j⟫_ℂ) =
+    (∑ j, inner ℂ (gramChannel x a U v j) (gramChannel x a U v j)) =
       liftedGramForm x a U v := by
   calc
-    (∑ j, ⟪gramChannel x a U v j, gramChannel x a U v j⟫_ℂ) =
+    (∑ j, inner ℂ (gramChannel x a U v j) (gramChannel x a U v j)) =
         ∑ j, ∑ m, ∑ n,
-          conj (a m) * a n * conj (x j m) * x j n * ⟪U m v, U n v⟫_ℂ := by
+          conj (a m) * a n * conj (x j m) * x j n * inner ℂ (U m v) (U n v) := by
       simp_rw [gramChannel, sum_inner, inner_sum, inner_smul_left, inner_smul_right]
       apply Finset.sum_congr rfl
       intro j _
@@ -62,7 +62,7 @@ theorem sum_inner_gramChannel_eq_liftedGramForm
       simp
       ring
     _ = ∑ m, ∑ n, ∑ j,
-          conj (a m) * a n * conj (x j m) * x j n * ⟪U m v, U n v⟫_ℂ := by
+          conj (a m) * a n * conj (x j m) * x j n * inner ℂ (U m v) (U n v) := by
       rw [Finset.sum_comm]
       apply Finset.sum_congr rfl
       intro m _
@@ -73,18 +73,25 @@ theorem sum_inner_gramChannel_eq_liftedGramForm
       intro m _
       apply Finset.sum_congr rfl
       intro n _
-      rw [← Finset.sum_mul]
-      rw [← Finset.mul_sum]
+      rw [← Finset.sum_mul, Finset.mul_sum]
+      congr 1
       apply Finset.sum_congr rfl
       intro j _
       ring
+
+/-- The sum of self-inner-products is the real sum of squared channel norms. -/
+theorem sum_inner_gramChannel_eq_coe_norm_sq_sum
+    (x : κ → ι → ℂ) (a : ι → ℂ) (U : ι → V →ₗ[ℂ] W) (v : V) :
+    (∑ j, inner ℂ (gramChannel x a U v j) (gramChannel x a U v j)) =
+      ((∑ j, ‖gramChannel x a U v j‖ ^ 2 : ℝ) : ℂ) := by
+  simp [inner_self_eq_norm_sq_to_K]
 
 /-- The lifted Gram form is real. -/
 theorem liftedGramForm_im_eq_zero
     (x : κ → ι → ℂ) (a : ι → ℂ) (U : ι → V →ₗ[ℂ] W) (v : V) :
     (liftedGramForm x a U v).im = 0 := by
   rw [← sum_inner_gramChannel_eq_liftedGramForm]
-  simp
+  simp [pow_two, Complex.mul_im]
 
 /-- Positivity of the operator-valued Gram lift.  Notice that `U n` are only
 assumed linear; isometry or unitarity is unnecessary for positivity. -/
@@ -92,7 +99,8 @@ theorem liftedGramForm_re_nonnegative
     (x : κ → ι → ℂ) (a : ι → ℂ) (U : ι → V →ₗ[ℂ] W) (v : V) :
     0 ≤ (liftedGramForm x a U v).re := by
   rw [← sum_inner_gramChannel_eq_liftedGramForm]
-  simp [inner_self_eq_norm_sq]
+  simpa [pow_two, Complex.mul_re] using
+    (Finset.sum_nonneg (fun j (_ : j ∈ Finset.univ) => sq_nonneg ‖gramChannel x a U v j‖))
 
 end DivisorGramArithmeticTransfer
 end ZetaZero
