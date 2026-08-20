@@ -1,4 +1,5 @@
 import ZetaZero.HardyGaugeInvariantContourForm.HighRectangle
+import ZetaZero.HardyGaugeInvariantContourForm.BranchReflection
 import Mathlib.Analysis.Calculus.Deriv.Star
 import Mathlib.Analysis.Complex.CauchyIntegral
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
@@ -54,6 +55,23 @@ theorem differentiable_sharp {B : ℂ → ℂ} (hB : Differentiable ℂ B) :
 /-- Straightening coordinate from the `s`-plane to the Hardy `z`-plane. -/
 def contourCoordinate (s : ℂ) : ℂ := -I * (s - (1 / 2 : ℂ))
 
+/-- Straightening commutes with reflection across the critical line: the
+conjugate-reflected spectral coordinate is the complex conjugate coordinate.
+This is the coordinate identity needed before taking an adjoint of a packet
+boundary integral. -/
+@[simp] theorem contourCoordinate_hardyReflect (s : ℂ) :
+    contourCoordinate (hardyReflect s) = (starRingEnd ℂ) (contourCoordinate s) := by
+  unfold contourCoordinate hardyReflect
+  simp [map_inv₀, map_ofNat]
+  ring
+
+/-- The Schwarz sharp of a function evaluated at a conjugate point is the
+conjugate of the original function. -/
+@[simp] theorem sharp_conj (B : ℂ → ℂ) (z : ℂ) :
+    sharp B ((starRingEnd ℂ) z) = (starRingEnd ℂ) (B z) := by
+  unfold sharp
+  simp
+
 /-- The contour straightening map is entire. -/
 theorem differentiable_contourCoordinate : Differentiable ℂ contourCoordinate := by
   unfold contourCoordinate
@@ -65,6 +83,18 @@ def packetPolarization {ι : Type*} [Fintype ι]
     (ψ : ι → ℂ → ℂ) (v w : ι → ℂ) (s : ℂ) : ℂ :=
   packetSum ψ w (contourCoordinate s) *
     sharp (packetSum ψ v) (contourCoordinate s)
+
+/- The packet polarization has the reflected-adjoint symmetry used by the
+paper's Hermitian contour form.  No analyticity assumption is needed here;
+analyticity is supplied separately by `differentiable_packetPolarization`. -/
+@[simp] theorem packetPolarization_hardyReflect_swap
+    {ι : Type*} [Fintype ι] {ψ : ι → ℂ → ℂ}
+    (v w : ι → ℂ) (s : ℂ) :
+    packetPolarization ψ w v (hardyReflect s) =
+      (starRingEnd ℂ) (packetPolarization ψ v w s) := by
+  unfold packetPolarization
+  rw [contourCoordinate_hardyReflect, sharp_conj]
+  simp [sharp, map_mul, mul_comm]
 
 /-- The packet polarization is entire in the contour variable whenever every
 packet is entire. -/

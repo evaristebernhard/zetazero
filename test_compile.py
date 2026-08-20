@@ -145,10 +145,13 @@ def test_mainline_hardy_stationary_bridge_build():
         [
             lake,
             "build",
+            "ZetaZero.HardyGaugeInvariantContourForm",
+            "ZetaZero.ZeroSideStationaryGeometry",
             "ZetaZero.HardyGaugeInvariantContourForm.Zeta23HardyBridge",
             "ZetaZero.Analytic.ZetaOneCounting",
             "ZetaZero.ZeroSideStationaryGeometry.StationarySourceBridge",
             "ZetaZero.ZeroSideStationaryGeometry.StationaryDictionary",
+            "ZetaZero.ZeroSideStationaryGeometry.EvaluationPullback",
         ],
         cwd=root,
         stdout=subprocess.PIPE,

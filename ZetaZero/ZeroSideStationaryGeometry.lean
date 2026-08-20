@@ -9,6 +9,8 @@ import ZetaZero.ZeroSideStationaryGeometry.StationaryBlockInertia
 import ZetaZero.ZeroSideStationaryGeometry.StationaryResidueAnalytic
 import ZetaZero.ZeroSideStationaryGeometry.StationarySourceBridge
 import ZetaZero.ZeroSideStationaryGeometry.StationaryDictionary
+import ZetaZero.ZeroSideStationaryGeometry.StraighteningBridge
+import ZetaZero.ZeroSideStationaryGeometry.EvaluationPullback
 
 /-!
 # M03: Zero-side stationary geometry and packet evaluation
@@ -21,4 +23,3 @@ namespace ZeroSideStationaryGeometry
 
 end ZeroSideStationaryGeometry
 end ZetaZero
-

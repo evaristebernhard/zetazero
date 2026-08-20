@@ -101,6 +101,7 @@ FunctionalEquationFactor
   -> CurvatureAlgebra / ZetaCurvature
   -> SymmetricShiftCurvature
   -> PacketPolarization
+  -> PacketPolarization reflection/adjoint swap
   -> ContourCancellation
   -> SameFormContour
   -> PacketSameForm
@@ -138,6 +139,7 @@ simple stationary zero
   -> pair-block NegativeIndexLE <= 1 + explicit negative direction
   -> zero-coordinate straightening / Schwarz reflection
   -> Z₁ simple-zero <-> straightened simple stationary point
+  -> finite evaluation pullback negative-index upper bound
   -> global packet-weight specialization
   -> packet-evaluation surjectivity
 ```

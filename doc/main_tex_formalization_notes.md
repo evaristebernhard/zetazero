@@ -221,3 +221,50 @@ Section 07.
     from cancellation between levels.  The same abstraction accepts a fixed
     polynomial factor `(k+1)^q`, which is exactly what the bounded `p`-derivatives
     produce.
+
+## 2026-08-21 — M02 reflected packet adjoint
+
+**Observation.** The packet part of the paper's Hermitian contour seam can be
+proved independently of contour integration.  Reflection satisfies
+`contourCoordinate (hardyReflect s) = conj (contourCoordinate s)`, and the
+definition of `sharp` then gives the swapped-conjugate identity for
+`packetPolarization`.
+
+**Lean evidence.** `ZetaZero.HardyGaugeInvariantContourForm.PacketPolarization`
+now exports `contourCoordinate_hardyReflect`, `sharp_conj`, and the acceptance
+theorem `packetPolarization_hardyReflect_swap`.  The file and the M02 facade
+build successfully.
+
+**Manuscript impact.** The Hermitian-form paragraph should separate this exact
+packet identity from the still-missing orientation reversal and curvature/
+`Z₁` adjoint calculation.  The former is no longer an implicit assumption;
+the latter remains a named gap.
+
+**Next interface.** The upper-bound pullback theorem is now closed as G2a;
+G2b must add the finite node-space/range bridge and exact block count while
+keeping node surjectivity as an explicit input rather than smuggling in the
+Fourier/Vandermonde argument.
+
+## 2026-08-21 — M03 evaluation pullback upper bound
+
+**Observation.** For a target real form `q` with `q 0 = 0`, a strictly negative
+subspace for `q ∘ E` cannot meet `ker E` nontrivially.  The restriction of the
+evaluation map to that negative subspace is therefore injective, and its image
+is strictly negative for `q`.  This gives the negative-index upper bound without
+assuming that the full packet evaluation map is injective.
+
+**Lean evidence.** `ZetaZero.ZeroSideStationaryGeometry.EvaluationPullback`
+proves `evaluationPullback_strictlyNegativeOn_map`,
+`evaluationPullback_domRestrict_injective`,
+`evaluationPullback_negativeIndexLE`,
+`evaluationPullback_negativeWitness_of_surjective`, and the acceptance theorem
+`evaluationPullback_negativeIndex_certificate`.
+
+**Manuscript impact.** The global residue pullback paragraph can separate the
+linear-algebra upper bound from the analytic surjectivity theorem.  The current
+Lean result only transfers the upper bound; it does not claim exact `B(H)+P(H')`
+counting.
+
+**Next interface.** Construct the target `NegativeIndexWitness` from the real and
+conjugate stationary residue blocks, then connect the abstract evaluation map to
+the finite packet node space.
