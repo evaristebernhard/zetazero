@@ -1,6 +1,16 @@
 \section{Lagwise packet--HLZ bridge for the log-only source}
 \label{sec:lagwise-packet-hlz}
 
+This section records the proposed lagwise reduction and the exact geometry that
+motivated it.  The reduction is **not presently a theorem**: after the
+one-$\chi$ stationary step the physical arithmetic carrier retains an additive
+phase, and the untwisted scalar HLZ diagonal of
+Section~\ref{sec:scalar-hlz-core} does not by itself remove that phase.  The
+precise obstruction and a rank-versus-floor no-go test are recorded in
+\texttt{doc/lagwise\_hlz\_gap\_audit.md}.  We keep the formulas below because
+they identify the candidate endpoint geometry that any repaired arithmetic
+bridge would have to reproduce.
+
 For the principal logarithmic source we keep the packet polarization in its
 actual continuous lag variable $d=y-x$.  No Fourier multiplier of a lag
 convolution is identified with a one-sided packet-prefix multiplier.
@@ -14,28 +24,26 @@ X_T:=e^{W_T}=\frac{T}{2\pi L^{A_0}}.
 }
 \label{eq:stable-log-core-main}
 \end{equation}
-Translate the flat packet plateau so that its physical core is
-$0\le x\le W_T$ and absorb the fixed translation phases into the packet
-coefficients.  On that interval define
+On the translated flat plateau define the packet synthesis
 \begin{equation}
 \boxed{
-(\mathcal A_T^{\rm core}v)(x)
-:=L_{\rm pkt}^{-1/2}
-\sum_{\nu\in\mathcal I_T}v_\nu e^{-i\tau_\nu x},
-\qquad 0\le x\le W_T.
+(\mathcal A_Tv)(x):=\phi_L(x)
+\sum_{\nu\in\mathcal I_T}v_\nu e^{-i\tau_\nu x}.
 }
 \label{eq:lagwise-packet-analysis}
 \end{equation}
-The principal form below is the core--core restriction: both packet Fourier
-legs lie in $[0,W_T]$.  Terms with at least one leg outside this interval are
-assigned to the geometric exterior/terminal ledger of
-Proposition~\ref{prop:geometric-edge-ledger}.  In particular, on the principal
-core $|x-y|\le W_T$ automatically.
+For the candidate principal core, both packet legs are first restricted to the
+same stable flat interval; every term with an exterior leg belongs to the
+geometric leakage ledger of Section~\ref{sec:shell-frame}.
 
-\begin{proposition}[Lagwise packet--HLZ bridge]
+\begin{proposition}[Candidate lagwise packet--HLZ bridge; open]
 \label{prop:lagwise-packet-HLZ}
+The following statement is the missing analytic bridge required by the current
+log-only route.  It is **not proved** by the scalar HLZ lemma as presently
+written.
+
 Restrict to the invariant source $h=k=1$, one retained height block, and the
-stable core--core packet form. Put
+stable flat packet core. Put
 \[
 X(\tau)=\frac{\tau}{2\pi},\qquad
 \lambda(\tau)=\frac{\log X(\tau)}L,
@@ -45,13 +53,12 @@ and, for $|d|\le W_T$, define
 \boxed{\rho_\tau(d):=\lambda(\tau)-\frac{|d|}{L}.}
 \label{eq:lagwise-rho}
 \end{equation}
-For the logarithmic source $H_{\log}$ of \eqref{eq:Hlog}, the principal
-stationary packet form after the finite three-$Z$ Cauchy residues is
+The desired conclusion would be that the logarithmic source $H_{\log}$ of
+\eqref{eq:Hlog} has principal stationary packet form
 \begin{align}
-\mathcal Q_{\log,T}^{\rm core}(v,w;p)
-={}&\int_0^{W_T}\!\int_0^{W_T}
- (\mathcal A_T^{\rm core}v)(x)
- \overline{(\mathcal A_T^{\rm core}w)(y)}
+\mathcal Q_{\log,T}(v,w;p)
+={}&\iint
+ (\mathcal A_Tv)(x)\overline{(\mathcal A_Tw)(y)}
  \mathcal G^{\log}_{\lambda(\tau),\rho_\tau(y-x)}(p)\,dx\,dy
 \notag\\
 &+\mathcal R^{\rm HLZ}_{\log,T}(v,w;p),
@@ -66,32 +73,27 @@ where
 +e^{2\lambda}E_\rho(p+2)E_\rho(p-2)
 \right],
 \qquad
-E_\rho(q)=\int_0^\rho e^{-qt}\,dt.
+E_\rho(q)=\int_0^\rho e^{-qt}\,dt,
 }
 \label{eq:logonly-local-profile}
 \end{equation}
-For every prescribed $A>0$, after the fixed Cauchy and curvature residues have
-been taken, the scalar error profile and its first two $\rho$-derivatives are
-$O_A(L^{-A})$ up to a fixed polylogarithmic factor, uniformly in
-$|d|\le W_T$ and in the retained height blocks.
+and that the scalar error profile and its first two $\rho$-derivatives have
+arbitrary logarithmic saving uniformly in the retained lag and height blocks.
+A proof must, in addition to the scalar HLZ contour deformation, control the
+additive physical carrier displayed below.
 \end{proposition}
 
-\begin{proof}
-For basis packets $e_r,e_s$, before the fixed plateau translation the exact
-polarization is
+\subsection{Exact lag geometry and the missing carrier}
+
+For basis packets $e_r,e_s$, exact polarization gives
 \begin{equation}
 \mathcal B_{e_r,e_s}(c+it)
 =\iint\phi_L(x)\phi_L(y)e^{-i\tau_sx+i\tau_ry}
  e^{\sigma_0(x-y)}e^{it(x-y)}\,dx\,dy,
 \label{eq:lagwise-polarization-recall}
 \end{equation}
-with $\sigma_0=c-1/2$.  Split each Fourier leg into the translated stable core
-and its complement before stationary reduction.  On the core the packet window
-is exactly constant, giving \eqref{eq:lagwise-packet-analysis}; every term with
-one complementary leg is, by definition, part of the geometric leakage
-ledger.  It remains to analyze the core--core term.
-
-For one Dirichlet monomial $\xi^{-c-it}$ put $d=y-x$. Then exactly
+with $\sigma_0=c-1/2$. For one Dirichlet monomial $\xi^{-c-it}$ put
+$d=y-x$. Then exactly
 \[
 e^{\sigma_0(x-y)}e^{it(x-y)}\xi^{-c-it}
 =e^{d/2}(\xi e^d)^{-c-it}.
@@ -101,73 +103,54 @@ Hence the stationary dilation parameter of Section~\ref{sec:stationary} is
 \boxed{w=d=y-x.}
 \label{eq:true-packet-lag}
 \end{equation}
-It is a continuous lag, not a displacement attached to either packet label.
-The principal stationary calculation therefore depends on the two core packet
-legs only through $d$.
+The one-$\chi$ stationary main term is therefore not merely a cutoff at
+$t_*=2\pi e^d\xi$; it also contains the oscillatory factor
+\begin{equation}
+\boxed{e(-e^d\xi).}
+\label{eq:lagwise-additive-carrier}
+\end{equation}
+When the invariant arithmetic diagonal is exposed, $\xi$ contains the physical
+integer carrier (in the old common-product notation this is $N=\ell$).  Thus
+\eqref{eq:lagwise-additive-carrier} is an arithmetic additive twist, not a
+packet-independent scalar.  The untwisted Euler product
+\eqref{eq:scalar-HLZ-diagonal} does not contain this factor.
 
-By Lemma~\ref{lem:scalar-HLZ-local-height}, the scalar diagonal Mellin factor
-may be written at local scale as
-\[
-\left(\frac{X(\tau)^2}{\ell^2}\right)^u
-\]
-without changing its $u=0$ residue or its arbitrary-log contour error.  Under
-the exact stationary dilation, the two Hermitian orientations have cutoffs
+Ignoring this obstruction only for the purpose of recording the candidate
+endpoint geometry, Lemma~\ref{lem:scalar-HLZ-local-height} would put the scalar
+diagonal on the local scale $X(\tau)$.  The two Hermitian stationary
+orientations then have cutoffs
 \[
 \ell\le X(\tau)e^{-d},\qquad
-\ell\le X(\tau)e^{d}.
+\ell\le X(\tau)e^{d},
 \]
-Their intersection is therefore
+whose intersection is
 \begin{equation}
 \boxed{\ell\le X(\tau)e^{-|d|}.}
 \label{eq:lagwise-common-cutoff}
 \end{equation}
-Writing $t=\log\ell/L$ gives
-$0\le t\le\rho_\tau(d)$. Since $x,y\in[0,W_T]$, one has
-$|d|\le W_T$, and \eqref{eq:stable-log-core-main} makes this endpoint positive
-for all sufficiently large $T$ and keeps it in a fixed compact interval.
+Writing $t=\log\ell/L$ gives the candidate interval
+$0\le t\le\rho_\tau(d)$.  This geometric intersection remains correct as a
+cutoff statement; what is missing is an arithmetic theorem which contracts the
+additively twisted carrier on this interval to the untwisted profile
+\eqref{eq:logonly-local-profile} with the required operator error.
 
-Fix $d,p$ and the separated Cauchy variable $\mathbf z$.  After the universal
-stationary carrier and the two packet legs have been removed, the remaining
-scalar Mellin weight has the form
+If such a theorem were available, the remaining scalar Mellin weight would
+have the bounded-support form
 \begin{equation}
 W_d(u,\mathbf z,p)
 =\int_0^{\rho_\tau(d)}
  a_{d,\mathbf z,p,T}(t)e^{Lut}\,dt,
 \label{eq:lagwise-Mellin-weight}
 \end{equation}
-or a fixed finite product of such factors.  Lemma~\ref{lem:stationary-symbol}
-gives fixed-order derivative bounds for the stationary amplitude by a fixed
-power of $L$; the separated shifts $|z_j|\asymp L^{-1}$ cost only another fixed
-polylogarithmic factor.  Moving the endpoint in
-\eqref{eq:lagwise-Mellin-weight} creates only finitely many endpoint jets.
-Consequently \eqref{eq:lagwise-Mellin-weight} satisfies
-\eqref{eq:scalar-HLZ-weight-bounds} uniformly for $|d|\le W_T$.
+or a fixed finite product of such factors, and the stationary-symbol and
+separated-Cauchy estimates would give the polylogarithmic derivative bounds
+required by Lemma~\ref{lem:scalar-lagweight-HLZ}.  These observations concern
+the smooth amplitude only; they do not control
+\eqref{eq:lagwise-additive-carrier}.
 
-Lemma~\ref{lem:scalar-lagweight-HLZ} can therefore be applied pointwise in the
-actual lag $d$.  Its arbitrary-log error remains uniform through the first two
-endpoint and curvature derivatives.  Proposition~\ref{prop:scalar-HLZ-three-face}
-then gives the finite three-face residues.  For the source $-2P$, the two
-one-sided diagonal factors are both $E_\rho(p)$, hence
-\[
--2e^{\lambda p}E_\rho(p)^2.
-\]
-For $P(s-2/L)$, the translated exponents are $p+2$ and $p-2$, while the
-functional-equation height tag is $X^{2/L}=e^{2\lambda}$; this gives
-\[
-e^{\lambda p}e^{2\lambda}E_\rho(p+2)E_\rho(p-2).
-\]
-Their sum is \eqref{eq:logonly-local-profile}.
-
-On the original absolutely convergent scalar contour the core variables lie in
-a compact interval and the $u$-integral has Gaussian vertical decay.  Thus
-Fubini is legitimate before the scalar contour is moved.  After the move, the
-uniform scalar error can be integrated against the same two core packet legs.
-This proves \eqref{eq:lagwise-HLZ-form} and the differentiated error estimate.
-\end{proof}
-
-\begin{corollary}[Frozen log-only lag kernel]
+\begin{corollary}[Conditional frozen log-only lag kernel]
 \label{cor:frozen-logonly-lag-kernel}
-Let
+**Conditional on Proposition~\ref{prop:lagwise-packet-HLZ}.**  Let
 \begin{equation}
 \boxed{
 G_{\log}(\rho):=[p^2]\,
@@ -175,32 +158,31 @@ G_{\log}(\rho):=[p^2]\,
 }
 \label{eq:Glog-from-source}
 \end{equation}
-After freezing $\lambda(\tau)=1$ and rescaling $r=x/L$, $s=y/L$, the principal
-operator is the pullback through the normalized stable-core analysis of the
-genuine lag kernel
+After freezing $\lambda(\tau)=1$ and rescaling $r=x/L$, $s=y/L$, the proposed
+principal operator is the pullback of the lag kernel
 \begin{equation}
 \boxed{K_{\log}(r,s)=G_{\log}(1-|r-s|).}
 \label{eq:Klog-lag-kernel}
 \end{equation}
-The difference between the finite-height profile
-$G_{\log,\lambda(\tau)}(\lambda(\tau)-|x-y|/L)$ and the frozen kernel has its
-first two normalized lag derivatives $O(L^{-1})$ and belongs to the
-finite-parameter regular class.
+The finite-height profile defect would have first two normalized lag
+derivatives $O(L^{-1})$.
 \end{corollary}
 
 \begin{proof}
-The map $(\lambda,\rho,p)\mapsto\mathcal G^{\log}_{\lambda,\rho}(p)$ is analytic
-on a fixed neighbourhood of the retained parameter set and
-$\lambda(\tau)=1+O(L^{-1})$.  The mean-value theorem gives the required
-$O(L^{-1})$ estimates through two $\rho$-derivatives.  The core--core
-restriction above gives the same stable-core analysis map on both packet legs,
-so substitution of $d=y-x$ gives the stated lag-kernel pullback.
+Assuming the missing bridge, the map
+$(\lambda,\rho,p)\mapsto\mathcal G^{\log}_{\lambda,\rho}(p)$ is analytic on a
+fixed neighbourhood of the retained parameter set and
+$\lambda(\tau)=1+O(L^{-1})$.  The mean-value theorem gives the parameter defect,
+and substitution of $d=y-x$ gives the displayed conditional lag kernel.
 \end{proof}
 
-\begin{remark}[No one-sided principal bridge]
-The proof above ends with the lag kernel itself.  Fourier diagonalization may
-of course be used as an abstract unitary representation of a convolution, but
-no subsequent step identifies its multiplier with pointwise modulation in a
-one-sided packet coordinate.  In particular, the compressed-shift machinery is
-not part of the logarithmic principal reduction.
+\begin{remark}[What a repair must prove]
+A repair cannot consist only of replacing the old one-sided packet multiplier
+by a continuous lag variable.  It must keep the carrier
+$e(-e^d\ell)$ and show, by an additively twisted Estermann/Voronoi analysis, a
+second stationary phase, or another exact mechanism, how the resulting
+operator produces the claimed bulk profile with an error compatible with the
+relative Hilbert--Schmidt ledger.  Until that step is supplied, the conditional
+corollary above and every downstream use of $P_T=A_T^{G_{\log}}$ do not prove
+the main theorem.
 \end{remark}
