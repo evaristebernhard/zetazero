@@ -12,13 +12,14 @@ $\ell\le X e^{-|d|}$, and the scalar Heap--Li--Zhao three-$Z$ diagonal is applie
 uniformly at fixed lag.  This produces directly the completed lag kernel
 $G_{\log}(1-|r-s|)$, without identifying a lag convolution with one-sided packet
 modulation.  The scalar HLZ contour error, the finite-height deformation, the
-direct residual, and the $f'$ terms are placed in the relative
-Hilbert--Schmidt remainder by the two-variable primitive criterion.  A certified
-Schur estimate gives the frozen log-only operator a uniform spectral lower
-bound on the mean-zero fibres. The genuinely geometric edge contribution has
-rank $o(N_T)$, while the regular remainder is $o(N_T)$ in the relative
-Hilbert--Schmidt metric. A finite-dimensional inertia argument then implies
-that all but $o(N_T)$ zeros in a dyadic interval lie on the critical line.
+direct residual, the $f'$ terms, and the genuinely geometric leakage are placed
+in the relative Hilbert--Schmidt remainder by a two-variable primitive
+criterion.  A certified Schur estimate gives the frozen log-only operator a
+uniform spectral lower bound on the mean-zero fibres.  The geometric edge
+contribution has rank $o(N_T)$, while the regular remainder is $o(N_T)$ in the
+relative Hilbert--Schmidt metric. A finite-dimensional inertia argument then
+implies that all but $o(N_T)$ zeros in a dyadic interval lie on the critical
+line.
 \end{abstract}
 
 \section{Main theorem and notation}
@@ -94,13 +95,16 @@ Section~\ref{sec:common-matrix}, whose zero-side and arithmetic-side
 representations are developed in the subsequent sections.  The self source is
 removed by the exact holomorphic identity of
 Lemma~\ref{lem:holomorphic-self-elimination}.  The classical HLZ input is used
-only in its scalar form, with the auxiliary function chosen on separated Cauchy
-contours.  Its packet lift is performed pointwise in the actual lag by
+only in its scalar form from Section~\ref{sec:scalar-hlz-core}, with the
+auxiliary function chosen on separated Cauchy contours.  Its packet lift is
+performed pointwise in the actual lag by
 Proposition~\ref{prop:lagwise-packet-HLZ}; no packet-valued HLZ theorem and no
 one-sided modulation identification is assumed.  The exact remainder
 $\Delta H_{\rm dir}$ stays on the absolute-convergence right edge and is
 $O(L^{-2})$ before the fixed stationary normalization, so it is handled by the
-same primitive relative-remainder machinery rather than by a compressed-shift
-principal decomposition.  The older one-sided bridge and the critical-$J$ AFE
-calculation are retained below only as historical/comparison material and are
-not used in the revised proof of Theorem~\ref{thm:main}.
+primitive relative-remainder machinery rather than by a compressed-shift
+principal decomposition.  The superseded frozen-self, critical-$J$ AFE,
+one-sided common-output, HLP-resummation, and macroscopic-shift source files are
+excluded from the active manuscript.  Appendix~\ref{sec:legacy-route-note}
+records only their historical scope; the detailed earlier text remains
+recoverable from the Git history.
