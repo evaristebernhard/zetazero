@@ -1,0 +1,39 @@
+\section{Invariant-source facts used across the reduced route}
+\label{sec:route-facts}
+
+\begin{proposition}[Trivial auxiliary outer twist]
+\label{prop:trivial-outer-twist}
+The invariant contour form of Proposition~\ref{prop:same-form-identity} contains
+no auxiliary outer Dirichlet polynomial.  In the scalar HLZ input its auxiliary
+outer indices are therefore
+\[
+\boxed{h=k=1.}
+\]
+The packet polarization remains an analytic packet weight and does not create a
+discrete outer arithmetic coordinate.
+\end{proposition}
+
+\begin{proof}
+The only test factor multiplying the shifted Hardy product in
+\eqref{eq:same-form-identity} is the packet polarization
+$\mathcal B_{v,w}$.  It is kept inside the analytic height/Mellin weight.  Thus
+the auxiliary Dirichlet polynomial appearing in the general twisted HLZ
+formula is identically one, which is exactly the specialization $h=k=1$.
+\end{proof}
+
+\begin{proposition}[Exterior packet support is geometric]
+\label{prop:exterior-packet-support}
+The contribution for which at least one packet leg lies outside the stable
+physical core is included in the geometric decomposition of
+Proposition~\ref{prop:geometric-edge-ledger}.  Its stationary part has rank
+$o(N_T)$ and its complementary nonstationary part is
+relative-Hilbert--Schmidt $o(N_T)$ with respect to $\Gfr_T$.
+\end{proposition}
+
+\begin{proof}
+This is precisely the exterior packet-support component in the definition of
+$E_T^{\rm geom}$ and $R_T^{\rm geom}$ in
+Proposition~\ref{prop:geometric-edge-ledger}.  The proof there uses only
+stationary row counting, the log-only coefficient square bound, and repeated
+nonstationary integration by parts.
+\end{proof}
