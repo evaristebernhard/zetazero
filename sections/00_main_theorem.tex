@@ -2,24 +2,22 @@
 We construct a finite-dimensional Hermitian contour form from an analytic Hardy
 gauge and a near-lattice packet family. Its zero-side residue representation
 converts off-critical-line stationary geometry into negative inertia. On the
-arithmetic side we split the exact right-edge source, on its original
-absolute-convergence line, into a finite completed model and a direct
-exact--model residual.  The finite model is evaluated by the critical-$J$
-identity together with the scalar Heap--Li--Zhao three-$Z$ diagonal calculation
-for its logarithmic-derivative faces; the packet lift of the scalar three-$Z$
-identity is obtained from the exact one-sided packet factorization and Fubini.
-The HLZ Mellin scale is changed to the local physical height by a
-residue-preserving auxiliary-weight rescaling, while the two smoothed
-critical-$J$ approximate-functional-equation halves are transferred to the
-sharp full fibre with an explicit regular error.  The residual keeps its
-physical one-$\chi$ carrier and is separated into low-sideband edge terms and
-high-sideband regular terms.  Positivity is imposed only on the fully frozen
-completed lag operator; all finite-$T$ height, self-factor, and endpoint
-deformations are kept on their physical carrier channel and placed in the
-relative Hilbert--Schmidt remainder.  A direct Schur estimate gives the frozen
-operator a uniform spectral lower bound on the mean-zero fibres. The stationary
-edge contribution has rank $o(N_T)$, while the regular remainder is $o(N_T)$ in
-the relative Hilbert--Schmidt metric. A finite-dimensional inertia argument then implies
+arithmetic side the holomorphic archimedean self block is eliminated on the
+closed contour before any approximate functional equation is introduced.  The
+remaining right-edge logarithmic derivative is split exactly into the log-only
+source $-2P(s)+P(s-2/L)$, a second-order-small direct residual, and an $f'$-regular
+class.  For the principal logarithmic source we retain the actual packet lag
+$d=y-x$: the two stationary orientations give the common diagonal cutoff
+$\ell\le X e^{-|d|}$, and the scalar Heap--Li--Zhao three-$Z$ diagonal is applied
+uniformly at fixed lag.  This produces directly the completed lag kernel
+$G_{\log}(1-|r-s|)$, without identifying a lag convolution with one-sided packet
+modulation.  The scalar HLZ contour error, the finite-height deformation, the
+direct residual, and the $f'$ terms are placed in the relative
+Hilbert--Schmidt remainder by the two-variable primitive criterion.  A certified
+Schur estimate gives the frozen log-only operator a uniform spectral lower
+bound on the mean-zero fibres. The genuinely geometric edge contribution has
+rank $o(N_T)$, while the regular remainder is $o(N_T)$ in the relative
+Hilbert--Schmidt metric. A finite-dimensional inertia argument then implies
 that all but $o(N_T)$ zeros in a dyadic interval lie on the critical line.
 \end{abstract}
 
@@ -93,13 +91,16 @@ Hilbert--Schmidt classes.
 
 The proof is organized around the normalized contour matrix introduced in
 Section~\ref{sec:common-matrix}, whose zero-side and arithmetic-side
-representations are developed in the subsequent sections.  The classical HLZ
-input is used only in its scalar finite-model form, with the auxiliary function
-chosen on separated Cauchy contours.  The packet lift of this scalar main term
-and its scalar contour error is obtained from the exact one-sided packet
-factorization and Fubini in Lemma~\ref{lem:model-HLZ-Fubini-lift}.  The exact HLP
-resolvent is never required to satisfy a packet-valued HLZ theorem: after the
-exact source split \eqref{eq:direct-model-source-split} it remains in the direct
-one-$\chi$ sideband decomposition.  Hypothesis~\ref{hyp:packet-bilinear-HLZ} is
-retained later only to record a stronger optional comparison route and is not
-used in the proof of Theorem~\ref{thm:main}.
+representations are developed in the subsequent sections.  The self source is
+removed by the exact holomorphic identity of
+Lemma~\ref{lem:holomorphic-self-elimination}.  The classical HLZ input is used
+only in its scalar form, with the auxiliary function chosen on separated Cauchy
+contours.  Its packet lift is performed pointwise in the actual lag by
+Proposition~\ref{prop:lagwise-packet-HLZ}; no packet-valued HLZ theorem and no
+one-sided modulation identification is assumed.  The exact remainder
+$\Delta H_{\rm dir}$ stays on the absolute-convergence right edge and is
+$O(L^{-2})$ before the fixed stationary normalization, so it is handled by the
+same primitive relative-remainder machinery rather than by a compressed-shift
+principal decomposition.  The older one-sided bridge and the critical-$J$ AFE
+calculation are retained below only as historical/comparison material and are
+not used in the revised proof of Theorem~\ref{thm:main}.
