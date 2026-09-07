@@ -85,7 +85,21 @@ A stationary direct carrier `m in I_j` acts by a compressed Fourier shift `P_j S
 \ll \frac{T}{J_j^2}+R_j+1,
 ```
 
-and the adjoints have the same bound. Summing over shells gives `O(T)+o(T)=o(N_T)` rank for all low sidebands, independently of their scalar coefficients. The complementary high sidebands have arbitrary Fourier decay and the existing direct-carrier square bound gives relative Hilbert--Schmidt square `o(N_T)`. The nonstationary and endpoint pieces have the same low-rank/relative-HS form.
+and the adjoints have the same bound. Summing over shells gives `O(T)+o(T)=o(N_T)` rank for all low sidebands, independently of their scalar coefficients.
+
+For the present source the required coefficient-square estimate does not depend on the discarded HLP hierarchy. After the total Dirichlet carrier is collapsed, the coefficients of
+
+```math
+\mathcal C(s)H_{\log}(s)=\zeta(s)^2Q(s)H_{\log}(s)
+```
+
+are bounded by a fixed power of `log n` times a fixed-order divisor function; a deliberately crude majorant is `d_4(n)(log n)^3`. The standard fixed-`k` divisor mean-square estimate therefore gives
+
+```math
+\sum_{m\le x}|c_m|^2\ll x(\log x)^C
+```
+
+through the finitely many normalized source derivatives. Arbitrary Fourier decay of the smooth stationary symbol then places the complementary high sidebands in relative Hilbert--Schmidt square `o(N_T)`. The nonstationary and endpoint pieces have the same low-rank/relative-HS form.
 
 Consequently the direct physical realization of the log-only one-chi source has the schematic decomposition
 
