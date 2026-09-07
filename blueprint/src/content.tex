@@ -52,35 +52,43 @@ Formalize the Hermitian reflected source, closed-contour elimination of the
 archimedean self block, the exact split
 $L_1=H_{\log}+\Delta H_{\rm dir}+f'/(f-P)$, the
 $O(L^{-2})$ direct residual, the physical one-character stationary carrier,
-and exact dilation covariance.  Paper sources: \texttt{sec:right-edge} and
-\texttt{sec:stationary}.
+and exact dilation covariance.  The stationary main term retains the additive
+carrier factor $e(-e^d\xi)$ after packet polarization.  Paper sources:
+\texttt{sec:right-edge} and \texttt{sec:stationary}.
 \end{definition}
 
-\begin{definition}[\nodeid{M05}: Scalar HLZ and lagwise log-only principal operator]
+\begin{definition}[\nodeid{M05}: Additively twisted arithmetic bridge]
 \label{node:m05}
 \notready
 \uses{node:m04}
 \lean{ZetaZero.HLPLocalModel.mangoldtConvolutionPower_support}
-The existing Lean arithmetic library still contains the earlier von Mangoldt
-convolution hierarchy, but the active manuscript target has changed.  The M05
-interface to be formalized is now the separated-torus scalar three-$Z$ identity,
-the uniform bounded-support Mellin-weight diagonal, local-height rescaling, and
-the packet lift at the actual continuous lag $d=y-x$ with cutoff
-$\ell\le Xe^{-|d|}$.  The target output is the two-face log-only kernel, not a
-one-sided common-output multiplier.  Paper sources:
-\texttt{sections/06\_scalar\_hlz\_core.tex} and
-\texttt{sections/06\_lagwise\_packet\_hlz.tex}.
+M05 is presently blocked analytically.  The attempted replacement by an
+untwisted scalar HLZ diagonal at fixed packet lag drops the physical stationary
+carrier phase $e(-e^d\ell)$.  In the invariant source the diagonal arithmetic
+carrier remains the physical integer carrier, so this factor cannot be absorbed
+into a packet-label-independent scalar amplitude with the presently claimed
+Mellin bounds.  The direct shell realization also gives an internal
+rank-versus-floor obstruction to such a replacement.  A valid M05 interface
+must instead supply a genuinely additively twisted HLZ/Estermann--Voronoi
+transfer, or a different two-stage stationary mechanism that retains and then
+controls this carrier.  See \texttt{doc/lagwise\_hlz\_gap\_audit.md} and the
+current Section~6 sources.
 \end{definition}
 
-\begin{definition}[\nodeid{M06}: Log-only global model and spectral floor]
+\begin{definition}[\nodeid{M06}: Conditional log-only global model and spectral floor]
 \label{node:m06}
 \notready
 \uses{node:m05}
-Formalize the corrected closed profile $G_{\log}$, including its
-$\sinh(2\rho)$ term, the primitive identity, the rational Schur certificate,
-the concrete lower bound, compression, and the conservative interface
-$c_0=0.02$ used by the endgame.  Paper source:
-\texttt{sections/08\_global\_model\_floor.tex}.
+M06 is downstream of the unresolved M05 bridge.  Independently, the current
+paper closed form for $G_{\log}$ is not the coefficient of its displayed source
+profile: direct coefficient extraction yields a $\cosh(2\rho)$ expression, not
+the current $\sinh(2\rho)$ formula.  Numerical audit of the corrected function
+leaves a positive margin of about $0.03775Q_\triangle$; a rigorous conservative
+$0.03Q_\triangle$ certificate appears feasible and would still support the
+endgame interface $c_0=0.02$, conditional on M05.  Formalize the corrected
+coefficient extraction, primitive identity, rational Schur certificate, and
+compression only after the upstream arithmetic bridge is repaired.  Paper
+source: \texttt{sections/08\_global\_model\_floor.tex}.
 \end{definition}
 
 \begin{definition}[\nodeid{M07}: Auxiliary divisor-Gram library]
@@ -99,9 +107,11 @@ formalization may continue independently.
 \uses{node:m03,node:m04,node:m06}
 Formalize the stable-core frame, logarithmic unitary, global/local primitive
 comparison, geometric exterior/terminal leakage, the two-variable
-absolute-lag primitive criterion, and the log-only remainder classes.  No
-macroscopic compressed-shift principal operator or HLP exact--model residual is
-part of this node.  Paper sources:
+absolute-lag primitive criterion, and the log-only remainder classes.  This
+node is currently downstream-blocked by M05/M06.  Its remainder ledger also
+needs explicit normalized diagonal-amplitude estimates: a large shell cutoff
+parameter controls the global shell sum but does not by itself prove that a
+single-shell normalized jump is $o(1)$.  Paper sources:
 \texttt{sections/10\_geometric\_shell\_core.tex},
 \texttt{sections/11\_primitive\_remainder\_core.tex}, and
 \texttt{sections/11\_logonly\_remainder.tex}.
@@ -122,7 +132,9 @@ Paper source: \texttt{sections/12\_retained\_space.tex}.
 \uses{node:m01,node:m03,node:m09}
 \lean{ZetaZero.GenericPerturbationMinMaxEndgame.density_one_critical_line}
 Formalize multiplicity-removing perturbation, the final finite-dimensional
-min--max step, density-one selection, and the main theorem.  Paper sources:
+min--max step, density-one selection, and the main theorem.  The abstract
+endgame remains useful, but its manuscript hypotheses are currently
+conditional on repairing M05 and re-certifying M06.  Paper sources:
 \texttt{sections/00\_main\_theorem.tex},
 \texttt{sections/13\_minmax.tex}, and
 \texttt{sections/14\_endgame.tex}.
