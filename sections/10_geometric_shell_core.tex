@@ -7,12 +7,11 @@ handled as a lag operator and is never represented here by compressed Fourier
 shifts.  Direct carriers appear only in the genuinely geometric exterior and
 terminal leakage estimates.
 
-Fix $0<C_{\rm pkt}<2$ (the final hierarchy is chosen in
-Section~\ref{sec:retained}) and put
+Recall $0<C_{\rm pkt}<2$ from the packet construction and put
 \[
 R_{\rm pkt}:=\frac{C_{\rm pkt}}2\log L,
 \qquad
-L_{\rm pkt}:=L+2R_{\rm pkt}.
+L_{\rm pkt}=L+2R_{\rm pkt}.
 \]
 For exact lattice centres
 \[
@@ -116,7 +115,7 @@ Q_j(x):=\int_{J_j}^xq_j(y)\,dy,
 \]
 \begin{equation}
 \mathcal Q_{\rm loc}(f)
-:=\frac{2}{L^2}\sum_j\int_{I_j}\|Q_j(x)\|^2\frac{dx}{x}.
+:=\frac{2}{L^2}\sum_j\int_{I_j}\|Q_j(x)|^2\frac{dx}{x}.
 \label{eq:local-triangular-shell}
 \end{equation}
 Then
@@ -198,6 +197,27 @@ summands; use $\|Q_o\|_{\op}\le\|Q_o\|_{S_2}$ for the last term.
 
 \subsection{Geometric exterior, terminal and endpoint leakage}
 
+The translated packet window is constant on the flat interval and supported a
+fixed distance $\Delta$ beyond it.  Put
+\begin{equation}
+X_{\rm full}:=e^L=\frac{T}{2\pi},
+\qquad
+x_-:=e^{-\Delta}L^{-C_{\rm pkt}/2},
+\qquad
+x_+:=e^{\Delta}X_{\rm full}L^{C_{\rm pkt}/2}.
+\label{eq:geometric-exterior-range}
+\end{equation}
+Thus the central physical band is $1\le x\le X_{\rm full}$ and the complete
+packet support outside it is
+\[
+\mathcal E_-=[x_-,1),
+\qquad
+\mathcal E_+=(X_{\rm full},x_+].
+\]
+The stable logarithmic core ends at $X_T<X_{\rm full}$; hence the part
+$X_T<x\le X_{\rm full}$ is the terminal physical band, while
+$\mathcal E_-\cup\mathcal E_+$ is genuine packet-support exterior.
+
 For one shell and packet centre the physical phase is
 \[
 \Phi_{\tau,m}(x)=\tau\log x-2\pi mx,
@@ -227,7 +247,7 @@ The $O(1)$ shells meeting a physical endpoint additionally produce only the
 finite jets
 \begin{equation}
 \partial_x^r(\psi_jF_v)(b),
-\qquad b\in\{1,X_T\},\quad0\le r<N.
+\qquad b\in\{1,X_T,X_{\rm full}\},\quad0\le r<N.
 \label{eq:boundary-shell-jets}
 \end{equation}
 
@@ -235,10 +255,12 @@ finite jets
 \label{prop:geometric-edge-ledger}
 Let $E_T^{\rm geom}$ contain:
 \begin{enumerate}[label=(\roman*)]
-\item stationary packet-support output outside the stable core;
-\item the finite endpoint-jet ranges in \eqref{eq:boundary-shell-jets};
-\item stationary rows in the terminal band $W_T<u\le L$ and in the fixed
-transition caps.
+\item all stationary output with a packet leg in
+$\mathcal E_-\cup\mathcal E_+$;
+\item stationary output in the terminal physical band
+$X_T<x\le X_{\rm full}$;
+\item the finite endpoint-jet ranges in \eqref{eq:boundary-shell-jets} and the
+fixed transition-cap rows.
 \end{enumerate}
 Let $R_T^{\rm geom}$ contain the complementary nonstationary leakage of these
 same geometric regions.  Then
@@ -256,36 +278,41 @@ and, on the eventual retained mean-zero core,
 }
 \label{eq:geometric-leakage-relative-HS}
 \end{equation}
-These operators are purely geometric: no portion of the logarithmic principal
-lag kernel is assigned to $E_T^{\rm geom}$.
+No portion of the logarithmic principal lag kernel is assigned to
+$E_T^{\rm geom}$.
 \end{proposition}
 
 \begin{proof}
-The stationary row count is coefficient free.  In the lower exterior the
-stationary carrier range has size at most
-$O(TL^{C_{\rm pkt}/2})$; in the upper exterior and terminal region, summing
-$1+T/J_j$ over unit shells gives the same bound up to $L^{o(1)}$.  Since
-$C_{\rm pkt}<2$, this is $o(TL)=o(N_T)$.  The endpoint jets have only a fixed
-number of derivative orders and fixed local-source multiplicity, hence
-polylogarithmic rank.  This proves \eqref{eq:geometric-edge-rank}.
+For the lower exterior a saddle can occur only for carriers
+$m\ll T/x_-=T L^{C_{\rm pkt}/2+O(1/\log L)}$, so its entire stationary output
+has dimension $O(TL^{C_{\rm pkt}/2+o(1)})$.  For the terminal and upper
+exterior regions, use unit shells and sum the stationary row count
+$1+T/J$ over $X_T\le J\le x_+$.  This is
+\[
+\ll x_++T\log(x_+/X_T)
+\ll T L^{C_{\rm pkt}/2+o(1)}.
+\]
+The endpoint jets have only a fixed number of derivative orders and fixed
+local-source multiplicity, hence polylogarithmic rank.  Since
+$C_{\rm pkt}<2$, the total is $o(TL)=o(N_T)$, proving
+\eqref{eq:geometric-edge-rank}.
 
-For the complementary nonstationary legs use
-\eqref{eq:nonstat-shell} with the fixed order $N\ge8$ chosen later.  Squaring
-and summing over modes, shells and the $O(TL)$ packet coordinates gives analysis
-Hilbert--Schmidt bounds of the form
+For complementary nonstationary legs, the repeated integration-by-parts bound
+\eqref{eq:nonstat-shell}, with the fixed order $N\ge8$ chosen later, gives after
+squaring and summing over modes, shells and $O(TL)$ packet coordinates
 \[
 \|Q_{\rm out}\|_{S_2}^2
 \ll T^{1-2N}L^C+T^{3/2-N}L^C.
 \]
-For the order-one logarithmic source, Lemma~\ref{lem:logonly-carrier-square}
-and Cauchy--Schwarz give the deliberately crude source-operator bound
+On the full exterior carrier range $m\ll TL^{C_x}$ for one fixed
+$C_x>C_{\rm pkt}/2$.  Lemma~\ref{lem:logonly-carrier-square} and
+Cauchy--Schwarz therefore give the deliberately crude source-operator bound
 \[
 \beta_T\ll TL^C.
 \]
-The direct residual and $f'$ families are smaller and are already assigned to
-Section~\ref{sec:logonly-remainder-ledger}; including them here can only improve
-the estimate.  Lemma~\ref{lem:one-leaking-leg-HS} therefore yields an absolute
-squared Hilbert--Schmidt bound
+The direct residual and $f'$ families are smaller and are separately assigned
+to Section~\ref{sec:logonly-remainder-ledger}.  Lemma~\ref{lem:one-leaking-leg-HS}
+gives
 \[
 \|R_T^{\rm geom}\|_{S_2}^2
 \ll T^{3-2N}L^C+T^{7/2-N}L^C.
@@ -297,9 +324,8 @@ bound is $o(TL)=o(N_T)$, proving
 \end{proof}
 
 \begin{remark}[No macroscopic-shift principal operator]
-The compressed-shift edge-rank construction from the previous proof is not
-part of Proposition~\ref{prop:geometric-edge-ledger}.  Stationary row counting
-is used only for packet-support, terminal and endpoint leakage.  The
-logarithmic principal source remains the lag operator of
-Proposition~\ref{prop:lagwise-packet-HLZ}.
+Stationary row counting above is used only for packet-support, terminal and
+endpoint leakage.  The logarithmic principal source remains the lag operator
+of Proposition~\ref{prop:lagwise-packet-HLZ}; no compressed-shift principal
+operator appears in the theorem route.
 \end{remark}
