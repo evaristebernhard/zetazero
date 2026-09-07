@@ -3,9 +3,8 @@
 
 This is the remainder ledger used by the main theorem.  Every theorem-facing
 regular class is measured with the absolute-lag primitive criterion of
-Section~\ref{sec:primitive-remainder-core}.  In particular, no one-sided
-compressed-shift representation of the packet-polarized logarithmic source is
-used.
+Section~\ref{sec:primitive-remainder-core}.  No one-sided compressed-shift
+representation of the packet-polarized logarithmic source is used.
 
 \begin{lemma}[Lagwise HLZ contour error is relative-regular]
 \label{lem:lagwise-HLZ-error-regular}
@@ -29,11 +28,9 @@ Proposition~\ref{prop:lagwise-packet-HLZ}, for every prescribed $A>0$,
 \begin{equation}
 \max_{0\le j\le2}\sup_\rho
 |\partial_\rho^j\varepsilon_T(\rho)|
-\ll L^{-A+C_0}
+\ll L^{-A+C_0}.
 \label{eq:lagwise-HLZ-profile-saving}
 \end{equation}
-for one fixed loss $C_0$ after the finite Cauchy and curvature operations.
-
 On a unit physical shell $x=J_j+t$, $y=J_j+s$, the corresponding normalized
 kernel is a finite sum of terms
 \begin{equation}
@@ -45,17 +42,13 @@ D_{j,T}^{\rm HLZ}(t,s)
 \right),
 \label{eq:lagwise-HLZ-shell-kernel}
 \end{equation}
-where $|\nu_{j,T}-1|\ll L^{-1}$ and the smooth amplitude and its first two
-shell derivatives have fixed polylogarithmic bounds by
-Lemma~\ref{lem:stationary-symbol} and the bounded-overlap height partition.
-
-Apply Lemma~\ref{lem:logonly-shell-normalization-transfer}.  The normalized
-diagonal jump is $O(L^{-A+C_1})=o(1)$, while the per-shell squared
-Hilbert--Schmidt mass of the normalized regular mixed derivative is
-$O(L^{-2A+C_2})$.  Since the number of retained shells is
-$O(X_T)=O(TL^{-A_0})$, the arbitrary scalar saving may be chosen so that the
-shell sum is $o(N_T)$.  Lemma~\ref{lem:logonly-two-variable-primitive} proves
-\eqref{eq:lagwise-HLZ-relative-HS}.
+where $|\nu_{j,T}-1|\ll L^{-1}$ and the smooth amplitude has the first two
+shell derivative bounds supplied by Lemma~\ref{lem:stationary-symbol}.
+Lemma~\ref{lem:logonly-shell-normalization-transfer} gives a normalized jump
+$O(L^{-A+C_1})=o(1)$ and per-shell squared Hilbert--Schmidt mass
+$O(L^{-2A+C_2})$ for the normalized mixed derivative.  Since there are
+$O(X_T)=O(TL^{-A_0})$ retained shells, choose $A$ so that the shell sum is
+$o(N_T)$.  Lemma~\ref{lem:logonly-two-variable-primitive} proves the claim.
 \end{proof}
 
 \begin{lemma}[Finite-height log-profile defect is relative-regular]
@@ -89,13 +82,10 @@ $\rho$- and curvature derivatives,
 \ll L^{-1+C}.
 \label{eq:logonly-finite-height-profile-bound}
 \end{equation}
-The shell kernel is therefore of the form covered by
-Lemma~\ref{lem:logonly-shell-normalization-transfer}.  Its normalized jump is
-$o(1)$ after the fixed hierarchy is chosen, and the normalized regular mixed
-derivative has a fixed polylogarithmic per-shell squared Hilbert--Schmidt
-bound.  Taking $A_0$ larger than this fixed exponent makes the shell sum
-$o(N_T)$.  Lemma~\ref{lem:logonly-two-variable-primitive} gives
-\eqref{eq:logonly-finite-height-relative-HS}.
+Apply Lemmas~\ref{lem:logonly-shell-normalization-transfer} and
+\ref{lem:logonly-two-variable-primitive}.  The normalized jump is $o(1)$, the
+mixed derivative has fixed polylogarithmic per-shell mass, and the choice of
+$A_0$ in Section~\ref{sec:retained} makes the shell sum $o(N_T)$.
 \end{proof}
 
 \begin{lemma}[The exact direct residual is relative-regular]
@@ -110,22 +100,20 @@ normalizations. Then
 }
 \label{eq:deltaH-dir-relative-HS}
 \end{equation}
-No low-rank compressed-shift decomposition is used.
 \end{lemma}
 
 \begin{proof}
 Lemma~\ref{lem:deltaH-dir-small} gives
 $\Delta H_{\rm dir}=O(L^{-2})$ on the safe line through all fixed source
-derivatives, up to a fixed polylogarithmic factor.  Keeping the exact
-stationary lag geometry, the shell-local normalized kernel is a finite sum of
-terms
+derivatives, up to a fixed polylogarithmic factor.  Keeping the exact lag
+geometry, the shell-local normalized kernel is a finite sum of terms
 \begin{equation}
 D_{j,T}^{\rm dir}(t,s)
 =\frac1L a_{j,T}(t,s)
 H_{j,T}^{\rm dir}\!\left(
 \nu_{j,T}(t,s)-
 \frac{|\log(J_j+t)-\log(J_j+s)|}{L}
-\right),
+\right)
 \label{eq:deltaH-dir-shell-kernel}
 \end{equation}
 with
@@ -135,11 +123,9 @@ with
 \ll L^{-2+C_{\rm dir,reg}}.
 \label{eq:deltaH-dir-profile-bound}
 \end{equation}
-Lemma~\ref{lem:logonly-shell-normalization-transfer} gives the normalized jump
-and mixed-derivative estimates, and
-Lemma~\ref{lem:logonly-two-variable-primitive} converts them into the relative
-Hilbert--Schmidt bound.  Choosing $A_0$ after the fixed source exponent makes
-the shell sum $o(N_T)$.
+The two primitive lemmas of Section~\ref{sec:primitive-remainder-core} give the
+relative Hilbert--Schmidt estimate once $A_0$ is chosen after the fixed source
+loss.
 \end{proof}
 
 \begin{lemma}[Log-only $f'$ class is relative-regular]
@@ -157,17 +143,11 @@ Let $R_{f',T}^{\log}$ be the contribution of
 \begin{proof}
 Every term in \eqref{eq:logonly-fprime-source} contains at least one factor
 $f'=O(T^{-1})$ on the retained height strip, while
-$(f-P)^{-1}=O(L^{-1})$ on the fixed safe line.  All fixed stationary, shell,
-curvature and Cauchy derivatives cost only a fixed power of $L$.  Hence each
-shell-local profile and its first two lag derivatives are
-\[
-O(T^{-1}L^C).
-\]
-Lemma~\ref{lem:logonly-shell-normalization-transfer} therefore gives a
-normalized jump $O(T^{-1}L^C)=o(1)$ and a per-shell normalized mixed-derivative
-squared Hilbert--Schmidt mass $O(T^{-2}L^C)$.  Summing over
-$O(TL^{-A_0})$ shells is $o(N_T)$ for every sufficiently large fixed $A_0$.
-Lemma~\ref{lem:logonly-two-variable-primitive} proves the assertion.
+$(f-P)^{-1}=O(L^{-1})$ on the fixed safe line.  Fixed stationary, shell,
+curvature and Cauchy derivatives cost only a fixed power of $L$, so each
+shell-local profile and its first two lag derivatives are $O(T^{-1}L^C)$.
+The shell normalization and primitive criterion therefore give a normalized
+jump $o(1)$ and total mixed-derivative Hilbert--Schmidt mass $o(N_T)$.
 \end{proof}
 
 \begin{proposition}[Principal plus remainder decomposition]
@@ -180,7 +160,7 @@ On the retained space $\Pret$,
 where $P_T=A_T^{G_{\log}}$ is the log-only principal operator of
 Section~\ref{sec:model-floor},
 \begin{equation}
-\rank E_T^{\rm geom}=o(N_T),
+\boxed{\rank E_T^{\rm geom}=o(N_T),}
 \label{eq:logonly-edge-rank}
 \end{equation}
 and
@@ -190,9 +170,11 @@ and
 }
 \label{eq:logonly-total-relative-HS}
 \end{equation}
-The edge operator contains only genuinely geometric stationary-buffer,
-exterior-packet, horizontal-collar, and source-independent finite-rank
-families. It contains no part of $H_{\log}$.
+Here $E_T^{\rm geom}$ is exactly the geometric edge space of
+Proposition~\ref{prop:geometric-edge-ledger}; it contains no part of
+$H_{\log}$.  The remainder $R_T^{\log}$ includes
+$R_T^{\rm geom}$ together with the four theorem-facing analytic regular
+families above and the fixed higher stationary/Stirling corrections.
 \end{proposition}
 
 \begin{proof}
@@ -200,26 +182,23 @@ Lemma~\ref{lem:holomorphic-self-elimination} removes the critical-$J$ self
 block before principal reduction.  Proposition~\ref{prop:lagwise-packet-HLZ}
 and Corollary~\ref{cor:frozen-logonly-lag-kernel} identify the unique order-one
 principal source with $P_T=A_T^{G_{\log}}$.
-Lemma~\ref{lem:logonly-finite-height-regular} handles the finite-height defect;
-Lemma~\ref{lem:lagwise-HLZ-error-regular} handles the scalar HLZ contour error;
-Lemma~\ref{lem:deltaH-dir-relative-regular} handles the exact direct residual;
-and Lemma~\ref{lem:logonly-fprime-relative-regular} handles the $f'$ family.
-The higher stationary/Stirling corrections and nonstationary leakage are
-source-independent analytic remainder mechanisms from
-Sections~\ref{sec:stationary} and \ref{sec:shell-frame}; their existing
-integration-by-parts estimates are unchanged by replacing the scalar principal
-profile.
+Proposition~\ref{prop:geometric-edge-ledger} supplies
+\[
+\rank E_T^{\rm geom}=o(N_T),
+\qquad
+\|\Gfr_T^{-1/2}R_T^{\rm geom}\Gfr_T^{-1/2}\|_{S_2}^2=o(N_T).
+\]
+The finite-height defect, scalar HLZ contour error, exact direct residual and
+$f'$ family are handled respectively by
+Lemmas~\ref{lem:logonly-finite-height-regular},
+\ref{lem:lagwise-HLZ-error-regular},
+\ref{lem:deltaH-dir-relative-regular}, and
+\ref{lem:logonly-fprime-relative-regular}.  Fixed higher stationary/Stirling
+corrections have an additional inverse-height or arbitrary fixed stationary
+order and are estimated by the same shell primitive mechanism.  Summing these
+finitely many relative-Hilbert--Schmidt classes proves
+\eqref{eq:logonly-total-relative-HS}.
 
 There is no critical-$J$ AFE smooth-to-sharp remainder, no frozen-self class,
 and no low/high sideband decomposition of the logarithmic principal source.
-The remaining finite-rank pieces are the genuinely geometric edge families,
-whose total rank is $o(N_T)$.  Summing the relative-Hilbert--Schmidt classes
-proves \eqref{eq:logonly-total-relative-HS}.
 \end{proof}
-
-\begin{remark}[Scope of compressed shifts]
-Compressed Fourier shifts may still be used for genuinely one-sided exterior
-or auxiliary terms for which the physical variable is itself one-sided.  They
-are not part of the packet-polarized logarithmic principal source or of the
-three theorem-facing regular classes above.
-\end{remark}
