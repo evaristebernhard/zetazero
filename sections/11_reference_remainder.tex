@@ -345,6 +345,70 @@ Thus global whitening costs only the fixed factor $C_\triangle$, proving
 \eqref{eq:primitive-HS-criterion}.
 \end{proof}
 
+\begin{lemma}[Reference compatibility of the common HLZ output]
+\label{lem:HLZ-output-reference-compatibility}
+Restrict to the stable core and to $V_{\rm mean}$ of
+\eqref{eq:mean-map}.  Let $\mathscr C_T$ be the shift-independent common
+one-sided output analysis of Lemma~\ref{lem:model-HLZ-Fubini-lift}, with the
+same normalized one-sided factors as in the definition of $\Gfr_T$.  After
+forming the nonnegative height-block direct sum with weights
+$\omega_b^{1/2}$, put
+\[
+G_{\rm out}:=\mathscr C_T^*\mathscr C_T.
+\]
+On every finite retained packet compression there is a fixed exponent
+$C_{\rm out}$, independent of the compression dimension, such that
+\begin{equation}
+\boxed{
+G_{\rm out}\preceq L^{C_{\rm out}}\Gfr_T.
+}
+\label{eq:HLZ-output-reference-comparison}
+\end{equation}
+The same statement holds after adjoining any of the fixed packet-independent
+finite source, curvature, or Cauchy output fibres occurring in the finite model.
+\end{lemma}
+
+\begin{proof}
+For one height block and one packet pair, the unit-multiplier output Gram of
+Lemma~\ref{lem:model-HLZ-Fubini-lift} is obtained from the intersection of the
+two translated one-sided prefix intervals.  In the normalized common-prefix
+coordinate its scalar overlap is therefore
+\[
+\rho_{rs}^{(T)}
+=\nu_T-\frac{|w_r-w_s|}{L}
+=\rho_{rs}^{(0)}+\delta(\tau),
+\]
+by \eqref{eq:finiteT-common-endpoint}.  The second term is independent of the
+packet pair.  Consequently its quadratic form factors through the global mean
+map $\mathcal M_T^{\rm glob}$ and vanishes on $V_{\rm mean}$.
+
+The remaining kernel is
+\[
+\rho_{rs}^{(0)}=1-\frac{|w_r-w_s|}{L},
+\]
+namely the flat triangular lag kernel.  Under the exact principal dilation
+\eqref{eq:dilation-covariance} and the normalized common-core identification
+\eqref{eq:normalized-common-core-analysis}, this is precisely the feature
+factorization of the triangular primitive form $Q_\triangle$ used to define
+$\Gfr_T$ in \eqref{eq:global-reference-Gram}; on the mean-zero space the
+identity
+\[
+\iint(1-|r-s|)q(r)\overline{q(s)}\,dr\,ds
+=2\int\left|\int_0^rq(v)\,dv\right|^2dr
+\]
+is exact.  Thus the unit common-prefix feature introduces no packet-dimension
+loss.
+
+The remaining normalized stationary, archimedean, block, and finite Cauchy
+factors are packet-label independent and, through the fixed derivative orders
+used here, cost at most a fixed power of $L$.  Since the height partition is
+nonnegative and $\sum_b\omega_b=1$, using $\omega_b^{1/2}$ in the orthogonal
+block direct sum reproduces the linear block sum without a cross term.
+This proves \eqref{eq:HLZ-output-reference-comparison}.  Tensoring with a
+fixed packet-independent finite output fibre changes only the fixed exponent,
+not the packet dimension.
+\end{proof}
+
 \begin{lemma}[Operator lift of the finite-model HLZ contour error]
 \label{lem:HLZ-diagonal-operator-lift}
 Choose the arbitrary logarithmic exponent $A=A_{\rm diag}$ in
@@ -356,8 +420,8 @@ shift, curvature, shell, and Cauchy-residue derivative losses, and put
 \]
 Let $R_T^{\rm com}$ denote the scalar HLZ diagonalization error of the finite
 model source after the physical-shift Cauchy residues. After restriction to the
-stable core and compression to any retained packet space of dimension
-$d_T=O(N_T)$,
+stable core and compression to any retained packet space contained in
+$V_{\rm mean}$ and of dimension $d_T=O(N_T)$,
 \begin{equation}
 \boxed{
 \left\|\Gfr_T^{-1/2}R_T^{\rm com}\Gfr_T^{-1/2}\right\|_{S_2}^2
@@ -387,11 +451,27 @@ $G_{\rm out}$
 G_{\rm out}^{-1/2}\|_{\op}
 \le\|\varepsilon_T\|_\infty.
 \]
-The local-to-global Gram comparison costs only the fixed factor
-$C_\triangle$. Compression to $d_T=O(N_T)$ dimensions and
-$\|B\|_{S_2}^2\le d_T\|B\|_{\op}^2$ therefore give
-\eqref{eq:HLZ-diagonal-relative-HS}.  No levelwise exact-HLP Perron deformation
-is used in this route.
+By Lemma~\ref{lem:HLZ-output-reference-compatibility},
+$G_{\rm out}\preceq L^{C_{\rm out}}\Gfr_T$ on the retained mean-zero space.
+Using the support inverse of $G_{\rm out}$, put
+\[
+A:=G_{\rm out}^{1/2}\Gfr_T^{-1/2}.
+\]
+Then $\|A\|_{\op}^2\ll L^{C_{\rm out}}$ and, because
+$R_T^{\rm com}=\mathscr C_T^*M_{\varepsilon_T}\mathscr C_T$ has range in the
+support of $G_{\rm out}$,
+\[
+\Gfr_T^{-1/2}R_T^{\rm com}\Gfr_T^{-1/2}
+=A^*\bigl(G_{\rm out}^{-1/2}R_T^{\rm com}G_{\rm out}^{-1/2}\bigr)A.
+\]
+Hence its operator norm is
+$O(L^{C_{\rm out}}\varepsilon_{\rm diag})$.  Enlarge
+$C_{\rm diag}$ to absorb this fixed output-reference loss and choose
+$A_{\rm diag}$ accordingly. Compression to $d_T=O(N_T)$ dimensions and
+$\|B\|_{S_2}^2\le d_T\|B\|_{\op}^2$ then give
+\eqref{eq:HLZ-diagonal-relative-HS}.  Thus the packet dimension enters only in
+the final Hilbert--Schmidt conversion, not in the scalar-to-operator lift.  No
+levelwise exact-HLP Perron deformation is used in this route.
 \end{proof}
 
 \begin{lemma}[Finite-$T$ parameter deformation is relative-regular]
@@ -932,10 +1012,27 @@ denoting only the finite-model HLZ diagonalization error,
 There is no levelwise exact-HLP Perron contour error in the final route.
 
 \emph{(x) Terminal logarithmic tail.}
-The nonstationary part of the complementary band $W_T<u\le L$ is exactly
-$R_T^{\rm tail}$ of Proposition~\ref{prop:terminal-log-tail}, and already
-satisfies the required relative Hilbert--Schmidt bound. Its stationary and
-endpoint parts belong only to $E_T^{\rm edge}$.
+The nonstationary part of the complementary physical band $W_T<u\le L$ is
+exactly $R_T^{\rm tail}$ of Proposition~\ref{prop:terminal-log-tail}, and
+already satisfies the required relative Hilbert--Schmidt bound after the
+explicit one-leaking-leg lift. Its stationary and endpoint parts belong only
+to $E_T^{\rm edge}$.
+
+\emph{(xi) Exterior packet reserve and transition caps.}
+The complete Fourier support of the actual smooth packet extends beyond the
+central physical band by the two logarithmic reserves and the fixed-width
+transition caps. Proposition~\ref{prop:exterior-packet-support} partitions all
+terms with at least one such exterior leg as
+\[
+A_T^{\rm ext}=E_T^{\rm ext}+R_T^{\rm ext}.
+\]
+The stationary exterior part $E_T^{\rm ext}$ belongs only to
+$E_T^{\rm edge}$, while
+\[
+\|\Gfr_T^{-1/2}R_T^{\rm ext}\Gfr_T^{-1/2}\|_{S_2}^2=o(N_T).
+\]
+Thus neither the flat reserve nor the smooth transition caps are omitted from
+the source ledger.
 
 Class (i) is absent and class (viii) vanishes. For (ii)--(v) and the smooth
 height-partition corrections in (vi), the squared relative Hilbert--Schmidt
@@ -947,11 +1044,14 @@ contribution is $L^{C_{\rm reg}+o(1)}$ per shell, so the total is
 by \eqref{eq:acyclic-A0-choice}. The nonstationary interior of (vi) is accounted
 for by \eqref{eq:nonstat-relative-HS}; its endpoint part belongs instead to
 $E_T^{\rm bdry}$ by Proposition~\ref{prop:boundary-endpoint-rank}. Class (vii)
-has \eqref{eq:high-sideband-one-shell} and its global sum, and class (ix) has
-\eqref{eq:HLZ-diagonal-relative-HS}.  The primitive-controlled jump bounds in
+has \eqref{eq:high-sideband-one-shell} and its global sum, class (ix) has
+\eqref{eq:HLZ-diagonal-relative-HS}, and classes (x)--(xi) have
+Propositions~\ref{prop:terminal-log-tail} and
+\ref{prop:exterior-packet-support}. The primitive-controlled jump bounds in
 (ii)--(v) are uniformly $o(1)$, so Lemma~\ref{lem:two-variable-primitive}
-applies.  Adding these classes together with (vi), (vii), (ix), and (x) gives
-squared Hilbert--Schmidt norm $o(N_T)$, proving \eqref{eq:regular-HS}.
+applies. Adding these classes together with (vi), (vii), (ix), (x), and (xi)
+gives squared Hilbert--Schmidt norm $o(N_T)$, proving
+\eqref{eq:regular-HS}.
 \end{proof}
 
 \begin{proposition}[Finite-$T$ decomposition of the contour form]
@@ -1001,9 +1101,14 @@ $E_T^{\rm edge}$ and its high sidebands to regular class~(vii).  The scalar self
 difference $f-F_b$ belongs only to regular class~(ii), while the finite-model
 scalar HLZ error belongs only to class~(ix).  No exact HLP local projector,
 exact/model Laurent telescope, or levelwise Perron connector is used.
-Independently, the physical logarithmic source is split into the stable core
-and its terminal complement. By Proposition~\ref{prop:trivial-outer-twist},
-there is no additional outer arithmetic annulus in the invariant source.
+Independently, the complete smooth packet support is first split into the
+central physical band and the two exterior reserve/cap regions of
+Proposition~\ref{prop:exterior-packet-support}.  The central physical band is
+then split into the stable core and its terminal complement.  The stationary
+exterior contribution belongs to $E_T^{\rm edge}$ and its nonstationary
+complement only to regular class~(xi). By
+Proposition~\ref{prop:trivial-outer-twist}, there is no additional outer
+arithmetic annulus in the invariant source.
 \end{proposition}
 
 \begin{proof}
@@ -1044,18 +1149,22 @@ $P_T$.  The endpoint integrations by parts likewise split into their finite jet
 terms and an interior remainder, assigning the former exactly once to
 $E_T^{\rm bdry}$.
 
-Independently split the physical logarithmic coordinate at $W_T$.  The core
-piece is the one used in $P_T$ and in the preceding stable-band decomposition;
-Proposition~\ref{prop:terminal-log-tail} partitions the complementary band into
-its stationary edge, boundary, and nonstationary regular pieces, including the
-core--tail cross terms stated there.  Proposition~\ref{prop:trivial-outer-twist}
-sets the auxiliary outer indices to $1$, so no fourth arithmetic annulus is
-left over.
+Independently split the complete smooth packet support into the exterior
+reserve/cap region and the central physical band.  Proposition~\ref{prop:exterior-packet-support}
+partitions the former into its stationary edge part $E_T^{\rm ext}$ and its
+nonstationary regular part $R_T^{\rm ext}$, including all cross terms with one
+exterior leg.  On the central physical band split the logarithmic coordinate at
+$W_T$. The core piece is the one used in $P_T$ and in the preceding stable-band
+decomposition; Proposition~\ref{prop:terminal-log-tail} partitions the
+complementary band into its stationary edge, boundary, and nonstationary
+regular pieces, including the core--tail cross terms stated there.
+Proposition~\ref{prop:trivial-outer-twist} sets the auxiliary outer indices to
+$1$, so no additional arithmetic annulus is left over.
 
 Every step above is either an exact algebraic identity, a contour identity with
 its connector term retained, or a disjoint index/support partition.  Hence the
-pieces assigned to $P_T$ and $E_T^{\rm edge}$ leave precisely the ten regular
-classes enumerated in Proposition~\ref{prop:regular-ledger}.  By
+pieces assigned to $P_T$ and $E_T^{\rm edge}$ leave precisely the eleven
+regular classes enumerated in Proposition~\ref{prop:regular-ledger}.  By
 \eqref{eq:tri-remainder-definition} their sum is $R_T^{\rm tri}$.  The three
 estimates in the proposition are therefore
 \eqref{eq:principal-floor}, \eqref{eq:total-edge-rank}, and

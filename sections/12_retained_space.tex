@@ -1,11 +1,18 @@
 \section{Reduced spectral space and parameter hierarchy}
 \label{sec:retained}
 
-Choose the parameters in the following order. First fix any constant
-$C_{\rm pkt}>0$, which determines the logarithmic packet reserve
+Choose the parameters in the following order. First fix a constant
+\[
+0<C_{\rm pkt}<2,
+\]
+which determines the logarithmic packet reserve
 \eqref{eq:packet-bandwidth-reserve} before any stationary-buffer or symbol
-order is chosen. By Proposition~\ref{prop:trivial-outer-twist}, no arithmetic
-range parameter is required.
+order is chosen.  Any fixed positive value gives the required zero-side
+dimension slack; the upper bound $C_{\rm pkt}<2$ is used only to make the
+entire exterior packet support an $o(N_T)$ stationary output space in
+Proposition~\ref{prop:exterior-packet-support}. By
+Proposition~\ref{prop:trivial-outer-twist}, no arithmetic range parameter is
+required.
 
 Fix once and for all the finite derivative orders required for two curvature
 derivatives and two primitive mixed derivatives. Let $C_{\rm fr}$ be the
@@ -43,9 +50,12 @@ logarithmic saving exponent for the stable-core nonstationary leakage and, after
 increasing it if necessary, as a power-saving target for the horizontal
 connectors. Choose the integration-by-parts order $N$ so that
 \[
-2N-1>M_*+5,
+\boxed{N\ge8,\qquad 2N-1>M_*+5.}
 \]
-and then choose the stationary buffer exponent $B$ so that
+The explicit lower bound $N\ge8$ is used only for the exterior-packet and
+one-leaking-leg Hilbert--Schmidt estimates; it is compatible with the same
+fixed-order parameter hierarchy. Then choose the stationary buffer exponent
+$B$ so that
 \[
 B(2N-1)>2C_N+M_*.
 \]

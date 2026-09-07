@@ -19,8 +19,10 @@ Use the full flat packet Fourier interval
 whose central physical zeta band is
 $R_{\rm pkt}\le u\le R_{\rm pkt}+L$. By Proposition~\ref{prop:trivial-outer-twist}, the invariant contour source has
 no nontrivial outer-denominator translation. The logarithmic reserve is used
-only for the packet-dimension slack and the smooth transition caps; it does not
-encode an arithmetic truncation.
+for packet-dimension slack and for the smooth transition caps; it does not
+encode an arithmetic truncation.  The actual source carried by the extended
+packet support outside the central physical band is accounted for explicitly
+in Proposition~\ref{prop:exterior-packet-support}.
 
 For exact lattice centres
 \[
@@ -96,6 +98,241 @@ Thus the intersection has codimension $O(T\log L)$ and gives both lower bounds
 in \eqref{eq:stable-core-frame}. Moving every centre by at most $T^{-100}$
 changes these finite Grams by $o(1)$ in operator norm, by the estimate in the
 proof of Lemma~\ref{lem:packet-riesz}; the fixed lower bound therefore persists.
+\end{proof}
+
+\begin{lemma}[Hilbert--Schmidt lift from one leaking analysis leg]
+\label{lem:one-leaking-leg-HS}
+Let $V$ be finite dimensional and let
+\[
+Q_o:V\to\mathcal H_o,
+\qquad
+Q_c:V\to\mathcal H_c
+\]
+be analysis maps with
+\[
+\|Q_o\|_{S_2}^2\le \varepsilon_T^2,
+\qquad
+\|Q_c\|_{\op}\le L^{C_Q}.
+\]
+Suppose a Hermitian source contribution containing at least one $Q_o$-leg has
+an exact factorization
+\begin{equation}
+R=Q_o^*B_{oc}Q_c+Q_c^*B_{oc}^*Q_o+Q_o^*B_{oo}Q_o
+\label{eq:one-leaking-leg-factorization}
+\end{equation}
+with
+\[
+\|B_{oc}\|_{\op}+\|B_{oo}\|_{\op}\le\beta_T.
+\]
+Then
+\begin{equation}
+\boxed{
+\|R\|_{S_2}^2
+\ll
+\beta_T^2L^{2C_Q}
+\bigl(\varepsilon_T^2+\varepsilon_T^4\bigr).
+}
+\label{eq:one-leaking-leg-HS}
+\end{equation}
+The same estimate holds for finite orthogonal sums of output fibres and for
+cross terms between two disjoint source regions, provided one leg satisfies
+the displayed $S_2$ bound.
+\end{lemma}
+
+\begin{proof}
+The ideal property of the Hilbert--Schmidt norm gives
+\[
+\|Q_o^*B_{oc}Q_c\|_{S_2}
+\le
+\|Q_o\|_{S_2}\|B_{oc}\|_{\op}\|Q_c\|_{\op}
+\ll \varepsilon_T\beta_TL^{C_Q}.
+\]
+For the two-leaking-leg term use
+$\|Q_o\|_{\op}\le\|Q_o\|_{S_2}$ to obtain
+\[
+\|Q_o^*B_{oo}Q_o\|_{S_2}
+\le
+\|Q_o\|_{S_2}\|B_{oo}\|_{\op}\|Q_o\|_{\op}
+\le \beta_T\varepsilon_T^2.
+\]
+Squaring and using the triangle inequality proves
+\eqref{eq:one-leaking-leg-HS}. Orthogonal direct sums are unchanged, and a
+cross term is the first term in
+\eqref{eq:one-leaking-leg-factorization} with a different companion analysis.
+\end{proof}
+
+\begin{proposition}[Exterior packet reserve and transition caps]
+\label{prop:exterior-packet-support}
+After the fixed translation which sends the flat plateau of $\phi_L$ to
+$[0,L_{\rm pkt}]$, write $\widetilde\phi_L$ for the translated Fourier window.
+Thus
+\[
+\widetilde\phi_L=L_{\rm pkt}^{-1/2}
+\quad(0\le u\le L_{\rm pkt}),
+\qquad
+\supp\widetilde\phi_L\subset[-\Delta,L_{\rm pkt}+\Delta].
+\]
+Put
+\[
+\widetilde u=u-R_{\rm pkt},
+\qquad x=e^{\widetilde u},
+\qquad X_{\rm full}=e^L=\frac{T}{2\pi},
+\]
+and define
+\[
+x_-:=e^{-\Delta}L^{-C_{\rm pkt}/2},
+\qquad
+x_+:=e^{\Delta}X_{\rm full}L^{C_{\rm pkt}/2}.
+\]
+The central physical zeta band is $1\le x\le X_{\rm full}$; the complete
+packet support outside it is
+\[
+\mathcal E_-=[x_-,1),
+\qquad
+\mathcal E_+=(X_{\rm full},x_+].
+\]
+Let $A_T^{\rm ext}$ be the sum of the right-edge one-$\chi$ source and its
+adjoint for which at least one packet Fourier leg lies in
+$\mathcal E_-\cup\mathcal E_+$. Then there is a disjoint decomposition
+\begin{equation}
+\boxed{
+A_T^{\rm ext}=E_T^{\rm ext}+R_T^{\rm ext},
+}
+\label{eq:exterior-packet-decomposition}
+\end{equation}
+where
+\begin{equation}
+\boxed{
+\rank E_T^{\rm ext}
+\ll T L^{C_{\rm pkt}/2+o(1)}=o(N_T)
+}
+\label{eq:exterior-packet-rank}
+\end{equation}
+and, on $V_{\rm core}\cap V_{\rm mean}$,
+\begin{equation}
+\boxed{
+\|\Gfr_T^{-1/2}R_T^{\rm ext}\Gfr_T^{-1/2}\|_{S_2}^2=o(N_T).
+}
+\label{eq:exterior-packet-HS}
+\end{equation}
+The estimate includes the two fixed-width transition caps and all
+core--exterior and tail--exterior cross terms. The artificial interfaces at
+$x=1$ and $x=X_{\rm full}$ create no new unassigned boundary family: their
+finite one-sided jet maps are owned, respectively, by the existing boundary
+and terminal-tail edge terms, while the true packet-support endpoints
+$x_-,x_+$ have vanishing jets because $\widetilde\phi_L$ is $C_c^\infty$.
+\end{proposition}
+
+\begin{proof}
+Every right-edge Dirichlet monomial is a physical one-$\chi$ carrier, and on
+an $x$-interval its stationary phase is
+\[
+\Phi_{\tau,n}(x)=\tau\log x-2\pi nx,
+\qquad
+\Phi'_{\tau,n}(x)=\frac\tau x-2\pi n.
+\]
+For the lower exterior a saddle can occur only for
+\[
+\frac{T}{2\pi}\ll n\ll\frac{T}{x_-},
+\]
+so the complete lower stationary output has dimension
+\[
+O(T/x_-)=O\!\left(TL^{C_{\rm pkt}/2}\right).
+\]
+Enlarging this interval by
+\[
+R_-:=L^B\left(1+\frac{\sqrt T}{x_-}\right)
+\]
+changes the dimension by only
+$O(\sqrt T L^{B+C_{\rm pkt}/2})=o(TL^{C_{\rm pkt}/2})$.
+For the upper exterior use unit shells $J\le x\le J+1$ and a fixed margin one.
+The total number of stationary or adjacent rows is
+\[
+\sum_{X_{\rm full}\ll J\ll x_+}
+\left(1+\frac TJ\right)
+\ll x_++T\log\frac{x_+}{X_{\rm full}}
+\ll T L^{C_{\rm pkt}/2+o(1)}.
+\]
+Every source term containing one of these stationary exterior legs factors
+through the corresponding row space, independently of its coefficients and
+signs.  Since $C_{\rm pkt}<2$, their sum has rank
+$o(TL)=o(N_T)$ and is placed in $E_T^{\rm ext}$.
+
+It remains to treat the nonstationary exterior legs. On $\mathcal E_-$ put
+$D=\dist(n,\mathcal I_-)$, where $\mathcal I_-$ is the lower stationary
+interval.  For $D\ge R_-$,
+\[
+|\Phi'|\gg D,
+\qquad
+|\Phi^{(r)}|\ll_rTx_-^{-r},
+\qquad
+\frac{Tx_-^{-2}}{D^2}\ll L^{-2B}.
+\]
+The translated packet window and the remaining stationary amplitudes have,
+through every fixed derivative used here, only polylogarithmic loss: indeed
+$x^{-1}\le x_-^{-1}\ll L^{C_{\rm pkt}/2}$, and the transition cap is a
+fixed-width $C^\infty$ profile. Repeated integration by parts therefore gives,
+after separating the finite jet at the artificial interface $x=1$,
+\[
+|Q_{-,n}(e_k)|
+\ll_N
+L_{\rm pkt}^{-1/2}L^{C_N}(1+D)^{-N}.
+\]
+The true lower support endpoint gives no jet.  Squaring, summing in $n$, and
+then over the $O(TL)$ packet coordinates gives
+\begin{equation}
+\boxed{
+\|Q_{-,\rm out}\|_{S_2}^2
+\ll T L^{C_N}R_-^{1-2N}
+\ll T^{3/2-N}L^{C_N'}.
+}
+\label{eq:lower-exterior-analysis-HS}
+\end{equation}
+For $\mathcal E_+$ the same unit-shell calculation as in the terminal tail,
+now with $J\ge X_{\rm full}\asymp T$, gives
+\begin{equation}
+\boxed{
+\|Q_{+,\rm out}\|_{S_2}^2
+\ll T^{1-2N}L^{C_N''}.
+}
+\label{eq:upper-exterior-analysis-HS}
+\end{equation}
+The extension of the upper limit to $x_+$ only improves the convergent sum
+$\sum_{J\ge X_{\rm full}}J^{-1-2N}$.
+
+We finally lift these analysis bounds to the complete source matrix.  Choose a
+fixed $C_x>C_{\rm pkt}/2$ large enough to absorb the fixed transition-cap
+constant.  Since $x_-^{-1}=e^\Delta L^{C_{\rm pkt}/2}$, every lower-exterior
+stationary carrier satisfies $m\ll T L^{C_x}$ for all large $T$.  The uniform
+form of Lemma~\ref{lem:direct-carrier-square} therefore gives
+\[
+\sum_{m\ll T L^{C_x}}|c_m^{\rm dir}|^2
+\ll T L^{C}.
+\]
+Cauchy--Schwarz and the absolutely summable Fourier sidebands therefore give
+the deliberately crude but uniform output-operator bound
+\begin{equation}
+\boxed{\beta_T\ll T L^{C}.}
+\label{eq:exterior-source-operator-bound}
+\end{equation}
+All companion packet/shell analyses have operator norm bounded by a fixed
+power of $L$, by the packet Riesz bound and the fixed-overlap transforms.
+Lemma~\ref{lem:one-leaking-leg-HS} applied to
+\eqref{eq:lower-exterior-analysis-HS}--\eqref{eq:upper-exterior-analysis-HS}
+therefore gives
+\[
+\|R_T^{\rm ext}\|_{S_2}^2
+\ll T^{7/2-N}L^C+T^{3-2N}L^C.
+\]
+On $V_{\rm core}\cap V_{\rm mean}$,
+Lemma~\ref{lem:core-reference-floor} gives
+$\|\Gfr_T^{-1/2}\|_{\op}^2\ll T^2L^{C_G}$. Hence
+\[
+\|\Gfr_T^{-1/2}R_T^{\rm ext}\Gfr_T^{-1/2}\|_{S_2}^2
+\ll T^{15/2-N}L^C+T^{7-2N}L^C=o(N_T),
+\]
+because $N\ge8$ was fixed in Section~\ref{sec:retained}. This proves
+\eqref{eq:exterior-packet-decomposition}--\eqref{eq:exterior-packet-HS}.
 \end{proof}
 
 \subsection{Logarithmic unitary and exact local Parseval}
@@ -370,13 +607,10 @@ stationary range. Its total number of rows is
 \ll T\log L.
 \]
 By Proposition~\ref{prop:trivial-outer-twist} there is no arithmetic fibre
-multiplicity. Every stationary tail term and every core--tail cross term
-therefore factors through a space of dimension $O(T\log L)$, which proves the
-rank bound independently of its direct-source coefficients.  For the full
-exact--model residual, Lemmas~\ref{lem:direct-carrier-square} and
-\ref{lem:stationary-symbol} give a uniform polylogarithmic coefficient-square
-and symbol-derivative loss; this is absorbed into the logarithmic constants
-below.
+multiplicity. Every stationary tail term and every cross term with a
+stationary tail leg therefore factors through a space of dimension
+$O(T\log L)$, which proves the rank bound independently of its direct-source
+coefficients.
 
 For the complementary modes let $D=\dist(n,\mathcal I_j)>1$. Since
 $J_j\ge X_T=T/(2\pi L^{A_0})$,
@@ -396,18 +630,44 @@ $J_j\ge X_T\asymp T L^{-A_0}$,
 \[
 \sum_{J_j\ge X_T}J_j^{-1-2N}\ll X_T^{-2N}.
 \]
-After summing over the $O(TL)$ packet coordinates, with no additional
-arithmetic multiplicity by Proposition~\ref{prop:trivial-outer-twist}, we
-obtain the sufficient absolute estimate
+Let $Q_{\rm tail,out}$ denote the resulting nonstationary tail analysis before
+the direct source operator is applied. Summing over the $O(TL)$ packet
+coordinates gives the analysis-level bound
+\begin{equation}
+\boxed{
+\|Q_{\rm tail,out}\|_{S_2}^2
+\ll T^{1-2N}L^{C_{N,A_0}}.
+}
+\label{eq:terminal-tail-analysis-HS}
+\end{equation}
+This is deliberately not yet identified with a source-matrix norm.
+
+We now perform the missing operator lift. Lemma~\ref{lem:direct-carrier-square}
+gives, on the entire physical range $m\ll T$,
+\[
+\sum_m|c_m^{\rm dir}|^2\ll TL^C.
+\]
+Hence Cauchy--Schwarz, followed by the absolutely summable Fourier sidebands
+from Lemma~\ref{lem:stationary-symbol}, gives the conservative output-operator
+bound
+\begin{equation}
+\boxed{
+\beta_T^{\rm tail}\ll TL^C.
+}
+\label{eq:terminal-tail-source-operator}
+\end{equation}
+The companion core analysis has operator norm bounded by a fixed power of
+$L$. Therefore every nonstationary tail--tail or core--tail source term has the
+exact form covered by Lemma~\ref{lem:one-leaking-leg-HS}, with
+$\varepsilon_T^2$ equal to the right side of
+\eqref{eq:terminal-tail-analysis-HS}. Consequently
 \begin{equation}
 \boxed{
 \|R_T^{\rm tail}\|_{S_2}^2
-\ll T^{1-2N}L^{C_{N,A_0}}.
+\ll T^{3-2N}L^{C_{N,A_0}}.
 }
 \label{eq:terminal-tail-absolute-HS}
 \end{equation}
-The same estimate holds for the nonstationary core--tail cross terms, since the
-core analysis map has fixed operator norm up to a power of $L$.
 Lemma~\ref{lem:core-reference-floor} gives on
 $V_{\rm core}\cap V_{\rm mean}$
 \[
@@ -416,10 +676,10 @@ $V_{\rm core}\cap V_{\rm mean}$
 Consequently
 \[
 \|\Gfr_T^{-1/2}R_T^{\rm tail}\Gfr_T^{-1/2}\|_{S_2}^2
-\ll T^{5-2N}L^{C_{N,A_0}+2C_G}=o(N_T),
+\ll T^{7-2N}L^{C_{N,A_0}+2C_G}=o(N_T),
 \]
-because the fixed order $N$ chosen in Section~\ref{sec:retained} is in
-particular larger than $3$. Endpoint jets at the physical endpoint
+because the fixed order $N\ge8$ was chosen in
+Section~\ref{sec:retained}. Endpoint jets at the physical endpoint
 $x=X_{\rm full}$ factor through finitely many evaluation functionals and are
 included in $E_T^{\rm tail}$. The tail-side split jets at $x=X_T$ are precisely
 $E_T^{\rm bdry,tail}$ and belong only to the global boundary matrix
@@ -553,14 +813,20 @@ coordinates. Thus
 Define $E_T^{\rm edge}$ to be the sum of the low-sideband stationary shifts of
 the entire direct exact--model residual \eqref{eq:direct-exact-model-residual}
 and of the other genuinely direct stationary sources, together with the
-boundary-shell matrix $E_T^{\rm bdry}$ and the terminal logarithmic tail matrix
-$E_T^{\rm tail}$.  Proposition~\ref{prop:edge-rank} applies to the full
-norm-convergent HLP sum because its range bound is independent of coefficients
-and signs.  The auxiliary outer-excess term is zero by
+boundary-shell matrix $E_T^{\rm bdry}$, the terminal logarithmic tail matrix
+$E_T^{\rm tail}$, and the stationary exterior packet-support matrix
+$E_T^{\rm ext}$ of Proposition~\ref{prop:exterior-packet-support}.
+Proposition~\ref{prop:edge-rank} applies to the full norm-convergent HLP sum
+because its range bound is independent of coefficients and signs.  The
+auxiliary outer-excess term is zero by
 Proposition~\ref{prop:trivial-outer-twist}; the horizontal packet-centre collars
 are handled only by $V_{\rm end}$.  Propositions~\ref{prop:edge-rank},
-\ref{prop:boundary-endpoint-rank}, and \ref{prop:terminal-log-tail} give
+\ref{prop:boundary-endpoint-rank}, \ref{prop:terminal-log-tail}, and
+\ref{prop:exterior-packet-support} give
 \begin{equation}
-\boxed{\rank E_T^{\rm edge}\ll T\log L=o(N_T).}
+\boxed{
+\rank E_T^{\rm edge}
+\ll T L^{C_{\rm pkt}/2+o(1)}=o(N_T).
+}
 \label{eq:total-edge-rank}
 \end{equation}

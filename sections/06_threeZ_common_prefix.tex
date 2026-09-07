@@ -157,6 +157,121 @@ is important because it permits the auxiliary function
 requiring a jointly analytic extension across $z_i=z_j$.
 \end{proof}
 
+\begin{lemma}[Parametric form of the HLZ diagonal contour]
+\label{lem:parametric-HLZ-diagonal}
+Put $\log_3T:=\log\log\log T$. Write
+\[
+ Z_{\mathbf z,1,1}:=Z_{z_1,-z_2,z_3,1,1},
+ \qquad
+ D_{\mathbf z}(s):=
+ \frac{\zeta(1+z_1-z_2+2s)\zeta(1-z_2+z_3+2s)}
+      {\zeta(1-z_2+2s)}.
+\]
+Fix a constant $c_+>0$, large enough in terms of the radii in
+\eqref{eq:HLZ-separated-circles}, so that $D_{\mathbf z}(s)$ is represented by
+its absolutely convergent Euler product on $\Re s=c_+/L$.  Let
+$K_{T,\mathbf z}(s)$ be analytic on the rectangle between
+$\Re s=c_+/L$ and $\Re s=-1/\log_3T$, with
+\[
+ K_{T,\mathbf z}\!\left(\frac{z_2-z_1}{2}\right)=
+ K_{T,\mathbf z}\!\left(\frac{z_2-z_3}{2}\right)=0.
+\]
+Assume that for some fixed $C_K,c_K>0$, uniformly on that strip,
+\begin{equation}
+ \left|\mathcal D K_{T,\mathbf z}(\sigma+iv)\right|
+ \ll L^{C_K}(1+|v|)^{C_K}e^{-c_Kv^2}
+ \label{eq:parametric-HLZ-K-bound}
+\end{equation}
+for every operator $\mathcal D$ in a prescribed finite family of packet
+parameter derivatives, including $\mathcal D=1$.  Define the diagonal Mellin
+integral on the absolutely convergent right line by
+\begin{equation}
+ \widetilde Z_{\mathbf z,1,1}[K]
+ :=\frac1{2\pi i}\int_{c_+/L-i\infty}^{c_+/L+i\infty}
+ \frac{K_{T,\mathbf z}(s)}s T^{2s}D_{\mathbf z}(s)\,ds.
+ \label{eq:parametric-HLZ-diagonal-integral}
+\end{equation}
+Then, pointwise for $\mathbf z\in\mathcal T_L$,
+\begin{equation}
+ K_{T,\mathbf z}(0)Z_{\mathbf z,1,1}
+ =\widetilde Z_{\mathbf z,1,1}[K]
+ +\mathcal E_K(\mathbf z),
+ \label{eq:parametric-HLZ-diagonal}
+\end{equation}
+and, after every such fixed derivative $\mathcal D$,
+\begin{equation}
+ \sup_{\mathbf z\in\mathcal T_L}
+ |\mathcal D\mathcal E_K(\mathbf z)|
+ \ll_{A,C_K,c_K}
+ L^{C_K+C_0}T^{-2/\log_3T}\log_3T+L^{-A}
+ \label{eq:parametric-HLZ-error}
+\end{equation}
+for every fixed $A>0$, where $C_0$ is an absolute fixed exponent coming from
+the three zeta factors and the short contour.  In particular, any fixed
+polylogarithmic loss in the auxiliary factor preserves the arbitrary
+logarithmic saving in the HLZ diagonalization.
+\end{lemma}
+
+\begin{proof}
+The Euler factorization in the proof of the diagonal lemma of
+Heap--Li--Zhao~\cite{HLZ}, specialized to $h=k=1$ and with their second shift
+replaced by $-z_2$, is exactly $D_{\mathbf z}(s)$. On the truncated rectangle,
+the same zero-free region used there excludes zeros of the denominator
+$\zeta(1-z_2+2s)$. Thus the only poles crossed when the $s$-line is moved left
+are $s=0$ and the two shifted zeta poles
+\[
+ 2s=z_2-z_1,\qquad 2s=z_2-z_3.
+\]
+The latter two are removable because of the assumed zeros of $K$, while the
+residue at $s=0$ is $K_{T,\mathbf z}(0)D_{\mathbf z}(0)
+=K_{T,\mathbf z}(0)Z_{\mathbf z,1,1}$.
+
+We record the error estimate rather than invoking the HLZ argument as a black
+box.  Put
+\[
+ V=B\sqrt{\log L},
+\]
+where $B$ is a fixed constant to be chosen after $A$ and $C_K$.  Truncate the
+right vertical line at $|\Im s|=V$.  On that line the Dirichlet series is
+absolutely convergent, while \eqref{eq:parametric-HLZ-K-bound} gives Gaussian
+vertical decay; standard polynomial vertical bounds for the finitely many zeta
+factors are therefore dominated by $e^{-c_Kv^2}$.  Choosing $B$ sufficiently
+large makes the two discarded tails $O_A(L^{-A})$.
+
+Move the truncated contour to $\Re s=-1/\log_3T$, exactly the narrow
+zero-free-region displacement used in the proof of the HLZ diagonal lemma.
+On the resulting rectangle their zero-free-region estimate gives, uniformly
+for $\mathbf z\in\mathcal T_L$,
+\[
+ \zeta(1+z_1-z_2+2s),\quad
+ \zeta(1-z_2+z_3+2s),\quad
+ \zeta(1-z_2+2s)^{-1}
+ \ll L^{C_0},
+\]
+with a fixed absolute exponent after the three factors are combined.  On the
+left edge,
+\[
+ |T^{2s}|=T^{-2/\log_3T},
+ \qquad
+ |s|^{-1}\ll \log_3T
+\]
+near the only relevant small-height portion, while the Gaussian integral of
+$(1+|v|)^{C_K}e^{-c_Kv^2}$ is bounded.  Hence the left edge is
+\[
+ \ll L^{C_K+C_0}T^{-2/\log_3T}\log_3T.
+\]
+On the two horizontal edges the factor $e^{-c_KV^2}$ beats every prescribed
+power of $L$ once $B$ is enlarged, so their total contribution is
+$O_A(L^{-A})$.  This proves \eqref{eq:parametric-HLZ-diagonal} and
+\eqref{eq:parametric-HLZ-error}.
+
+The same argument applies after any derivative $\mathcal D$ in the stated
+finite family: these derivatives act only on $K$, the bound
+\eqref{eq:parametric-HLZ-K-bound} is assumed for the differentiated auxiliary,
+and the scalar Euler factor $D_{\mathbf z}$ is unchanged.  This yields the
+uniform differentiated estimate.
+\end{proof}
+
 \begin{lemma}[Packet-weighted scalar HLZ diagonalization]
 \label{lem:packet-HLZ-diagonal}
 Let $\mathbf z\in\mathcal T_L$ and let $H_{\mathbf z}$ be the explicit
@@ -178,7 +293,7 @@ where, after any fixed number of the packet derivatives
 $\partial_\rho,\partial_p$ used below,
 \begin{equation}
 \sup_{\mathbf z\in\mathcal T_L}
-|\mathcal E_{\rm diag}(\mathbf z;1,1)|
+|\partial_\rho^r\partial_p^j\mathcal E_{\rm diag}(\mathbf z;1,1)|
 \ll L^{C_W}
 \left[
 T^{-2/\log_3T}
@@ -186,7 +301,7 @@ T^{-2/\log_3T}
 \right]
 \label{eq:packet-HLZ-error}
 \end{equation}
-for every prescribed fixed $A>0$.  The physical shift derivatives are taken
+for every fixed pair $r,j$ required later and every prescribed fixed $A>0$.  The physical shift derivatives are taken
 only afterwards by the outer Cauchy integrals of
 Proposition~\ref{prop:HLZ-three-face-Cauchy}; no derivative of
 $H_{\mathbf z}$ across the collision locus is used.
@@ -210,11 +325,12 @@ W(u,\mathbf z)=\int_0^{C_*}a_{\rho,p,\mathbf z,T}(t)e^{Lut}\,dt
 \]
 (or a finite product of such factors). Lemma~\ref{lem:smooth-mellin-class}
 shows that every fixed $\partial_\rho,\partial_p$ derivative has the same
-polylogarithmic $L^1$ bounds. On the strip
+polylogarithmic $L^1$ bounds. On every strip
 \[
--\frac1{\log_3T}\le\Re u\le\frac1L,
+-\frac1{\log_3T}\le\Re u\le\frac{c_+}{L}
 \]
-these weights are bounded by a fixed power of $L$.  By
+with fixed $c_+>0$, these weights are bounded by a fixed power of $L$, because
+$|e^{Lut}|\le e^{c_+C_*}$ on the right and is at most $1$ on the left.  By
 \eqref{eq:HLZ-shift-separation}, the denominator in
 \eqref{eq:HLZ-explicit-auxiliary} is bounded below by a fixed multiple of
 $L^{-2}$.  Hence $H_{\mathbf z}(u)$ is bounded there by a fixed polynomial in
@@ -235,16 +351,19 @@ fixed polylogarithmic losses in \eqref{eq:packet-HLZ-error} are included.
 
 The two possible shifted zeta poles are at
 $2u=z_2-z_1$ and $2u=z_2-z_3$ and are cancelled pointwise by
-\eqref{eq:HLZ-auxiliary-properties}.  Also
-$H_{\mathbf z}(0)=1$.  Since the HLZ contour identity is linear in its
-auxiliary analytic function, applying that proof to
-$H_{\mathbf z}W$ gives the residue
+\eqref{eq:HLZ-auxiliary-properties}.  Thus
 \[
-(H_{\mathbf z}W)(0,\mathbf z)Z_{\mathbf z,1,1}
+F_{T,\mathbf z}(u):=H_{\mathbf z}(u)W(u,\mathbf z)
+\]
+satisfies the hypotheses of Lemma~\ref{lem:parametric-HLZ-diagonal}, with a
+fixed exponent $C_K$ large enough to absorb the packet and auxiliary polynomial
+losses. Since $H_{\mathbf z}(0)=1$, its main residue is
+\[
+F_{T,\mathbf z}(0)Z_{\mathbf z,1,1}
 =W(0,\mathbf z)Z_{\mathbf z,1,1}.
 \]
-The remaining left and horizontal contours acquire only a fixed polynomial
-factor in $L$, which is absorbed into $C_W$; this proves
+Equation \eqref{eq:parametric-HLZ-error}, together with
+\eqref{eq:HLZ-superlog-saving}, then gives
 \eqref{eq:packet-HLZ-diagonal}--\eqref{eq:packet-HLZ-error}.
 
 Finally, the required physical shift coefficients are finite Cauchy residues
@@ -273,8 +392,14 @@ X(\tau)^{2u}(mn)^{-u}
 \]
 does not change the $u=0$ main residue and preserves the error class
 \eqref{eq:packet-HLZ-error}, uniformly on every retained height block.  The same
-is true after the fixed packet, endpoint, curvature, and physical-shift
-Cauchy derivatives used below.
+is true after the fixed packet, curvature, and physical-shift Cauchy
+derivatives used below.  Moreover, if the logarithmic endpoint $U$ is tied to
+physical height by $\tau=2\pi e^{LU}$, then the first two total endpoint
+derivatives
+\[
+D_U:=\partial_U+L\tau\partial_\tau
+\]
+also preserve the same arbitrary-log error class.
 \end{lemma}
 
 \begin{proof}
@@ -287,18 +412,20 @@ weight $W$ is the original $T$-scale contour with packet weight $R_\tau W$.
 Since $\tau\in[T,2T]$, the ratio $X(\tau)/T$ stays in a fixed compact subset of
 $(0,\infty)$.  Hence on the whole strip
 \[
--\frac1{\log_3T}\le \Re u\le\frac1L
+-\frac1{\log_3T}\le \Re u\le\frac{c_+}{L}
 \]
 one has
 \[
 |R_\tau(u)|\ll1,
 \qquad
-\partial_\tau^jR_\tau(u)
-=R_\tau(u)\,O_j\!\left((1+|u|)^jT^{-j}\right)
+(\tau\partial_\tau)^jR_\tau(u)=(2u)^jR_\tau(u),
+\qquad
+(L\tau\partial_\tau)^jR_\tau(u)=(2Lu)^jR_\tau(u)
 \]
-for every fixed $j$.  Thus multiplication by $R_\tau$ preserves the Gaussian
-vertical decay and all polylogarithmic derivative bounds required in the proof
-of Lemma~\ref{lem:packet-HLZ-diagonal}.
+for every fixed $j$.  Thus multiplication by $R_\tau$, even after the first
+two $L\tau\partial_\tau$ derivatives, preserves the Gaussian vertical decay
+and merely enlarges the fixed polylogarithmic exponent in
+Lemma~\ref{lem:parametric-HLZ-diagonal}.
 
 Most importantly,
 \[
@@ -309,11 +436,311 @@ Therefore the residue produced when the $u$-contour crosses the origin is still
 (R_\tau H_{\mathbf z}W)(0,\mathbf z)Z_{\mathbf z,1,1}
 =W(0,\mathbf z)Z_{\mathbf z,1,1}.
 \]
-On the displaced contour the new multiplier is uniformly bounded, while its
-fixed physical-height derivatives cost only powers of $T^{-1}(1+|u|)$ and are
-absorbed by the Gaussian factor.  The left and horizontal contour estimates,
-and then the finite Cauchy residues, therefore retain exactly the error class
-\eqref{eq:packet-HLZ-error}.  This proves the claimed local-height rescaling.
+For every $j\ge1$,
+\[
+(L\tau\partial_\tau)^jR_\tau(0)=0,
+\]
+so differentiating the scale multiplier contributes no new main residue at the
+origin.  On the displaced contour the factors $(Lu)^j$ are absorbed by the
+Gaussian vertical decay and by increasing the fixed polylogarithmic exponent
+in Lemma~\ref{lem:parametric-HLZ-diagonal}.  The $\partial_U$ part of $D_U$ acts
+only on the pre-existing packet/endpoint weight and is already covered by the
+packet derivative hypotheses.  Hence the first two total endpoint derivatives,
+the left and horizontal contour estimates, and then the finite Cauchy residues
+retain the same arbitrary-log error class \eqref{eq:packet-HLZ-error}.  This
+proves the claimed local-height rescaling.
+\end{proof}
+
+\begin{lemma}[Auxiliary-shift rigidity of the finite-model packet map]
+\label{lem:aux-shift-rigidity-packet-map}
+Fix a retained height block and restrict to the principal stationary part of the
+finite model source $H_{\rm mod}$.  Before the HLZ $u$-contour deformation, the
+three auxiliary Cauchy variables $\mathbf z=(z_1,z_2,z_3)$ act only on a
+packet-label-independent scalar amplitude.  More precisely, for every fixed
+retained physical shift $p$ and every basis packet $e_r$ there are a one-sided
+interval $I_r(p)$ and a function $b_{r,T,p}$, both independent of $\mathbf z$,
+such that every packet-pair coefficient of the completed finite-model
+three-face source has the form
+\begin{equation}
+\boxed{
+\mathbf 1_{I_r(p)\cap I_s(p)}(t)
+ b_{s,T,p}(t)\overline{b_{r,T,p}(t)}\,
+ c_{T,p}(t;u,\mathbf z),
+}
+\label{eq:preHLZ-shift-rigid-factorization}
+\end{equation}
+where all dependence on $u,\mathbf z$ is contained in the common scalar factor
+$c_{T,p}$.  Consequently, for each fixed $p$, the principal packet analysis map
+\[
+(\mathscr C_{T,p}e_r)(t):=\mathbf 1_{I_r(p)}(t)b_{r,T,p}(t)
+\]
+is independent of the auxiliary Cauchy shifts; in particular, in this exact
+pre-HLZ representation,
+\begin{equation}
+\boxed{\partial_{z_j}\mathscr C_{T,p}=0\qquad(j=1,2,3).}
+\label{eq:C-map-shift-rigidity}
+\end{equation}
+The statement concerns the principal finite-model source only.  Higher
+stationary corrections and nonstationary leakage remain in the regular ledger
+of Proposition~\ref{prop:regular-ledger}.
+\end{lemma}
+
+\begin{proof}
+The chronology of the exact source fixes the dependence.  In the invariant
+contour form the packet factor is already
+\[
+\mathcal B_{e_r,e_s}(s)=\psi_s(z(s))\psi_r^\#(z(s))
+\]
+by \eqref{eq:packet-polarization}; it contains neither the physical Hardy shift
+nor any HLZ auxiliary Cauchy variable.  The finite replacement
+$H_{\rm mod}=F_b-2P+P(s-2/L)$ is a scalar logarithmic-derivative source, so
+multiplying by it cannot alter the packet labels.  The variables
+$z_1,z_2,z_3$ are introduced only afterwards by the exact scalar three-face
+Cauchy identity \eqref{eq:HLZ-three-face-Cauchy}.  Thus, before any stationary
+reduction, every $\mathbf z$-dependent shifted-zeta, Cauchy-denominator and
+archimedean factor is common to all packet labels.
+
+After Dirichlet expansion, a small auxiliary zeta shift changes a Dirichlet
+coefficient by factors such as $n^{-z_j}$ and changes the functional-equation
+factor by a ratio of shifted gamma factors.  We keep all such factors in the
+scalar amplitude.  Equivalently, a shifted one-$\chi$ kernel may be written as
+\[
+A_{\mathbf z}(t,\xi)\,
+\chi(1-c-it)\xi^{-c-it},
+\]
+where $A_{\mathbf z}$ is packet-label independent and, on the separated
+$|z_j|\asymp L^{-1}$ tori, has only fixed polylogarithmic derivative loss.  The
+rapid phase is therefore exactly the unshifted one-$\chi$ phase of
+Section~\ref{sec:stationary}.  In particular its saddle, saddle cutoff and
+principal Hessian normalization are independent of $\mathbf z$.
+
+The only transformation of the packet factor at principal stationary level is
+therefore the exact one-sided dilation
+\[
+\mathcal S_w^{\rm pr}=D_w\mathcal S_0^{\rm pr}
+\]
+of \eqref{eq:dilation-covariance}.  Here $w$ is the logarithmic packet translation, fixed by the packet coordinate,
+physical carrier and the already-fixed physical shift $p$, not by the auxiliary
+Cauchy shifts.  Hence the transported packet support $I_r(p)$ and the one-sided
+factor $b_{r,T,p}$ are independent of $\mathbf z$.  All shifted-zeta, gamma,
+Cauchy and Mellin factors remain in one common scalar amplitude
+$c_{T,p}(t;u,\mathbf z)$.  This proves
+\eqref{eq:preHLZ-shift-rigid-factorization}, and
+\eqref{eq:C-map-shift-rigidity} follows directly from the definition of
+$\mathscr C_{T,p}$.
+\end{proof}
+
+\begin{lemma}[Common-output lift of the scalar HLZ contour error]
+\label{lem:HLZ-error-common-output}
+Fix a retained physical shift $p$ and a height block.  Suppose a principal
+finite-model packet weight has the pre-HLZ factorization of
+Lemma~\ref{lem:aux-shift-rigidity-packet-map}, so that
+\begin{equation}
+W_{rs,L}(u,\mathbf z)
+=\int
+ (\mathscr C_{T,p}e_s)(t)
+ \overline{(\mathscr C_{T,p}e_r)(t)}
+ F_{T,p,t}(u,\mathbf z)\,dt,
+\label{eq:HLZ-error-slice-factorization}
+\end{equation}
+with $\mathscr C_{T,p}$ independent of $\mathbf z$.  Assume uniformly in $t$
+that $H_{\mathbf z}F_{T,p,t}$ satisfies the hypotheses of
+Lemma~\ref{lem:parametric-HLZ-diagonal}.  Then the scalar HLZ contour error is
+not merely entrywise small: there is a packet-label-independent multiplication
+operator $M_{\varepsilon,p,\mathbf z}$ on the same output space such that
+\begin{equation}
+\boxed{
+\mathcal E_{rs}(p,\mathbf z)
+=\left\langle
+ M_{\varepsilon,p,\mathbf z}\mathscr C_{T,p}e_s,
+ \mathscr C_{T,p}e_r
+\right\rangle.
+}
+\label{eq:HLZ-error-common-output}
+\end{equation}
+For every prescribed fixed $A>0$, after increasing the scalar saving exponent
+if necessary,
+\begin{equation}
+\boxed{
+\|M_{\varepsilon,p,\mathbf z}\|_{\rm op}
+\ll_A L^{-A+C}
+}
+\label{eq:HLZ-error-multiplier-bound}
+\end{equation}
+uniformly on the separated Cauchy torus.  After any fixed finite Cauchy residue
+in $\mathbf z$, the resulting error is still a pullback through the same
+$\mathscr C_{T,p}$, with only a fixed additional power of $L$ in the multiplier
+bound.  No packet-dimension factor is lost.
+\end{lemma}
+
+\begin{proof}
+For fixed $\mathbf z$, let $\mathfrak E_{T,\mathbf z}[F]$ denote the error
+functional in the proof of Lemma~\ref{lem:parametric-HLZ-diagonal}: the sum of
+the displaced left-edge integral, the two horizontal connectors and the
+Gaussian truncation tails.  Each term is linear in the auxiliary analytic
+weight $F$.  Moreover the Gaussian truncation makes the relevant integrals
+absolutely convergent, uniformly for the slice family in
+\eqref{eq:HLZ-error-slice-factorization}.  Hence Fubini gives
+\[
+\mathcal E_{rs}(p,\mathbf z)
+=\int
+ (\mathscr C_{T,p}e_s)(t)
+ \overline{(\mathscr C_{T,p}e_r)(t)}
+ \mathfrak E_{T,\mathbf z}[H_{\mathbf z}F_{T,p,t}]\,dt.
+\]
+Define
+\[
+\varepsilon_{p,\mathbf z}(t)
+:=\mathfrak E_{T,\mathbf z}[H_{\mathbf z}F_{T,p,t}].
+\]
+This proves \eqref{eq:HLZ-error-common-output} with
+$M_{\varepsilon,p,\mathbf z}$ multiplication by
+$\varepsilon_{p,\mathbf z}(t)$.
+
+The uniform slice hypotheses and Lemma~\ref{lem:parametric-HLZ-diagonal} give
+\[
+\sup_t|\varepsilon_{p,\mathbf z}(t)|
+\ll
+L^C T^{-2/\log_3T}\log_3T+L^{-A'}.
+\]
+Choose $A'$ larger than $A$ by enough to absorb the fixed slice and auxiliary
+losses, and use \eqref{eq:HLZ-superlog-saving}.  This proves
+\eqref{eq:HLZ-error-multiplier-bound}.  Finally, by
+Lemma~\ref{lem:aux-shift-rigidity-packet-map} the map $\mathscr C_{T,p}$ is
+independent of $\mathbf z$.  Therefore a finite Cauchy residue differentiates
+or integrates only the scalar multiplier.  The separated torus contributes
+only fixed powers of $L$, so the same common-output representation survives the
+residue extraction.  Since the estimate is on the multiplication-operator norm
+before pullback, no factor depending on $|\mathcal I_T|$ appears.
+\end{proof}
+
+\begin{lemma}[Exact pre-HLZ packet separation of the finite-model principal source]
+\label{lem:pre-HLZ-packet-separation}
+Fix one retained height block and one right-edge orientation.  Remove the
+$f'$-class by \eqref{eq:exact-fprime-separation}, freeze the scalar half-self
+factor at $F_b$, and retain the finite-model principal stationary term.  Before
+any HLZ $u$-contour deformation and before the finite physical-shift Cauchy
+residues, the packet dependence is carried by one shift-independent analysis
+map.
+
+More precisely, for basis packets $e_r,e_s$ there are functions
+\[
+a_{s,T}(x):=\phi_L(x)e^{-i\tau_sx}
+\]
+and a packet-label-independent scalar lag kernel
+$\kappa_T(d;u,\mathbf z,p)$ such that the pre-HLZ principal slice is exactly
+\begin{equation}
+\boxed{
+\mathcal Q_{rs}^{\rm preHLZ}(u,\mathbf z,p)
+ =\iint a_{s,T}(x)\overline{a_{r,T}(y)}
+ \kappa_T(y-x;u,\mathbf z,p)\,dx\,dy .
+}
+\label{eq:pre-HLZ-lag-factorization}
+\end{equation}
+All dependence on the HLZ Cauchy shifts $\mathbf z$, the curvature parameter
+$p$, the diagonal Mellin variable $u$, the frozen block data, and the scalar
+Dirichlet coefficients lies in $\kappa_T$; none of these parameters occurs in
+$a_{r,T}$.
+
+Consequently, after Fourier diagonalization of the lag operator, there are one
+Hilbert output space $\mathcal H_{\rm fib}$, one packet analysis map
+\[
+\mathscr C_T:\mathbb C^{\mathcal I_T}\to\mathcal H_{\rm fib},
+\]
+independent of $(u,\mathbf z,p)$, and packet-label-independent multiplication
+operators $M_{u,\mathbf z,p}$ such that
+\begin{equation}
+\boxed{
+\mathcal Q_{rs}^{\rm preHLZ}(u,\mathbf z,p)
+ =\left\langle M_{u,\mathbf z,p}\mathscr C_Te_s,
+ \mathscr C_Te_r\right\rangle .
+}
+\label{eq:pre-HLZ-common-output}
+\end{equation}
+Every fixed $p$- or auxiliary-shift derivative acts only on
+$M_{u,\mathbf z,p}$.  The flat-core restriction is a parameter-independent
+restriction of the two packet legs; the complementary one-leg and two-leg
+reserve/cap terms are exactly the exterior-support terms of
+Proposition~\ref{prop:exterior-packet-support} and are not part of the frozen
+principal source.
+\end{lemma}
+
+\begin{proof}
+Put $s=c+it$ and $\sigma_0=c-1/2$.  From the packet definition
+\eqref{eq:packet-polarization} and the Fourier representation
+\[
+\psi_{L,\tau}(z)=\int\phi_L(x)e^{ix(z-\tau)}\,dx,
+\]
+using that $\phi_L$ is real, one obtains the exact basis-packet identity
+\begin{equation}
+\mathcal B_{e_r,e_s}(c+it)
+ =\iint\phi_L(x)\phi_L(y)e^{-i\tau_sx+i\tau_ry}
+ e^{\sigma_0(x-y)}e^{it(x-y)}\,dx\,dy .
+\label{eq:packet-right-edge-double-Fourier}
+\end{equation}
+In particular the packet centres occur only in the two separated phases.
+Neither the normalized curvature shift $p$ nor the later HLZ Cauchy shifts
+occur in \eqref{eq:packet-right-edge-double-Fourier}, because the invariant
+polarization is evaluated at the unshifted central point $s$.
+
+Now take one scalar Dirichlet monomial $\xi^{-c-it}$ in the frozen finite-model
+source.  If $d=y-x$, then
+\begin{equation}
+ e^{\sigma_0(x-y)}e^{it(x-y)}\xi^{-c-it}
+ =e^{d/2}(\xi e^d)^{-c-it}.
+\label{eq:packet-lag-one-chi}
+\end{equation}
+Thus, apart from the two packet phases, the entire one-$\chi$ oscillatory
+integrand depends on $(x,y)$ only through the difference $d$.  The principal
+stationary calculation of Section~\ref{sec:stationary} has
+\[
+\eta=\xi e^d,
+\qquad t_*=2\pi\eta,
+\]
+and by \eqref{eq:stationary-dilation} the power of $\eta$ in the Stirling
+amplitude cancels exactly against the Gaussian Hessian factor.  Hence no
+factor depending on $x+y$, or on either packet leg separately, is generated.
+The smooth height cutoff is transported by the same exact dilation
+\eqref{eq:dilation-covariance}.  Every retained archimedean, curvature,
+Cauchy-shift, translated-face, and frozen block factor is scalar; when evaluated
+at the saddle it is therefore a function of $d$ and the displayed scalar
+parameters only.  The summation over scalar Dirichlet monomials is legitimate
+on the original contour without analytic continuation: by
+\eqref{eq:symmetric-contour-rectangle} the right edge is $c=2$, and for all
+large $T$ the translated face still has
+\[
+\Re(s-2/L)=2-2/L>1.
+\]
+Hence both $P(s)$ and $P(s-2/L)$, and the finite products used in the frozen
+finite model, are absolutely convergent there, uniformly on the compact
+$d$-range generated by $\supp\phi_L$.  Their fixed $p$- and auxiliary-shift
+derivatives cost only polylogarithmic factors; the uniform stationary-symbol
+bounds of Lemma~\ref{lem:stationary-symbol} apply after the saddle evaluation.
+Thus the summed kernel is a bounded smooth lag kernel on that compact range and
+\eqref{eq:pre-HLZ-lag-factorization} follows.
+
+Insert a fixed smooth cutoff equal to one on the compact difference set
+generated by $\supp\phi_L$.  The resulting lag kernel therefore defines a
+bounded convolution operator $T_{u,\mathbf z,p}$ on the packet Fourier coordinate.
+Fourier transform diagonalizes it:
+\[
+T_{u,\mathbf z,p}=\mathcal F^{-1}M_{u,\mathbf z,p}\mathcal F.
+\]
+Taking $\mathscr C_Te_s=\mathcal F a_{s,T}$, together with the common normalized
+one-sided stationary factors already present in the principal source, gives
+\eqref{eq:pre-HLZ-common-output}.  In the diagonal Mellin/Perron representation
+this multiplier is precisely the common-prefix scalar weight; its $u$-dependence
+is the factor $e^{Lut}$ appearing in \eqref{eq:model-Fubini-weight} below.
+Therefore differentiation in $p$ or in the auxiliary Cauchy variables acts on
+the output multiplier and never on $\mathscr C_T$.
+
+Finally split each packet leg by the fixed central flat-core restriction and
+its complement.  The central--central product is the frozen principal source;
+the central--exterior, exterior--central, and exterior--exterior products are
+exactly the one-leg and two-leg terms assigned by
+Proposition~\ref{prop:exterior-packet-support}.  Since this split is made by
+parameter-independent restrictions before differentiation, it creates no
+endpoint or packet-analysis jets.  This proves the lemma.
 \end{proof}
 
 \begin{lemma}[Fubini lift of the finite-model three-$Z$ faces]
@@ -344,20 +771,16 @@ endpoint/curvature derivatives used below are $O(L^{-A+C})$ for a fixed $C$.
 \end{lemma}
 
 \begin{proof}
-For basis packets the exact polarization is already a one-sided product,
-\[
-\mathcal B_{e_r,e_s}(s)=\psi_s(z(s))\psi_r^\#(z(s)),
-\]
-and contains no HLZ Cauchy shift.  At principal stationary level,
-\eqref{eq:dilation-covariance} transports the packet factor, its support, the
-saddle cutoff, and the principal amplitude by the same one-sided dilation.
-Thus, before the scalar HLZ deformation, the two packet labels occur only in
-$b_{s,T}\overline{b_{r,T}}$, while the shifted zeta, archimedean, Cauchy, and
-Mellin factors are common scalars. This gives \eqref{eq:model-Fubini-weight}.
+Lemma~\ref{lem:pre-HLZ-packet-separation} gives the exact factorization before
+the scalar HLZ contour is moved: the packet labels are carried by one
+$(u,\mathbf z,p)$-independent analysis map, while the shifted zeta,
+archimedean, curvature, Cauchy, and diagonal Mellin factors act only on the
+common output fibre.  Writing that multiplier in the diagonal Mellin/Perron
+coordinate is exactly \eqref{eq:model-Fubini-weight}.
 
 For fixed fibre coordinate $t$, the remaining analytic weight is a scalar
 multiple of $e^{Lut}$. On the strip
-$-1/\log_3T\le\Re u\le1/L$ it is uniformly bounded on the right and gains
+$-1/\log_3T\le\Re u\le c_+/L$ it is uniformly bounded on the right and gains
 exponential decay on the left; the fixed derivatives of the remaining smooth
 scalar factors cost only powers of $L$. Hence the proof of
 Lemma~\ref{lem:packet-HLZ-diagonal} applies uniformly to each such scalar
@@ -1556,9 +1979,11 @@ On the stable core the Fourier variables lie strictly inside the flat plateau
 of $\phi_L$, so the packet-coordinate part of the leading one-sided map is
 exactly \eqref{eq:common-core-analysis}.  The principal stationary map carries
 the packet factor and its support by the exact dilation
-\eqref{eq:dilation-covariance}.  Transition caps, differentiated height cutoffs,
+\eqref{eq:dilation-covariance}.  The exterior reserve and transition caps are
+split into their low-rank stationary and relative-regular parts by
+Proposition~\ref{prop:exterior-packet-support}; differentiated height cutoffs
 and higher stationary/Stirling coefficients are separated into the regular
-ledger and are not part of the frozen principal term.
+ledger. None of these pieces is part of the frozen principal term.
 
 Proposition~\ref{prop:J-full-fibre} identifies the sharp critical-$J$ fibre
 with the same full interval as the three-$Z$ faces, while
@@ -1590,6 +2015,136 @@ exactly the pullback of $K_G$ through
 on the physical-height channel rather than converting its height dependence
 into an unproved two-variable scalar coefficient field.  This proves the
 proposition.
+\end{proof}
+
+\begin{lemma}[Independent face audit for the finite-model profile]
+\label{lem:finite-model-face-audit}
+Let $X=\tau/(2\pi)=e^{\lambda L}$, put $a=p/L$ and
+$\delta=2/L$, and work at the principal pole level before the normalized
+curvature coefficient is extracted.  After the two Hermitian right-edge
+orientations are reassembled and the common positive $L^2$ local normalization
+is removed, the three finite-model sources
+\[
+2F_b,\qquad -2P(s),\qquad P(s-\delta)
+\]
+contribute respectively
+\begin{equation}
+\boxed{
+\mu_b e^{\lambda p}E_\rho(2p),\qquad
+-2e^{\lambda p}E_\rho(p)^2,\qquad
+e^{\lambda p}e^{2\lambda}E_\rho(p+2)E_\rho(p-2),
+}
+\label{eq:independent-three-face-audit}
+\end{equation}
+where $\mu_b=2F_b/L$.  In particular the two products in
+\eqref{eq:independent-three-face-audit} arise from the two one-sided pole/packet
+legs of one common HLZ diagonal and not from two independent arithmetic radial
+variables.  The explicit factors $e^{\lambda p}$ and $e^{2\lambda}$ remain
+archimedean height factors when the packet endpoint is shortened from
+$\lambda$ to $\rho$.
+\end{lemma}
+
+\begin{proof}
+We recompute the three coefficients from the original HLZ local factors rather
+than from Proposition~\ref{prop:completed-local-profile}.  First the Hardy gauge
+fixes the physical shifts.  Since $q(s)^2=\chi(1-s)$ and
+$\zeta(s-a)=\chi(s-a)\zeta(1-s+a)$,
+\begin{equation}
+\mathscr Z(s+a)\mathscr Z(s-a)
+=\frac{q(s+a)}{q(s-a)}\,
+ \zeta(s+a)\zeta(1-s+a).
+\label{eq:Hardy-HLZ-shift-identification}
+\end{equation}
+Thus the HLZ shifts are $\alpha=\beta=a$.  Uniform Stirling expansion on the
+retained height block gives for the principal part
+\[
+\frac{q(s+a)}{q(s-a)}=X^a(1+\text{regular error}),
+\]
+so the common principal Hardy factor is
+$X^a=e^{\lambda p}$.  The discarded correction belongs to the already-recorded
+finite-height/archimedean regular class and plays no role in the principal
+profile.
+
+For the self source use the $h=k=1$ pole part of the HLZ $J$ bracket.  With
+$\alpha=\beta=a$ it is
+\[
+\zeta(1+2a)+X^{-2a}\zeta(1-2a).
+\]
+Replacing the two zeta functions by their principal simple poles and including
+the common Hardy factor gives
+\begin{align*}
+X^a\left(\frac1{2a}-\frac{X^{-2a}}{2a}\right)
+&=L e^{\lambda p}E_\lambda(2p).
+\end{align*}
+The full Hermitian self source is $2F_b$.  After division by the common $L^2$
+local normalization this is
+\[
+\frac{2F_b}{L}e^{\lambda p}E_\lambda(2p)
+=\mu_b e^{\lambda p}E_\lambda(2p).
+\]
+
+Next consider one unit logarithmic-derivative source $P=-\zeta'/\zeta$.
+For $h=k=1$ the pole part of the original HLZ factor is
+\[
+Z^{\rm pole}_{A,B,C}=\frac{B}{(A+B)(B+C)}.
+\]
+The three completed faces at $A=B=a$ therefore have pole sum
+\begin{equation}
+F_a(\gamma)
+=\frac1{2(a+\gamma)}
+ -\frac{X^{-2a}}{2(a-\gamma)}
+ +X^{-a-\gamma}\frac{\gamma}{a^2-\gamma^2}.
+\label{eq:HLZ-three-face-pole-sum-audit}
+\end{equation}
+The convention $P=-\zeta'/\zeta$ corresponds to $-\partial_\gamma$, and direct
+differentiation gives
+\begin{equation}
+\boxed{
+-\partial_\gamma F_a(0)
+=\frac{(1-X^{-a})^2}{2a^2}
+=\frac{L^2}{2}E_\lambda(p)^2.
+}
+\label{eq:HLZ-one-orientation-P-audit}
+\end{equation}
+This is one right-edge orientation.  The adjoint orientation gives the same
+principal real scalar, so after the two orientations are reassembled and the
+common $L^2$ normalization is removed, one unit $P$ source contributes
+\[
+e^{\lambda p}E_\lambda(p)^2.
+\]
+The coefficient $-2$ in $H_{\rm mod}$ therefore gives exactly
+$-2e^{\lambda p}E_\lambda(p)^2$; the factor $1/2$ in
+\eqref{eq:HLZ-one-orientation-P-audit} is neither missing nor duplicated.
+
+Finally translate the source by $\delta=2/L$.  In the HLZ diagonal the exact
+source-level tag is, with $h=k=1$,
+\[
+X^\delta(n_2n_3)^{-\delta}.
+\]
+On the unshifted logarithmic face the two one-sided factors carry
+$n_2^{-a}$ and $n_3^{a}$ before the second orientation is placed in the common
+positive fibre coordinate.  Hence the translation changes them to
+\[
+n_2^{-(a+\delta)},\qquad n_3^{a-\delta},
+\]
+which changes the two positive fibre exponents from $(p,p)$ to
+$(p+2,p-2)$.  The explicit height tag is
+$X^\delta=e^{2\lambda}$, while the simple-pole residue and the
+orientation factor in \eqref{eq:HLZ-one-orientation-P-audit} are unchanged.
+Thus the translated unit source contributes
+\[
+e^{\lambda p}e^{2\lambda}E_\lambda(p+2)E_\lambda(p-2).
+\]
+
+It remains to distinguish the physical height from the packet endpoint.
+Lemma~\ref{lem:pre-HLZ-packet-separation} places the two packet legs in a common
+output channel before scalar HLZ deformation.  Restricting that output to the
+common packet prefix therefore replaces each full one-sided feature
+$E_\lambda(q)$ by $E_\rho(q)$, and only those features.  The explicit powers
+$X^a$ and $X^\delta$ are scalar archimedean multipliers and are untouched by
+this restriction, exactly as in Proposition~\ref{prop:X-tagging}.  Applying
+this replacement to the three full-fibre calculations above proves
+\eqref{eq:independent-three-face-audit}.
 \end{proof}
 
 \begin{proposition}[Completed principal local profile]

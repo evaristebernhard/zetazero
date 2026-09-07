@@ -1,0 +1,87 @@
+\documentclass[11pt]{ctexart}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage{hyperref}
+
+\title{\texttt{CompletedZeta.lean} 做什么？}
+\author{ZetaZero formalization notes}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{文件定位}
+
+\texttt{ZetaZero/Analytic/CompletedZeta.lean} 是分析数论层的一个基础接口。
+它把 Mathlib 中的完成黎曼 zeta 函数
+\[
+  \Lambda(s)=\operatorname{completedRiemannZeta}(s)
+\]
+与普通黎曼 zeta 函数及 Gamma 因子连接起来，为后续的函数方程、零点反射、
+对数导数和零点计数提供可复用的定理。
+
+\section{它证明的四件主要事情}
+
+\begin{enumerate}
+  \item \textbf{解析性。} 在 $\operatorname{Re}(s)>0$ 时，
+  $\Gamma_{\mathbb R}(s)$ 解析；而 $\zeta(s)$ 在 $s\ne1$ 时解析。
+
+  \item \textbf{乘积表示。} 在右半平面局部成立
+  \[
+    \Lambda(s)=\Gamma_{\mathbb R}(s)\,\zeta(s).
+  \]
+  这里使用的是 Mathlib 的归一化，而不是重新定义一个新的 zeta 函数。
+
+  \item \textbf{对数导数。} 当 $\zeta(s)\ne0$ 且 $\operatorname{Re}(s)>0$ 时，
+  \[
+    \frac{\Lambda'(s)}{\Lambda(s)}
+    =\frac{\Gamma_{\mathbb R}'(s)}{\Gamma_{\mathbb R}(s)}
+     +\frac{\zeta'(s)}{\zeta(s)}.
+  \]
+  Lean 中对应的主要定理是
+  \texttt{logDeriv\_completedZeta}。
+
+  \item \textbf{临界带中的零点传输。} 若 $0<\operatorname{Re}(\rho)<1$，则
+  \[
+    \Lambda(\rho)=0\quad\Longleftrightarrow\quad\zeta(\rho)=0,
+  \]
+  并且两者在 $\rho$ 处的解析零点阶相同。这是
+  \texttt{completedZeta\_zeros\_strip} 的内容。
+\end{enumerate}
+
+\section{为什么需要完成函数？}
+
+普通的 $\zeta(s)$ 在 $s=1$ 有极点，函数方程也包含 Gamma 和幂函数因子。
+完成函数把这些因子合并后满足对称关系
+\[
+  \Lambda(1-s)=\Lambda(s),
+\]
+因此其对数导数满足
+\[
+  (\log\Lambda)'(1-s)=-(\log\Lambda)'(s).
+\]
+这个对称性正是后续反射配对和 Hardy gauge 构造所需要的分析输入。
+
+\section{它不负责什么？}
+
+该文件不证明黎曼猜想，也不证明零点计数的渐近公式。它只建立局部解析、
+函数方程对数导数，以及临界带内的零点和重数等价。后续模块再利用这些接口
+进行零点反射、轮廓积分和 Hardy--$Z$ 函数的形式化。
+
+\section{主要 Lean 声明}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+声明 & 作用 \\
+\midrule
+\texttt{analyticAt\_Gammaℝ} & Gamma 因子解析 \\
+\texttt{completedZeta\_eventuallyEq\_mul} & 完成函数的局部乘积表示 \\
+\texttt{logDeriv\_completedZeta} & 对数导数乘积法则 \\
+\texttt{logDeriv\_completedZeta\_one\_sub} & 函数方程的对数导数形式 \\
+\texttt{completedZeta\_zeros\_strip} & 临界带内零点与重数传输 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

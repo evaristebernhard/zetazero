@@ -167,23 +167,24 @@ and enlarging $A,C$ proves \eqref{eq:factorial-majorant}.
 
 \begin{lemma}[Quadratic bound for direct physical carriers]
 \label{lem:direct-carrier-square}
-On the fixed absolute-convergence right edge, after the common shifted-curvature
-factor and the deterministic stationary/shell normalization defining
-$\mathcal K_{j,T}$ have been applied, let $c_m^{\rm dir}(p)$ denote the remaining
-normalized coefficient of a direct one-$\chi$ carrier. For the ordinary
-direct logarithmic-derivative sources, the exact HLP levels on this safe-line
-representation, and their fixed coefficient shifts, uniformly for $x\le T$
-and $0\le q\le2$,
+Fix $C_x\ge0$. On the fixed absolute-convergence right edge, after the common
+shifted-curvature factor and the deterministic stationary/shell normalization
+defining $\mathcal K_{j,T}$ have been applied, let $c_m^{\rm dir}(p)$ denote the
+remaining normalized coefficient of a direct one-$\chi$ carrier. For the
+ordinary direct logarithmic-derivative sources, the exact HLP levels on this
+safe-line representation, and their fixed coefficient shifts, uniformly for
+$x\le T L^{C_x}$ and $0\le q\le2$,
 \begin{equation}
 \boxed{
 \sum_{m\le x}
 \left|\partial_p^q c_m^{\rm dir}(p)\right|^2
-\ll xL^{C_{\rm dir}}.
+\ll_{C_x} xL^{C_{\rm dir}}.
 }
 \label{eq:direct-carrier-square}
 \end{equation}
-The same bound holds for the full norm-summable HLP hierarchy, for any subset
-of its levels, and for every support restriction of the direct carrier family.
+Here $C_{\rm dir}$ may depend on the fixed value of $C_x$. The same bound holds
+for the full norm-summable HLP hierarchy, for any subset of its levels, and for
+every support restriction of the direct carrier family.
 \end{lemma}
 
 \begin{proof}
@@ -191,8 +192,11 @@ By Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer arithmetic
 map remains.  On the fixed absolute-convergence right edge every exact HLP
 level is a genuine direct source before any optional local projection is
 introduced. For $k\ge1$ its changing internal multiplier is exactly
-$f^{-k}P^{k-1}Q$, with coefficient $f^{-k}\alpha_k(m)$. Since
-$|f|\asymp L$ and $\log(ex)\ll L$ for $x\le T$,
+$f^{-k}P^{k-1}Q$, with coefficient $f^{-k}\alpha_k(m)$. Since $C_x$ is fixed and $x\le T L^{C_x}$,
+\[
+\log(ex)=L+O_{C_x}(\log L)\asymp_{C_x}L,
+\]
+while $|f|\asymp L$ on the fixed safe line. Hence
 \eqref{eq:factorial-majorant} gives
 \[
 \left(\sum_{m\le x}|f^{-k}\alpha_k(m)|^2\right)^{1/2}
@@ -200,9 +204,11 @@ $|f|\asymp L$ and $\log(ex)\ll L$ for $x\le T$,
 \]
 This is the deterministic normalization cancellation behind the direct-carrier
 bound: the factor $L^{-k}$ absorbs the full $2k$-fold logarithmic growth in the
-square-sum majorant, leaving only the single factor $L^{1/2}$.  A fixed
-$p$-derivative introduces only a polynomial in $k$ and factors
-$(\log m)/L=O(1)$. Minkowski's inequality then reduces the level assembly to
+square-sum majorant, leaving only the single factor $L^{1/2}$.  A fixed $p$-derivative introduces only a polynomial in $k$ and factors
+\[
+\frac{\log m}{L}\le \frac{\log(TL^{C_x})}{L}=1+O_{C_x}\!\left(\frac{\log L}{L}\right)=O_{C_x}(1).
+\]
+Minkowski's inequality then reduces the level assembly to
 \[
 \sum_{k\ge1}\frac{C^k(1+k)^q}{\sqrt{k!}}<\infty
 \qquad(q\text{ fixed}).
@@ -218,8 +224,12 @@ Cauchy--Schwarz applies because the squares are respectively an exponential
 series and a geometric series.  Consequently the same constant controls every
 finite subset of HLP levels, and passing to the full summable hierarchy gives
 the asserted subset-uniform bound. The ordinary $k=0$ coefficient is controlled by
-$\sum_{m\le x}\Lambda(m)^2\le (\log x)\psi(x)\ll xL$; fixed coefficient
-translations multiply it by $m^{O(1/L)}=O(1)$. A support restriction only sets
+$\sum_{m\le x}\Lambda(m)^2\le (\log x)\psi(x)\ll_{C_x} xL$; fixed coefficient
+translations multiply it by
+\[
+m^{O(1/L)}\le \exp\!\left(O\!\left(\frac{\log(TL^{C_x})}{L}\right)\right)=O_{C_x}(1).
+\]
+A support restriction only sets
 some Hilbert-valued coefficient coordinates to zero and therefore cannot
 increase the square sum. This proves \eqref{eq:direct-carrier-square}.
 \end{proof}
