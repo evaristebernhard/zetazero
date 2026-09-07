@@ -1,0 +1,189 @@
+\section{Scalar three-\texorpdfstring{$Z$}{Z} input for the lagwise route}
+\label{sec:scalar-hlz-core}
+
+This section records only the scalar Heap--Li--Zhao input used in the proof of
+Theorem~\ref{thm:main}.  The packet variable has not yet been converted into a
+one-sided prefix coordinate.  The only packet information admitted here is a
+bounded-support Mellin weight, whose endpoint may later depend on the actual
+continuous lag.
+
+Fix constants
+\[
+0<r_1<r_2<r_3,\qquad r_{j+1}-r_j\ge r_*>0,
+\]
+and put
+\[
+\mathcal T_{j,L}:=\{z:|z|=r_j/L\},\qquad
+\mathcal T_L:=\mathcal T_{1,L}\times\mathcal T_{2,L}\times\mathcal T_{3,L}.
+\]
+Thus
+\[
+|z_i-z_j|\ge r_*/L\qquad(i\ne j)
+\]
+on the separated Cauchy torus.  For $\mathbf z=(z_1,z_2,z_3)\in\mathcal T_L$
+define
+\begin{equation}
+\boxed{
+H_{\mathbf z}(u):=
+\exp(u^2)
+\frac{(2u-z_2+z_1)(2u-z_2+z_3)}
+     {(z_1-z_2)(z_3-z_2)}.
+}
+\label{eq:scalar-HLZ-auxiliary}
+\end{equation}
+Then
+\begin{equation}
+H_{\mathbf z}(0)=1,
+\qquad
+H_{\mathbf z}\!\left(\frac{z_2-z_1}{2}\right)=0,
+\qquad
+H_{\mathbf z}\!\left(\frac{z_2-z_3}{2}\right)=0.
+\label{eq:scalar-HLZ-auxiliary-zeros}
+\end{equation}
+The separated torus is fixed throughout; no analytic continuation of
+$H_{\mathbf z}$ through the collision locus is used.
+
+\begin{proposition}[Scalar completed three-face Cauchy identity]
+\label{prop:scalar-HLZ-three-face}
+Let
+\[
+\mathfrak Z_{\alpha,\beta,\gamma}(X)
+:=Z_{\alpha,\beta,\gamma,1,1}
++X^{-\alpha-\beta}Z_{-\beta,-\alpha,\gamma,1,1}
++X^{-\beta-\gamma}Z_{\alpha,-\gamma,-\beta,1,1}.
+\]
+With $\Delta(\mathbf z)=\prod_{i<j}(z_j-z_i)$, the trivial-outer-twist
+specialization of the Heap--Li--Zhao residue identity is
+\begin{equation}
+\boxed{
+\begin{aligned}
+\mathfrak Z_{\alpha,\beta,\gamma}(X)
+={}&-\frac12X^{-(\alpha+\beta+\gamma)/2}
+\frac1{(2\pi i)^3}
+\iiint_{\mathcal T_L}
+Z_{z_1,-z_2,z_3,1,1}\\
+&\qquad\times
+\frac{\Delta(\mathbf z)^2X^{(z_1-z_2+z_3)/2}}
+{\prod_{j=1}^3(z_j-\alpha)(z_j+\beta)(z_j-\gamma)}
+\,d\mathbf z .
+\end{aligned}}
+\label{eq:scalar-HLZ-three-face}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+This is the completed three-face residue identity of Heap--Li--Zhao~\cite{HLZ},
+formula~(28), specialized to the invariant source $h=k=1$.  The three radii are
+chosen distinct and generic, while enclosing the retained physical shifts, so
+that no polar hypersurface meets the integration torus.
+\end{proof}
+
+\begin{lemma}[Uniform scalar HLZ diagonal for bounded-support Mellin weights]
+\label{lem:scalar-lagweight-HLZ}
+Put $\log_3T:=\log\log\log T$ and
+\[
+D_{\mathbf z}(u):=
+\frac{\zeta(1+z_1-z_2+2u)\zeta(1-z_2+z_3+2u)}
+     {\zeta(1-z_2+2u)}.
+\]
+Let $c_+>0$ be fixed so that this Euler product is absolutely convergent on
+$\Re u=c_+/L$.  Suppose
+\begin{equation}
+W_{\rho,p,\mathbf z,T}(u)
+=\int_0^\rho a_{\rho,p,\mathbf z,T}(t)e^{Lut}\,dt
+\label{eq:scalar-HLZ-admissible-weight}
+\end{equation}
+(or a fixed finite product of such factors), where $0\le\rho\le C_*$ and, for
+every fixed derivative order used below,
+\begin{equation}
+\left\|\partial_t^m\partial_\rho^r\partial_p^j
+ a_{\rho,p,\mathbf z,T}\right\|_{L^1(0,C_*)}
+\ll L^{C_{m,r,j}}
+\label{eq:scalar-HLZ-weight-bounds}
+\end{equation}
+uniformly on $\mathcal T_L$.  Then, pointwise on the separated torus,
+\begin{equation}
+\boxed{
+W(0)Z_{\mathbf z,1,1}
+=\frac1{2\pi i}\int_{c_+/L-i\infty}^{c_+/L+i\infty}
+\frac{H_{\mathbf z}(u)W(u)}u T^{2u}D_{\mathbf z}(u)\,du
++\mathcal E_{\rm diag}(\rho,p,\mathbf z),
+}
+\label{eq:scalar-HLZ-diagonal}
+\end{equation}
+where, for every prescribed $A>0$ and every fixed $r,j$ required later,
+\begin{equation}
+\boxed{
+\sup_{\mathbf z\in\mathcal T_L}
+|\partial_\rho^r\partial_p^j\mathcal E_{\rm diag}|
+\ll_A L^{-A+C_{r,j}}.
+}
+\label{eq:scalar-HLZ-error}
+\end{equation}
+The same estimate survives the finite Cauchy residues in
+Proposition~\ref{prop:scalar-HLZ-three-face} after increasing the requested
+saving exponent.
+\end{lemma}
+
+\begin{proof}
+On the strip
+\[
+-1/\log_3T\le\Re u\le c_+/L
+\]
+the bounded support in \eqref{eq:scalar-HLZ-admissible-weight} and
+\eqref{eq:scalar-HLZ-weight-bounds} give only fixed powers of $L$.  The factor
+$H_{\mathbf z}(u)$ contributes a fixed polynomial in $L(1+|u|)$ times the
+Gaussian $e^{-\Im(u)^2}$.  Its two zeros in
+\eqref{eq:scalar-HLZ-auxiliary-zeros} cancel the shifted zeta poles
+$2u=z_2-z_1$ and $2u=z_2-z_3$.
+
+Truncate at $|\Im u|=B\sqrt{\log L}$ and move the line to
+$\Re u=-1/\log_3T$, as in the scalar HLZ diagonal argument.  The left edge is
+\[
+\ll L^C T^{-2/\log_3T}\log_3T,
+\]
+while the two horizontal edges and Gaussian tails are $O_A(L^{-A})$.  Since
+\[
+T^{-2/\log_3T}L^D\log_3T\ll_{A,D}L^{-A}
+\]
+for every fixed $A,D$, the complete error has arbitrary logarithmic saving.
+Differentiating in $\rho$ produces only endpoint jets and fixed derivatives of
+the amplitude; differentiating in $p$ is covered directly by
+\eqref{eq:scalar-HLZ-weight-bounds}.  Thus the same contour proof yields
+\eqref{eq:scalar-HLZ-error}.  Finally the separated Cauchy denominators cost
+only fixed powers of $L$, which are absorbed by requesting a larger scalar
+saving exponent before the finite residues are taken.
+\end{proof}
+
+\begin{lemma}[Local-height rescaling of the scalar diagonal]
+\label{lem:scalar-HLZ-local-height}
+Let $X(\tau)=\tau/(2\pi)$ with $\tau\asymp T$.  In
+\eqref{eq:scalar-HLZ-diagonal}, the replacement
+\[
+T^{2u}\longmapsto X(\tau)^{2u}
+\]
+does not alter the residue at $u=0$ and preserves the error class
+\eqref{eq:scalar-HLZ-error}, including the first two fixed endpoint and
+curvature derivatives.
+\end{lemma}
+
+\begin{proof}
+Multiply the auxiliary weight by
+\[
+R_\tau(u):=\left(\frac{X(\tau)}T\right)^{2u}.
+\]
+Since $X(\tau)/T$ remains in a fixed compact subset of $(0,\infty)$,
+$R_\tau$ and every fixed height derivative have polynomial growth in $u$ on the
+same strip, hence preserve the Gaussian contour estimates.  Since
+$R_\tau(0)=1$, the $u=0$ residue is unchanged.  The same argument after the
+fixed endpoint and curvature derivatives proves the differentiated statement.
+\end{proof}
+
+\begin{remark}[Scope]
+The main theorem uses only
+Proposition~\ref{prop:scalar-HLZ-three-face},
+Lemma~\ref{lem:scalar-lagweight-HLZ}, and
+Lemma~\ref{lem:scalar-HLZ-local-height}.  No one-sided packet analysis map,
+common-output multiplier, critical-$J$ approximate functional equation, or
+frozen self model is part of this scalar input.
+\end{remark}
