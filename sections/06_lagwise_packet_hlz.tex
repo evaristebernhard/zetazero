@@ -14,20 +14,28 @@ X_T:=e^{W_T}=\frac{T}{2\pi L^{A_0}}.
 }
 \label{eq:stable-log-core-main}
 \end{equation}
-On the translated flat plateau define the packet synthesis
+Translate the flat packet plateau so that its physical core is
+$0\le x\le W_T$ and absorb the fixed translation phases into the packet
+coefficients.  On that interval define
 \begin{equation}
 \boxed{
-(\mathcal A_Tv)(x):=\phi_L(x)
-\sum_{\nu\in\mathcal I_T}v_\nu e^{-i\tau_\nu x}.
+(\mathcal A_T^{\rm core}v)(x)
+:=L_{\rm pkt}^{-1/2}
+\sum_{\nu\in\mathcal I_T}v_\nu e^{-i\tau_\nu x},
+\qquad 0\le x\le W_T.
 }
 \label{eq:lagwise-packet-analysis}
 \end{equation}
-Only its restriction to pairs with $|x-y|\le W_T$ enters the principal core.
+The principal form below is the core--core restriction: both packet Fourier
+legs lie in $[0,W_T]$.  Terms with at least one leg outside this interval are
+assigned to the geometric exterior/terminal ledger of
+Proposition~\ref{prop:geometric-edge-ledger}.  In particular, on the principal
+core $|x-y|\le W_T$ automatically.
 
 \begin{proposition}[Lagwise packet--HLZ bridge]
 \label{prop:lagwise-packet-HLZ}
 Restrict to the invariant source $h=k=1$, one retained height block, and the
-stable flat packet core. Put
+stable core--core packet form. Put
 \[
 X(\tau)=\frac{\tau}{2\pi},\qquad
 \lambda(\tau)=\frac{\log X(\tau)}L,
@@ -40,9 +48,10 @@ and, for $|d|\le W_T$, define
 For the logarithmic source $H_{\log}$ of \eqref{eq:Hlog}, the principal
 stationary packet form after the finite three-$Z$ Cauchy residues is
 \begin{align}
-\mathcal Q_{\log,T}(v,w;p)
-={}&\iint
- (\mathcal A_Tv)(x)\overline{(\mathcal A_Tw)(y)}
+\mathcal Q_{\log,T}^{\rm core}(v,w;p)
+={}&\int_0^{W_T}\!\int_0^{W_T}
+ (\mathcal A_T^{\rm core}v)(x)
+ \overline{(\mathcal A_T^{\rm core}w)(y)}
  \mathcal G^{\log}_{\lambda(\tau),\rho_\tau(y-x)}(p)\,dx\,dy
 \notag\\
 &+\mathcal R^{\rm HLZ}_{\log,T}(v,w;p),
@@ -68,15 +77,21 @@ $|d|\le W_T$ and in the retained height blocks.
 \end{proposition}
 
 \begin{proof}
-For basis packets $e_r,e_s$, exact polarization gives
+For basis packets $e_r,e_s$, before the fixed plateau translation the exact
+polarization is
 \begin{equation}
 \mathcal B_{e_r,e_s}(c+it)
 =\iint\phi_L(x)\phi_L(y)e^{-i\tau_sx+i\tau_ry}
  e^{\sigma_0(x-y)}e^{it(x-y)}\,dx\,dy,
 \label{eq:lagwise-polarization-recall}
 \end{equation}
-with $\sigma_0=c-1/2$. For one Dirichlet monomial $\xi^{-c-it}$ put
-$d=y-x$. Then exactly
+with $\sigma_0=c-1/2$.  Split each Fourier leg into the translated stable core
+and its complement before stationary reduction.  On the core the packet window
+is exactly constant, giving \eqref{eq:lagwise-packet-analysis}; every term with
+one complementary leg is, by definition, part of the geometric leakage
+ledger.  It remains to analyze the core--core term.
+
+For one Dirichlet monomial $\xi^{-c-it}$ put $d=y-x$. Then exactly
 \[
 e^{\sigma_0(x-y)}e^{it(x-y)}\xi^{-c-it}
 =e^{d/2}(\xi e^d)^{-c-it}.
@@ -87,8 +102,8 @@ Hence the stationary dilation parameter of Section~\ref{sec:stationary} is
 \label{eq:true-packet-lag}
 \end{equation}
 It is a continuous lag, not a displacement attached to either packet label.
-The principal stationary calculation therefore depends on the two packet legs
-only through $d$.
+The principal stationary calculation therefore depends on the two core packet
+legs only through $d$.
 
 By Lemma~\ref{lem:scalar-HLZ-local-height}, the scalar diagonal Mellin factor
 may be written at local scale as
@@ -107,9 +122,9 @@ Their intersection is therefore
 \label{eq:lagwise-common-cutoff}
 \end{equation}
 Writing $t=\log\ell/L$ gives
-$0\le t\le\rho_\tau(d)$.  By \eqref{eq:stable-log-core-main},
-$|d|\le W_T$ makes this endpoint positive for all sufficiently large $T$ and
-keeps it in a fixed compact interval.
+$0\le t\le\rho_\tau(d)$. Since $x,y\in[0,W_T]$, one has
+$|d|\le W_T$, and \eqref{eq:stable-log-core-main} makes this endpoint positive
+for all sufficiently large $T$ and keeps it in a fixed compact interval.
 
 Fix $d,p$ and the separated Cauchy variable $\mathbf z$.  After the universal
 stationary carrier and the two packet legs have been removed, the remaining
@@ -137,17 +152,16 @@ one-sided diagonal factors are both $E_\rho(p)$, hence
 -2e^{\lambda p}E_\rho(p)^2.
 \]
 For $P(s-2/L)$, the translated exponents are $p+2$ and $p-2$, while the
-functional-equation height tag is
-$X^{2/L}=e^{2\lambda}$; this gives
+functional-equation height tag is $X^{2/L}=e^{2\lambda}$; this gives
 \[
 e^{\lambda p}e^{2\lambda}E_\rho(p+2)E_\rho(p-2).
 \]
 Their sum is \eqref{eq:logonly-local-profile}.
 
-On the original absolutely convergent scalar contour the $x,y$ variables lie
-in compact packet support and the $u$-integral has Gaussian vertical decay.
-Thus Fubini is legitimate before the scalar contour is moved.  After the move,
-the uniform scalar error can be integrated against the same two packet legs.
+On the original absolutely convergent scalar contour the core variables lie in
+a compact interval and the $u$-integral has Gaussian vertical decay.  Thus
+Fubini is legitimate before the scalar contour is moved.  After the move, the
+uniform scalar error can be integrated against the same two core packet legs.
 This proves \eqref{eq:lagwise-HLZ-form} and the differentiated error estimate.
 \end{proof}
 
@@ -162,7 +176,8 @@ G_{\log}(\rho):=[p^2]\,
 \label{eq:Glog-from-source}
 \end{equation}
 After freezing $\lambda(\tau)=1$ and rescaling $r=x/L$, $s=y/L$, the principal
-operator is the pullback of the genuine lag kernel
+operator is the pullback through the normalized stable-core analysis of the
+genuine lag kernel
 \begin{equation}
 \boxed{K_{\log}(r,s)=G_{\log}(1-|r-s|).}
 \label{eq:Klog-lag-kernel}
@@ -177,8 +192,9 @@ finite-parameter regular class.
 The map $(\lambda,\rho,p)\mapsto\mathcal G^{\log}_{\lambda,\rho}(p)$ is analytic
 on a fixed neighbourhood of the retained parameter set and
 $\lambda(\tau)=1+O(L^{-1})$.  The mean-value theorem gives the required
-$O(L^{-1})$ estimates through two $\rho$-derivatives.  Substitution of
-$d=y-x$ in Proposition~\ref{prop:lagwise-packet-HLZ} gives the lag kernel.
+$O(L^{-1})$ estimates through two $\rho$-derivatives.  The core--core
+restriction above gives the same stable-core analysis map on both packet legs,
+so substitution of $d=y-x$ gives the stated lag-kernel pullback.
 \end{proof}
 
 \begin{remark}[No one-sided principal bridge]
