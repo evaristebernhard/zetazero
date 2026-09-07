@@ -1,0 +1,66 @@
+\section{Log-only coefficient bounds outside the principal core}
+\label{sec:logonly-source-bounds}
+
+The revised theorem route does not use the HLP level hierarchy to control the
+principal logarithmic source.  For the genuinely geometric exterior and
+terminal leakage it suffices to use the elementary coefficient bound for
+\[
+H_{\log}(s)=-2P(s)+P(s-2/L).
+\]
+
+\begin{lemma}[Quadratic bound for the log-only direct coefficients]
+\label{lem:logonly-carrier-square}
+Let
+\[
+H_{\log}(s)=\sum_{m\ge1}\frac{c_m^{\log}}{m^s}
+\qquad(\Re s>1).
+\]
+Then
+\begin{equation}
+\boxed{
+c_m^{\log}=\Lambda(m)(-2+m^{2/L}).}
+\label{eq:logonly-direct-coefficient}
+\end{equation}
+For every fixed $C_x\ge0$, uniformly for $x\le TL^{C_x}$ and through the fixed
+normalized curvature derivatives used in the shell analysis,
+\begin{equation}
+\boxed{
+\sum_{m\le x}|\partial_p^q c_m^{\log}(p)|^2
+\ll_{C_x,q}xL^{C_q},
+\qquad 0\le q\le2.
+}
+\label{eq:logonly-carrier-square}
+\end{equation}
+Every support restriction of the coefficient family satisfies the same bound.
+\end{lemma}
+
+\begin{proof}
+The coefficient identity is immediate from
+$P(s)=\sum_m\Lambda(m)m^{-s}$ and
+$P(s-2/L)=\sum_m\Lambda(m)m^{2/L}m^{-s}$.  If
+$m\le TL^{C_x}$, then
+\[
+m^{2/L}=\exp\!\left(\frac{2\log m}{L}\right)=O_{C_x}(1).
+\]
+The fixed curvature derivatives introduce only bounded powers of
+$\log m/L=O_{C_x}(1)$.  Hence
+\[
+|\partial_p^q c_m^{\log}(p)|\ll_{C_x,q}\Lambda(m)L^{C_q'}.
+\]
+Using
+\[
+\sum_{m\le x}\Lambda(m)^2
+\le (\log x)\sum_{m\le x}\Lambda(m)
+\ll x\log x
+\ll_{C_x}xL
+\]
+proves \eqref{eq:logonly-carrier-square}.  Removing coefficient coordinates can
+only decrease the square sum.
+\end{proof}
+
+\begin{remark}
+The estimate above is the only coefficient-square input needed by the
+geometric exterior/tail analysis of the main theorem.  The exact HLP hierarchy
+and its factorial square-sum estimates are retained only in the legacy
+appendix for comparison with the previous proof architecture.
+\end{remark}
