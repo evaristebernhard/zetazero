@@ -20,16 +20,17 @@ $V_{\rm mean}$ by \eqref{eq:mean-map}, $V_{\rm end}$ by
 \[
 \Gfr_T^{\rm ret}:=\Gfr_T|_{\Pret}.
 \]
-Proposition~\ref{prop:source-ledger} is therefore applied to the original
-function $F$ on exactly the same finite packet space on which the zero-side
-evaluation of $H$ is performed. Moreover the perturbation can be chosen so
-small that, on this selected $\Pret$,
+Proposition~\ref{prop:logonly-final-decomposition} is therefore applied to the
+original function $F$ on exactly the same finite packet space on which the
+zero-side evaluation of $H$ is performed. Moreover the perturbation can be
+chosen so small that, on this selected $\Pret$,
 \begin{equation}
 \boxed{
 \left\|
 (\Gfr_T^{\rm ret})^{-1/2}(A_H-A_F)
 (\Gfr_T^{\rm ret})^{-1/2}
-\right\|_{\op}<\frac{c_0}{4}.
+\right\|_{\op}<\frac{c_0}{4},
+\qquad c_0=0.02.
 }
 \label{eq:perturb-small}
 \end{equation}
@@ -139,10 +140,11 @@ which proves \eqref{eq:D-H}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 Fix the good rectangle, and let $D_{\rm good}(F)$ denote the number, with
-multiplicity, of reflected nonreal zero pairs of $F$ in its interior. Around each distinct nonreal zero of $F$ choose a closed disk, disjoint from
-the real axis, the other chosen disks, and the boundary. There are finitely many
-such disks at fixed $T$. By compactness of their boundaries there is a real neighbourhood
-$U_{\rm disk}$ of $(0,0)$ such that
+multiplicity, of reflected nonreal zero pairs of $F$ in its interior. Around
+each distinct nonreal zero of $F$ choose a closed disk, disjoint from the real
+axis, the other chosen disks, and the boundary. There are finitely many such
+disks at fixed $T$. By compactness of their boundaries there is a real
+neighbourhood $U_{\rm disk}$ of $(0,0)$ such that
 \[
 |\eta z+\varepsilon|<|F(z)|
 \]
@@ -151,10 +153,16 @@ on every disk boundary whenever $(\eta,\varepsilon)\in U_{\rm disk}$.
 Choose $H$ and the evaluation-isomorphic packet subfamily by
 Lemma~\ref{lem:generic-affine}, with $U_0=U_{\rm disk}$. This fixes the packet
 space, $\Gfr_T$, and $\Pret$ before any inertia comparison, and gives
-\eqref{eq:perturb-small}. Proposition~\ref{prop:source-ledger}, applied to the original Hardy-gauge
-matrix $A_F$ on this packet space, gives on $\Pret$
+\eqref{eq:perturb-small}. Proposition~\ref{prop:logonly-final-decomposition},
+applied to the original Hardy-gauge matrix $A_F$ on this packet space, gives on
+$\Pret$
 \[
-A_F=P_T+E_T^{\rm edge}+R_T^{\rm tri}.
+A_F=P_T+E_T^{\rm geom}+R_T^{\log}.
+\]
+By Proposition~\ref{prop:logonly-model-floor},
+\[
+P_T\succeq c_0\Gfr_T,
+\qquad c_0=0.02.
 \]
 Put $\Delta_T:=A_H-A_F$. By \eqref{eq:perturb-small},
 \[
@@ -164,18 +172,19 @@ P_T+\Delta_T\succeq\frac{3c_0}{4}\Gfr_T
 Hence, after compression to $\Pret$,
 \[
 A_H|_{\Pret}=(P_T+\Delta_T)|_{\Pret}
-+E_T^{\rm edge}|_{\Pret}+R_T^{\rm tri}|_{\Pret}.
++E_T^{\rm geom}|_{\Pret}+R_T^{\log}|_{\Pret}.
 \]
 Set
 \[
-r_T:=\rank(E_T^{\rm edge}|_{\Pret}),
+r_T:=\rank(E_T^{\rm geom}|_{\Pret}),
 \qquad
 s_T:=\left\|
-(\Gfr_T^{\rm ret})^{-1/2}(R_T^{\rm tri}|_{\Pret})
+(\Gfr_T^{\rm ret})^{-1/2}(R_T^{\log}|_{\Pret})
 (\Gfr_T^{\rm ret})^{-1/2}
 \right\|_{S_2}^2.
 \]
-By \eqref{eq:total-edge-rank}, \eqref{eq:regular-HS}, and
+By \eqref{eq:logonly-edge-rank},
+\eqref{eq:logonly-total-relative-HS}, and
 \eqref{eq:retained-codim}, one has
 $r_T=o(N_T)$, $s_T=o(N_T)$, and
 $\codim\Pret=o(N_T)$. Apply the ambient-codimension conclusion
@@ -205,9 +214,8 @@ D_{\rm good}(F)\le D(H).
 \]
 Let $D_T(F)$ denote the number, with multiplicity, of reflected nonreal zero
 pairs of $F$ with height in $[T,2T]$. Returning from the good rectangle to this
-dyadic interval
-changes the zero count only in two strips of length at most one. By
-Lemma~\ref{lem:local-z1-count},
+dyadic interval changes the zero count only in two strips of length at most
+one. By Lemma~\ref{lem:local-z1-count},
 \[
 D_T(F)\le D(H)+O(\log T)=o(N_T).
 \]
@@ -223,14 +231,14 @@ so
 \[
 \frac{N_{0,T}}{N_T}=1-o(1).
 \]
-We finish by spelling out the dyadic summation.  Put
+We finish by spelling out the dyadic summation. Put
 \[
 M(T):=N(T)-N_0(T),
 \]
 and, for a half-open height interval $I$, write
 $M(I):=N(I)-N_0(I)$ for the corresponding off-line count.
 Use half-open height intervals; by Lemma~\ref{lem:local-z1-count}, changing the
-endpoint convention costs $O(\log X)=o(N(X,2X))$.  Given $\varepsilon>0$,
+endpoint convention costs $O(\log X)=o(N(X,2X))$. Given $\varepsilon>0$,
 choose $X_\varepsilon$ so that for every $X\ge X_\varepsilon$,
 \[
 M([X,2X))\le\varepsilon N([X,2X)).
@@ -240,7 +248,7 @@ Partition $[X_\varepsilon,T)$ into the half-open dyadic blocks
 I_j:=\left[\frac{T}{2^{j+1}},\frac{T}{2^j}\right)
 \]
 whose lower endpoints are at least $X_\varepsilon$; the one remaining bounded
-initial segment contributes $O_\varepsilon(1)$.  The blocks are disjoint, hence
+initial segment contributes $O_\varepsilon(1)$. The blocks are disjoint, hence
 \[
 M(T)
 \le\varepsilon\sum_jN(I_j)+O_\varepsilon(1)
