@@ -2,10 +2,27 @@
 \label{sec:scalar-hlz-core}
 
 This section records only the scalar Heap--Li--Zhao input used in the proof of
-Theorem~\ref{thm:main}.  The packet variable has not yet been converted into a
-one-sided prefix coordinate.  The only packet information admitted here is a
+Theorem~\ref{thm:main}.  The packet variable is not converted into a one-sided
+prefix coordinate.  The only packet information admitted here is a
 bounded-support Mellin weight, whose endpoint may later depend on the actual
 continuous lag.
+
+For the trivial outer twist define the meromorphic scalar Euler factor
+\begin{equation}
+\boxed{
+Z_{\alpha,\beta,\gamma,1,1}
+:=\frac{\zeta(1+\alpha+\beta)\zeta(1+\beta+\gamma)}
+        {\zeta(1+\beta)}.
+}
+\label{eq:scalar-HLZ-Euler-factor}
+\end{equation}
+This is the $h=k=1$ specialization of the HLZ diagonal Euler object.  In
+particular, for $\mathbf z=(z_1,z_2,z_3)$,
+\begin{equation}
+Z_{z_1,-z_2,z_3,1,1}
+=\frac{\zeta(1+z_1-z_2)\zeta(1-z_2+z_3)}{\zeta(1-z_2)}.
+\label{eq:scalar-HLZ-Euler-factor-z}
+\end{equation}
 
 Fix constants
 \[
@@ -20,8 +37,7 @@ Thus
 \[
 |z_i-z_j|\ge r_*/L\qquad(i\ne j)
 \]
-on the separated Cauchy torus.  For $\mathbf z=(z_1,z_2,z_3)\in\mathcal T_L$
-define
+on the separated Cauchy torus.  For $\mathbf z\in\mathcal T_L$ define
 \begin{equation}
 \boxed{
 H_{\mathbf z}(u):=
@@ -86,8 +102,8 @@ D_{\mathbf z}(u):=
 \frac{\zeta(1+z_1-z_2+2u)\zeta(1-z_2+z_3+2u)}
      {\zeta(1-z_2+2u)}.
 \]
-Let $c_+>0$ be fixed so that this Euler product is absolutely convergent on
-$\Re u=c_+/L$.  Suppose
+Then $D_{\mathbf z}(0)=Z_{z_1,-z_2,z_3,1,1}$.  Let $c_+>0$ be fixed so that
+this Euler product is absolutely convergent on $\Re u=c_+/L$.  Suppose
 \begin{equation}
 W_{\rho,p,\mathbf z,T}(u)
 =\int_0^\rho a_{\rho,p,\mathbf z,T}(t)e^{Lut}\,dt
@@ -111,7 +127,9 @@ W(0)Z_{\mathbf z,1,1}
 }
 \label{eq:scalar-HLZ-diagonal}
 \end{equation}
-where, for every prescribed $A>0$ and every fixed $r,j$ required later,
+where $Z_{\mathbf z,1,1}$ abbreviates
+$Z_{z_1,-z_2,z_3,1,1}$ and, for every prescribed $A>0$ and every fixed $r,j$
+required later,
 \begin{equation}
 \boxed{
 \sup_{\mathbf z\in\mathcal T_L}
@@ -142,7 +160,7 @@ $\Re u=-1/\log_3T$, as in the scalar HLZ diagonal argument.  The left edge is
 \[
 \ll L^C T^{-2/\log_3T}\log_3T,
 \]
-while the two horizontal edges and Gaussian tails are $O_A(L^{-A})$.  Since
+while the horizontal edges and Gaussian tails are $O_A(L^{-A})$.  Since
 \[
 T^{-2/\log_3T}L^D\log_3T\ll_{A,D}L^{-A}
 \]
@@ -151,8 +169,8 @@ Differentiating in $\rho$ produces only endpoint jets and fixed derivatives of
 the amplitude; differentiating in $p$ is covered directly by
 \eqref{eq:scalar-HLZ-weight-bounds}.  Thus the same contour proof yields
 \eqref{eq:scalar-HLZ-error}.  Finally the separated Cauchy denominators cost
-only fixed powers of $L$, which are absorbed by requesting a larger scalar
-saving exponent before the finite residues are taken.
+only fixed powers of $L$, absorbed by requesting a larger scalar saving
+exponent before the finite residues are taken.
 \end{proof}
 
 \begin{lemma}[Local-height rescaling of the scalar diagonal]
@@ -174,7 +192,7 @@ R_\tau(u):=\left(\frac{X(\tau)}T\right)^{2u}.
 \]
 Since $X(\tau)/T$ remains in a fixed compact subset of $(0,\infty)$,
 $R_\tau$ and every fixed height derivative have polynomial growth in $u$ on the
-same strip, hence preserve the Gaussian contour estimates.  Since
+same strip and preserve the Gaussian contour estimates.  Since
 $R_\tau(0)=1$, the $u=0$ residue is unchanged.  The same argument after the
 fixed endpoint and curvature derivatives proves the differentiated statement.
 \end{proof}
