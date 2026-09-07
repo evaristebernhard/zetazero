@@ -1,0 +1,185 @@
+\subsection{Lagwise packet--HLZ bridge for the log-only source}
+\label{sec:lagwise-packet-hlz}
+
+The Fourier-diagonalization sentence following
+\eqref{eq:pre-HLZ-lag-factorization} is not used in the revised principal
+route.  In particular, we do not identify the Fourier multiplier of a lag
+convolution with a one-sided packet-prefix multiplier.  Instead we retain the
+actual continuous lag $d=y-x$ and apply the scalar HLZ diagonalization
+uniformly at fixed $d$.
+
+\begin{proposition}[Lagwise packet--HLZ bridge]
+\label{prop:lagwise-packet-HLZ}
+Restrict to the invariant source $h=k=1$, one retained height block, and the
+stable flat packet core.  Put
+\[
+X(\tau)=\frac{\tau}{2\pi},\qquad
+\lambda(\tau)=\frac{\log X(\tau)}L,
+\]
+and, for $|d|\le W_T$, define
+\begin{equation}
+\boxed{
+\rho_\tau(d):=\lambda(\tau)-\frac{|d|}{L}.
+}
+\label{eq:lagwise-rho}
+\end{equation}
+For the logarithmic source $H_{\log}$ of \eqref{eq:Hlog}, the principal
+stationary packet form after the finite three-$Z$ Cauchy residues is
+\begin{align}
+\mathcal Q_{\log,T}(v,w;p)
+={}&\iint
+ (\mathcal A_Tv)(x)\overline{(\mathcal A_Tw)(y)}
+ \mathcal G^{\log}_{\lambda(\tau),\rho_\tau(y-x)}(p)\,dx\,dy
+\notag\\
+&+\mathcal R^{\rm HLZ}_{\log,T}(v,w;p),
+\label{eq:lagwise-HLZ-form}
+\end{align}
+where
+\begin{equation}
+\boxed{
+\mathcal G^{\log}_{\lambda,\rho}(p)
+=e^{\lambda p}\left[
+-2E_\rho(p)^2
++e^{2\lambda}E_\rho(p+2)E_\rho(p-2)
+\right],
+\qquad
+E_\rho(q)=\int_0^\rho e^{-qt}\,dt.
+}
+\label{eq:logonly-local-profile}
+\end{equation}
+For every prescribed $A>0$, after the fixed Cauchy and curvature residues have
+been taken, the scalar error profile and its first two $\rho$-derivatives are
+$O_A(L^{-A})$ up to a fixed polylogarithmic factor, uniformly in
+$|d|\le W_T$ and in the retained height blocks.
+\end{proposition}
+
+\begin{proof}
+For basis packets $e_r,e_s$, the exact polarization gives
+\begin{equation}
+\mathcal B_{e_r,e_s}(c+it)
+=\iint\phi_L(x)\phi_L(y)e^{-i\tau_sx+i\tau_ry}
+ e^{\sigma_0(x-y)}e^{it(x-y)}\,dx\,dy,
+\label{eq:lagwise-polarization-recall}
+\end{equation}
+with $\sigma_0=c-1/2$.  For one Dirichlet monomial $\xi^{-c-it}$, put
+$d=y-x$.  Then exactly
+\[
+e^{\sigma_0(x-y)}e^{it(x-y)}\xi^{-c-it}
+=e^{d/2}(\xi e^d)^{-c-it}.
+\]
+Hence the stationary dilation parameter of Section~\ref{sec:stationary} is
+$w=d=y-x$; it is not a fixed number attached to either packet label.
+The principal stationary calculation depends on the packet variables only
+through this lag, exactly as in the first part of
+Lemma~\ref{lem:pre-HLZ-packet-separation}.
+
+By Lemma~\ref{lem:HLZ-local-height-rescaling}, the diagonal Mellin factor may be
+written at local scale as
+\[
+\left(\frac{X(\tau)^2}{\ell^2}\right)^u
+\]
+without changing the $u=0$ residue and with the same arbitrary-log contour
+error.  Proposition~\ref{prop:X-tagging} gives the two oriented stationary
+cutoffs
+\[
+\ell\le X(\tau)e^{-d},\qquad
+\ell\le X(\tau)e^d,
+\]
+so their common range is
+\begin{equation}
+\boxed{
+\ell\le X(\tau)e^{-|d|}.
+}
+\label{eq:lagwise-common-cutoff}
+\end{equation}
+Writing $t=\log\ell/L$ gives precisely
+$0\le t\le\rho_\tau(d)$.  On the stable core
+$|d|\le W_T=L-A_0\log L$, so $\rho_\tau(d)$ lies in a fixed compact interval
+and is positive for all sufficiently large $T$.
+
+Fix $d$, $p$ and the separated Cauchy variable $\mathbf z$.  After the leading
+stationary factors have been removed from the two packet legs, the remaining
+scalar Mellin weight has the form
+\begin{equation}
+W_d(u,\mathbf z,p)
+=\int_0^{\rho_\tau(d)}
+ a_{d,\mathbf z,p,T}(t)e^{Lut}\,dt,
+\label{eq:lagwise-Mellin-weight}
+\end{equation}
+or a fixed finite product of such factors.  Lemma~\ref{lem:stationary-symbol}
+controls the fixed stationary and curvature derivatives of the amplitude by a
+fixed power of $L$.  The separated shifts $|z_j|\asymp L^{-1}$ contribute only
+fixed polylogarithmic losses.  Moving-endpoint derivatives of
+\eqref{eq:lagwise-Mellin-weight} produce only the endpoint jets covered by
+Lemma~\ref{lem:smooth-mellin-class}.  Thus $W_d$ belongs to that Mellin class
+uniformly for $|d|\le W_T$.
+
+Lemma~\ref{lem:packet-HLZ-diagonal} can therefore be applied pointwise in $d$.
+Its arbitrary-log error is uniform after the first two endpoint and curvature
+derivatives.  The finite three-$Z$ residues then give the two logarithmic
+faces.  The coefficient $-2P$ contributes
+\[
+-2e^{\lambda p}E_\rho(p)^2,
+\]
+while $P(s-2/L)$ changes the two diagonal fibre exponents to $p+2$ and $p-2$
+and contributes the explicit archimedean factor
+$X^{2/L}=e^{2\lambda}$, giving
+\[
+e^{\lambda p}e^{2\lambda}E_\rho(p+2)E_\rho(p-2).
+\]
+Their sum is \eqref{eq:logonly-local-profile}.
+
+Finally, on the original absolutely convergent scalar contour the $x,y$
+variables range over the compact packet support and the scalar $u$-integral has
+Gaussian vertical decay.  Fubini is therefore legitimate before the scalar
+contour is moved.  After the move, the uniform error bound just obtained may be
+integrated against the same two packet legs.  This proves
+\eqref{eq:lagwise-HLZ-form} and the stated differentiated error estimate.
+\end{proof}
+
+\begin{corollary}[Frozen log-only lag kernel]
+\label{cor:frozen-logonly-lag-kernel}
+Let
+\begin{equation}
+\boxed{
+G_{\log}(\rho):=[p^2]\,
+ e^p\left[
+ -2E_\rho(p)^2+e^2E_\rho(p+2)E_\rho(p-2)
+ \right].
+}
+\label{eq:Glog-from-source}
+\end{equation}
+After freezing $\lambda(\tau)=1$ and rescaling $r=x/L$, $s=y/L$, the principal
+operator is the pullback of the genuine lag kernel
+\begin{equation}
+\boxed{
+K_{\log}(r,s)=G_{\log}(1-|r-s|).
+}
+\label{eq:Klog-lag-kernel}
+\end{equation}
+The difference between the finite-height profile
+$G_{\log,\lambda(\tau)}(\lambda(\tau)-|x-y|/L)$ and
+\eqref{eq:Klog-lag-kernel} has its first two normalized lag derivatives
+$O(L^{-1})$ and belongs to the finite-parameter regular class.
+\end{corollary}
+
+\begin{proof}
+The map $(\lambda,\rho,p)\mapsto\mathcal G^{\log}_{\lambda,\rho}(p)$ is analytic
+on a fixed neighbourhood of the retained parameter set and
+$\lambda(\tau)=1+O(L^{-1})$.  The mean-value theorem gives the claimed
+$O(L^{-1})$ estimates through two $\rho$-derivatives.  Substitution of
+$d=y-x$ in Proposition~\ref{prop:lagwise-packet-HLZ} gives the lag kernel.
+\end{proof}
+
+\begin{remark}[Replacement of the one-sided bridge]
+\label{rem:one-sided-bridge-superseded}
+For the proof of Theorem~\ref{thm:main}, Proposition~\ref{prop:lagwise-packet-HLZ}
+replaces the identification step in Lemmas~\ref{lem:aux-shift-rigidity-packet-map},
+\ref{lem:pre-HLZ-packet-separation}, and
+\ref{lem:model-HLZ-Fubini-lift} that attempted to pass from the lag convolution
+to a one-sided common-prefix multiplier.  The exact lag factorization
+\eqref{eq:pre-HLZ-lag-factorization} itself remains valid; only the subsequent
+operator identification is discarded.  In particular the logarithmic
+principal source is not sent through the compressed-shift argument of
+Section~\ref{sec:edge-rank}.
+\end{remark}
