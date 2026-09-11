@@ -1,13 +1,20 @@
-\section{The log-only global model and its spectral lower bound}
+\section{Positive reference model and the true \texorpdfstring{one-$\chi$}{one-chi} defect}
 \label{sec:model-floor}
 
-The revised principal source is the logarithmic pair
+The true logarithmic source is the pair
 \[
 H_{\log}(s)=-2P(s)+P(s-2/L),
 \]
-transported by the lagwise packet--HLZ bridge of
-Proposition~\ref{prop:lagwise-packet-HLZ}.  No critical-$J$ self profile is
-included in the principal operator.
+evaluated with the exact packet polarization and one-$\chi$ stationary phase.
+We denote the resulting retained Hermitian operator by
+\begin{equation}
+\boxed{A_T^{\rm true}:=A_T[H_{\log};e(-ne^d)].}
+\label{eq:true-logonly-operator}
+\end{equation}
+This notation emphasizes that the physical additive carrier $e(-ne^d)$ is
+retained.  No claim is made that the untwisted scalar HLZ diagonal identifies
+$A_T^{\rm true}$ with the comparison model below.  No critical-$J$ self
+profile is included in either operator.
 
 Let $C(x):=G_{\log}(1-x)$ on the retained interior lag interval.  If $q$ is
 mean zero and
@@ -64,7 +71,9 @@ of $Q_\triangle$.  Equivalently
 where $\mathcal W_T^{\rm glob}$ adjoins the primitive on
 $0\le u\le W_T$ and the normalization $\sqrt2/L$.
 
-By Corollary~\ref{cor:frozen-logonly-lag-kernel}, the frozen principal kernel is
+Motivated by the candidate endpoint geometry in
+Corollary~\ref{cor:frozen-logonly-lag-kernel}, define the positive reference
+kernel
 \[
 K_{G_{\log}}(r,s)=G_{\log}(1-|r-s|),
 \]
@@ -102,7 +111,7 @@ K_{G_{\log}}\succeq0.98\,Q_\triangle.
 }
 \label{eq:model-floor}
 \end{equation}
-Consequently, for the packet pullback
+Consequently, for the reference packet pullback
 \[
 P_T:=A_T^{G_{\log}},
 \]
@@ -116,7 +125,8 @@ In the final perturbation argument we use only the much weaker fixed constant
 \boxed{c_0:=0.02.}
 \label{eq:PT-logonly-definition}
 \end{equation}
-No model spectral deletion is required.
+This is a statement about the reference model $P_T$; it does not identify
+$P_T$ with $A_T^{\rm true}$.
 \end{proposition}
 
 \begin{proof}
@@ -230,9 +240,42 @@ Schur's test and \eqref{eq:primitive-identity} now give
 >1.97\|Q\|_2^2
 >0.98Q_\triangle(q).
 \]
-The packet inequality follows by congruence through the same stable-core
-analysis map furnished by the lagwise bridge.  This proves the proposition.
+The packet inequality follows by congruence through the stable-core analysis
+map used in the definition of $P_T$.  This proves the proposition.
 \end{proof}
+
+\begin{hypothesis}[One-$\chi$ one-sided relative spectral defect]
+\label{hyp:one-chi-relative-defect}
+For the admissible retained packet data chosen in
+Section~\ref{sec:multiplicity-endgame}, there is a deterministic sequence
+$\lambda_T>0$ such that, with
+\begin{equation}
+\mathcal D_T
+:=\Gfr_T^{-1/2}(A_T^{\rm true}-\lambda_TP_T)\Gfr_T^{-1/2},
+\label{eq:true-model-relative-defect}
+\end{equation}
+one has
+\begin{equation}
+\boxed{
+\beta_-(T;\lambda_T)
+:=\frac{\tr[(\mathcal D_T)_-^2]}
+{(0.98\lambda_T)^2N_T}
+=O(L^{-2}).}
+\label{eq:one-chi-relative-defect}
+\end{equation}
+Only the negative part is constrained.  In particular, no two-sided operator
+norm or Hilbert--Schmidt approximation of $A_T^{\rm true}$ by
+$\lambda_TP_T$ is assumed.
+\end{hypothesis}
+
+\begin{remark}[Unresolved input]
+Hypothesis~\ref{hyp:one-chi-relative-defect} is not proved in this manuscript.
+The surviving phase $e(-ne^d)$ is precisely why the scalar HLZ argument does
+not establish it.  The normalization is chosen so that
+$\beta_-(T;\lambda_T)=o(1)$ deletes only $o(N_T)$ spectral directions; the
+displayed $O(L^{-2})$ rate gives the quantitative conditional conclusion in
+Theorem~\ref{thm:main}.
+\end{remark}
 
 \begin{remark}[Numerical margin]
 For orientation only, high-precision evaluation gives

@@ -20,7 +20,7 @@ $V_{\rm mean}$ by \eqref{eq:mean-map}, $V_{\rm end}$ by
 \[
 \Gfr_T^{\rm ret}:=\Gfr_T|_{\Pret}.
 \]
-Proposition~\ref{prop:logonly-final-decomposition} is therefore applied to the
+Hypothesis~\ref{hyp:edge-regular-bounds} is therefore applied to the
 original function $F$ on exactly the same finite packet space on which the
 zero-side evaluation of $H$ is performed. Moreover the perturbation can be
 chosen so small that, on this selected $\Pret$,
@@ -29,8 +29,7 @@ chosen so small that, on this selected $\Pret$,
 \left\|
 (\Gfr_T^{\rm ret})^{-1/2}(A_H-A_F)
 (\Gfr_T^{\rm ret})^{-1/2}
-\right\|_{\op}<\frac{c_0}{4},
-\qquad c_0=0.02.
+\right\|_{\op}<\frac{0.98\lambda_T}{8}.
 }
 \label{eq:perturb-small}
 \end{equation}
@@ -58,7 +57,7 @@ to be shrunk so that
 \begin{equation}
 \sup_{(\eta,\varepsilon)\in U}
 \sup_{\rm admissible\ centres}\|A_H-A_F\|_{\op}
-<\frac{c_0\gamma_T}{4}.
+<\frac{0.98\lambda_T\gamma_T}{8}.
 \label{eq:uniform-fixedT-perturbation}
 \end{equation}
 No asymptotic lower bound for $\gamma_T$ is required.
@@ -153,59 +152,77 @@ on every disk boundary whenever $(\eta,\varepsilon)\in U_{\rm disk}$.
 Choose $H$ and the evaluation-isomorphic packet subfamily by
 Lemma~\ref{lem:generic-affine}, with $U_0=U_{\rm disk}$. This fixes the packet
 space, $\Gfr_T$, and $\Pret$ before any inertia comparison, and gives
-\eqref{eq:perturb-small}. Proposition~\ref{prop:logonly-final-decomposition},
-applied to the original Hardy-gauge matrix $A_F$ on this packet space, gives on
-$\Pret$
+\eqref{eq:perturb-small}.  Hypotheses
+\ref{hyp:one-chi-relative-defect} and
+\ref{hyp:edge-regular-bounds}, applied to the original Hardy-gauge
+matrix $A_F$ on this packet space, give on $\Pret$
 \[
-A_F=P_T+E_T^{\rm geom}+R_T^{\log}.
+A_F=A_T^{\rm true}+E_T^{\rm geom}+R_T^{\rm reg}.
 \]
 By Proposition~\ref{prop:model-floor},
 \[
-P_T\succeq c_0\Gfr_T,
-\qquad c_0=0.02.
+\lambda_TP_T\succeq a_T\Gfr_T,
+\qquad a_T:=0.98\lambda_T.
 \]
-Put $\Delta_T:=A_H-A_F$. By \eqref{eq:perturb-small},
+Apply Lemma~\ref{lem:one-sided-defect-deletion} to
+$A_T^{\rm true}$ and $\lambda_TP_T$.  In view of
+\eqref{eq:one-chi-relative-defect}, there is a subspace
+$V_\beta\subset\Pret$ with
 \[
-P_T+\Delta_T\succeq\frac{3c_0}{4}\Gfr_T
-\qquad\text{on }\Pret.
+\codim_{\Pret}V_\beta
+\le4\beta_-(T;\lambda_T)N_T=O(L^{-2}N_T)
 \]
-Hence, after compression to $\Pret$,
+and
 \[
-A_H|_{\Pret}=(P_T+\Delta_T)|_{\Pret}
-+E_T^{\rm geom}|_{\Pret}+R_T^{\log}|_{\Pret}.
+A_T^{\rm true}|_{V_\beta}\succeq\frac{a_T}{2}
+\Gfr_T|_{V_\beta}.
+\]
+Put $\Delta_T:=A_H-A_F$.  By \eqref{eq:perturb-small},
+\[
+(A_T^{\rm true}+\Delta_T)|_{V_\beta}
+\succeq\frac{3a_T}{8}\Gfr_T|_{V_\beta}.
+\]
+Hence, after compression to $V_\beta$,
+\[
+A_H|_{V_\beta}=(A_T^{\rm true}+\Delta_T)|_{V_\beta}
++E_T^{\rm geom}|_{V_\beta}+R_T^{\rm reg}|_{V_\beta}.
 \]
 Set
 \[
-r_T:=\rank(E_T^{\rm geom}|_{\Pret}),
+r_T:=\rank(E_T^{\rm geom}|_{V_\beta}),
+\qquad
+\Gfr_{\beta,T}:=\Gfr_T|_{V_\beta},
 \qquad
 s_T:=\left\|
-(\Gfr_T^{\rm ret})^{-1/2}(R_T^{\log}|_{\Pret})
-(\Gfr_T^{\rm ret})^{-1/2}
+\Gfr_{\beta,T}^{-1/2}(R_T^{\rm reg}|_{V_\beta})
+\Gfr_{\beta,T}^{-1/2}
 \right\|_{S_2}^2.
 \]
 By \eqref{eq:logonly-edge-rank},
 \eqref{eq:logonly-total-relative-HS}, and
 \eqref{eq:retained-codim}, one has
-$r_T=o(N_T)$, $s_T=o(N_T)$, and
+$r_T=o(N_T)$, $s_T=o(a_T^2N_T)$, and
 $\codim\Pret=o(N_T)$. Apply the ambient-codimension conclusion
 \eqref{eq:minmax-codim} of Lemma~\ref{lem:minmax} with the lemma's floor
 parameter replaced by
 \[
-c_*:=\frac{3c_0}{4}>0.
+c_T:=\frac{3a_T}{8}>0.
 \]
-The resulting fixed constant $16c_*^{-2}$ does not affect the $o(N_T)$ bounds,
-and therefore
+The relative remainder contribution is
+$16c_T^{-2}s_T=o(N_T)$.  Including the ambient codimensions of $\Pret$ and
+$V_\beta$ therefore gives
 \begin{equation}
-\boxed{n_-(A_H)=o(N_T).}
+\boxed{n_-(A_H)=O(L^{-2}N_T)+o(N_T).}
 \label{eq:perturbed-inertia}
 \end{equation}
 
 The zero-coordinate pullback is exact for $H$, so
 \eqref{eq:zero-inertia-generic} and \eqref{eq:perturbed-inertia} give
 \[
-B(H)+P(H')=o(N_T).
+B(H)+P(H')=O(L^{-2}N_T)+o(N_T).
 \]
-Lemma~\ref{lem:generic-zero-count} then gives $D(H)=o(N_T)$. By the defining
+Lemma~\ref{lem:generic-zero-count} then gives
+$D(H)=O(L^{-2}N_T)+o(N_T)$. By the defining
 choice $(\eta,\varepsilon)\in U_{\rm disk}$, Rouch\'e's theorem preserves, with
 multiplicity, the number of zeros in every chosen disk; all these disks are
 disjoint from the real axis. Consequently
@@ -217,7 +234,7 @@ pairs of $F$ with height in $[T,2T]$. Returning from the good rectangle to this
 dyadic interval changes the zero count only in two strips of length at most
 one. By Lemma~\ref{lem:local-z1-count},
 \[
-D_T(F)\le D(H)+O(\log T)=o(N_T).
+D_T(F)\le D(H)+O(\log T)=O(L^{-2}N_T)+o(N_T).
 \]
 Because $c>1$, the symmetric rectangle
 \eqref{eq:symmetric-contour-rectangle} contains the whole critical strip; at
@@ -229,7 +246,7 @@ N_T=N_{0,T}+2D_T(F)+o(N_T),
 \]
 so
 \[
-\frac{N_{0,T}}{N_T}=1-o(1).
+\frac{N_{0,T}}{N_T}=1-O(L^{-2})-o(1)=1-o(1).
 \]
 We finish by spelling out the dyadic summation. Put
 \[

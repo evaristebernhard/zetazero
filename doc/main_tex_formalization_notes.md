@@ -268,3 +268,32 @@ counting.
 **Next interface.** Construct the target `NegativeIndexWitness` from the real and
 conjugate stationary residue blocks, then connect the abstract evaluation map to
 the finite packet node space.
+
+## 2026-09-11 — M05/M10 one-sided-defect interface
+
+**Observation.**  The exact packet stationary operator retains the additive
+carrier `e(-n e^d)`, so the untwisted scalar HLZ diagonal cannot presently
+identify it with the positive lag model.  The finite-dimensional endgame needs
+only a one-sided statement: after whitening, the negative part of
+`A_true - lambda_T P_T` may occupy `O(L^-2 N_T)` spectral mass.
+
+**Lean evidence.**  M01 already contains the general spectral-threshold and
+rank-plus-Hilbert--Schmidt machinery, and M10 contains the final density-one
+normalization interface.  No Lean declaration currently constructs the concrete
+`A_true`, proves the `beta_-` estimate, or certifies the analytic remainder
+decomposition; these remain explicit inputs.
+
+**Manuscript impact.**  The main theorem is now conditional on
+
+```text
+tr((G^(-1/2) (A_true - lambda_T P_T) G^(-1/2))_-^2)
+  / ((0.98 lambda_T)^2 N_T) = O(L^-2),
+```
+
+together with the geometric rank and scaled regular-relative-HS bounds.  The
+spectral deletion costs at most `4 beta_- N_T` dimensions and yields
+`N_0,T / N_T = 1 - O(L^-2) - o(1)`.
+
+**Next interface.**  Formalize the abstract one-sided-defect deletion lemma, then
+connect it to a concrete carrier-preserving operator only after an additive
+twist/second-stationary estimate is available.

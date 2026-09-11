@@ -1,25 +1,23 @@
 \begin{abstract}
 We construct a finite-dimensional Hermitian contour form from an analytic Hardy
-gauge and a near-lattice packet family. Its zero-side residue representation
-converts off-critical-line stationary geometry into negative inertia. On the
+gauge and a near-lattice packet family.  Its zero-side residue representation
+converts off-critical-line stationary geometry into negative inertia.  On the
 arithmetic side the holomorphic archimedean self block is eliminated on the
-closed contour before any approximate functional equation is introduced.  The
-remaining right-edge logarithmic derivative is split exactly into the log-only
-source $-2P(s)+P(s-2/L)$, a second-order-small direct residual, and an $f'$-regular
-class.  For the principal logarithmic source we retain the actual packet lag
-$d=y-x$: the two stationary orientations give the common diagonal cutoff
-$\ell\le X e^{-|d|}$, and the scalar Heap--Li--Zhao three-$Z$ diagonal is applied
-uniformly at fixed lag.  This produces directly the completed lag kernel
-$G_{\log}(1-|r-s|)$, without identifying a lag convolution with one-sided packet
-modulation.  The scalar HLZ contour error, the finite-height deformation, the
-direct residual, the $f'$ terms, and the genuinely geometric leakage are placed
-in the relative Hilbert--Schmidt remainder by a two-variable primitive
-criterion.  A certified Schur estimate gives the frozen log-only operator a
-uniform spectral lower bound on the mean-zero fibres.  The geometric edge
-contribution has rank $o(N_T)$, while the regular remainder is $o(N_T)$ in the
-relative Hilbert--Schmidt metric. A finite-dimensional inertia argument then
-implies that all but $o(N_T)$ zeros in a dyadic interval lie on the critical
-line.
+closed contour, and the remaining logarithmic derivative is split exactly into
+the log-only source $-2P(s)+P(s-2/L)$, a second-order-small direct residual, and
+an $f'$-regular class.  The true log-only operator retains the stationary
+additive carrier $e(-ne^d)$.  The untwisted scalar Heap--Li--Zhao diagonal does
+not presently control this operator, so no unconditional packet--HLZ bridge is
+claimed.  We instead prove a conditional density-one theorem.  If the negative
+part of the relative defect between the true one-$\chi$ operator and a positive
+reference model has normalized Hilbert--Schmidt square $O((\log T)^{-2})$, and
+the geometric edge and regular remainders satisfy the stated rank and relative
+Hilbert--Schmidt estimates, then
+\[
+\frac{N_{0,T}}{N_T}=1-O((\log T)^{-2})-o(1)=1-o(1).
+\]
+Thus the unresolved arithmetic content is isolated in one explicit one-sided
+relative spectral-defect hypothesis.
 \end{abstract}
 
 \section{Main theorem and notation}
@@ -35,17 +33,60 @@ on the critical line. Thus $N_T\asymp T\log T$. Put
 L:=\log\frac{T}{2\pi}.
 \]
 
-\begin{theorem}[Density one on the critical line]
+For a Hermitian operator $B$, write $B_-=(-B)_+$ for its negative part.  Let
+$A_T^{\rm true}$ be the retained log-only Hermitian operator defined in
+Section~\ref{sec:model-floor}; in particular, its physical stationary carrier
+$e(-ne^d)$ is not discarded.  Let $P_T$ be the positive reference model and
+$\Gfr_T$ its reference Gram.  For a deterministic sequence $\lambda_T>0$ put
+\begin{equation}
+\boxed{
+\mathcal D_T:=\Gfr_T^{-1/2}
+ (A_T^{\rm true}-\lambda_TP_T)\Gfr_T^{-1/2},
+\qquad
+\beta_-(T;\lambda_T):=
+\frac{\tr[(\mathcal D_T)_-^2]}
+{(0.98\lambda_T)^2N_T}.}
+\label{eq:beta-minus-intro}
+\end{equation}
+
+\begin{theorem}[Conditional density one from the one-$\chi$ defect]
 \label{thm:main}
-As $T\to\infty$,
+Assume that the reference model satisfies
 \[
-\boxed{\frac{N_{0,T}}{N_T}=1-o(1)}.
+P_T\succeq0.98\,\Gfr_T
+\]
+on the retained space and that, for some deterministic $\lambda_T>0$,
+\begin{equation}
+\boxed{\beta_-(T;\lambda_T)=O(L^{-2}).}
+\label{eq:beta-minus-hypothesis-intro}
+\end{equation}
+Assume also that the true contour matrix has the decomposition
+\[
+A_F=A_T^{\rm true}+E_T^{\rm geom}+R_T^{\rm reg},
+\]
+where $\rank E_T^{\rm geom}=o(N_T)$ and
+\begin{equation}
+\left\|\Gfr_T^{-1/2}R_T^{\rm reg}\Gfr_T^{-1/2}\right\|_{S_2}^2
+=o(\lambda_T^2N_T).
+\label{eq:regular-lambda-scale-intro}
+\end{equation}
+Then, as $T\to\infty$,
+\[
+\boxed{\frac{N_{0,T}}{N_T}=1-O(L^{-2})-o(1)=1-o(1)}.
 \]
 Consequently, by dyadic summation,
 \[
 \boxed{\frac{N_0(T)}{N(T)}\longrightarrow1}.
 \]
 \end{theorem}
+
+\begin{remark}[Scale of the regular remainder]
+If $\inf_T\lambda_T>0$, then the manuscript's original relative estimate
+$\|\Gfr_T^{-1/2}R_T^{\rm reg}\Gfr_T^{-1/2}\|_{S_2}^2=o(N_T)$ implies
+\eqref{eq:regular-lambda-scale-intro}.  The scaled formulation is needed only
+to allow sequences $\lambda_T$ tending to zero.  Since $L\to\infty$, the bound
+$\beta_-(T;\lambda_T)=O(L^{-2})$ is in particular $o(1)$.
+\end{remark}
 
 Hardy's theorem established infinitely many zeros on the critical line, and
 Selberg proved that a positive proportion lie there
@@ -86,20 +127,21 @@ derivative zeros, and critical-line geometry includes
 FengWu2012,ChaubeyMalikRoblesZaharescu2018,Ivic1977,KeatingSnaith2000,
 Kirila2018,Odlyzko1987,RudnickSarnak1996}.  The argument below uses a different
 assembly: the same Hardy-gauge contour matrix is represented on the zero side
-and on the packetized right edge, its principal lag operator is given a uniform
-spectral floor, and the remaining terms are separated into low-rank and relative
-Hilbert--Schmidt classes.
+and on the packetized right edge, the true log-only operator is compared
+spectrally with a positive reference model, and the remaining terms are
+separated into low-rank and relative Hilbert--Schmidt classes.
 
 The proof is organized around the normalized contour matrix introduced in
 Section~\ref{sec:common-matrix}, whose zero-side and arithmetic-side
 representations are developed in the subsequent sections.  The self source is
 removed by the exact holomorphic identity of
-Lemma~\ref{lem:holomorphic-self-elimination}.  The classical HLZ input is used
-only in its scalar form from Section~\ref{sec:scalar-hlz-core}, with the
-auxiliary function chosen on separated Cauchy contours.  Its packet lift is
-performed pointwise in the actual lag by
-Proposition~\ref{prop:lagwise-packet-HLZ}; no packet-valued HLZ theorem and no
-one-sided modulation identification is assumed.  The exact remainder
+Lemma~\ref{lem:holomorphic-self-elimination}.  The classical HLZ input is
+recorded only in its scalar form in Section~\ref{sec:scalar-hlz-core}, with the
+auxiliary function chosen on separated Cauchy contours.
+Section~\ref{sec:lagwise-packet-hlz} explains why that scalar statement does
+not lift to the true packet operator: the physical additive carrier
+$e(-ne^d)$ survives.  The conditional theorem therefore uses the one-sided
+defect \eqref{eq:beta-minus-intro}, not the open lagwise bridge.  The exact remainder
 $\Delta H_{\rm dir}$ stays on the absolute-convergence right edge and is
 $O(L^{-2})$ before the fixed stationary normalization, so it is handled by the
 primitive relative-remainder machinery rather than by a compressed-shift

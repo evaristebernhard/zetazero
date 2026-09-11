@@ -22,11 +22,7 @@ Choose a height partition scale
 \[
 H:=T/L^D
 \]
-with one fixed $D>C_{\rm geom}+5$.  For the scalar HLZ diagonal choose its
-arbitrary saving exponent after all fixed Cauchy and packet losses: fix
-\[
-A_{\rm diag}>C_{\rm geom}+C_{\rm par}+10.
-\]
+with one fixed $D>C_{\rm geom}+5$.
 Choose a nonstationary integration-by-parts order
 \begin{equation}
 \boxed{N\ge8}
@@ -128,7 +124,9 @@ By Lemma~\ref{lem:stable-core-frame}, \eqref{eq:mean-codim}, and
 \boxed{\codim\Pret=o(N_T).}
 \label{eq:retained-codim}
 \end{equation}
-The log-only frozen model requires no additional spectral deletion by
-Proposition~\ref{prop:model-floor}.  There is no critical-$J$ AFE deletion, no
+No deterministic model deletion is built into $\Pret$.  The one-sided spectral
+deletion arising from Hypothesis~\ref{hyp:one-chi-relative-defect} is performed
+only in the proof of Theorem~\ref{thm:main} and costs
+$O(L^{-2}N_T)$ dimensions.  There is no critical-$J$ AFE deletion, no
 frozen-self deletion, and no low-sideband principal-source deletion in the
 revised hierarchy.

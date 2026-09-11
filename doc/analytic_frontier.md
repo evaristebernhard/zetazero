@@ -417,12 +417,13 @@ required later by HLZ.
 
 ## F5. HLZ bilinear and carrier-preserving lift
 
-This remains a major analytic frontier.  The manuscript now exposes it
-explicitly as `Hypothesis~\ref{hyp:packet-bilinear-HLZ}` and states the
-density-one theorem conditionally on that hypothesis.  The former collision
-problem in the scalar auxiliary factor has been removed separately: the HLZ
-Cauchy variables are put on separated nested circles and, for fixed
-$\mathbf z$, one uses
+This remains a major analytic frontier.  The manuscript now retains the true
+additive carrier `e(-n e^d)` and states density one conditionally on the
+one-sided relative spectral-defect hypothesis
+`hyp:one-chi-relative-defect`; it does not assume that the scalar HLZ diagonal
+lifts exactly to the packet operator.  The former collision problem in the
+scalar auxiliary factor has been removed separately: the HLZ Cauchy variables
+are put on separated nested circles and, for fixed $\mathbf z$, one uses
 $H_{\mathbf z}(u)=e^{u^2}(2u-z_2+z_1)(2u-z_2+z_3)/((z_1-z_2)(z_3-z_2))$.
 Thus the scalar HLZ step no longer asks one jointly analytic function to equal
 both $0$ and $1$ at a colliding shift triple.

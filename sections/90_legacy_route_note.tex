@@ -8,14 +8,15 @@ Fourier-shift decomposition of the resulting direct carriers.  That
 architecture is not used anywhere in the proof of
 Theorem~\ref{thm:main}.
 
-The revised proof makes two structural changes.  First, the entire
+The conditional route makes two structural changes.  First, the entire
 archimedean self block is removed on the closed contour by
 Lemma~\ref{lem:holomorphic-self-elimination}, before any AFE or diagonal
 extraction.  Second, the packet polarization is kept in the actual lag
-$d=y-x$ and the scalar HLZ diagonal is applied pointwise in that lag by
-Proposition~\ref{prop:lagwise-packet-HLZ}.  Consequently the principal operator
-is the genuine lag kernel $G_{\log}(1-|r-s|)$ and is never represented as a
-macroscopic one-sided Fourier shift.
+$d=y-x$, retaining the physical additive carrier $e(-ne^d)$.  The scalar HLZ
+diagonal is not asserted to remove that carrier.  Instead,
+Hypothesis~\ref{hyp:one-chi-relative-defect} compares the resulting true
+operator with the positive reference model only through the negative part of
+their relative spectral defect.
 
 The source files implementing the older frozen-HLP/common-output route have
 been removed from the active manuscript rather than reproduced here, so that

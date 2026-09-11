@@ -1,6 +1,38 @@
 \section{Finite-dimensional inertia reduction}
 \label{sec:minmax}
 
+\begin{lemma}[One-sided relative-defect deletion]
+\label{lem:one-sided-defect-deletion}
+Let $A,P,G$ be Hermitian on a finite-dimensional space, with $G\succ0$ and
+$P\succeq aG$ for some $a>0$.  Put
+\[
+D:=G^{-1/2}(A-P)G^{-1/2},
+\qquad b:=\tr(D_-^2).
+\]
+Then there is a subspace $V_\beta$ such that
+\begin{equation}
+\boxed{
+\codim V_\beta\le4a^{-2}b,
+\qquad A|_{V_\beta}\succeq\frac a2G|_{V_\beta}.}
+\label{eq:one-sided-defect-deletion}
+\end{equation}
+Only the negative spectrum of $D$ enters this estimate.
+\end{lemma}
+
+\begin{proof}
+Let $S_\beta$ be the spectral subspace of $D$ corresponding to eigenvalues
+strictly below $-a/2$.  Every such eigenvalue contributes more than $a^2/4$
+to $\tr(D_-^2)$, and hence
+\[
+\dim S_\beta\le4a^{-2}b.
+\]
+On $S_\beta^\perp$ one has $D\succeq-aI/2$.  Pull this subspace back by
+$G^{-1/2}$ and call the result $V_\beta$.  Since
+$G^{-1/2}PG^{-1/2}\succeq aI$, congruence gives
+$A|_{V_\beta}\succeq aG|_{V_\beta}/2$, proving
+\eqref{eq:one-sided-defect-deletion}.
+\end{proof}
+
 \begin{lemma}[Rank plus relative Hilbert--Schmidt min--max]
 \label{lem:minmax}
 Let $V$ be finite dimensional. Let $A,P,E,R,G$ be Hermitian on $V$, with
