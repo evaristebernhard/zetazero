@@ -1,9 +1,10 @@
 \section{Positive reference model and the true \texorpdfstring{one-$\chi$}{one-chi} defect}
 \label{sec:model-floor}
 
-Let $\vartheta_{\rm c}$ be the fixed stable-core multiplier on each packet leg
-and put $\vartheta_{\rm e}=1-\vartheta_{\rm c}$.  For an exact right-edge
-source $D$ and leg multipliers $a,b$, define the Hermitian operator
+Let $\vartheta_{\rm c}$ denote the fixed coordinate multiplier implementing the
+stable-core restriction on each packet leg, and put
+$\vartheta_{\rm e}=1-\vartheta_{\rm c}$.  For an exact right-edge source $D$
+and leg multipliers $a,b$, define the Hermitian operator
 \begin{equation}
 \langle\mathfrak R_T[D;a,b]v,w\rangle
 :=\frac1{2\pi i}\int_{\Gamma_c^+}q(s)^2D(s)
@@ -12,8 +13,15 @@ source $D$ and leg multipliers $a,b$, define the Hermitian operator
  \mathcal B_{w,v}^{b,a}(s)\,ds}.
 \label{eq:exact-right-edge-operator}
 \end{equation}
-Here $\mathcal B^{a,b}$ is the exact packet polarization with the two indicated
-leg multipliers; no stationary expansion is part of this definition.  Put
+Here
+\[
+\mathcal B_{v,w}^{a,b}(s):=B_w^{(b)}(z(s))
+ \bigl(B_v^{(a)}\bigr)^\#(z(s))
+\]
+where $B_v^{(a)}$ denotes the packet synthesis after applying the multiplier
+$a$ to its leg.  Thus this is the exact packet polarization after applying the
+indicated multipliers to the two legs; no stationary expansion is part of this
+definition.  Put
 \begin{align}
 A_T^{\rm ar}&:=\mathfrak R_T[\mathcal C H_{\rm ar};1,1],\notag\\
 A_T^{\rm true}&:=\mathfrak R_T[\mathcal C H_{\rm ar};
@@ -81,9 +89,8 @@ of $Q_\triangle$.  Equivalently
 where $\mathcal W_T^{\rm glob}$ adjoins the primitive on
 $0\le u\le W_T$ and the normalization $\sqrt2/L$.
 
-Motivated by the candidate endpoint geometry in
-Corollary~\ref{cor:frozen-logonly-lag-kernel}, define the positive reference
-kernel
+For the conditional comparison, define the positive reference kernel directly
+by
 \[
 K_{G_{\log}}(r,s)=G_{\log}(1-|r-s|),
 \]
@@ -100,8 +107,9 @@ G_{\log}(\rho)
 \end{equation}
 Equivalently, its hyperbolic contribution is
 $\frac{e^2}{4}\{(2\rho^2-4\rho+3)\sinh^2\rho-\rho^2\}$.
-This is the coefficient $[p^2]$ obtained from
-\eqref{eq:Glog-from-source}; it is not the expression with $\sinh(2\rho)$.
+This is the explicit reference profile used in the spectral comparison; it is
+not obtained by identifying the true packet operator with an untwisted scalar
+lag kernel.
 
 For later certification we use the elementary rational enclosure
 \begin{equation}
@@ -226,7 +234,8 @@ map used in the definition of $P_T$.  This proves the proposition.
 
 \begin{hypothesis}[One-$\chi$ one-sided relative spectral defect]
 \label{hyp:one-chi-relative-defect}
-For the admissible retained packet data chosen in
+For the same packet centres selected by Lemma~\ref{lem:hermite-packet-evaluation}
+and the associated retained space $\Pret$ used in
 Section~\ref{sec:multiplicity-endgame}, there is a deterministic sequence
 $\lambda_T\ge\lambda_*>0$ such that, with
 \begin{equation}
@@ -250,17 +259,17 @@ $\lambda_TP_T$ is assumed.
 
 \begin{remark}[Unresolved input]
 Hypothesis~\ref{hyp:one-chi-relative-defect} is not proved in this manuscript.
-The surviving phase $e(-ne^d)$ is precisely why the scalar HLZ argument does
-not establish it.  The normalization is chosen so that
+The surviving phase $e(-ne^d)$ is precisely why no scalar reduction is used to
+establish it.  The normalization is chosen so that
 $\beta_-(T;\lambda_T)=o(1)$ deletes only $o(N_T)$ spectral directions; the
 displayed $O(L^{-2})$ rate gives the quantitative conditional conclusion in
 Theorem~\ref{thm:main}.
 \end{remark}
 
-\begin{remark}[Reproducible certificate]
-The exact-rational computation used above is implemented by
-\texttt{scripts/certify\_gap1\_floor.py}.  It uses only
-\texttt{fractions.Fraction} and the printed degree-$64$ Taylor enclosure.
+\begin{remark}[Finite certificate]
+The inequalities above are finite rational interval calculations obtained from
+\eqref{eq:exp-rational-bound} on the displayed mesh.  No asymptotic numerical
+input is used in the floor estimate.
 \end{remark}
 
 \begin{lemma}[The whole-space floor survives restriction]
