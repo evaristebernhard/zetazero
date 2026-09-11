@@ -58,6 +58,12 @@ $H_{\mathbf z}$ through the collision locus is used.
 
 \begin{proposition}[Exact three-face Cauchy residue identity]
 \label{prop:scalar-HLZ-three-face}
+Assume
+\begin{equation}
+\max\{|\alpha|,|\beta|,|\gamma|\}<r_1/L
+\label{eq:scalar-shifts-inside}
+\end{equation}
+and first suppose that $\alpha,-\beta,\gamma$ are pairwise distinct.
 Let
 \[
 \mathfrak Z_{\alpha,\beta,\gamma}(X)
@@ -86,6 +92,9 @@ The identity is a finite three-variable Cauchy residue calculation.  It is
 consistent with the three principal faces occurring in the completed HLZ
 expansion, but it is proved here directly rather than attributed to a formula
 number in Heap--Li--Zhao.
+For colliding shifts satisfying \eqref{eq:scalar-shifts-inside}, the identity
+means its meromorphic continuation from the pairwise-distinct locus; at a
+removable collision it is evaluated by the corresponding limit.
 \end{proposition}
 
 \begin{proof}
@@ -97,6 +106,8 @@ whose roots are
 \[
 r_1=\alpha,\qquad r_2=-\beta,\qquad r_3=\gamma.
 \]
+Condition \eqref{eq:scalar-shifts-inside} places all three roots inside the
+smallest Cauchy circle and hence inside all three circles.
 The Vandermonde square in \eqref{eq:scalar-HLZ-three-face} vanishes whenever two
 of the three Cauchy variables take the same root.  Hence only the six
 permutations of $(r_1,r_2,r_3)$ contribute.  For every such permutation,
@@ -118,9 +129,11 @@ $X^{-\alpha-\beta}Z_{-\beta,-\alpha,\gamma,1,1}$.  If
 $z_2=\gamma$, it is $-\beta-\gamma$, giving
 $X^{-\beta-\gamma}Z_{\alpha,-\gamma,-\beta,1,1}$.  Their sum is exactly
 \eqref{eq:scalar-HLZ-three-face}.
+Both sides are meromorphic in $(\alpha,\beta,\gamma)$ on the shift polydisc,
+so the identity theorem supplies the collision cases.
 \end{proof}
 
-\begin{lemma}[Uniform scalar HLZ diagonal for bounded-support Mellin weights]
+\begin{hypothesis}[Imported scalar diagonal identity]
 \label{lem:scalar-lagweight-HLZ}
 Put $\log_3T:=\log\log\log T$ and
 \[
@@ -162,45 +175,52 @@ where, for every prescribed $A>0$ and every fixed $r,j$ required later,
 }
 \label{eq:scalar-HLZ-error}
 \end{equation}
-The same estimate survives the finite Cauchy residues in
+The particular weight $W$ must be derived from the Dirichlet-polynomial
+length and coefficient hypotheses of the cited Heap--Li--Zhao theorem.
+Bounded Mellin support alone is not asserted to imply this identity or its
+differentiated error.  Conditional on this imported input, the same estimate survives the finite Cauchy residues in
 Proposition~\ref{prop:scalar-HLZ-three-face} after increasing the requested
 saving exponent.
+\end{hypothesis}
+
+\begin{lemma}[Zero-free deformation of the imported scalar integral]
+\label{lem:scalar-zero-free-deformation}
+Let $c_\zeta>0$ be a classical zero-free-region constant and choose a fixed
+$c_{\rm mov}>0$ sufficiently small in terms of it.  Truncate the $u$-integral
+at $|\Im u|=B\sqrt{\log L}$ and move it only to
+\[
+\Re u=-\frac{c_{\rm mov}}{\log_3T}.
+\]
+Uniformly on $\mathcal T_L$, no pole of
+$1/\zeta(1-z_2+2u)$ is crossed.  The two numerator poles are cancelled by
+$H_{\mathbf z}$, so the only crossed pole of the full integrand is $u=0$.
+The left edge and Gaussian tails are $O_A(L^{-A})$ for every fixed $A$ after
+choosing $B$.
 \end{lemma}
 
 \begin{proof}
-This is the scalar diagonal contour mechanism of Heap--Li--Zhao~\cite{HLZ},
-specialized to $h=k=1$ and multiplied by the admissible analytic weight $W$.
-On the strip
+On the truncated rectangle,
+$|\Im(1-z_2+2u)|=O(\sqrt{\log L})$, hence
 \[
--1/\log_3T\le\Re u\le c_+/L
+\log(|\Im(1-z_2+2u)|+3)\le\tfrac12\log_3T+O(1).
 \]
-the bounded support in \eqref{eq:scalar-HLZ-admissible-weight} and
-\eqref{eq:scalar-HLZ-weight-bounds} give only fixed powers of $L$.  The factor
-$H_{\mathbf z}(u)$ contributes a fixed polynomial in $L(1+|u|)$ times the
-Gaussian $e^{-\Im(u)^2}$.  Its two zeros in
-\eqref{eq:scalar-HLZ-auxiliary-zeros} cancel the shifted zeta poles
-$2u=z_2-z_1$ and $2u=z_2-z_3$.
-
-Truncate at $|\Im u|=B\sqrt{\log L}$ and move the line to
-$\Re u=-1/\log_3T$, as in the scalar HLZ diagonal argument.  The left edge is
+The classical zero-free region
+$\sigma\ge1-c_\zeta/\log(|t|+3)$, used with a slightly smaller constant,
+contains the image of the new left edge when $c_{\rm mov}$ is small enough;
+the remainder of the deformation strip lies farther right.  Thus the
+reciprocal zeta factor has no pole and costs only a polylogarithmic factor.
+The zeros \eqref{eq:scalar-HLZ-auxiliary-zeros} cancel the numerator poles.
+Finally
 \[
-\ll L^C T^{-2/\log_3T}\log_3T,
+|T^{2u}|=\exp\!\left(-\frac{2c_{\rm mov}\log T}{\log_3T}\right)
 \]
-while the two horizontal edges and Gaussian tails are $O_A(L^{-A})$.  Since
-\[
-T^{-2/\log_3T}L^D\log_3T\ll_{A,D}L^{-A}
-\]
-for every fixed $A,D$, the complete error has arbitrary logarithmic saving.
-Differentiating in $\rho$ produces only endpoint jets and fixed derivatives of
-the amplitude; differentiating in $p$ is covered directly by
-\eqref{eq:scalar-HLZ-weight-bounds}.  Thus the same contour proof yields
-\eqref{eq:scalar-HLZ-error}.  Finally the separated Cauchy denominators cost
-only fixed powers of $L$, which are absorbed by requesting a larger scalar
-saving exponent before the finite residues are taken.
+beats every power of $L$, while $e^{u^2}$ gives Gaussian decay on the
+horizontal edges and tails.
 \end{proof}
 
 \begin{lemma}[Local-height rescaling of the scalar diagonal]
 \label{lem:scalar-HLZ-local-height}
+Conditional on Hypothesis~\ref{lem:scalar-lagweight-HLZ},
 Let $X(\tau)=\tau/(2\pi)$ with $\tau\asymp T$.  In
 \eqref{eq:scalar-HLZ-diagonal}, the replacement
 \[

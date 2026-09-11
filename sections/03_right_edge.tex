@@ -37,8 +37,8 @@ The Hardy reflection law gives
 and likewise
 \begin{equation}
 \boxed{
-C_{\mathscr Z}^{(p)}(\iota(s))
-=\overline{C_{\mathscr Z}^{(p)}(s)},
+\mathcal C_{\mathscr Z}(\iota(s),p)
+=\overline{\mathcal C_{\mathscr Z}(s,p)},
 \qquad
 \mathcal B_{v,w}(\iota(s))
 =\overline{\mathcal B_{w,v}(s)}.
@@ -71,11 +71,16 @@ J_{\rm arch}=I_f+I_f^*,
 
 \begin{lemma}[Holomorphic elimination of the archimedean self source]
 \label{lem:holomorphic-self-elimination}
-For every fixed normalized curvature derivative $0\le j\le2$,
+For $|p|\le p_0$ define the generating-family contour
+\[
+\mathcal I_f(p;v,w):=
+\oint_{\partial\mathcal R_T^{\rm sym}}
+ f(s)\mathcal C_{\mathscr Z}(s,p)\mathcal B_{v,w}(s)\,ds.
+\]
+Then, for every fixed normalized curvature derivative $0\le j\le2$,
 \begin{equation}
 \boxed{
-\partial_p^j\oint_{\partial\mathcal R_T^{\rm sym}}
- f(s)C_{\mathscr Z}^{(p)}(s)\mathcal B_{v,w}(s)\,ds=0.
+\partial_p^j\mathcal I_f(0;v,w)=0.
 }
 \label{eq:holomorphic-self-elimination}
 \end{equation}
@@ -87,9 +92,11 @@ Lemma~\ref{lem:horizontal-decay}.
 \end{lemma}
 
 \begin{proof}
-The factors $f$, $C_{\mathscr Z}^{(p)}$, and $\mathcal B_{v,w}$ are
-holomorphic in the high rectangle, and the same is true after the fixed
-$p$-derivatives. Cauchy's theorem gives
+For all fixed $|p|\le p_0$ and sufficiently large $T$, the shifted arguments
+$s\pm p/L$ remain in a common holomorphy neighbourhood of the high rectangle.
+Thus the factors $f$, $\mathcal C_{\mathscr Z}(s,p)$, and
+$\mathcal B_{v,w}$ are jointly holomorphic there.  Cauchy's theorem gives
+$\mathcal I_f(p;v,w)=0$, and differentiation under the integral gives
 \eqref{eq:holomorphic-self-elimination}. Splitting the closed contour into
 vertical and horizontal pieces gives the second assertion. No approximate
 functional equation is involved.
@@ -139,6 +146,14 @@ and
 :=P(s)+\frac{Q(s)}{f(s)-P(s)}-P(s-2/L).
 }
 \label{eq:deltaH-dir}
+\end{equation}
+and set
+\begin{equation}
+\boxed{
+H_{\rm ar}(s):=H_{\log}(s)+\Delta H_{\rm dir}(s)
+=-P(s)+\frac{Q(s)}{f(s)-P(s)}.
+}
+\label{eq:exact-arithmetic-source}
 \end{equation}
 Then the exact identity is
 \begin{equation}
@@ -255,9 +270,16 @@ same safe-line bounds; after the leading constant $2/L$ is removed, every
 derivative of $(f-P)^{-1}$ is $O(L^{-2})$ or smaller.
 \end{proof}
 
-The unique order-one source sent to the scalar HLZ master is therefore
-\[
-\boxed{\mathcal C(s)H_{\log}(s).}
-\]
-The two remaining families are $\mathcal C\Delta H_{\rm dir}$ and
-$R_{f'}^{\log}$, both assigned directly to the relative-regular ledger.
+The safe-line estimate \eqref{eq:deltaH-dir-small} is an identity for an
+absolutely convergent Dirichlet series, not an estimate for the stationary
+one-$\chi$ operator.  Indeed the leading Dirichlet coefficient of
+$\Delta H_{\rm dir}$ is
+\begin{equation}
+\Lambda(n)\left(1+\frac{2\log n}{L}-n^{2/L}\right),
+\label{eq:direct-residual-coefficient-warning}
+\end{equation}
+which is order one for $n=e^{\theta L}$.  Consequently the complete source
+$\mathcal C H_{\rm ar}$, including $\mathcal C\Delta H_{\rm dir}$, belongs to
+$A_T^{\rm true}$.  Only $R_{f'}^{\log}$ is assigned to the regular ledger.
+The scalar HLZ section may still study $\mathcal C H_{\log}$ as a conditional
+template, but it does not define the theorem-facing operator.

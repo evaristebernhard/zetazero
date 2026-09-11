@@ -72,17 +72,28 @@ Passing from $a$ to $p$ introduces the positive scalar factor $L^2$. We divide
 the raw matrix by this factor once and for all. Since the rescaling is
 positive, it does not change inertia.
 
+To keep the generating parameter distinct from its extracted coefficient, put
+\begin{equation}
+\mathcal C_{\mathscr Z}(s,p)
+:=\mathscr Z(s+p/L)\mathscr Z(s-p/L),
+\qquad
+C_{\mathscr Z}^{\rm norm}(s):=[p^2]\mathcal C_{\mathscr Z}(s,p).
+\label{eq:curvature-generating-family}
+\end{equation}
+Here $[p^2]F=\frac12\partial_p^2F(0)$.  Thus
+$C_{\mathscr Z}^{\rm norm}$ is not a function of $p$.
+
 \begin{proposition}[Exact normalized same-form identity]
 \label{prop:same-form-identity}
 Let
 \[
 C_{\mathscr Z}(s):=\mathscr Z(s)\mathscr Z''(s)-\mathscr Z'(s)^2,
 \qquad
-C_{\mathscr Z}^{(p)}(s):=L^{-2}C_{\mathscr Z}(s).
+C_{\mathscr Z}^{\rm norm}(s):=L^{-2}C_{\mathscr Z}(s).
 \]
 Equivalently,
 \[
-C_{\mathscr Z}^{(p)}(s)
+C_{\mathscr Z}^{\rm norm}(s)
 =\frac12\left.\partial_p^2
 \bigl(\mathscr Z(s+p/L)\mathscr Z(s-p/L)\bigr)\right|_{p=0}.
 \]
@@ -103,10 +114,10 @@ Then the normalized invariant contour form is exactly
 \mathcal A_T(v,w)
 =\frac1{2\pi i}\oint_{\partial\mathcal R_T^{\rm sym}}
 \frac{\mathscr Z''}{\mathscr Z'}(s)
-C_{\mathscr Z}^{(p)}(s)\mathcal B_{v,w}(s)\,ds
+C_{\mathscr Z}^{\rm norm}(s)\mathcal B_{v,w}(s)\,ds
 =\frac1{2\pi i}\oint_{\partial\mathcal R_T^{\rm sym}}
 \frac{Z_1'}{Z_1}(s)
-C_{\mathscr Z}^{(p)}(s)\mathcal B_{v,w}(s)\,ds.
+C_{\mathscr Z}^{\rm norm}(s)\mathcal B_{v,w}(s)\,ds.
 }
 \label{eq:same-form-identity}
 \end{equation}
@@ -121,14 +132,14 @@ Since \eqref{eq:gauge-derivative} gives
 \frac{\mathscr Z''}{\mathscr Z'}
 =f+\frac{Z_1'}{Z_1},
 \]
-and $f$, $C_{\mathscr Z}^{(p)}$ and $\mathcal B_{v,w}$ are holomorphic on the
+and $f$, $C_{\mathscr Z}^{\rm norm}$ and $\mathcal B_{v,w}$ are holomorphic on the
 high rectangle, the integral of
-$fC_{\mathscr Z}^{(p)}\mathcal B_{v,w}$ around the closed contour is zero. This proves
+$fC_{\mathscr Z}^{\rm norm}\mathcal B_{v,w}$ around the closed contour is zero. This proves
 the second equality in \eqref{eq:same-form-identity}.
 
 For the first equality, expand
 \[
-\frac{\mathscr Z''}{\mathscr Z'}C_{\mathscr Z}^{(p)}
+\frac{\mathscr Z''}{\mathscr Z'}C_{\mathscr Z}^{\rm norm}
 =L^{-2}\left(
 \frac{\mathscr Z\,\mathscr Z''^2}{\mathscr Z'}
 -\mathscr Z'\mathscr Z''\right).

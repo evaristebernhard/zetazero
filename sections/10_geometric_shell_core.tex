@@ -82,13 +82,13 @@ Then
 }
 \label{eq:log-unitary-norm}
 \end{equation}
-Choose a fixed-overlap $C_c^\infty$ partition $(\psi_j)$ subordinate to unit
-intervals $I_j=[J_j,J_j+1]$ such that
+For the primitive remainder analysis choose a fixed-overlap $C_c^\infty$
+partition $(\psi_j)$ subordinate to doubling intervals
+$I_j=[J_j,2J_j]$, with each cutoff vanishing at the endpoints, such that
 \begin{equation}
 \boxed{
 \sum_j\psi_j(x)^2=1,
-\qquad
-\|\psi_j^{(r)}\|_\infty\ll_r1.
+\qquad \|\psi_j^{(r)}\|_\infty\ll_rJ_j^{-r}.
 }
 \label{eq:smooth-shell-partition}
 \end{equation}
@@ -112,6 +112,7 @@ and, on each shell,
 q_j(x):=\psi_j(x)x^{-1/2}f(x),
 \qquad
 Q_j(x):=\int_{J_j}^xq_j(y)\,dy,
+\qquad m_j:=Q_j(2J_j),
 \]
 \begin{equation}
 \mathcal Q_{\rm loc}(f)
@@ -123,8 +124,14 @@ Then
 \boxed{\mathcal Q_{\rm loc}(f)\le C_\triangle\mathcal Q_{\rm glob}(g)}
 \label{eq:global-local-triangular-comparison}
 \end{equation}
-with an absolute constant, uniformly for Hilbert-valued outputs.  If also
-$\int_{I_j}q_j=0$, then $Q_j$ vanishes at both shell endpoints.
+and
+\begin{equation}
+\boxed{\frac2{L^2}\sum_j\|m_j\|^2
+\le C_\partial\mathcal Q_{\rm glob}(g).}
+\label{eq:global-local-endpoint-comparison}
+\end{equation}
+Both constants are absolute and independent of the output-fibre dimension.
+No local mean-zero condition is imposed.
 \end{lemma}
 
 \begin{proof}
@@ -134,14 +141,20 @@ makes this extension absolutely continuous.  Integration by parts gives
 Q_j(x)=\psi_j(x)R(\log x)
 -\int_{J_j}^x\psi_j'(y)R(\log y)\,dy.
 \]
-The unit shell length, bounded overlap and uniform derivative bounds for
-$\psi_j$ imply
+Since $x\asymp J_j$ on a doubling shell, bounded overlap and
+$|\psi_j'|\ll J_j^{-1}$ imply
 \[
 \int_{I_j}\|Q_j(x)\|^2\frac{dx}{x}
 \ll\int_{I_j}\|R(\log x)\|^2\frac{dx}{x}.
 \]
-Summation proves \eqref{eq:global-local-triangular-comparison}.  The proof uses
-only Hilbert-space Cauchy--Schwarz and is dimension free.
+At $x=2J_j$ the cutoff term vanishes, and Hilbert-space Cauchy--Schwarz gives
+\[
+ \|m_j\|^2\le
+ \left(\int_{I_j}|\psi_j'(y)|^2y\,dy\right)
+ \left(\int_{I_j}\|R(\log y)\|^2\frac{dy}{y}\right)
+ \ll\int_{I_j}\|R(\log y)\|^2\frac{dy}{y}.
+\]
+Summation proves both comparisons.  The proof is dimension free.
 \end{proof}
 
 \begin{lemma}[Polynomial floor for the global reference metric]
@@ -196,6 +209,12 @@ summands; use $\|Q_o\|_{\op}\le\|Q_o\|_{S_2}$ for the last term.
 \end{proof}
 
 \subsection{Geometric exterior, terminal and endpoint leakage}
+
+The stationary-row and nonstationary-leakage count in this subsection uses an
+independent fixed-overlap unit-shell partition
+$I_j^{\rm unit}=[J_j,J_j+1]$.  This does not reintroduce local primitive
+constraints; the doubling partition above is used only for the primitive
+remainder criterion.
 
 The translated packet window is constant on the flat interval and supported a
 fixed distance $\Delta$ beyond it.  Put
@@ -310,8 +329,9 @@ Cauchy--Schwarz therefore give the deliberately crude source-operator bound
 \[
 \beta_T\ll TL^C.
 \]
-The direct residual and $f'$ families are smaller and are separately assigned
-to Section~\ref{sec:logonly-remainder-ledger}.  Lemma~\ref{lem:one-leaking-leg-HS}
+The complete arithmetic source, including the direct residual, is already part
+of $A_T^{\rm true}$; only the $f'$ family is separately assigned to
+Section~\ref{sec:logonly-remainder-ledger}.  Lemma~\ref{lem:one-leaking-leg-HS}
 gives
 \[
 \|R_T^{\rm geom}\|_{S_2}^2

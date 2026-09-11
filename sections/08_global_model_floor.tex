@@ -1,20 +1,30 @@
 \section{Positive reference model and the true \texorpdfstring{one-$\chi$}{one-chi} defect}
 \label{sec:model-floor}
 
-The true logarithmic source is the pair
-\[
-H_{\log}(s)=-2P(s)+P(s-2/L),
-\]
-evaluated with the exact packet polarization and one-$\chi$ stationary phase.
-We denote the resulting retained Hermitian operator by
+Let $\vartheta_{\rm c}$ be the fixed stable-core multiplier on each packet leg
+and put $\vartheta_{\rm e}=1-\vartheta_{\rm c}$.  For an exact right-edge
+source $D$ and leg multipliers $a,b$, define the Hermitian operator
 \begin{equation}
-\boxed{A_T^{\rm true}:=A_T[H_{\log};e(-ne^d)].}
-\label{eq:true-logonly-operator}
+\langle\mathfrak R_T[D;a,b]v,w\rangle
+:=\frac1{2\pi i}\int_{\Gamma_c^+}q(s)^2D(s)
+ \mathcal B_{v,w}^{a,b}(s)\,ds
++\overline{\frac1{2\pi i}\int_{\Gamma_c^+}q(s)^2D(s)
+ \mathcal B_{w,v}^{b,a}(s)\,ds}.
+\label{eq:exact-right-edge-operator}
 \end{equation}
-This notation emphasizes that the physical additive carrier $e(-ne^d)$ is
-retained.  No claim is made that the untwisted scalar HLZ diagonal identifies
-$A_T^{\rm true}$ with the comparison model below.  No critical-$J$ self
-profile is included in either operator.
+Here $\mathcal B^{a,b}$ is the exact packet polarization with the two indicated
+leg multipliers; no stationary expansion is part of this definition.  Put
+\begin{align}
+A_T^{\rm ar}&:=\mathfrak R_T[\mathcal C H_{\rm ar};1,1],\notag\\
+A_T^{\rm true}&:=\mathfrak R_T[\mathcal C H_{\rm ar};
+ \vartheta_{\rm c},\vartheta_{\rm c}],                      \label{eq:true-logonly-operator}\\
+L_T^{\rm geom}&:=A_T^{\rm ar}-A_T^{\rm true}.               \label{eq:exact-geometric-leakage}
+\end{align}
+Thus $L_T^{\rm geom}$ is exactly the sum of the three terms with at least one
+$\vartheta_{\rm e}$ leg.  The physical additive carrier $e(-ne^d)$ and the
+complete direct residual are retained inside $A_T^{\rm true}$.  No claim is
+made that the untwisted scalar HLZ diagonal identifies this operator with the
+comparison model below.
 
 Let $C(x):=G_{\log}(1-x)$ on the retained interior lag interval.  If $q$ is
 mean zero and
@@ -82,15 +92,16 @@ with
 \boxed{
 G_{\log}(\rho)
 =-\frac76\rho^4+2\rho^3-\rho^2
-+\frac{e^2}{4}\left[
-(2\rho^2-4\rho+3)\sinh(2\rho)-\rho^2
++\frac{e^2}{8}\left[
+(2\rho^2-4\rho+3)\cosh(2\rho)-4\rho^2+4\rho-3
 \right].
 }
 \label{eq:Glog-closed}
 \end{equation}
-This is the log-only profile obtained from
-\eqref{eq:Glog-from-source}.  In particular the hyperbolic term is
-$\sinh(2\rho)$, not $\sinh^2\rho$.
+Equivalently, its hyperbolic contribution is
+$\frac{e^2}{4}\{(2\rho^2-4\rho+3)\sinh^2\rho-\rho^2\}$.
+This is the coefficient $[p^2]$ obtained from
+\eqref{eq:Glog-from-source}; it is not the expression with $\sinh(2\rho)$.
 
 For later certification we use the elementary rational enclosure
 \begin{equation}
@@ -107,7 +118,7 @@ For later certification we use the elementary rational enclosure
 On every mean-zero stable core fibre,
 \begin{equation}
 \boxed{
-K_{G_{\log}}\succeq0.98\,Q_\triangle.
+K_{G_{\log}}\succeq\kappa_*\,Q_\triangle.
 }
 \label{eq:model-floor}
 \end{equation}
@@ -117,13 +128,8 @@ P_T:=A_T^{G_{\log}},
 \]
 one has
 \begin{equation}
-\boxed{P_T\succeq0.98\,\Gfr_T.}
+\boxed{P_T\succeq\kappa_*\,\Gfr_T.}
 \label{eq:logonly-model-floor}
-\end{equation}
-In the final perturbation argument we use only the much weaker fixed constant
-\begin{equation}
-\boxed{c_0:=0.02.}
-\label{eq:PT-logonly-definition}
 \end{equation}
 This is a statement about the reference model $P_T$; it does not identify
 $P_T$ with $A_T^{\rm true}$.
@@ -137,51 +143,37 @@ g_{\log}(r):=G_{\log}''(r).
 Direct differentiation of \eqref{eq:Glog-closed} gives
 \begin{equation}
 \boxed{
-\begin{aligned}
-g_{\log}(r)={}&-14r^2+12r-2\\
-&+e^2\left[(4r-4)\cosh(2r)
- +(2r^2-4r+4)\sinh(2r)-\frac12\right].
-\end{aligned}}
+g_{\log}(r)=-14r^2+12r-2
++e^2\left[(r^2-2r+2)\cosh(2r)
+ +2(r-1)\sinh(2r)-1\right].
+}
 \label{eq:glog-second}
 \end{equation}
 The cusp coefficient in \eqref{eq:primitive-identity} is
 \begin{equation}
 \boxed{
 a_{\log}=2G_{\log}'(1)
-=e^2(\cosh2-1)-\frac43>19.07.}
+=-\frac43+\frac{e^2}{2}(\sinh2-2)>4.6770.}
 \label{eq:logonly-cusp}
 \end{equation}
 
-We first record the sign geometry of $g_{\log}$.  Write $x=1-r$.  A further
-derivative gives
-\[
-g_{\log}'(r)
-=-28r+12+2e^2\left[(2x^2+4)\cosh(2r)-6x\sinh(2r)\right].
-\]
-Since $\tanh(2r)\le2r=2(1-x)$,
-\[
-(2x^2+4)-6x\tanh(2r)
-\ge14x^2-12x+4\ge\frac{10}{7}.
-\]
-Therefore
+Exact rational interval arithmetic using \eqref{eq:exp-rational-bound} on a
+mesh of width $10^{-4}$ gives
 \begin{equation}
-\boxed{
-g_{\log}'(r)>-16+\frac{20}{7}e^2>4
-\qquad(0\le r\le1),}
-\label{eq:glog-monotone}
-\end{equation}
-so $g_{\log}$ is strictly increasing.  Applying
-\eqref{eq:exp-rational-bound} with $m=64$ gives, by exact rational arithmetic,
-\begin{equation}
- g_{\log}(0.5833)<-0.0039,
- \qquad
- g_{\log}(0.5834)>0.0015.
+\begin{gathered}
+ g_{\log}''(r)>21.80\quad(0\le r\le1),\\
+ g_{\log}(0.2483)>0>g_{\log}(0.2484),\qquad
+ g_{\log}(0.6464)<0<g_{\log}(0.6465),\\
+ g_{\log}'(x)+g_{\log}'(1-x)>5.70\quad(0\le x\le\tfrac12).
+\end{gathered}
 \label{eq:glog-root-certificate}
 \end{equation}
-Thus $g_{\log}$ has one and only one zero
+Hence $g_{\log}$ is strictly convex, has exactly two roots
 \[
-r_0\in(0.5833,0.5834).
+\alpha\in(0.2483,0.2484),\qquad
+\beta\in(0.6464,0.6465),
 \]
+and has signs $+,-,+$ on the three complementary intervals.
 
 Let
 \[
@@ -194,38 +186,26 @@ M_{\log}(x)
  +\int_{1-x}^1|g_{\log}(r)|\,dr.
 \label{eq:glog-row-sum}
 \end{equation}
-For $x<1-r_0$ its derivative is
+Put $k(x)=g_{\log}(1-x)-g_{\log}(x)$.  The last inequality in
+\eqref{eq:glog-root-certificate} gives $k'(x)<0$ and $k(1/2)=0$, so
+$M_{\log}'(x)>0$ on $[0,\alpha]$ and $M_{\log}'(x)<0$ on
+$[1-\beta,1/2]$.  On $[\alpha,1-\beta]$ one has
+$M_{\log}'(x)=h(x):=g_{\log}(x)+g_{\log}(1-x)$.  Strict convexity makes $h$
+strictly decreasing there, and the same rational enclosure gives
 \[
-M_{\log}'(x)=g_{\log}(x)+g_{\log}(1-x).
+h(0.3144)>0>h(0.3145).
 \]
-The same $m=64$ rational enclosure, applied on the indicated compact
-intervals, gives
-\begin{equation}
-\begin{gathered}
-\frac d{dx}\{g_{\log}(x)+g_{\log}(1-x)\}<-8
-\qquad(0\le x\le0.417),\\
-g_{\log}(0.1338)+g_{\log}(0.8662)>0.004,\\
-g_{\log}(0.1339)+g_{\log}(0.8661)<-0.0015.
-\end{gathered}
-\label{eq:glog-row-max-certificate}
-\end{equation}
-Hence the unique maximum on this interval occurs at
-$x_0\in(0.1338,0.1339)$.  For $1-r_0\le x\le1/2$, both arguments lie below
-$r_0$, and strict increase of $g_{\log}$ gives
-$M_{\log}'(x)=g_{\log}(x)-g_{\log}(1-x)<0$.  Thus $x_0$ is the global maximizer
-up to the symmetry $x\mapsto1-x$.
-
-Since $x_0<1-r_0$, integration of \eqref{eq:glog-row-sum} by the
-antiderivative $G_{\log}'$ gives
+Thus the unique maximizer is $x_*\in(0.3144,0.3145)$.  Integration of
+\eqref{eq:glog-row-sum} by the antiderivative $G_{\log}'$ gives
 \[
-M_{\log}(x_0)
-=G_{\log}'(x_0)+2G_{\log}'(1)
- -2G_{\log}'(r_0)-G_{\log}'(1-x_0).
+M_{\log}(x_*)
+=2G_{\log}'(1)-G_{\log}'(1-x_*)
+ +G_{\log}'(x_*)-2G_{\log}'(\beta).
 \]
 Applying the same rational Taylor enclosure on the certified intervals for
-$r_0$ and $x_0$ yields the deliberately coarse bound
+$\beta$ and $x_*$ yields the deliberately rounded bound
 \begin{equation}
-\boxed{\sup_{0\le x\le1}M_{\log}(x)<17.10.}
+\boxed{\sup_{0\le x\le1}M_{\log}(x)<4.6247.}
 \label{eq:Glog-Schur}
 \end{equation}
 All inequalities in
@@ -236,9 +216,9 @@ the proof.
 Schur's test and \eqref{eq:primitive-identity} now give
 \[
 \langle K_{G_{\log}}q,q\rangle
->(19.07-17.10)\|Q\|_2^2
->1.97\|Q\|_2^2
->0.98Q_\triangle(q).
+>(4.6770-4.6247)\|Q\|_2^2
+=0.0523\|Q\|_2^2
+>\kappa_*Q_\triangle(q).
 \]
 The packet inequality follows by congruence through the stable-core analysis
 map used in the definition of $P_T$.  This proves the proposition.
@@ -248,7 +228,7 @@ map used in the definition of $P_T$.  This proves the proposition.
 \label{hyp:one-chi-relative-defect}
 For the admissible retained packet data chosen in
 Section~\ref{sec:multiplicity-endgame}, there is a deterministic sequence
-$\lambda_T>0$ such that, with
+$\lambda_T\ge\lambda_*>0$ such that, with
 \begin{equation}
 \mathcal D_T
 :=\Gfr_T^{-1/2}(A_T^{\rm true}-\lambda_TP_T)\Gfr_T^{-1/2},
@@ -259,7 +239,7 @@ one has
 \boxed{
 \beta_-(T;\lambda_T)
 :=\frac{\tr[(\mathcal D_T)_-^2]}
-{(0.98\lambda_T)^2N_T}
+{(\kappa_*\lambda_T)^2N_T}
 =O(L^{-2}).}
 \label{eq:one-chi-relative-defect}
 \end{equation}
@@ -277,20 +257,10 @@ displayed $O(L^{-2})$ rate gives the quantitative conditional conclusion in
 Theorem~\ref{thm:main}.
 \end{remark}
 
-\begin{remark}[Numerical margin]
-For orientation only, high-precision evaluation gives
-\[
-r_0=0.5833722208\ldots,
-\qquad
-\arg\max M_{\log}=0.13387266\ldots,
-\qquad
-\sup M_{\log}=17.07053067\ldots,
-\]
-and
-\[
-a_{\log}=19.07668558\ldots.
-\]
-The proof uses only the rational bounds above.
+\begin{remark}[Reproducible certificate]
+The exact-rational computation used above is implemented by
+\texttt{scripts/certify\_gap1\_floor.py}.  It uses only
+\texttt{fractions.Fraction} and the printed degree-$64$ Taylor enclosure.
 \end{remark}
 
 \begin{lemma}[The whole-space floor survives restriction]
@@ -298,7 +268,7 @@ The proof uses only the rational bounds above.
 Let $V$ be any subspace of the finite packet coordinate space and let $P_V$ be
 its orthogonal projection. Then
 \[
-P_VP_TP_V\succeq0.98\,P_V\Gfr_TP_V
+P_VP_TP_V\succeq\kappa_*\,P_V\Gfr_TP_V
 \quad\text{on }V.
 \]
 \end{lemma}
@@ -319,12 +289,10 @@ For a Hermitian lag form $B$ on the mean-zero fibre define
 \label{prop:finiteT-principal-comparison}
 On $V_{\rm mean}$,
 \begin{equation}
-\boxed{P_T\succeq0.98\,\Gfr_T\succeq c_0\Gfr_T,
-\qquad c_0=0.02.}
+\boxed{P_T\succeq\kappa_*\,\Gfr_T.}
 \label{eq:principal-floor}
 \end{equation}
-The finite-height deformation is not absorbed into this positive operator; it
-remains a separate relative-regular source.
+This is the sole numerical floor used downstream.
 \end{proposition}
 
 \begin{proof}

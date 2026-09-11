@@ -9,45 +9,11 @@ remainder.  The remaining theorem-facing classes are measured with the
 absolute-lag primitive criterion of
 Section~\ref{sec:primitive-remainder-core}.
 
-\begin{lemma}[The exact direct residual is relative-regular]
-\label{lem:deltaH-dir-relative-regular}
-Let $R_{\rm dir,T}$ be the right-edge contribution of
-$\mathcal C\Delta H_{\rm dir}$ in \eqref{eq:logonly-product-split}, including
-its adjoint orientation and the fixed stationary, height-block, and curvature
-normalizations. Then
-\begin{equation}
-\boxed{
-\left\|\Gfr_T^{-1/2}R_{\rm dir,T}\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T).
-}
-\label{eq:deltaH-dir-relative-HS}
-\end{equation}
-\end{lemma}
-
-\begin{proof}
-Lemma~\ref{lem:deltaH-dir-small} gives
-$\Delta H_{\rm dir}=O(L^{-2})$ on the safe line through all fixed source
-derivatives, up to a fixed polylogarithmic factor.  Keeping the exact lag
-geometry, the shell-local normalized kernel is a finite sum of terms
-\begin{equation}
-D_{j,T}^{\rm dir}(t,s)
-=\frac1L a_{j,T}(t,s)
-H_{j,T}^{\rm dir}\!\left(
-\nu_{j,T}(t,s)-
-\frac{|\log(J_j+t)-\log(J_j+s)|}{L}
-\right)
-\label{eq:deltaH-dir-shell-kernel}
-\end{equation}
-with
-\begin{equation}
-\max_{0\le r\le2}\sup_\rho
-|\partial_\rho^rH_{j,T}^{\rm dir}(\rho)|
-\ll L^{-2+C_{\rm dir,reg}}.
-\label{eq:deltaH-dir-profile-bound}
-\end{equation}
-The two primitive lemmas of Section~\ref{sec:primitive-remainder-core} give the
-relative Hilbert--Schmidt estimate once $A_0$ is chosen after the fixed source
-loss.
-\end{proof}
+There is no direct-residual operator in this ledger.  The safe-line estimate
+$\Delta H_{\rm dir}=O(L^{-2})$ does not survive the one-$\chi$ stationary
+normalization uniformly in the relevant Dirichlet carrier.  The full source
+$\mathcal C(H_{\log}+\Delta H_{\rm dir})=\mathcal C H_{\rm ar}$ belongs to
+$A_T^{\rm true}$ by definition \eqref{eq:true-logonly-operator}.
 
 \begin{lemma}[Log-only $f'$ class is relative-regular]
 \label{lem:logonly-fprime-relative-regular}
@@ -69,7 +35,19 @@ curvature and Cauchy derivatives cost only a fixed power of $L$, so each
 shell-local profile and its first two lag derivatives are $O(T^{-1}L^C)$.
 The shell normalization and primitive criterion therefore give a normalized
 jump $o(1)$ and total mixed-derivative Hilbert--Schmidt mass $o(N_T)$.
+Moreover the boundary coefficients of
+\eqref{eq:primitive-boundary-coefficients} satisfy
+\[
+\sup_j\|\mathcal B_{j,0}\|_{\op}\ll T^{-1}L^C=o(1),
+\qquad
+\sum_j\int_{I_j}(\|\mathcal B_{j,R}\|_{S_2}^2
++\|\mathcal B_{j,L}\|_{S_2}^2)
+\ll T^{-2}L^CN_T=o(N_T).
+\]
+Thus the boundary-complete criterion applies without local mean deletion.
 \end{proof}
+
+For the final ledger write $R_T^{f'}:=R_{f',T}^{\log}$.
 
 \begin{hypothesis}[Geometric edge and regular-remainder bounds]
 \label{hyp:edge-regular-bounds}
@@ -84,21 +62,32 @@ where $A_T^{\rm true}$ is the exact log-only operator
 \boxed{\rank E_T^{\rm geom}=o(N_T),}
 \label{eq:logonly-edge-rank}
 \end{equation}
-and
+and each exact component satisfies
 \begin{equation}
 \boxed{
-\left\|\Gfr_T^{-1/2}R_T^{\rm reg}\Gfr_T^{-1/2}\right\|_{S_2}^2
-=o(\lambda_T^2N_T).
+\left\|\Gfr_T^{-1/2}R_T^\nu\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T)
+\quad(\nu\in\{\mathrm{geom},f',\mathrm{hor}\}).
 }
-\label{eq:logonly-total-relative-HS}
+\label{eq:logonly-component-relative-HS}
 \end{equation}
 Here $E_T^{\rm geom}$ is exactly the geometric edge space of
 Proposition~\ref{prop:geometric-edge-ledger}; it contains no part of
-$H_{\log}$.  The remainder $R_T^{\rm reg}$ includes $R_T^{\rm geom}$, the
-exact direct residual, the $f'$ family, and the fixed higher
-stationary/Stirling corrections.  If $\inf_T\lambda_T>0$, the original
-$o(N_T)$ relative-Hilbert--Schmidt estimate is sufficient for the displayed
-scaled estimate.  No scalar-HLZ error or frozen-profile defect is included:
+$H_{\rm ar}$.  The exact regular operator is
+\[
+R_T^{\rm reg}:=R_T^{\rm geom}+R_{f',T}^{\log}+R_T^{\rm hor},
+\]
+where $R_T^{\rm hor}$ is the horizontal-connector contribution left after
+holomorphic self-source cancellation.  Higher stationary and Stirling terms
+occur only in estimates of these exact operators.  Under
+$\lambda_T\ge\lambda_*>0$, three separate unscaled relative
+Hilbert--Schmidt estimates $o(N_T)$ imply the displayed scaled estimate by the
+Hilbert--Schmidt triangle inequality.  No scalar-HLZ error or frozen-profile defect is included:
 those would require the unavailable packet lift and are instead retained
 inside $A_T^{\rm true}$.
+In particular,
+\begin{equation}
+\left\|\Gfr_T^{-1/2}R_T^{\rm reg}\Gfr_T^{-1/2}\right\|_{S_2}^2
+=o(\lambda_T^2N_T).
+\label{eq:logonly-total-relative-HS}
+\end{equation}
 \end{hypothesis}

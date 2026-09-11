@@ -133,6 +133,36 @@ $(\tau_1,\dots,\tau_m)$ and is not identically zero; a nonzero real-analytic
 function cannot vanish on the open box $I_1\times\cdots\times I_m$.
 \end{proof}
 
+\begin{lemma}[Hermite packet evaluation for the unperturbed gauge]
+\label{lem:hermite-packet-evaluation}
+Let $z_1,\dots,z_J$ be the distinct zeros of $F'$ in $\Omega_T$, with
+multiplicities $\mu_1,\dots,\mu_J$, and put $m_T=\sum_j\mu_j$.  Given
+$m_T$ nonempty admissible centre intervals, the centres may be chosen so that
+\begin{equation}
+ h\longmapsto
+ \left(\frac{h^{(r)}(z_j)}{r!}\right)_{1\le j\le J,\ 0\le r<\mu_j}
+\label{eq:hermite-packet-map}
+\end{equation}
+is an isomorphism from the resulting $m_T$-dimensional packet space to
+$\mathbb C^{m_T}$.  The centres may be chosen in the prescribed
+$T^{-100}$ near-lattice intervals, so the fixed Riesz bounds persist.
+\end{lemma}
+
+\begin{proof}
+If a linear combination of the confluent evaluation rows vanished as a
+function of the real centre $\tau$ on an interval, analyticity and Fourier
+uniqueness would give an exponential-polynomial identity
+\[
+ \sum_{j=1}^J P_j(u)e^{iuz_j}=0,
+ \qquad \deg P_j<\mu_j.
+\]
+Exponential polynomials with distinct exponents are linearly independent, so
+all $P_j$ vanish.  The confluent determinant is therefore a nonzero
+real-analytic function of the centres and is nonzero somewhere in every
+admissible open box.  The perturbation of the near lattice is $O(T^{-100})$,
+so Lemma~\ref{lem:packet-riesz} applies.
+\end{proof}
+
 \begin{lemma}[Near-lattice packet Riesz bounds]
 \label{lem:packet-riesz}
 For lattice centres

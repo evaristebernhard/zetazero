@@ -11,11 +11,10 @@ Section~\ref{sec:shell-frame}.  The upper bound is used only in the geometric
 exterior row count of Proposition~\ref{prop:geometric-edge-ledger}.
 
 Fix once and for all the finite derivative orders required for two curvature
-derivatives and two primitive mixed derivatives.  Let $C_{\rm mean}$ dominate
-the fixed shell/source multiplicity in the local mean constraints.  Let
+derivatives and two primitive mixed derivatives.  Let
 $C_{\rm geom}$ dominate the fixed logarithmic losses in the stationary symbol,
 geometric leakage and shell normalization, and let $C_{\rm par}$ dominate the
-fixed losses in the finite-height, direct-residual and $f'$ profiles of
+fixed losses in the finite-height and $f'$ profiles of
 Section~\ref{sec:logonly-remainder-ledger}.
 
 Choose a height partition scale
@@ -33,7 +32,7 @@ fixed derivative losses in \eqref{eq:nonstat-shell}.  Finally choose $A_0$ so
 large that
 \begin{equation}
 \boxed{
-A_0>\max\{B+3,\ C_{\rm mean}+3,\ C_{\rm geom}+C_{\rm par}+5\}.
+A_0>\max\{B+3,\ C_{\rm geom}+C_{\rm par}+5\}.
 }
 \label{eq:acyclic-A0-choice}
 \end{equation}
@@ -46,7 +45,7 @@ X_T=\frac{T}{2\pi L^{A_0}}
 \]
 is exactly the one defined in \eqref{eq:stable-log-core-main}.
 
-\begin{lemma}[Global and local mean constraints]
+\begin{lemma}[Global mean constraint]
 \label{lem:mean-zero-space}
 Let $g(u;v)$, $0\le u\le W_T$, be the flat-core packet output immediately
 before the global primitive and define
@@ -54,46 +53,30 @@ before the global primitive and define
 \mathcal M_T^{\rm glob}v:=\int_0^{W_T}g(u;v)\,du.
 \label{eq:global-mean-map}
 \end{equation}
-For each retained shell and each fixed local output label $\alpha$, let
-$q_{j,\alpha}(t;v)$ be the corresponding primitive input from
-Section~\ref{sec:shell-frame}, and define
-\begin{equation}
-\mathcal M_T^{\rm loc}v
-:=\left(\int_0^1q_{j,\alpha}(t;v)\,dt\right)_{j,\alpha}.
-\label{eq:local-mean-map}
-\end{equation}
 Put
 \begin{equation}
 \boxed{
-V_{\rm mean}:=\ker\mathcal M_T^{\rm glob}
-\cap\ker\mathcal M_T^{\rm loc}.
+V_{\rm mean}:=\ker\mathcal M_T^{\rm glob}.
 }
 \label{eq:mean-map}
 \end{equation}
 Then
 \begin{equation}
 \boxed{
-\codim V_{\rm mean}
-\ll(1+X_T)L^{C_{\rm mean}}=o(N_T).
+\codim V_{\rm mean}\le1,\qquad \codim V_{\rm mean}=o(N_T).
 }
 \label{eq:mean-codim}
 \end{equation}
-For every $v\in V_{\rm mean}$ the global primitive and every shell-local
-primitive vanish at both endpoints, so both the global model identity and the
-two-variable primitive criterion apply on the same subspace.
+For every $v\in V_{\rm mean}$ the global primitive vanishes at both endpoints.
+The boundary-complete primitive criterion applies without imposing any
+Hilbert-valued local mean equations.
 \end{lemma}
 
 \begin{proof}
-The global mean map has one output coordinate.  There are $O(X_T)$ retained
-unit shells and at most $L^{C_{\rm mean}}$ fixed local output labels per shell,
-so the target dimension of $\mathcal M_T^{\rm loc}$ is
-$O(X_TL^{C_{\rm mean}})$.  The codimension is at most the sum of these target
-dimensions.  By \eqref{eq:acyclic-A0-choice},
-\[
-X_TL^{C_{\rm mean}}
-\ll TL^{-A_0+C_{\rm mean}}=o(TL)=o(N_T).
-\]
-The endpoint identities are exactly the defining kernel conditions.
+The global packet output is scalar, so $\mathcal M_T^{\rm glob}$ has rank at
+most one.  All shell endpoint terms are retained and estimated by
+Lemma~\ref{lem:logonly-two-variable-primitive}; hence no carrier-fibre
+dimension enters the codimension count.
 \end{proof}
 
 Let $P_{\rm end}$ be the coordinate projection deleting packet centres in the

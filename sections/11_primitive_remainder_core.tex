@@ -11,13 +11,10 @@ exponential-polynomial uniqueness, it is positive definite on every finite
 admissible packet-coordinate compression.  This is the reference metric used
 throughout the present ledger.
 
-On a retained unit shell write
-\[
-I_j=[J_j,J_j+1],\qquad x=J_j+t,\qquad y=J_j+s,
-\]
+On a retained doubling shell write $I_j=[J_j,2J_j]$
 and set
 \begin{equation}
-\boxed{\omega_j(t):=\frac{2}{L^2(J_j+t)}.}
+\boxed{\omega_j(x):=\frac{2}{L^2x}.}
 \label{eq:logonly-local-primitive-weight}
 \end{equation}
 This is the exact primitive density appearing in the shell-local triangular
@@ -27,26 +24,26 @@ form of \eqref{eq:local-triangular-shell}.
 \label{lem:logonly-shell-normalization-transfer}
 Let
 \[
-\rho_j(t,s)
-=\nu_j(t,s)-\frac{|\log(J_j+t)-\log(J_j+s)|}{L},
+\rho_j(x,y)
+=\nu_j(x,y)-\frac{|\log x-\log y|}{L},
 \qquad |\nu_j-1|\ll L^{-1},
 \]
 where $\nu_j$ and its first two derivatives have fixed polylogarithmic bounds.
 Suppose
 \begin{equation}
-D_j(t,s)=\frac1L a_j(t,s)H(\rho_j(t,s))
+D_j(x,y)=\frac1L a_j(x,y)H(\rho_j(x,y))
 \label{eq:logonly-normalized-shell-kernel}
 \end{equation}
 is Hermitian and, for $a+b\le2$,
 \[
-\|\partial_t^a\partial_s^b a_j(t,s)\|_{\op}
+\|\partial_x^a\partial_y^b a_j(x,y)\|_{\op}
 \ll L^C J_j^{-a-b},
 \]
 while $H,H',H''$ have fixed polylogarithmic operator bounds on the retained
 compact interval.  Then the diagonal derivative jump satisfies
 \begin{equation}
 \boxed{
-\left\|\omega_j(t)^{-1}J_{D_j}(t)\right\|_{\op}
+\left\|\omega_j(x)^{-1}J_{D_j}(x)\right\|_{\op}
 \ll L^C\sup_\rho\|H'(\rho)\|_{\op},
 }
 \label{eq:logonly-shell-jump-bound}
@@ -55,8 +52,8 @@ and the regular mixed derivative satisfies
 \begin{equation}
 \boxed{
 \left\|
-\omega_j(t)^{-1/2}D_{j,ts}^{\rm reg}(t,s)
-\omega_j(s)^{-1/2}
+\omega_j(x)^{-1/2}D_{j,xy}^{\rm reg}(x,y)
+\omega_j(y)^{-1/2}
 \right\|_{\op}
 \ll L^{C'}
 \max_{0\le r\le2}\sup_\rho\|H^{(r)}(\rho)\|_{\op}.
@@ -70,14 +67,14 @@ operator or Hilbert--Schmidt norm used after finite compression.
 \begin{proof}
 Off the diagonal,
 \[
-\partial_t\log(J_j+t)=\frac1{J_j+t},
+\partial_x\log x=\frac1x,
 \qquad
-\partial_s\log(J_j+s)=\frac1{J_j+s}.
+\partial_y\log y=\frac1y.
 \]
 The only one-sided jump comes from differentiating the absolute value.  The two
 one-sided values differ by
 \[
-\frac{2}{L(J_j+t)}H'(\nu_j(t,t)),
+\frac{2}{Lx}H'(\nu_j(x,x)),
 \]
 and the external factor $L^{-1}$ in
 \eqref{eq:logonly-normalized-shell-kernel} converts this into the reference
@@ -86,7 +83,7 @@ amplitude.  This proves \eqref{eq:logonly-shell-jump-bound}.
 
 For the regular mixed derivative, Leibniz' rule gives only the following
 classes: two derivatives on $a_j$; one on $a_j$ and one on the lag; or two on
-the lag profile.  Since $x,y\asymp J_j$ on a unit shell, these terms are fixed
+the lag profile.  Since $x,y\asymp J_j$ on a doubling shell, these terms are fixed
 polylogarithmic multiples of
 \[
 L^{-1}J_j^{-2},\qquad
@@ -95,7 +92,7 @@ L^{-3}J_j^{-2}.
 \]
 Meanwhile
 \[
-\omega_j(t)^{1/2}\omega_j(s)^{1/2}
+\omega_j(x)^{1/2}\omega_j(y)^{1/2}
 \asymp L^{-2}J_j^{-1}.
 \]
 After division by the reference weights only a fixed power of $L$ remains.
@@ -103,9 +100,9 @@ The argument is algebraic in the output operators and hence extends to finite
 operator-valued fibres.
 \end{proof}
 
-\begin{lemma}[Two-variable primitive relative-Hilbert--Schmidt criterion]
+\begin{lemma}[Boundary-complete primitive relative-Hilbert--Schmidt criterion]
 \label{lem:logonly-two-variable-primitive}
-Let $q=Q'$ on $[0,1]$ with $Q(0)=Q(1)=0$.  Let $D(x,y)$ be Hermitian,
+Let $q=Q'$ on $I=[a,b]$ with $Q(a)=0$ and put $m=Q(b)$.  Let $D(x,y)$ be Hermitian,
 continuous across the diagonal, $C^1$ on each open triangle, and suppose its
 regular mixed derivative belongs to $L^2$.  Define
 \[
@@ -114,54 +111,82 @@ J_D(x):=\partial_xD(x,x+)-\partial_xD(x,x-).
 Then
 \begin{equation}
 \boxed{
+\begin{aligned}
 \iint D(x,y)q(x)\overline{q(y)}\,dxdy
-=\int J_D(x)|Q(x)|^2dx
+={}&D(b,b)|m|^2
+-m\int_I D_y(b,y)\overline{Q(y)}\,dy\\
+&-\overline m\int_I D_x(x,b)Q(x)\,dx
++\int_I J_D(x)|Q(x)|^2dx\\
 +\iint D_{xy}^{\rm reg}(x,y)Q(x)\overline{Q(y)}\,dxdy.
+\end{aligned}
 }
 \label{eq:logonly-two-variable-primitive}
 \end{equation}
 
 For the retained shell family let $D_{j,T}$ be operator-valued kernels and put
 \[
-\mathcal J_{j,T}(t):=\omega_j(t)^{-1}J_{D_{j,T}}(t),
+\mathcal J_{j,T}(x):=\omega_j(x)^{-1}J_{D_{j,T}}(x),
 \]
 \[
-\mathcal K_{j,T}(t,s)
-:=\omega_j(t)^{-1/2}D_{j,T,ts}^{\rm reg}(t,s)
-\omega_j(s)^{-1/2}.
+\mathcal K_{j,T}(x,y)
+:=\omega_j(x)^{-1/2}D_{j,T,xy}^{\rm reg}(x,y)
+\omega_j(y)^{-1/2}.
 \]
+With $b_j=2J_j$, also put
+\begin{equation}
+\begin{aligned}
+\mathcal B_{j,0}&:=\frac{L^2}{2}D_{j,T}(b_j,b_j),\\
+\mathcal B_{j,R}(y)&:=\frac L{\sqrt2}D_{j,T,y}(b_j,y)
+ \omega_j(y)^{-1/2},\\
+\mathcal B_{j,L}(y)&:=\frac L{\sqrt2}D_{j,T,x}(y,b_j)
+ \omega_j(y)^{-1/2}.
+\end{aligned}
+\label{eq:primitive-boundary-coefficients}
+\end{equation}
 If
 \begin{equation}
-\sup_{j,t}\|\mathcal J_{j,T}(t)\|_{\op}=\delta_T=o(1)
+\sup_{j,x}\|\mathcal J_{j,T}(x)\|_{\op}=\delta_T=o(1)
 \label{eq:logonly-jump-criterion}
 \end{equation}
 and
 \begin{equation}
 M_T:=\sum_j\iint
-\|\mathcal K_{j,T}(t,s)\|_{S_2}^2\,dtds=o(N_T),
+\|\mathcal K_{j,T}(x,y)\|_{S_2}^2\,dxdy=o(N_T),
 \label{eq:logonly-mixed-criterion}
+\end{equation}
+and
+\begin{equation}
+\sup_j\|\mathcal B_{j,0}\|_{\op}=o(1),\qquad
+\sum_j\int_{I_j}
+\left(\|\mathcal B_{j,R}(y)\|_{S_2}^2
++\|\mathcal B_{j,L}(y)\|_{S_2}^2\right)dy=o(N_T),
+\label{eq:logonly-boundary-criterion}
 \end{equation}
 then every retained compression of dimension $O(N_T)$ obeys
 \begin{equation}
 \boxed{
 \|\Gfr_T^{-1/2}R_T\Gfr_T^{-1/2}\|_{S_2}^2
-\ll \delta_T^2N_T+M_T=o(N_T).
+=o(N_T).
 }
 \label{eq:logonly-primitive-HS-criterion}
 \end{equation}
-In particular, a per-shell bound $O(L^C)$ in
-\eqref{eq:logonly-mixed-criterion} is summable when $A_0>C+2$, since
-$\#\mathcal J_T=O(X_T)$.
+The conclusion requires no local mean-zero constraint and is uniform in the
+dimension of a Hilbert-valued carrier fibre.
 \end{lemma}
 
 \begin{proof}
 Two integrations by parts give
-\eqref{eq:logonly-two-variable-primitive}; the endpoint conditions remove all
-boundary terms.  On the orthogonal sum of shell primitive outputs,
+\eqref{eq:logonly-two-variable-primitive}, including all three endpoint terms.
+Equations \eqref{eq:global-local-triangular-comparison} and
+\eqref{eq:global-local-endpoint-comparison} show that the direct sum of the
+normalized primitive maps and $\widehat m_j=\sqrt2m_j/L$ is bounded by the
+global reference metric.  On the orthogonal sum of shell primitive outputs,
 conjugation by multiplication with $\omega_j^{1/2}$ turns the diagonal term
 into a multiplication operator of norm at most $\delta_T$ and the regular
 term into an integral operator whose squared Hilbert--Schmidt norm is at most
-$M_T$.
+$M_T$.  The pure endpoint term has operator norm $o(1)$, and the two mixed
+endpoint terms have Hilbert--Schmidt square $o(N_T)$ by
+\eqref{eq:logonly-boundary-criterion}.
 
 It remains to compare the shell primitive metric with the global reference
 metric.  Lemma~\ref{lem:global-local-triangular} gives, dimension-freely,
@@ -173,7 +198,6 @@ up to the fixed constant $C_\triangle$, into the global reference space.
 A multiplication operator of norm $\delta_T$ on a space of dimension
 $O(N_T)$ has squared Hilbert--Schmidt norm $O(\delta_T^2N_T)$, while the
 regular part contributes $M_T$.  This proves
-\eqref{eq:logonly-primitive-HS-criterion}.  Finally
-$X_T=T/(2\pi L^{A_0})$ by \eqref{eq:stable-log-core-main}, giving the stated
-shell summability criterion.
+\eqref{eq:logonly-primitive-HS-criterion} without deleting any
+carrier-valued local means.
 \end{proof}

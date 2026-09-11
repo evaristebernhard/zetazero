@@ -3,9 +3,9 @@ We construct a finite-dimensional Hermitian contour form from an analytic Hardy
 gauge and a near-lattice packet family.  Its zero-side residue representation
 converts off-critical-line stationary geometry into negative inertia.  On the
 arithmetic side the holomorphic archimedean self block is eliminated on the
-closed contour, and the remaining logarithmic derivative is split exactly into
-the log-only source $-2P(s)+P(s-2/L)$, a second-order-small direct residual, and
-an $f'$-regular class.  The true log-only operator retains the stationary
+closed contour, and the complete non-$f'$ arithmetic source
+$-P(s)+Q(s)/(f(s)-P(s))$ is kept inside the theorem-facing operator.  The
+remaining $f'$ source is treated separately.  The true operator retains the stationary
 additive carrier $e(-ne^d)$.  The untwisted scalar Heap--Li--Zhao diagonal does
 not presently control this operator, so no unconditional packet--HLZ bridge is
 claimed.  We instead prove a conditional density-one theorem.  If the negative
@@ -32,6 +32,11 @@ on the critical line. Thus $N_T\asymp T\log T$. Put
 \[
 L:=\log\frac{T}{2\pi}.
 \]
+Throughout the paper the certified reference-floor constant is
+\begin{equation}
+\boxed{\kappa_*:=0.02.}
+\label{eq:global-kappa}
+\end{equation}
 
 For a Hermitian operator $B$, write $B_-=(-B)_+$ for its negative part.  Let
 $A_T^{\rm true}$ be the retained log-only Hermitian operator defined in
@@ -45,7 +50,7 @@ $\Gfr_T$ its reference Gram.  For a deterministic sequence $\lambda_T>0$ put
 \qquad
 \beta_-(T;\lambda_T):=
 \frac{\tr[(\mathcal D_T)_-^2]}
-{(0.98\lambda_T)^2N_T}.}
+{(\kappa_*\lambda_T)^2N_T}.}
 \label{eq:beta-minus-intro}
 \end{equation}
 
@@ -53,9 +58,10 @@ $\Gfr_T$ its reference Gram.  For a deterministic sequence $\lambda_T>0$ put
 \label{thm:main}
 Assume that the reference model satisfies
 \[
-P_T\succeq0.98\,\Gfr_T
+P_T\succeq\kappa_*\,\Gfr_T
 \]
-on the retained space and that, for some deterministic $\lambda_T>0$,
+on the retained space and that, for some deterministic $\lambda_T$ satisfying
+$\lambda_T\ge\lambda_*>0$,
 \begin{equation}
 \boxed{\beta_-(T;\lambda_T)=O(L^{-2}).}
 \label{eq:beta-minus-hypothesis-intro}
@@ -66,8 +72,8 @@ A_F=A_T^{\rm true}+E_T^{\rm geom}+R_T^{\rm reg},
 \]
 where $\rank E_T^{\rm geom}=o(N_T)$ and
 \begin{equation}
-\left\|\Gfr_T^{-1/2}R_T^{\rm reg}\Gfr_T^{-1/2}\right\|_{S_2}^2
-=o(\lambda_T^2N_T).
+\left\|\Gfr_T^{-1/2}R_T^\nu\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T)
+\quad(\nu\in\{\mathrm{geom},f',\mathrm{hor}\}),
 \label{eq:regular-lambda-scale-intro}
 \end{equation}
 Then, as $T\to\infty$,
@@ -81,10 +87,11 @@ Consequently, by dyadic summation,
 \end{theorem}
 
 \begin{remark}[Scale of the regular remainder]
-If $\inf_T\lambda_T>0$, then the manuscript's original relative estimate
-$\|\Gfr_T^{-1/2}R_T^{\rm reg}\Gfr_T^{-1/2}\|_{S_2}^2=o(N_T)$ implies
-\eqref{eq:regular-lambda-scale-intro}.  The scaled formulation is needed only
-to allow sequences $\lambda_T$ tending to zero.  Since $L\to\infty$, the bound
+The Hilbert--Schmidt triangle inequality and $\lambda_T\ge\lambda_*>0$ turn
+the three estimates in \eqref{eq:regular-lambda-scale-intro} into
+$\|\Gfr_T^{-1/2}R_T^{\rm reg}\Gfr_T^{-1/2}\|_{S_2}^2
+=o(\lambda_T^2N_T)$.  Thus the scaled bound is a conclusion, not an additional
+hypothesis.  Since $L\to\infty$, the bound
 $\beta_-(T;\lambda_T)=O(L^{-2})$ is in particular $o(1)$.
 \end{remark}
 
@@ -141,11 +148,10 @@ auxiliary function chosen on separated Cauchy contours.
 Section~\ref{sec:lagwise-packet-hlz} explains why that scalar statement does
 not lift to the true packet operator: the physical additive carrier
 $e(-ne^d)$ survives.  The conditional theorem therefore uses the one-sided
-defect \eqref{eq:beta-minus-intro}, not the open lagwise bridge.  The exact remainder
-$\Delta H_{\rm dir}$ stays on the absolute-convergence right edge and is
-$O(L^{-2})$ before the fixed stationary normalization, so it is handled by the
-primitive relative-remainder machinery rather than by a compressed-shift
-principal decomposition.  The superseded frozen-self, critical-$J$ AFE,
+defect \eqref{eq:beta-minus-intro}, not the open lagwise bridge.  The complete
+source containing $\Delta H_{\rm dir}$ is absorbed into $A_T^{\rm true}$ before
+stationary normalization; safe-line smallness is not used as an operator
+estimate.  The superseded frozen-self, critical-$J$ AFE,
 one-sided common-output, HLP-resummation, and macroscopic-shift source files are
 excluded from the active manuscript.  Appendix~\ref{sec:legacy-route-note}
 records only their historical scope; the detailed earlier text remains
