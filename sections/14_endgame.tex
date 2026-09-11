@@ -3,92 +3,73 @@
 
 \begin{lemma}[Generic affine perturbation at fixed height]
 \label{lem:generic-affine}
-Fix $T$, the good horizontal contours, and the admissible $T^{-100}$ intervals
-for the packet centres. Given any real neighbourhood $U_0$ of $(0,0)$, there
-are parameters $(\eta,\varepsilon)\in U_0$, chosen compatibly with the Hardy
-conjugation symmetry, such that
+Fix $T$ and the good horizontal contours.  First choose the packet centres for
+the unperturbed $F'$ by Lemma~\ref{lem:hermite-packet-evaluation}, and on this
+fixed packet space form $V_{\rm core}$, $V_{\rm mean}$, $V_{\rm end}$,
+$\Pret$, $\Gfr_T$, $P_T$, and $A_T^{\rm true}$.  Apply the defect hypothesis
+to this fixed data and obtain $\lambda_T$.  Then, in any real neighbourhood
+$U_0$ of $(0,0)$, there are parameters $(\eta,\varepsilon)\in U_0$ such that
 \[
 H(z)=F(z)+\eta z+\varepsilon
 \]
 has only simple zeros and simple stationary zeros in $\Omega_T$, and $H,H'$ have
-no common zero. Choose one packet centre per stationary node so that
-Lemma~\ref{lem:evaluation-rank} gives an evaluation isomorphism. On this packet
-space define $V_{\rm core}$ by Lemma~\ref{lem:stable-core-frame},
-$V_{\rm mean}$ by \eqref{eq:mean-map}, $V_{\rm end}$ by
-\eqref{eq:end-space}, and $\Pret$ by \eqref{eq:retained-space}. Then
-\eqref{eq:retained-codim} holds. Write
+no common zero.  The ordinary evaluation map from the already fixed packet
+space to the stationary zeros of $H$ is an isomorphism.  Write
 \[
 \Gfr_T^{\rm ret}:=\Gfr_T|_{\Pret}.
 \]
-Proposition~\ref{prop:source-ledger} is therefore applied to the original
-function $F$ on exactly the same finite packet space on which the zero-side
-evaluation of $H$ is performed. Moreover the perturbation can be chosen so
-small that, on this selected $\Pret$,
+Hypothesis~\ref{hyp:edge-regular-bounds} is therefore applied to the
+original function $F$ on exactly the same finite packet space on which the
+zero-side evaluation of $H$ is performed. Moreover the perturbation can be
+chosen so small that, on this selected $\Pret$,
 \begin{equation}
 \boxed{
 \left\|
 (\Gfr_T^{\rm ret})^{-1/2}(A_H-A_F)
 (\Gfr_T^{\rm ret})^{-1/2}
-\right\|_{\op}<\frac{c_0}{4}.
+\right\|_{\op}<\frac{\kappa_*\lambda_T}{8}.
 }
 \label{eq:perturb-small}
 \end{equation}
 \end{lemma}
 
 \begin{proof}
-Fix $T$. The chosen boundary contains no zero of $F$ or $F'$. Intersecting
-$U_0$ with a sufficiently small convex real neighbourhood of the origin gives
-$U\subset U_0$ on which $H$ and $H'$ remain nonvanishing there for every point
-of the line segment from $(0,0)$ to $(\eta,\varepsilon)\in U$. Hence homotopy
-invariance of the argument principle gives
-\[
-N_{\rm good}(H')=N_{\rm good}(F')=:m
-\qquad ((\eta,\varepsilon)\in U).
-\]
-There are only finitely many admissible $m$-coordinate subsets, and each centre
-ranges over a compact $T^{-100}$ interval. The corresponding reference Grams
-are continuous and positive definite by Section~\ref{sec:ledger}; hence
-\[
-\gamma_T:=\inf_{\rm admissible\ centres}\lambda_{\min}(\Gfr_T)>0.
-\]
-Restriction to $\Pret$ can only increase the least eigenvalue. Uniform
-continuity of the contour integrand on the same compact centre set allows $U$
-to be shrunk so that
-\begin{equation}
-\sup_{(\eta,\varepsilon)\in U}
-\sup_{\rm admissible\ centres}\|A_H-A_F\|_{\op}
-<\frac{c_0\gamma_T}{4}.
-\label{eq:uniform-fixedT-perturbation}
-\end{equation}
-No asymptotic lower bound for $\gamma_T$ is required.
-
-It remains to impose genericity inside this fixed neighbourhood. Since
+Choose disjoint disks around the distinct zeros $z_j$ of $F'$ and keep $F'$
+nonzero on their boundaries and on $\partial\Omega_T$.  For all sufficiently
+small $\eta$, Rouch\'e's theorem places exactly $\mu_j$ zeros of $F'+\eta$ in
+the $j$-th disk and no other stationary zeros in the rectangle.  Since
 $H'=F'+\eta$ and $H''=F''$, a multiple stationary zero would satisfy
 \[
 F''(z)=0,\qquad \eta=-F'(z).
 \]
-The zeros of $F''$ in the fixed rectangle are finite, so only finitely many real
-$\eta$ are forbidden. Choose a nonzero real $\eta$ in $U$ outside this set.
-The stationary zeros $z_1,\dots,z_m$ are then simple. For this fixed $\eta$, a
-common zero of $H,H'$ at $z_j$ would force
+Only finitely many real $\eta$ are forbidden.  Choose a sufficiently small
+admissible nonzero $\eta$.  If
+$z_{j,1}(\eta),\dots,z_{j,\mu_j}(\eta)$ are the split zeros, the confluent
+Vandermonde limit gives
+\begin{align}
+&\det\bigl(\psi_{L,\tau_k}(z_{j,\ell}(\eta))\bigr)_{j,\ell;k}\notag\\
+&\quad=\left\{\prod_j\prod_{a<b}
+ (z_{j,b}(\eta)-z_{j,a}(\eta))\right\}
+ \det\left(\frac{\psi_{L,\tau_k}^{(r)}(z_j)}{r!}\right)_{j,r;k}
+ \{1+o(1)\}.                                                \label{eq:endgame-confluent}
+\end{align}
+Both displayed factors are nonzero, so the evaluation map for $H'$ is an
+isomorphism on the fixed packet space.  For this fixed $\eta$, a common zero
+of $H,H'$ at a stationary zero $z$ would force
 \[
 \varepsilon=-F(z_j)-\eta z_j.
 \]
-Only finitely many real $\varepsilon$ are therefore forbidden. Choose a real
-$\varepsilon$ in $U$ outside them. Then $H$ has only simple zeros, $H'$ has only
-simple zeros, and $H,H'$ have no common zero. Real parameters preserve
-$H(\bar z)=\overline{H(z)}$.
+Only finitely many real $\varepsilon$ are forbidden; choose one sufficiently
+small outside them.  A further arbitrarily small generic choice also makes the
+zeros of $H$ simple.  Real parameters preserve the conjugation symmetry.
 
-Lemma~\ref{lem:packet-dimension} now supplies at least $m$ admissible packet
-intervals after the endpoint collars are removed. Choose $m$ distinct intervals
-and then, by Lemma~\ref{lem:evaluation-rank}, centres for which the evaluation
-map is an isomorphism. Lemma~\ref{lem:coordinate-restriction} preserves all
-preceding source, frame, rank, and relative-remainder estimates on this
-subfamily. Finally \eqref{eq:uniform-fixedT-perturbation} and
-$\lambda_{\min}(\Gfr_T^{\rm ret})\ge\gamma_T$ give
-\eqref{eq:perturb-small}. The right-edge source evaluation remains that of the
-original function $F$; $H$ is used only for the zero-coordinate representation
-and this finite-matrix comparison.
+At this stage the packet centres, retained space, $\Gfr_T$, and $\lambda_T$
+are fixed.  Continuity of the finite contour matrix permits
+$(\eta,\varepsilon)$ to be chosen small enough for
+\eqref{eq:perturb-small}.  The right-edge source remains that of $F$; $H$ is
+used only for the zero-coordinate representation and this finite-matrix
+comparison.  Thus no quantity used to choose $H$ depends on stationary nodes
+of $H$.
 \end{proof}
 
 \begin{lemma}[Off-axis zero count for the generic perturbation]
@@ -139,64 +120,93 @@ which proves \eqref{eq:D-H}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 Fix the good rectangle, and let $D_{\rm good}(F)$ denote the number, with
-multiplicity, of reflected nonreal zero pairs of $F$ in its interior. Around each distinct nonreal zero of $F$ choose a closed disk, disjoint from
-the real axis, the other chosen disks, and the boundary. There are finitely many
-such disks at fixed $T$. By compactness of their boundaries there is a real neighbourhood
-$U_{\rm disk}$ of $(0,0)$ such that
+multiplicity, of reflected nonreal zero pairs of $F$ in its interior. Around
+each distinct nonreal zero of $F$ choose a closed disk, disjoint from the real
+axis, the other chosen disks, and the boundary. There are finitely many such
+disks at fixed $T$. By compactness of their boundaries there is a real
+neighbourhood $U_{\rm disk}$ of $(0,0)$ such that
 \[
 |\eta z+\varepsilon|<|F(z)|
 \]
 on every disk boundary whenever $(\eta,\varepsilon)\in U_{\rm disk}$.
 
 Choose $H$ and the evaluation-isomorphic packet subfamily by
-Lemma~\ref{lem:generic-affine}, with $U_0=U_{\rm disk}$. This fixes the packet
-space, $\Gfr_T$, and $\Pret$ before any inertia comparison, and gives
-\eqref{eq:perturb-small}. Proposition~\ref{prop:source-ledger}, applied to the original Hardy-gauge
-matrix $A_F$ on this packet space, gives on $\Pret$
+Lemma~\ref{lem:generic-affine}, with $U_0=U_{\rm disk}$.  The packet space,
+$\Gfr_T$, $\Pret$, and $\lambda_T$ were fixed before this choice of $H$, and the
+lemma gives
+\eqref{eq:perturb-small}.  Hypotheses
+\ref{hyp:one-chi-relative-defect} and
+\ref{hyp:edge-regular-bounds}, applied to the original Hardy-gauge
+matrix $A_F$ on this packet space, give on $\Pret$
 \[
-A_F=P_T+E_T^{\rm edge}+R_T^{\rm tri}.
+A_F=A_T^{\rm true}+E_T^{\rm geom}+R_T^{\rm reg}.
 \]
-Put $\Delta_T:=A_H-A_F$. By \eqref{eq:perturb-small},
+By Proposition~\ref{prop:model-floor},
 \[
-P_T+\Delta_T\succeq\frac{3c_0}{4}\Gfr_T
-\qquad\text{on }\Pret.
+\lambda_TP_T\succeq a_T\Gfr_T,
+\qquad a_T:=\kappa_*\lambda_T.
 \]
-Hence, after compression to $\Pret$,
+Apply Lemma~\ref{lem:one-sided-defect-deletion} to
+$A_T^{\rm true}$ and $\lambda_TP_T$.  In view of
+\eqref{eq:one-chi-relative-defect}, there is a subspace
+$V_\beta\subset\Pret$ with
 \[
-A_H|_{\Pret}=(P_T+\Delta_T)|_{\Pret}
-+E_T^{\rm edge}|_{\Pret}+R_T^{\rm tri}|_{\Pret}.
+\codim_{\Pret}V_\beta
+\le4\beta_-(T;\lambda_T)N_T=O(L^{-2}N_T)
+\]
+and
+\[
+A_T^{\rm true}|_{V_\beta}\succeq\frac{a_T}{2}
+\Gfr_T|_{V_\beta}.
+\]
+Put $\Delta_T:=A_H-A_F$.  By \eqref{eq:perturb-small},
+\[
+(A_T^{\rm true}+\Delta_T)|_{V_\beta}
+\succeq\frac{3a_T}{8}\Gfr_T|_{V_\beta}.
+\]
+Hence, after compression to $V_\beta$,
+\[
+A_H|_{V_\beta}=(A_T^{\rm true}+\Delta_T)|_{V_\beta}
++E_T^{\rm geom}|_{V_\beta}+R_T^{\rm reg}|_{V_\beta}.
 \]
 Set
 \[
-r_T:=\rank(E_T^{\rm edge}|_{\Pret}),
+r_T:=\rank(E_T^{\rm geom}|_{V_\beta}),
+\qquad
+\Gfr_{\beta,T}:=\Gfr_T|_{V_\beta},
 \qquad
 s_T:=\left\|
-(\Gfr_T^{\rm ret})^{-1/2}(R_T^{\rm tri}|_{\Pret})
-(\Gfr_T^{\rm ret})^{-1/2}
+\Gfr_{\beta,T}^{-1/2}(R_T^{\rm reg}|_{V_\beta})
+\Gfr_{\beta,T}^{-1/2}
 \right\|_{S_2}^2.
 \]
-By \eqref{eq:total-edge-rank}, \eqref{eq:regular-HS}, and
+By \eqref{eq:logonly-edge-rank},
+\eqref{eq:logonly-total-relative-HS}, and
 \eqref{eq:retained-codim}, one has
-$r_T=o(N_T)$, $s_T=o(N_T)$, and
+$r_T=o(N_T)$, $s_T=o(a_T^2N_T)$, and
 $\codim\Pret=o(N_T)$. Apply the ambient-codimension conclusion
+Lemma~\ref{lem:relative-compression} first to pass the relative remainder
+bound to $V_\beta$, and then apply the ambient-codimension conclusion
 \eqref{eq:minmax-codim} of Lemma~\ref{lem:minmax} with the lemma's floor
 parameter replaced by
 \[
-c_*:=\frac{3c_0}{4}>0.
+c_T:=\frac{3a_T}{8}>0.
 \]
-The resulting fixed constant $16c_*^{-2}$ does not affect the $o(N_T)$ bounds,
-and therefore
+The relative remainder contribution is
+$16c_T^{-2}s_T=o(N_T)$.  Including the ambient codimensions of $\Pret$ and
+$V_\beta$ therefore gives
 \begin{equation}
-\boxed{n_-(A_H)=o(N_T).}
+\boxed{n_-(A_H)=O(L^{-2}N_T)+o(N_T).}
 \label{eq:perturbed-inertia}
 \end{equation}
 
 The zero-coordinate pullback is exact for $H$, so
 \eqref{eq:zero-inertia-generic} and \eqref{eq:perturbed-inertia} give
 \[
-B(H)+P(H')=o(N_T).
+B(H)+P(H')=O(L^{-2}N_T)+o(N_T).
 \]
-Lemma~\ref{lem:generic-zero-count} then gives $D(H)=o(N_T)$. By the defining
+Lemma~\ref{lem:generic-zero-count} then gives
+$D(H)=O(L^{-2}N_T)+o(N_T)$. By the defining
 choice $(\eta,\varepsilon)\in U_{\rm disk}$, Rouch\'e's theorem preserves, with
 multiplicity, the number of zeros in every chosen disk; all these disks are
 disjoint from the real axis. Consequently
@@ -205,11 +215,10 @@ D_{\rm good}(F)\le D(H).
 \]
 Let $D_T(F)$ denote the number, with multiplicity, of reflected nonreal zero
 pairs of $F$ with height in $[T,2T]$. Returning from the good rectangle to this
-dyadic interval
-changes the zero count only in two strips of length at most one. By
-Lemma~\ref{lem:local-z1-count},
+dyadic interval changes the zero count only in two strips of length at most
+one. By Lemma~\ref{lem:local-z1-count},
 \[
-D_T(F)\le D(H)+O(\log T)=o(N_T).
+D_T(F)\le D(H)+O(\log T)=O(L^{-2}N_T)+o(N_T).
 \]
 Because $c>1$, the symmetric rectangle
 \eqref{eq:symmetric-contour-rectangle} contains the whole critical strip; at
@@ -221,16 +230,16 @@ N_T=N_{0,T}+2D_T(F)+o(N_T),
 \]
 so
 \[
-\frac{N_{0,T}}{N_T}=1-o(1).
+\frac{N_{0,T}}{N_T}=1-O(L^{-2})-o(1)=1-o(1).
 \]
-We finish by spelling out the dyadic summation.  Put
+We finish by spelling out the dyadic summation. Put
 \[
 M(T):=N(T)-N_0(T),
 \]
 and, for a half-open height interval $I$, write
 $M(I):=N(I)-N_0(I)$ for the corresponding off-line count.
 Use half-open height intervals; by Lemma~\ref{lem:local-z1-count}, changing the
-endpoint convention costs $O(\log X)=o(N(X,2X))$.  Given $\varepsilon>0$,
+endpoint convention costs $O(\log X)=o(N(X,2X))$. Given $\varepsilon>0$,
 choose $X_\varepsilon$ so that for every $X\ge X_\varepsilon$,
 \[
 M([X,2X))\le\varepsilon N([X,2X)).
@@ -240,7 +249,7 @@ Partition $[X_\varepsilon,T)$ into the half-open dyadic blocks
 I_j:=\left[\frac{T}{2^{j+1}},\frac{T}{2^j}\right)
 \]
 whose lower endpoints are at least $X_\varepsilon$; the one remaining bounded
-initial segment contributes $O_\varepsilon(1)$.  The blocks are disjoint, hence
+initial segment contributes $O_\varepsilon(1)$. The blocks are disjoint, hence
 \[
 M(T)
 \le\varepsilon\sum_jN(I_j)+O_\varepsilon(1)

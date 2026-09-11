@@ -1,12 +1,9 @@
 \section{The physical \texorpdfstring{one-$\chi$}{one-chi} carrier and exact dilation covariance}
 \label{sec:stationary}
 
-A right-edge monomial with total Dirichlet ratio
-\[
-\xi=\frac{m}{k}
-\]
-occurs inside a one-$\chi$ integral. After a logarithmic packet displacement
-$w$, put $\eta=e^w\xi$. The principal oscillatory kernel is
+A right-edge monomial with positive Dirichlet carrier $\xi$ occurs inside a
+one-$\chi$ integral.  After a logarithmic packet displacement $w$, put
+$\eta=e^w\xi$. The principal oscillatory kernel is
 \[
 K_w(\xi)
 =\frac1{2\pi}\int A(t)\chi(1-c-it)\eta^{-c-it}\,dt.
@@ -38,8 +35,8 @@ whereas the Gaussian Hessian factor is
 \sqrt{\frac{2\pi}{\Phi_\eta''(t_*)}}
 =\sqrt{2\pi t_*}=2\pi\eta^{1/2}.
 \]
-Thus the powers of $\eta$ cancel exactly. The stationary phase
-$+\pi/4$ cancels the $-\pi/4$ in $\Phi$, and
+Thus the powers of $\eta$ cancel exactly. The stationary phase $+\pi/4$
+cancels the $-\pi/4$ in $\Phi$, and
 \[
 e^{i\Phi_\eta(t_*)}e^{i\pi/4}=e^{-2\pi i\eta}=e(-\eta).
 \]
@@ -52,26 +49,18 @@ K_w(\xi)=A(2\pi e^w\xi)e(-e^w\xi)+E_w(\xi).
 \end{equation}
 There is no order-one pair-dependent Hessian weight.
 
-For clarity, the oscillatory Gaussian constant implicit in this stationary
-normalization can be obtained without any formal analytic continuation of a
-positive-real-part Gaussian integral.  One integration by parts gives, for
-$0<R\le S$,
+For completeness, the oscillatory Gaussian constant is obtained without
+formal continuation of a positive-real-part Gaussian.  One integration by
+parts gives, for $0<R\le S$,
 \begin{equation}
 \boxed{
 \left|\int_R^S e^{iy^2/2}\,dy\right|\le\frac2R.
 }
 \label{eq:fresnel-tail}
 \end{equation}
-Apply the ordinary complex Gaussian formula first to the Abel-damped kernel
-$e^{-(\varepsilon-i/2)y^2}$ with $\varepsilon>0$.  The same reciprocal-weight
-integration by parts gives
-\[
-\left|\int_R^S e^{-(\varepsilon-i/2)y^2}\,dy\right|\le\frac2R
-\qquad(\varepsilon\ge0),
-\]
-uniformly in the damping parameter, while on each fixed finite window dominated
-convergence is immediate.  Letting $\varepsilon\downarrow0$ therefore gives the
-genuine oscillatory limit
+Apply the ordinary Gaussian formula to the Abel-damped kernel
+$e^{-(\varepsilon-i/2)y^2}$ and use the same uniform tail estimate.  Dominated
+convergence on fixed windows and then $\varepsilon\downarrow0$ give
 \begin{equation}
 \boxed{
 \lim_{R\to\infty}\int_{-R}^R e^{iy^2/2}\,dy
@@ -82,53 +71,39 @@ genuine oscillatory limit
 }
 \label{eq:fresnel-window}
 \end{equation}
-Thus the usual factor $\sqrt{2\pi}\,e^{i\pi/4}$ in the stationary calculation
-is a bona fide conditional oscillatory integral with an explicit finite-window
-error, not a substitution outside the hypotheses of the Gaussian theorem.
 
 If $D_wF(\xi):=F(e^w\xi)$, the principal stationary map satisfies
 \begin{equation}
 \boxed{\mathcal S_w^{\rm pr}=D_w\mathcal S_0^{\rm pr}.}
 \label{eq:dilation-covariance}
 \end{equation}
-
-A smooth height cutoff transforms by the same dilation:
-\[
-\omega\!\left(\frac{2\pi\xi}{T}\right)
-\mapsto
-\omega\!\left(\frac{2\pi e^w\xi}{T}\right).
-\]
-Thus the phase, the saddle cutoff, and the principal amplitude are all carried
-by the same exact dilation. The higher stationary coefficients, Stirling
-corrections, and nonstationary leakage belong to the regular classes estimated
-in Proposition~\ref{prop:regular-ledger}. The packet centres in the two
-horizontal collars are treated separately by the coordinate restriction
-$V_{\rm end}$ of Lemma~\ref{lem:horizontal-decay}; they do not contribute an
-edge or regular source term.
+A smooth height cutoff transforms by the same exact dilation.  Thus the phase,
+saddle cutoff and principal amplitude all carry the same packet lag.  Higher
+stationary coefficients, Stirling corrections and nonstationary leakage are
+estimated by the fixed-order symbol and integration-by-parts arguments below
+and in Sections~\ref{sec:shell-frame}--\ref{sec:logonly-remainder-ledger}.
 
 On a smooth height block of scale $H=T/L^D$, write $t=t_*v$ on the stationary
-sector. There $t_*\asymp T$ uniformly in the shell and fixed local-source labels,
-and the rescaled saddle $v=1$ remains in a fixed compact subset of the block after
-the smooth stationary/nonstationary partition. Consequently every fixed-order
-stationary expansion is uniform in the retained indices. Differentiating the
-slow block amplitude contributes only fixed combinations of
+sector. There $t_*\asymp T$ uniformly, and the rescaled saddle $v=1$ remains in
+a fixed compact subset after the smooth stationary/nonstationary partition.
+Every fixed-order stationary expansion is therefore uniform.  Differentiating
+the slow block amplitude contributes only fixed combinations of
 \[
 T^{-1},\qquad H^{-1}=L^D/T,
 \qquad T/H^2=L^{2D}/T,
 \]
-and further fixed derivatives give the same type of $T^{-1}$-times-polylog
-bounds. These terms therefore remain in the regular symbol class after the
-fixed derivative orders used below.
+and further fixed derivatives remain $T^{-1}$ times a fixed polylogarithmic
+factor.
 
 \begin{lemma}[Uniform smooth stationary symbol]
 \label{lem:stationary-symbol}
-Fix integers $r,s\ge0$ and a bounded curvature range $|p|\le P$. After the
-universal carrier $e(-my)$ is extracted, every direct stationary one-$\chi$
-source occurring in the ordinary Hardy term, the summed exact HLP hierarchy,
-the translated/coalescing faces, and the fixed Stirling/Hardy corrections has
-on a retained unit shell $I_j=[J_j,J_j+1]$ the form
+Fix integers $r,s\ge0$ and a bounded curvature range $|p|\le P$.  After the
+universal carrier is extracted, every stationary monomial belonging to the
+exact arithmetic source $H_{\rm ar}$, the $f'$-regular family, and the fixed
+Stirling/Hardy corrections has on a retained
+unit shell $I_j=[J_j,J_j+1]$ the form
 \[
-c_m a_{m,T}(y;p)e(-my),
+c_m a_{m,T}(y;p)e(-my)
 \]
 with
 \begin{equation}
@@ -139,8 +114,8 @@ with
 }
 \label{eq:stationary-symbol-bound}
 \end{equation}
-The constants are uniform over the fixed local-source labels and over the
-summed geometric levels.
+If the source carries an explicit $f'$ factor, the right side has in addition
+a factor $T^{-1}$ before the fixed polylogarithmic loss.
 \end{lemma}
 
 \begin{proof}
@@ -156,50 +131,19 @@ formula shows that
  e^{\pm2\lambda(t)},\quad t^{\pm2/L}
 \]
 and every fixed retained gamma correction are symbols, uniformly for bounded
-$p$. The $f'$ term gains an additional factor $T^{-1}$.
+$p$.  The reciprocal $(f-P)^{-1}$ is $O(L^{-1})$ on the safe line and its fixed
+height derivatives remain symbols.  The $f'$ class gains $T^{-1}$.
 
-For the exact HLP hierarchy, level $k$ carries the coefficient
-$\alpha_k(m)f(t)^{-k}$ and is supported only when $2^k\le m$ by
-Lemma~\ref{lem:alpha-identity}. Choose a fixed constant $C_{\rm H}>2$ so large
-that, on the stationary strip and for all sufficiently large $T$,
-\[
-q_{\rm H}:=\sup_t\left|\frac{L}{C_{\rm H}f(t)}\right|<1.
-\]
-Set
-\[
-b_{k,m}:=\alpha_k(m)\left(\frac{C_{\rm H}}L\right)^k,
-\qquad
-c_m:=\sum_{k\ge1}b_{k,m}.
-\]
-The coefficients $b_{k,m}$ are nonnegative. If $c_m\ne0$, the summed hierarchy
-can therefore be written as $c_ma_{m,T}(t)$ with
-\[
-a_{m,T}(t)
-=\sum_{k\ge1}\frac{b_{k,m}}{c_m}
-\left(\frac{L}{C_{\rm H}f(t)}\right)^k.
-\]
-The weights $b_{k,m}/c_m$ form a probability vector. Every fixed height
-derivative of the last factor is bounded by a fixed polynomial in $k$ times
-$q_{\rm H}^k$, because $t^rf^{(r)}(t)/f(t)=O(L^{-1})$ for $r\ge1$.
-Hence $a_{m,T}$ is a height symbol uniformly in $m$, without using an
-$\ell^2$ estimate pointwise. Separately, the factorial majorant gives
-\[
-\left(\sum_{m\le x}c_m^2\right)^{1/2}
-\le \sum_{k\ge1}\left(\frac{C_{\rm H}}L\right)^k
-\left(\sum_{m\le x}\alpha_k(m)^2\right)^{1/2}
-\ll (xL)^{1/2}
-\sum_{k\ge1}\frac{C_1^k}{\sqrt{k!}},
-\]
-so the coefficient sequence has the required quadratic bound. Fixed
-$p$-derivatives and translated factors contribute only the already controlled
-polylogarithmic symbols and factors $(\log m)/L=O(1)$. Thus the complete exact
-HLP amplitude remains in a fixed polylogarithmic height-symbol class.
+For $H_{\rm ar}$ the translated coefficients are uniformly bounded by fixed
+logarithmic losses on every physical range $m\le TL^{C_x}$, and fixed curvature
+derivatives contribute only powers of $\log m/L=O(1)$.  No safe-line
+$O(L^{-2})$ bound for $\Delta H_{\rm dir}$ is used after stationary phase.
 
-For one stationary monomial scale $t=t_*v$. After the exact Hessian
-cancellation already proved above, the phase is $t_*\Psi(v)$ with
+For one stationary monomial set $t=t_*v$. After the exact Hessian cancellation
+proved above, the phase is $t_*\Psi(v)$ with
 $\Psi'(1)=0$, $\Psi''(1)\ne0$, and uniformly bounded higher derivatives near
-$v=1$. Fixed-order stationary phase therefore produces a finite expansion
-whose coefficients are height symbols, with a remainder
+$v=1$.  Fixed-order stationary phase gives a finite expansion whose
+coefficients are height symbols, with a remainder
 $O(T^{-M}L^{C_M})$ after any prescribed fixed order $M$.
 Finally,
 \[
@@ -207,14 +151,10 @@ Finally,
 =(2\pi m)^rg^{(r)}(2\pi my).
 \]
 On the shell $my\asymp T$ and $y\asymp J_j$, so
+$m/T\asymp J_j^{-1}$.  The symbol bound therefore gives
 \[
-\frac mT\asymp\frac1{J_j}.
+|\partial_y^r g(2\pi my)|\ll L^CJ_j^{-r}.
 \]
-The height-symbol bound therefore gives
-\[
-|\partial_y^r g(2\pi my)|
-\ll L^CJ_j^{-r}.
-\]
-The same argument is uniform after the fixed number of $p$-derivatives. This
-proves \eqref{eq:stationary-symbol-bound}.
+The same argument is uniform after the fixed $p$-derivatives, proving
+\eqref{eq:stationary-symbol-bound}.
 \end{proof}

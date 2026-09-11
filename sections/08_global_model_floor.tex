@@ -1,10 +1,41 @@
-\section{The completed global model and its spectral lower bound}
+\section{Positive reference model and the true \texorpdfstring{one-$\chi$}{one-chi} defect}
 \label{sec:model-floor}
 
-By Proposition~\ref{prop:completed-local-profile}, the frozen completed local
-profile is the source-derived function $G$ of \eqref{eq:G-from-source}. Let
-$C(x):=G(1-x)$ on the retained interior lag interval. If $q$ is mean zero
-and
+Let $\vartheta_{\rm c}$ denote the fixed coordinate multiplier implementing the
+stable-core restriction on each packet leg, and put
+$\vartheta_{\rm e}=1-\vartheta_{\rm c}$.  For an exact right-edge source $D$
+and leg multipliers $a,b$, define the Hermitian operator
+\begin{equation}
+\langle\mathfrak R_T[D;a,b]v,w\rangle
+:=\frac1{2\pi i}\int_{\Gamma_c^+}q(s)^2D(s)
+ \mathcal B_{v,w}^{a,b}(s)\,ds
++\overline{\frac1{2\pi i}\int_{\Gamma_c^+}q(s)^2D(s)
+ \mathcal B_{w,v}^{b,a}(s)\,ds}.
+\label{eq:exact-right-edge-operator}
+\end{equation}
+Here
+\[
+\mathcal B_{v,w}^{a,b}(s):=B_w^{(b)}(z(s))
+ \bigl(B_v^{(a)}\bigr)^\#(z(s))
+\]
+where $B_v^{(a)}$ denotes the packet synthesis after applying the multiplier
+$a$ to its leg.  Thus this is the exact packet polarization after applying the
+indicated multipliers to the two legs; no stationary expansion is part of this
+definition.  Put
+\begin{align}
+A_T^{\rm ar}&:=\mathfrak R_T[\mathcal C H_{\rm ar};1,1],\notag\\
+A_T^{\rm true}&:=\mathfrak R_T[\mathcal C H_{\rm ar};
+ \vartheta_{\rm c},\vartheta_{\rm c}],                      \label{eq:true-logonly-operator}\\
+L_T^{\rm geom}&:=A_T^{\rm ar}-A_T^{\rm true}.               \label{eq:exact-geometric-leakage}
+\end{align}
+Thus $L_T^{\rm geom}$ is exactly the sum of the three terms with at least one
+$\vartheta_{\rm e}$ leg.  The physical additive carrier $e(-ne^d)$ and the
+complete direct residual are retained inside $A_T^{\rm true}$.  No claim is
+made that the untwisted scalar HLZ diagonal identifies this operator with the
+comparison model below.
+
+Let $C(x):=G_{\log}(1-x)$ on the retained interior lag interval.  If $q$ is
+mean zero and
 \[
 Q(x):=\int_0^xq(t)\,dt,
 \]
@@ -17,17 +48,13 @@ then two integrations by parts give the exact primitive identity
 }
 \label{eq:primitive-identity}
 \end{equation}
-Define the triangular primitive form
+Define
 \[
 Q_\triangle(q):=2\|Q\|_2^2.
 \]
-By the common-core factorization of
-Proposition~\ref{prop:common-core-congruence} and the trivial outer-twist
-specialization of Proposition~\ref{prop:trivial-outer-twist}, the fully frozen
-principal analysis has one packet fibre and no nontrivial arithmetic
-packet-coordinate multiplier.  On the central flat plateau of $\phi_L$,
-translate the physical Fourier coordinate by its fixed left endpoint $u_0$.
-The common flat analysis is exactly
+
+On the central flat plateau translate the physical Fourier coordinate by its
+fixed left endpoint $u_0$.  The flat packet synthesis is
 \begin{equation}
 \boxed{
 (\mathcal U_T^{\rm flat}v)(u)
@@ -36,15 +63,13 @@ The common flat analysis is exactly
 }
 \label{eq:explicit-flat-analysis}
 \end{equation}
-The phase $v_\nu\mapsto e^{i\tau_\nu u_0}v_\nu$ is unitary and commutes with
-the diagonal multiplier $v_\nu\mapsto\tau_\nu^{-1}v_\nu$.  Let $C_T$ be the
-stable-core restriction from Definition~\ref{def:PT}, put
+Let $C_T$ be the stable-core restriction, put
 \[
-R_T^{\rm core}:=\frac{W_T}{L}=1-\frac{A_0\log L}{L},
+R_T^{\rm core}:=\frac{W_T}{L},
 \qquad
 \mathcal U_T^{\rm core}:=C_T\mathcal U_T^{\rm flat},
 \]
-and normalize the core coordinate by $r=u/L$.  Introduce the unitary rescaling
+and normalize by $r=u/L$:
 \begin{equation}
 \boxed{
 (\widehat{\mathcal U}_T^{\rm core}v)(r)
@@ -53,259 +78,215 @@ and normalize the core coordinate by $r=u/L$.  Introduce the unitary rescaling
 }
 \label{eq:normalized-core-analysis}
 \end{equation}
-This is the map $\widehat{\mathcal A}_T^{\rm core}$ of
-\eqref{eq:normalized-common-core-analysis}, up to the common one-sided factors
-already included there.
-
-Define $A_T^G$ as the pullback through this common normalized map of
-\[
-K_G(r,s):=G(1-|r-s|).
-\]
-By Definition~\ref{def:PT} and \eqref{eq:PT-frozen-definition},
-\begin{equation}
-\boxed{P_T=A_T^G.}
-\label{eq:PT-equals-frozen-model}
-\end{equation}
-Define $\Gfr_T$ through the same map by the triangular primitive form
-$Q_\triangle$.  Thus
+The global reference form is the pullback, through this same core analysis,
+of $Q_\triangle$.  Equivalently
 \begin{equation}
 \boxed{
 \Gfr_T=(\mathcal W_T^{\rm glob})^*\mathcal W_T^{\rm glob},
 }
 \label{eq:global-reference-Gram}
 \end{equation}
-where $\mathcal W_T^{\rm glob}$ is obtained from
-$\mathcal U_T^{\rm core}$, together with the same common one-sided factors, by
-adjoining the primitive on $0\le u\le W_T$ and multiplying the primitive output
-by $\sqrt2/L$.  After $r=u/L$ this gives exactly
-\[
-Q_\triangle=\frac{2}{L^2}\int_0^{W_T}|R(u)|^2\,du.
-\]
-The endpoint mean constraint is imposed only on $V_{\rm mean}$.
-Lemma~\ref{lem:global-local-triangular} compares the shell-local primitive
-metric with this same global reference metric.  The actual finite-$T$ parameter
-defect is not part of this positive congruence; it remains the separate source
-$R_T^{\rm par}$ of \eqref{eq:common-core-principal-congruence} and is estimated
-in the regular ledger.
+where $\mathcal W_T^{\rm glob}$ adjoins the primitive on
+$0\le u\le W_T$ and the normalization $\sqrt2/L$.
 
-The coefficient extraction in \eqref{eq:G-from-source} gives the closed form
+For the conditional comparison, define the positive reference kernel directly
+by
+\[
+K_{G_{\log}}(r,s)=G_{\log}(1-|r-s|),
+\]
+with
 \begin{equation}
 \boxed{
-G(\rho)=\frac1{12}\left[
--14\rho^4+32\rho^3-24\rho^2+6\rho
-+e^2\left((6\rho^2-12\rho+9)\sinh^2\rho-3\rho^2\right)
+G_{\log}(\rho)
+=-\frac76\rho^4+2\rho^3-\rho^2
++\frac{e^2}{8}\left[
+(2\rho^2-4\rho+3)\cosh(2\rho)-4\rho^2+4\rho-3
 \right].
 }
-\label{eq:G-closed}
+\label{eq:Glog-closed}
 \end{equation}
+Equivalently, its hyperbolic contribution is
+$\frac{e^2}{4}\{(2\rho^2-4\rho+3)\sinh^2\rho-\rho^2\}$.
+This is the explicit reference profile used in the spectral comparison; it is
+not obtained by identifying the true packet operator with an untwisted scalar
+lag kernel.
 
-\begin{proposition}[Explicit spectral floor on the stable core]
-\label{prop:model-floor}
-On each mean-zero core fibre $0\le r\le R_T^{\rm core}$, the frozen completed
-lag form satisfies
-\[
-K_G\succeq0.06\,Q_\triangle.
-\]
-Consequently
-\begin{equation}
-\boxed{A_T^G\succeq0.06\,\Gfr_T.}
-\label{eq:model-floor}
-\end{equation}
-on the full packet space subject only to the core mean-zero constraint. No
-additional model spectral deletion is required.
-\end{proposition}
-
-\begin{proof}
-Extend a core input $q$ by zero from $[0,R_T^{\rm core}]$ to $[0,1]$. Its
-mean remains zero, and both $K_G$ and $Q_\triangle$ restrict to the original
-core forms. It therefore suffices to prove the inequality on $[0,1]$.
-Apply \eqref{eq:primitive-identity} to
-$C(|x-y|)=G(1-|x-y|)$ and put $g(r):=G''(r)$. Direct differentiation of
-\eqref{eq:G-closed} gives
-\begin{align}
-g(r)={}&-14r^2+16r-4\notag\\
-&+\frac{e^2}{2}\left[
-4(r-1)\sinh(2r)+(2r^2-4r+4)\cosh(2r)-2
-\right].
-\label{eq:g-second}
-\end{align}
-The cusp coefficient is
-\begin{equation}
-\boxed{
-a_G:=-2C'(0+)=2G'(1)
-=\frac{-2+3e^2(\sinh2-2)}6>5.677.
-}
-\label{eq:cusp-coeff}
-\end{equation}
-
-For $0\le x\le4$ and $m+2>x$, the positive Taylor series gives the rational
-bounds
+For later certification we use the elementary rational enclosure
 \begin{equation}
 \sum_{j=0}^{m}\frac{x^j}{j!}
 \le e^x\le
 \sum_{j=0}^{m}\frac{x^j}{j!}
-+\frac{x^{m+1}}{(m+1)!}\frac1{1-x/(m+2)}.
++\frac{x^{m+1}}{(m+1)!}\frac1{1-x/(m+2)}
+\qquad(0\le x\le4,\ m+2>x).
 \label{eq:exp-rational-bound}
 \end{equation}
-Using $m=64$ and exact rational arithmetic in the formulas for $G',g,g'$ gives
+
+\begin{proposition}[Certified log-only spectral floor]
+\label{prop:model-floor}
+On every mean-zero stable core fibre,
+\begin{equation}
+\boxed{
+K_{G_{\log}}\succeq\kappa_*\,Q_\triangle.
+}
+\label{eq:model-floor}
+\end{equation}
+Consequently, for the reference packet pullback
+\[
+P_T:=A_T^{G_{\log}},
+\]
+one has
+\begin{equation}
+\boxed{P_T\succeq\kappa_*\,\Gfr_T.}
+\label{eq:logonly-model-floor}
+\end{equation}
+This is a statement about the reference model $P_T$; it does not identify
+$P_T$ with $A_T^{\rm true}$.
+\end{proposition}
+
+\begin{proof}
+Extend a core input by zero to $[0,1]$.  Put
+\[
+g_{\log}(r):=G_{\log}''(r).
+\]
+Direct differentiation of \eqref{eq:Glog-closed} gives
+\begin{equation}
+\boxed{
+g_{\log}(r)=-14r^2+12r-2
++e^2\left[(r^2-2r+2)\cosh(2r)
+ +2(r-1)\sinh(2r)-1\right].
+}
+\label{eq:glog-second}
+\end{equation}
+The cusp coefficient in \eqref{eq:primitive-identity} is
+\begin{equation}
+\boxed{
+a_{\log}=2G_{\log}'(1)
+=-\frac43+\frac{e^2}{2}(\sinh2-2)>4.6770.}
+\label{eq:logonly-cusp}
+\end{equation}
+
+Exact rational interval arithmetic using \eqref{eq:exp-rational-bound} on a
+mesh of width $10^{-4}$ gives
 \begin{equation}
 \begin{gathered}
-g(0.16)>0.025,\quad g(0.1625)<-0.010,\\
-g(0.6145)<-0.0004,\quad g(0.6146)>0.0012,\\
-g'(0.39)<-0.41,\quad g'(0.40)>0.19,\\
-g(0)<3.39,\quad g(0.8375)>6.9,\\
-g'(0.3854)>-0.70,\quad g'(0.5)>6.8,\\
-g(0.3144)+g(0.6856)>0.0019,\\
-g(0.3145)+g(0.6855)<-0.0010,
+ g_{\log}''(r)>21.80\quad(0\le r\le1),\\
+ g_{\log}(0.2483)>0>g_{\log}(0.2484),\qquad
+ g_{\log}(0.6464)<0<g_{\log}(0.6465),\\
+ g_{\log}'(x)+g_{\log}'(1-x)>5.70\quad(0\le x\le\tfrac12).
 \end{gathered}
-\label{eq:g-rational-signs}
+\label{eq:glog-root-certificate}
 \end{equation}
-and
-\begin{equation}
-\begin{gathered}
-2.8385<G'(1)<2.8386,\qquad G'(0)=\tfrac12,\\
-0.7440<G'(a)<0.7442,\qquad
-0.2361<G'(b)<0.2364,\\
-G'(0.3144)<0.6142,\qquad G'(0.6855)>0.2846,
-\end{gathered}
-\label{eq:Gprime-rational-bounds}
-\end{equation}
-where $a\in(0.16,0.1625)$ and $b\in(0.6145,0.6146)$ are the two zeros of
-$g$. To see that these are the only zeros, differentiate twice more:
+Hence $g_{\log}$ is strictly convex, has exactly two roots
 \[
-G''''(r)=2\left[
-e^2\bigl((2r^2-4r+9)\cosh(2r)+(8r-8)\sinh(2r)\bigr)-14
-\right].
+\alpha\in(0.2483,0.2484),\qquad
+\beta\in(0.6464,0.6465),
 \]
-Writing $x=1-r$ and using $\tanh y\le y$ gives
-\[
-7+2x^2-8x\tanh(2r)
-\ge18x^2-16x+7\ge\frac{31}{9},
-\]
-so $G''''(r)>20$ on $[0,1]$. Thus $g$ is strictly convex and
-\eqref{eq:g-rational-signs} gives exactly the two roots $a,b$ and a unique
-minimum between $0.39$ and $0.40$.
+and has signs $+,-,+$ on the three complementary intervals.
 
-The regular primitive kernel has Schur row sum
+Let
 \[
-M(x):=\int_0^1|g(1-|x-y|)|\,dy.
+M_{\log}(x):=\int_0^1|g_{\log}(1-|x-y|)|\,dy.
 \]
-It is symmetric about $1/2$. For $0\le x\le1/2$ write
-\[
-M(x)=A+D(x),\qquad A:=\int_0^1|g(r)|\,dr,
-\]
-\[
-D(x):=\int_{1-x}^1|g(r)|\,dr-\int_0^x|g(r)|\,dr.
-\]
-We determine the maximum of $D$ directly from the sign pattern of $g$ and the
-strict convexity established above.
-For $0\le x\le a$, both $g(x)$ and $g(1-x)$ are positive. Since the unique
-minimum of $g$ lies in $(0.39,0.40)$, $g$ decreases on $[0,a]$ and increases on
-$[0.8375,1]$. Hence \eqref{eq:g-rational-signs} gives
-\[
-D'(x)=g(1-x)-g(x)
-\ge g(0.8375)-g(0)>0.
-\]
-For $a<x<1-b$, one has $g(x)<0<g(1-x)$ and therefore
-\[
-D'(x)=g(x)+g(1-x)=:h(x).
-\]
-Strict convexity makes $g'$ strictly increasing, so, because $x<1-x$,
-\[
-h'(x)=g'(x)-g'(1-x)<0.
-\]
-The last two sign tests in \eqref{eq:g-rational-signs} give
-$h(0.3144)>0>h(0.3145)$, hence a unique zero
-$x_0\in(0.3144,0.3145)$.
-Finally, for $1-b\le x<1/2$, both values of $g$ are negative. Put
-$t=1/2-x\in(0,b-1/2]$. The function
-\[
-H(t):=g(1/2+t)-g(1/2-t)
-\]
-satisfies $H(0)=0$ and, throughout this range,
-\[
-H'(t)=g'(1/2+t)+g'(1/2-t)
-\ge g'(0.5)+g'(0.3854)>0.
-\]
-Thus $g(1-x)>g(x)$ and
-$D'(x)=g(x)-g(1-x)<0$. Consequently $x_0$ is the unique maximizer of $D$ on
-$[0,1/2]$, and symmetry gives the only other maximizer of $M$ at $1-x_0$.
-Since
-\[
-A=G'(1)-G'(0)+2G'(a)-2G'(b)
-\]
-and
-\[
-D(x_0)=G'(1)-G'(1-x_0)-2G'(a)+G'(0)+G'(x_0),
-\]
-\eqref{eq:Gprime-rational-bounds} yields
+It is symmetric about $1/2$.  For $0\le x\le1/2$,
 \begin{equation}
-\boxed{A<3.3548,\qquad D(x_0)<2.1802,\qquad
-\sup_{x\in[0,1]}M(x)<5.535.}
-\label{eq:schur-certified}
+M_{\log}(x)
+=\int_x^1|g_{\log}(r)|\,dr
+ +\int_{1-x}^1|g_{\log}(r)|\,dr.
+\label{eq:glog-row-sum}
 \end{equation}
-All decimal inequalities above are rigorous rational interval consequences of
-\eqref{eq:exp-rational-bound}; no floating-point estimate is used in
-\eqref{eq:schur-certified}.
+Put $k(x)=g_{\log}(1-x)-g_{\log}(x)$.  The last inequality in
+\eqref{eq:glog-root-certificate} gives $k'(x)<0$ and $k(1/2)=0$, so
+$M_{\log}'(x)>0$ on $[0,\alpha]$ and $M_{\log}'(x)<0$ on
+$[1-\beta,1/2]$.  On $[\alpha,1-\beta]$ one has
+$M_{\log}'(x)=h(x):=g_{\log}(x)+g_{\log}(1-x)$.  Strict convexity makes $h$
+strictly decreasing there, and the same rational enclosure gives
+\[
+h(0.3144)>0>h(0.3145).
+\]
+Thus the unique maximizer is $x_*\in(0.3144,0.3145)$.  Integration of
+\eqref{eq:glog-row-sum} by the antiderivative $G_{\log}'$ gives
+\[
+M_{\log}(x_*)
+=2G_{\log}'(1)-G_{\log}'(1-x_*)
+ +G_{\log}'(x_*)-2G_{\log}'(\beta).
+\]
+Applying the same rational Taylor enclosure on the certified intervals for
+$\beta$ and $x_*$ yields the deliberately rounded bound
+\begin{equation}
+\boxed{\sup_{0\le x\le1}M_{\log}(x)<4.6247.}
+\label{eq:Glog-Schur}
+\end{equation}
+All inequalities in
+\eqref{eq:glog-root-certificate}--\eqref{eq:Glog-Schur} are interval
+consequences of \eqref{eq:exp-rational-bound}; no floating-point value enters
+the proof.
 
-The primitive identity is therefore
+Schur's test and \eqref{eq:primitive-identity} now give
 \[
-Q_G(q)=a_G\|Q\|_2^2-
-\iint g(1-|x-y|)Q(x)\overline{Q(y)}\,dx\,dy.
+\langle K_{G_{\log}}q,q\rangle
+>(4.6770-4.6247)\|Q\|_2^2
+=0.0523\|Q\|_2^2
+>\kappa_*Q_\triangle(q).
 \]
-Schur's test and \eqref{eq:cusp-coeff}--\eqref{eq:schur-certified} give
-\[
-Q_G(q)>(5.677-5.535)\|Q\|_2^2
->0.142\|Q\|_2^2
->0.06Q_\triangle(q).
-\]
-By Proposition~\ref{prop:common-core-congruence}, the finite model faces and
-the frozen comparison have the same one-sided packet/core analysis.  By
-Proposition~\ref{prop:trivial-outer-twist}, no nontrivial outer arithmetic
-coordinate remains in the invariant contour source.  Thus $A_T^G$ and
-$\Gfr_T$ are pullbacks through the same normalized core map
-$\widehat{\mathcal U}_T^{\rm core}$ of, respectively, $K_G$ and
-$Q_\triangle$.  Congruence therefore preserves the whole-space inequality
-$K_G\succeq0.06Q_\triangle$.  This proves \eqref{eq:model-floor} without
-introducing a height-block mean constraint and without deleting any model
-spectral subspace.
+The packet inequality follows by congruence through the stable-core analysis
+map used in the definition of $P_T$.  This proves the proposition.
 \end{proof}
+
+\begin{hypothesis}[One-$\chi$ one-sided relative spectral defect]
+\label{hyp:one-chi-relative-defect}
+For the same packet centres selected by Lemma~\ref{lem:hermite-packet-evaluation}
+and the associated retained space $\Pret$ used in
+Section~\ref{sec:multiplicity-endgame}, there is a deterministic sequence
+$\lambda_T\ge\lambda_*>0$ such that, with
+\begin{equation}
+\mathcal D_T
+:=\Gfr_T^{-1/2}(A_T^{\rm true}-\lambda_TP_T)\Gfr_T^{-1/2},
+\label{eq:true-model-relative-defect}
+\end{equation}
+one has
+\begin{equation}
+\boxed{
+\beta_-(T;\lambda_T)
+:=\frac{\tr[(\mathcal D_T)_-^2]}
+{(\kappa_*\lambda_T)^2N_T}
+=O(L^{-2}).}
+\label{eq:one-chi-relative-defect}
+\end{equation}
+Only the negative part is constrained.  In particular, no two-sided operator
+norm or Hilbert--Schmidt approximation of $A_T^{\rm true}$ by
+$\lambda_TP_T$ is assumed.
+\end{hypothesis}
+
+\begin{remark}[Unresolved input]
+Hypothesis~\ref{hyp:one-chi-relative-defect} is not proved in this manuscript.
+The surviving phase $e(-ne^d)$ is precisely why no scalar reduction is used to
+establish it.  The normalization is chosen so that
+$\beta_-(T;\lambda_T)=o(1)$ deletes only $o(N_T)$ spectral directions; the
+displayed $O(L^{-2})$ rate gives the quantitative conditional conclusion in
+Theorem~\ref{thm:main}.
+\end{remark}
+
+\begin{remark}[Finite certificate]
+The inequalities above are finite rational interval calculations obtained from
+\eqref{eq:exp-rational-bound} on the displayed mesh.  No asymptotic numerical
+input is used in the floor estimate.
+\end{remark}
 
 \begin{lemma}[The whole-space floor survives restriction]
 \label{lem:model-compression}
-Let $V$ be any subspace of the finite model coordinate space after the common
-positive pullback, and let $P_V$ be its orthogonal projection. Then
-\begin{equation}
-\boxed{
-P_V A_T^G P_V\succeq0.06\,P_V\Gfr_TP_V
+Let $V$ be any subspace of the finite packet coordinate space and let $P_V$ be
+its orthogonal projection. Then
+\[
+P_VP_TP_V\succeq\kappa_*\,P_V\Gfr_TP_V
 \quad\text{on }V.
-}
-\label{eq:model-compression}
-\end{equation}
-Thus every retained spectral restriction inherits the same numerical floor.
+\]
 \end{lemma}
 
 \begin{proof}
-For $v\in V$, one has $P_Vv=v$. Proposition~\ref{prop:model-floor} gives
-\[
-\langle P_VA_T^GP_Vv,v\rangle
-=\langle A_T^Gv,v\rangle
-\ge0.06\langle\Gfr_Tv,v\rangle
-=0.06\langle P_V\Gfr_TP_Vv,v\rangle.
-\]
-This is exactly \eqref{eq:model-compression}.
+For $v\in V$, $P_Vv=v$ and Proposition~\ref{prop:model-floor} applies directly.
 \end{proof}
 
-\begin{remark}[Global positivity]
-Positivity of the finite-interval covariance for each fixed scalar $\rho$ does
-not by itself imply positivity after replacing $\rho$ by the pairwise lag
-$\rho(r-s)$. Proposition~\ref{prop:model-floor} instead applies the primitive
-identity \eqref{eq:primitive-identity} directly to the whole completed lag
-kernel, which yields the required global Loewner bound.
-\end{remark}
-
-For a Hermitian lag form $B$ on the mean-zero fibre define its triangular form
-norm by
+For a Hermitian lag form $B$ on the mean-zero fibre define
 \begin{equation}
 \|B\|_{\op,\triangle}
 :=\sup_{\substack{q\ne0\\ \int q=0}}
@@ -313,41 +294,17 @@ norm by
 \label{eq:triangular-form-norm}
 \end{equation}
 
-\begin{remark}[No variable-parameter positivity transfer]
-The scalar family obtained by keeping constant parameters
-$\lambda,\mu,\theta$ near $(1,1,0)$ is analytic and therefore Lipschitz in the
-triangular form norm.  We do \emph{not} use that constant-parameter fact to
-infer positivity for a height-dependent or block-dependent operator.  Physical
-height remains tied to the stationary carrier after the shell transform, and no
-scalar field $\lambda(r,s)$ is introduced.  Instead the whole finite-$T$
-parameter deformation is the separate source $R_T^{\rm par}$ of
-\eqref{eq:common-core-principal-congruence}; its small diagonal cusp and its
-regular mixed derivative are estimated directly in
-Lemma~\ref{lem:finiteT-parameter-regular}.
-\end{remark}
-
 \begin{proposition}[Frozen principal floor]
 \label{prop:finiteT-principal-comparison}
-On $V_{\rm mean}$ of \eqref{eq:mean-map},
+On $V_{\rm mean}$,
 \begin{equation}
-\boxed{
-P_T=A_T^G\succeq0.06\,\Gfr_T.
-}
-\label{eq:principal-finiteT-comparison}
-\end{equation}
-Consequently
-\begin{equation}
-\boxed{P_T\succeq c_0\Gfr_T}
+\boxed{P_T\succeq\kappa_*\,\Gfr_T.}
 \label{eq:principal-floor}
 \end{equation}
-for any fixed $c_0<0.06$; in particular one may take $c_0=0.03$.
+This is the sole numerical floor used downstream.
 \end{proposition}
 
 \begin{proof}
-The identity $P_T=A_T^G$ is \eqref{eq:PT-equals-frozen-model}, and
-Proposition~\ref{prop:model-floor} gives
-$A_T^G\succeq0.06\Gfr_T$.  No finite-$T$ parameter transfer is used in this
-step.  All such deformations, together with the critical-$J$ smooth-to-sharp
-remainder, belong to the regular ledger and are measured only after the frozen
-positive floor has been established.
+This is Proposition~\ref{prop:model-floor} followed by restriction to
+$V_{\rm mean}$.
 \end{proof}

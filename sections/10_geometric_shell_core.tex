@@ -1,0 +1,360 @@
+\section{Theorem-facing shell geometry and geometric leakage}
+\label{sec:shell-frame}
+
+This section contains only the shell/frame facts needed by the revised theorem
+route.  The packet-polarized logarithmic principal source has already been
+handled as a lag operator and is never represented here by compressed Fourier
+shifts.  Direct carriers appear only in the genuinely geometric exterior and
+terminal leakage estimates.
+
+Recall $0<C_{\rm pkt}<2$ from the packet construction and put
+\[
+R_{\rm pkt}:=\frac{C_{\rm pkt}}2\log L,
+\qquad
+L_{\rm pkt}=L+2R_{\rm pkt}.
+\]
+The stable logarithmic core used below is
+\begin{equation}
+\boxed{
+W_T:=L-A_0\log L,
+\qquad
+X_T:=e^{W_T}=\frac{T}{2\pi L^{A_0}}.
+}
+\label{eq:stable-log-core-main}
+\end{equation}
+For exact lattice centres
+\[
+\tau_k=\tau_0+\frac{2\pi k}{L_{\rm pkt}}
+\]
+define
+\begin{equation}
+S_v(u):=L_{\rm pkt}^{-1/2}\sum_kv_ke^{i\tau_ku},
+\qquad 0\le u\le L_{\rm pkt}.
+\label{eq:lattice-synthesis-shell}
+\end{equation}
+Fourier orthogonality gives
+\begin{equation}
+\boxed{
+\int_0^{L_{\rm pkt}}|S_v(u)|^2du=\|v\|_2^2.
+}
+\label{eq:lattice-synthesis-isometry}
+\end{equation}
+Let $C_T$ denote restriction to a translated copy of the stable core
+$[0,W_T]$ of \eqref{eq:stable-log-core-main}.
+
+\begin{lemma}[Stable-core packet frame]
+\label{lem:stable-core-frame}
+There is a subspace $V_{\rm core}$ such that
+\begin{equation}
+\boxed{
+\codim V_{\rm core}\ll T\log L=o(N_T),
+\qquad
+\|C_TS_v\|_2^2\ge c_{\rm core}\|v\|_2^2
+\quad(v\in V_{\rm core}),
+}
+\label{eq:stable-core-frame}
+\end{equation}
+with fixed $c_{\rm core}>0$.  The same statement for the diagonal multiplier
+$v_\nu\mapsto\tau_\nu^{-1}v_\nu$ has the right side multiplied by $T^{-2}$.
+\end{lemma}
+
+\begin{proof}
+The complement of the stable core inside the flat interval has length
+$L_{\rm pkt}-W_T=O(\log L)$.  Its restriction Gram has trace
+$O(T\log L)$ on an $O(TL)$ packet fibre.  Delete its spectral subspace for
+eigenvalues at least $1/4$; this costs $O(T\log L)$ dimensions and leaves the
+core Gram bounded below by a fixed fraction of the full Parseval Gram.
+Intersect this space with the inverse image under
+$D_\tau v=(\tau_\nu^{-1}v_\nu)_\nu$ of the same good space.  Since
+$T\le\tau_\nu\le2T+O(1)$, the codimension is unchanged up to a factor two and
+the second lower bound follows.  The admissible $T^{-100}$ perturbation of the
+centres changes these finite Grams by $o(1)$ in operator norm, so the fixed
+floor persists.
+\end{proof}
+
+\subsection{Logarithmic unitary and shell primitives}
+
+Translate the physical core so that
+\[
+x=e^{\widetilde u},\qquad 1\le x\le X_T,
+\]
+and put
+\begin{equation}
+F_v(x):=x^{-1/2}S_v(R_{\rm pkt}+\log x).
+\label{eq:log-unitary}
+\end{equation}
+Then
+\begin{equation}
+\boxed{
+\int_1^{X_T}|F_v(x)|^2dx
+=\int_{R_{\rm pkt}}^{R_{\rm pkt}+W_T}|S_v(u)|^2du.
+}
+\label{eq:log-unitary-norm}
+\end{equation}
+For the primitive remainder analysis choose a fixed-overlap $C_c^\infty$
+partition $(\psi_j)$ subordinate to doubling intervals
+$I_j=[J_j,2J_j]$, with each cutoff vanishing at the endpoints, such that
+\begin{equation}
+\boxed{
+\sum_j\psi_j(x)^2=1,
+\qquad \|\psi_j^{(r)}\|_\infty\ll_rJ_j^{-r}.
+}
+\label{eq:smooth-shell-partition}
+\end{equation}
+
+\begin{lemma}[Global triangular metric and shell-local primitives]
+\label{lem:global-local-triangular}
+Let $g$ be Hilbert-valued on $[0,W_T]$, assume $\int_0^{W_T}g=0$, and put
+\[
+R(u):=\int_0^u g(v)\,dv,
+\qquad
+f(x):=x^{-1/2}g(\log x).
+\]
+Define
+\begin{equation}
+\mathcal Q_{\rm glob}(g)
+:=\frac{2}{L^2}\int_0^{W_T}\|R(u)\|^2du
+\label{eq:global-triangular-log}
+\end{equation}
+and, on each shell,
+\[
+q_j(x):=\psi_j(x)x^{-1/2}f(x),
+\qquad
+Q_j(x):=\int_{J_j}^xq_j(y)\,dy,
+\qquad m_j:=Q_j(2J_j),
+\]
+\begin{equation}
+\mathcal Q_{\rm loc}(f)
+:=\frac{2}{L^2}\sum_j\int_{I_j}\|Q_j(x)|^2\frac{dx}{x}.
+\label{eq:local-triangular-shell}
+\end{equation}
+Then
+\begin{equation}
+\boxed{\mathcal Q_{\rm loc}(f)\le C_\triangle\mathcal Q_{\rm glob}(g)}
+\label{eq:global-local-triangular-comparison}
+\end{equation}
+and
+\begin{equation}
+\boxed{\frac2{L^2}\sum_j\|m_j\|^2
+\le C_\partial\mathcal Q_{\rm glob}(g).}
+\label{eq:global-local-endpoint-comparison}
+\end{equation}
+Both constants are absolute and independent of the output-fibre dimension.
+No local mean-zero condition is imposed.
+\end{lemma}
+
+\begin{proof}
+Extend $R(\log x)$ by zero outside $[1,X_T]$.  The global mean-zero condition
+makes this extension absolutely continuous.  Integration by parts gives
+\[
+Q_j(x)=\psi_j(x)R(\log x)
+-\int_{J_j}^x\psi_j'(y)R(\log y)\,dy.
+\]
+Since $x\asymp J_j$ on a doubling shell, bounded overlap and
+$|\psi_j'|\ll J_j^{-1}$ imply
+\[
+\int_{I_j}\|Q_j(x)\|^2\frac{dx}{x}
+\ll\int_{I_j}\|R(\log x)\|^2\frac{dx}{x}.
+\]
+At $x=2J_j$ the cutoff term vanishes, and Hilbert-space Cauchy--Schwarz gives
+\[
+ \|m_j\|^2\le
+ \left(\int_{I_j}|\psi_j'(y)|^2y\,dy\right)
+ \left(\int_{I_j}\|R(\log y)\|^2\frac{dy}{y}\right)
+ \ll\int_{I_j}\|R(\log y)\|^2\frac{dy}{y}.
+\]
+Summation proves both comparisons.  The proof is dimension free.
+\end{proof}
+
+\begin{lemma}[Polynomial floor for the global reference metric]
+\label{lem:core-reference-floor}
+On $V_{\rm core}\cap\ker\mathcal M_T^{\rm glob}$ there is a fixed $C_G$ such
+that
+\begin{equation}
+\boxed{\Gfr_T\succeq T^{-2}L^{-C_G}I.}
+\label{eq:core-reference-floor}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+On the flat core the global primitive input is an exponential polynomial of
+the form \eqref{eq:lattice-synthesis-shell}, up to a fixed unitary phase.  Its
+primitive is a constant plus
+\[
+L_{\rm pkt}^{-1/2}\sum_\nu
+\frac{v_\nu}{i\tau_\nu}e^{i\tau_\nu u}.
+\]
+Lemma~\ref{lem:stable-core-frame} gives an $L^2$ lower bound
+$\gg T^{-2}\|v\|_2^2$ for the oscillatory part.  Its projection on constants
+is $O(T^{-3})\|v\|_2^2$, because
+$|\int_0^{W_T}e^{i\tau_\nu u}du|\le2/|\tau_\nu|$ and the packet dimension is
+$O(TL)$.  The normalized primitive factor $2L^{-2}$ is absorbed into the fixed
+power $L^{-C_G}$.
+\end{proof}
+
+\begin{lemma}[Hilbert--Schmidt lift from one leaking analysis leg]
+\label{lem:one-leaking-leg-HS}
+Let $Q_o,Q_c$ be analysis maps with
+$\|Q_o\|_{S_2}^2\le\varepsilon_T^2$ and
+$\|Q_c\|_{\op}\le L^{C_Q}$.  If a Hermitian source with at least one leaking
+leg has
+\[
+R=Q_o^*B_{oc}Q_c+Q_c^*B_{oc}^*Q_o+Q_o^*B_{oo}Q_o
+\]
+and
+$\|B_{oc}\|_{\op}+\|B_{oo}\|_{\op}\le\beta_T$, then
+\begin{equation}
+\boxed{
+\|R\|_{S_2}^2
+\ll\beta_T^2L^{2C_Q}(\varepsilon_T^2+\varepsilon_T^4).
+}
+\label{eq:one-leaking-leg-HS}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+This is the ideal property of the Hilbert--Schmidt norm applied to the three
+summands; use $\|Q_o\|_{\op}\le\|Q_o\|_{S_2}$ for the last term.
+\end{proof}
+
+\subsection{Geometric exterior, terminal and endpoint leakage}
+
+The stationary-row and nonstationary-leakage count in this subsection uses an
+independent fixed-overlap unit-shell partition
+$I_j^{\rm unit}=[J_j,J_j+1]$.  This does not reintroduce local primitive
+constraints; the doubling partition above is used only for the primitive
+remainder criterion.
+
+The translated packet window is constant on the flat interval and supported a
+fixed distance $\Delta$ beyond it.  Put
+\begin{equation}
+X_{\rm full}:=e^L=\frac{T}{2\pi},
+\qquad
+x_-:=e^{-\Delta}L^{-C_{\rm pkt}/2},
+\qquad
+x_+:=e^{\Delta}X_{\rm full}L^{C_{\rm pkt}/2}.
+\label{eq:geometric-exterior-range}
+\end{equation}
+Thus the central physical band is $1\le x\le X_{\rm full}$ and the complete
+packet support outside it is
+\[
+\mathcal E_-=[x_-,1),
+\qquad
+\mathcal E_+=(X_{\rm full},x_+].
+\]
+The stable logarithmic core ends at $X_T<X_{\rm full}$; hence the part
+$X_T<x\le X_{\rm full}$ is the terminal physical band, while
+$\mathcal E_-\cup\mathcal E_+$ is genuine packet-support exterior.
+
+For one shell and packet centre the physical phase is
+\[
+\Phi_{\tau,m}(x)=\tau\log x-2\pi mx,
+\qquad
+\Phi'_{\tau,m}(x)=\frac\tau x-2\pi m.
+\]
+A stationary point on $I_j$ can occur only for
+\begin{equation}
+\mathcal I_j
+:=\left[\frac{T}{2\pi(J_j+1)},\frac{2T}{2\pi J_j}\right].
+\label{eq:stationary-interval}
+\end{equation}
+Choose
+\begin{equation}
+R_j:=L^B\left(1+\frac{\sqrt T}{J_j}\right).
+\label{eq:shell-margin}
+\end{equation}
+Repeated integration by parts outside the $R_j$-neighbourhood of
+$\mathcal I_j$ gives, for every fixed $N$,
+\begin{equation}
+|Q_{j,m}(e_k)|
+\ll_NL_{\rm pkt}^{-1/2}J_j^{-1/2}L^{C_N}(1+D)^{-N},
+\qquad D=\dist(m,\mathcal I_j).
+\label{eq:nonstat-shell}
+\end{equation}
+The $O(1)$ shells meeting a physical endpoint additionally produce only the
+finite jets
+\begin{equation}
+\partial_x^r(\psi_jF_v)(b),
+\qquad b\in\{1,X_T,X_{\rm full}\},\quad0\le r<N.
+\label{eq:boundary-shell-jets}
+\end{equation}
+
+\begin{proposition}[Geometric edge and leakage ledger]
+\label{prop:geometric-edge-ledger}
+Let $E_T^{\rm geom}$ contain:
+\begin{enumerate}[label=(\roman*)]
+\item all stationary output with a packet leg in
+$\mathcal E_-\cup\mathcal E_+$;
+\item stationary output in the terminal physical band
+$X_T<x\le X_{\rm full}$;
+\item the finite endpoint-jet ranges in \eqref{eq:boundary-shell-jets} and the
+fixed transition-cap rows.
+\end{enumerate}
+Let $R_T^{\rm geom}$ contain the complementary nonstationary leakage of these
+same geometric regions.  Then
+\begin{equation}
+\boxed{
+\rank E_T^{\rm geom}
+\ll T L^{C_{\rm pkt}/2+o(1)}=o(N_T),
+}
+\label{eq:geometric-edge-rank}
+\end{equation}
+and, on the eventual retained mean-zero core,
+\begin{equation}
+\boxed{
+\|\Gfr_T^{-1/2}R_T^{\rm geom}\Gfr_T^{-1/2}\|_{S_2}^2=o(N_T).
+}
+\label{eq:geometric-leakage-relative-HS}
+\end{equation}
+No portion of the logarithmic principal lag kernel is assigned to
+$E_T^{\rm geom}$.
+\end{proposition}
+
+\begin{proof}
+For the lower exterior a saddle can occur only for carriers
+$m\ll T/x_-=T L^{C_{\rm pkt}/2+O(1/\log L)}$, so its entire stationary output
+has dimension $O(TL^{C_{\rm pkt}/2+o(1)})$.  For the terminal and upper
+exterior regions, use unit shells and sum the stationary row count
+$1+T/J$ over $X_T\le J\le x_+$.  This is
+\[
+\ll x_++T\log(x_+/X_T)
+\ll T L^{C_{\rm pkt}/2+o(1)}.
+\]
+The endpoint jets have only a fixed number of derivative orders and fixed
+local-source multiplicity, hence polylogarithmic rank.  Since
+$C_{\rm pkt}<2$, the total is $o(TL)=o(N_T)$, proving
+\eqref{eq:geometric-edge-rank}.
+
+For complementary nonstationary legs, the repeated integration-by-parts bound
+\eqref{eq:nonstat-shell}, with the fixed order $N\ge8$ chosen later, gives after
+squaring and summing over modes, shells and $O(TL)$ packet coordinates
+\[
+\|Q_{\rm out}\|_{S_2}^2
+\ll T^{1-2N}L^C+T^{3/2-N}L^C.
+\]
+On the full exterior carrier range $m\ll TL^{C_x}$ for one fixed
+$C_x>C_{\rm pkt}/2$.  Lemma~\ref{lem:logonly-carrier-square} and
+Cauchy--Schwarz therefore give the deliberately crude source-operator bound
+\[
+\beta_T\ll TL^C.
+\]
+The complete arithmetic source, including the direct residual, is already part
+of $A_T^{\rm true}$; only the $f'$ family is separately assigned to
+Section~\ref{sec:logonly-remainder-ledger}.  Lemma~\ref{lem:one-leaking-leg-HS}
+gives
+\[
+\|R_T^{\rm geom}\|_{S_2}^2
+\ll T^{3-2N}L^C+T^{7/2-N}L^C.
+\]
+Finally Lemma~\ref{lem:core-reference-floor} gives
+$\|\Gfr_T^{-1/2}\|_{\op}^2\ll T^2L^{C_G}$.  For $N\ge8$ the resulting relative
+bound is $o(TL)=o(N_T)$, proving
+\eqref{eq:geometric-leakage-relative-HS}.
+\end{proof}
+
+\begin{remark}[No macroscopic-shift principal operator]
+Stationary row counting above is used only for packet-support, terminal and
+endpoint leakage.  The full logarithmic source, including the additive carrier
+$e(-ne^d)$, remains inside $A_T^{\rm true}$; no compressed-shift or untwisted
+lag operator is substituted for it in the conditional theorem.
+\end{remark}

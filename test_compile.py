@@ -41,25 +41,24 @@ def test_canonical_proof_guards():
     tex = "\n".join(path.read_text(errors="replace") for path in tex_paths)
 
     required = (
-        r"\boxed{A_T^G\succeq0.06\,\Gfr_T.}",
-        r"\boxed{P_T\succeq c_0\Gfr_T}",
-        r"dm=en=:N",
-        r"\label{eq:principal-finiteT-comparison}",
+        r"\title{A Conditional Hardy-Gauge Criterion",
+        r"\label{eq:beta-minus-intro}",
+        r"\label{eq:one-chi-relative-defect}",
+        r"\label{eq:true-logonly-operator}",
+        r"\label{eq:one-sided-defect-deletion}",
+        r"\label{hyp:edge-regular-bounds}",
+        r"\label{eq:perturbed-inertia}",
         r"\label{eq:minmax-good-space}",
-        r"\label{eq:levelwise-PP-projector}",
-        r"\label{eq:model-principal-cluster}",
-        r"\label{eq:arithmetic-two-sided-transfer}",
         r"\label{eq:packet-bandwidth-reserve}",
-        r"\label{eq:outer-excess-edge-rank}",
-        r"\label{eq:N-common-core}",
-        r"\label{eq:Hex-variable}",
-        r"\label{lem:block-freezing}",
-        r"\label{eq:mu-lambda-close}",
+        r"\label{eq:retained-codim}",
     )
     missing = [needle for needle in required if needle not in tex]
     assert not missing, f"canonical proof text missing: {missing}"
 
     forbidden = (
+        r"\title{A Hardy-Gauge Contour Method for Density One",
+        r"\begin{theorem}[Density one on the critical line]",
+        r"\boxed{A_T=P_T+E_T^{\rm geom}+R_T^{\log},}",
         "Soft spectral floor for the completed model",
         "V_G",
         "model-bad-codim",

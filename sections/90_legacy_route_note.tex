@@ -1,0 +1,26 @@
+\section{Superseded proof architecture}
+\label{sec:legacy-route-note}
+
+Earlier drafts organized the arithmetic side through a frozen archimedean self
+term, a critical-$J$ approximate functional equation, a one-sided
+common-output interpretation of the packetized HLZ diagonal, and a compressed
+Fourier-shift decomposition of the resulting direct carriers.  That
+architecture is not used anywhere in the proof of
+Theorem~\ref{thm:main}.
+
+The conditional route makes two structural changes.  First, the entire
+archimedean self block is removed on the closed contour by
+Lemma~\ref{lem:holomorphic-self-elimination}, before any AFE or diagonal
+extraction.  Second, the packet polarization is kept in the actual lag
+$d=y-x$, retaining the physical additive carrier $e(-ne^d)$.  The scalar HLZ
+diagonal is not asserted to remove that carrier.  Instead,
+Hypothesis~\ref{hyp:one-chi-relative-defect} compares the resulting true
+operator with the positive reference model only through the negative part of
+their relative spectral defect.
+
+The source files implementing the older frozen-HLP/common-output route have
+been removed from the active manuscript rather than reproduced here, so that
+obsolete labels cannot enter the dependency graph accidentally.  They remain
+recoverable from the Git history preceding the lagwise log-only repair.  This
+appendix is therefore documentary only and supplies no lemma used by the main
+proof.

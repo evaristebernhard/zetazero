@@ -44,62 +44,86 @@ bounds, and zero-side inertia bookkeeping remain.  Paper source:
 \texttt{sec:zero-side}.
 \end{definition}
 
-\begin{definition}[\nodeid{M04}: Right-edge arithmetic source and dilation covariance]
+\begin{definition}[\nodeid{M04}: Log-only right-edge source and stationary dilation]
 \label{node:m04}
 \notready
 \uses{node:m02}
-Formalize the reflected source decomposition, principal pole cluster, physical
-one-character carrier, stationary symbol, and exact dilation covariance.
-Paper sources: \texttt{sec:right-edge} and \texttt{sec:stationary}.
+Formalize the Hermitian reflected source, closed-contour elimination of the
+archimedean self block, the exact split
+$L_1=H_{\log}+\Delta H_{\rm dir}+f'/(f-P)$, the
+$O(L^{-2})$ direct residual, the physical one-character stationary carrier,
+and exact dilation covariance.  The stationary main term retains the additive
+carrier factor $e(-e^d\xi)$ after packet polarization.  Paper sources:
+\texttt{sec:right-edge} and \texttt{sec:stationary}.
 \end{definition}
 
-\begin{definition}[\nodeid{M05}: HLP/HLZ local model and principal operator]
+\begin{definition}[\nodeid{M05}: Additively twisted arithmetic bridge]
 \label{node:m05}
 \notready
 \uses{node:m04}
 \lean{ZetaZero.HLPLocalModel.mangoldtConvolutionPower_support}
-The independent arithmetic foundation now formalizes the von Mangoldt
-Dirichlet-convolution hierarchy and its support growth.  The completed three-Z
-master, common-prefix geometry, exact HLP levels, local pole projection, smooth
-packet Mellin class, and principal operator replacement still depend on the M04
-analytic source layer.  Paper sources: \texttt{sec:threeZ},
-\texttt{sec:hlp-local}, and \texttt{sec:local-projector}.
+M05 is presently blocked analytically.  The attempted replacement by an
+untwisted scalar HLZ diagonal at fixed packet lag drops the physical stationary
+carrier phase $e(-e^d\ell)$.  In the invariant source the diagonal arithmetic
+carrier remains the physical integer carrier, so this factor cannot be absorbed
+into a packet-label-independent scalar amplitude with the presently claimed
+Mellin bounds.  The direct shell realization also gives an internal
+rank-versus-floor obstruction to such a replacement.  A valid M05 interface
+must instead supply a genuinely additively twisted HLZ/Estermann--Voronoi
+transfer, or a different two-stage stationary mechanism that retains and then
+controls this carrier.  See \texttt{doc/lagwise\_hlz\_gap\_audit.md} and the
+current Section~6 sources.
 \end{definition}
 
-\begin{definition}[\nodeid{M06}: Global model and spectral floor]
+\begin{definition}[\nodeid{M06}: Conditional log-only global model and spectral floor]
 \label{node:m06}
 \notready
 \uses{node:m05}
-Formalize the completed global model, its closed kernel, the certified spectral
-lower bound, compression, and finite-parameter stability.  Paper source:
-\texttt{sec:model-floor}.
+M06 is downstream of the unresolved M05 bridge.  Independently, the current
+paper closed form for $G_{\log}$ is not the coefficient of its displayed source
+profile: direct coefficient extraction yields a $\cosh(2\rho)$ expression, not
+the current $\sinh(2\rho)$ formula.  Numerical audit of the corrected function
+leaves a positive margin of about $0.03775Q_\triangle$; a rigorous conservative
+$0.03Q_\triangle$ certificate appears feasible and would still support the
+endgame interface $c_0=0.02$, conditional on M05.  Formalize the corrected
+coefficient extraction, primitive identity, rational Schur certificate, and
+compression only after the upstream arithmetic bridge is repaired.  Paper
+source: \texttt{sections/08\_global\_model\_floor.tex}.
 \end{definition}
 
-\begin{definition}[\nodeid{M07}: Divisor Gram and arithmetic transfer]
+\begin{definition}[\nodeid{M07}: Auxiliary divisor-Gram library]
 \label{node:m07}
 \notready
-\uses{node:m05}
-Formalize the gcd/divisor identities, arithmetic Gram, inverse bounds,
-dimension loss, and two-sided operator and Hilbert--Schmidt transfer.  Paper
-source: \texttt{sec:divisor-gram}.
+The existing Lean gcd/divisor Gram and arithmetic-transfer lemmas are retained
+as an auxiliary library, but the revised invariant-source manuscript does not
+route the main theorem through an outer divisor deformation.  M07 is therefore
+not a dependency of the active M08 theorem path.  Its concrete arithmetic
+formalization may continue independently.
 \end{definition}
 
-\begin{definition}[\nodeid{M08}: Frame compression, edge rank, and regular remainder]
+\begin{definition}[\nodeid{M08}: Geometric shell frame and primitive remainder]
 \label{node:m08}
 \notready
-\uses{node:m03,node:m06,node:m07}
-Formalize the stationary-shell frame, logarithmic Parseval transform,
-stationary-band leakage, macroscopic edge-rank control, reference metric, and
-regular remainder.  Paper sources: \texttt{sec:shell-frame},
-\texttt{sec:edge-rank}, and \texttt{sec:ledger}.
+\uses{node:m03,node:m04,node:m06}
+Formalize the stable-core frame, logarithmic unitary, global/local primitive
+comparison, geometric exterior/terminal leakage, the two-variable
+absolute-lag primitive criterion, and the log-only remainder classes.  This
+node is currently downstream-blocked by M05/M06.  Its remainder ledger also
+needs explicit normalized diagonal-amplitude estimates: a large shell cutoff
+parameter controls the global shell sum but does not by itself prove that a
+single-shell normalized jump is $o(1)$.  Paper sources:
+\texttt{sections/10\_geometric\_shell\_core.tex},
+\texttt{sections/11\_primitive\_remainder\_core.tex}, and
+\texttt{sections/11\_logonly\_remainder.tex}.
 \end{definition}
 
 \begin{definition}[\nodeid{M09}: Retained space and parameter hierarchy]
 \label{node:m09}
 \notready
 \uses{node:m08}
-Formalize the reduced spectral space, accumulated codimension bounds, and the
-parameter hierarchy.  Paper source: \texttt{sections/12\_retained\_space.tex}.
+Formalize the reduced spectral space, global/local mean constraints,
+accumulated codimension bounds, and the simplified acyclic parameter hierarchy.
+Paper source: \texttt{sections/12\_retained\_space.tex}.
 \end{definition}
 
 \begin{definition}[\nodeid{M10}: Generic perturbation, min--max, and density-one endgame]
@@ -108,7 +132,9 @@ parameter hierarchy.  Paper source: \texttt{sections/12\_retained\_space.tex}.
 \uses{node:m01,node:m03,node:m09}
 \lean{ZetaZero.GenericPerturbationMinMaxEndgame.density_one_critical_line}
 Formalize multiplicity-removing perturbation, the final finite-dimensional
-min--max step, density-one selection, and the main theorem.  Paper sources:
+min--max step, density-one selection, and the main theorem.  The abstract
+endgame remains useful, but its manuscript hypotheses are currently
+conditional on repairing M05 and re-certifying M06.  Paper sources:
 \texttt{sections/00\_main\_theorem.tex},
 \texttt{sections/13\_minmax.tex}, and
 \texttt{sections/14\_endgame.tex}.

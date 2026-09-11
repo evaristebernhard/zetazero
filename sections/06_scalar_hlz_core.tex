@@ -1,0 +1,254 @@
+\section{Scalar three-\texorpdfstring{$Z$}{Z} input for the lagwise route}
+\label{sec:scalar-hlz-core}
+
+This section records only the scalar Heap--Li--Zhao input used in the attempted
+lagwise route.  The arithmetic lift from the physical one-$\chi$ carrier to
+this untwisted scalar diagonal is a separate issue; see
+\texttt{doc/lagwise\_hlz\_gap\_audit.md}.  The packet variable has not yet been
+converted into a one-sided prefix coordinate.  The only packet information
+admitted in the scalar lemma below is a bounded-support Mellin weight.
+
+For the invariant outer specialization put
+\begin{equation}
+\boxed{
+Z_{\alpha,\beta,\gamma,1,1}
+:=\frac{\zeta(1+\alpha+\beta)\zeta(1+\beta+\gamma)}
+        {\zeta(1+\beta)}.
+}
+\label{eq:scalar-HLZ-Euler-object}
+\end{equation}
+This is the $h=k=1$ Euler object in the scalar HLZ diagonal.  In particular,
+there is no auxiliary outer arithmetic coordinate in this section.
+
+Fix constants
+\[
+0<r_1<r_2<r_3,\qquad r_{j+1}-r_j\ge r_*>0,
+\]
+and put
+\[
+\mathcal T_{j,L}:=\{z:|z|=r_j/L\},\qquad
+\mathcal T_L:=\mathcal T_{1,L}\times\mathcal T_{2,L}\times\mathcal T_{3,L}.
+\]
+Thus
+\[
+|z_i-z_j|\ge r_*/L\qquad(i\ne j)
+\]
+on the separated Cauchy torus.  For $\mathbf z=(z_1,z_2,z_3)\in\mathcal T_L$
+define
+\begin{equation}
+\boxed{
+H_{\mathbf z}(u):=
+\exp(u^2)
+\frac{(2u-z_2+z_1)(2u-z_2+z_3)}
+     {(z_1-z_2)(z_3-z_2)}.
+}
+\label{eq:scalar-HLZ-auxiliary}
+\end{equation}
+Then
+\begin{equation}
+H_{\mathbf z}(0)=1,
+\qquad
+H_{\mathbf z}\!\left(\frac{z_2-z_1}{2}\right)=0,
+\qquad
+H_{\mathbf z}\!\left(\frac{z_2-z_3}{2}\right)=0.
+\label{eq:scalar-HLZ-auxiliary-zeros}
+\end{equation}
+The separated torus is fixed throughout; no analytic continuation of
+$H_{\mathbf z}$ through the collision locus is used.
+
+\begin{proposition}[Exact three-face Cauchy residue identity]
+\label{prop:scalar-HLZ-three-face}
+Assume
+\begin{equation}
+\max\{|\alpha|,|\beta|,|\gamma|\}<r_1/L
+\label{eq:scalar-shifts-inside}
+\end{equation}
+and first suppose that $\alpha,-\beta,\gamma$ are pairwise distinct.
+Let
+\[
+\mathfrak Z_{\alpha,\beta,\gamma}(X)
+:=Z_{\alpha,\beta,\gamma,1,1}
++X^{-\alpha-\beta}Z_{-\beta,-\alpha,\gamma,1,1}
++X^{-\beta-\gamma}Z_{\alpha,-\gamma,-\beta,1,1}.
+\]
+With $\Delta(\mathbf z)=\prod_{i<j}(z_j-z_i)$, one has the exact algebraic
+identity
+\begin{equation}
+\boxed{
+\begin{aligned}
+\mathfrak Z_{\alpha,\beta,\gamma}(X)
+={}&-\frac12X^{-(\alpha+\beta+\gamma)/2}
+\frac1{(2\pi i)^3}
+\iiint_{\mathcal T_L}
+Z_{z_1,-z_2,z_3,1,1}\\
+&\qquad\times
+\frac{\Delta(\mathbf z)^2X^{(z_1-z_2+z_3)/2}}
+{\prod_{j=1}^3(z_j-\alpha)(z_j+\beta)(z_j-\gamma)}
+\,d\mathbf z .
+\end{aligned}}
+\label{eq:scalar-HLZ-three-face}
+\end{equation}
+The identity is a finite three-variable Cauchy residue calculation.  It is
+consistent with the three principal faces occurring in the completed HLZ
+expansion, but it is proved here directly rather than attributed to a formula
+number in Heap--Li--Zhao.
+For colliding shifts satisfying \eqref{eq:scalar-shifts-inside}, the identity
+means its meromorphic continuation from the pairwise-distinct locus; at a
+removable collision it is evaluated by the corresponding limit.
+\end{proposition}
+
+\begin{proof}
+Put
+\[
+P(z):=(z-\alpha)(z+\beta)(z-\gamma),
+\]
+whose roots are
+\[
+r_1=\alpha,\qquad r_2=-\beta,\qquad r_3=\gamma.
+\]
+Condition \eqref{eq:scalar-shifts-inside} places all three roots inside the
+smallest Cauchy circle and hence inside all three circles.
+The Vandermonde square in \eqref{eq:scalar-HLZ-three-face} vanishes whenever two
+of the three Cauchy variables take the same root.  Hence only the six
+permutations of $(r_1,r_2,r_3)$ contribute.  For every such permutation,
+\[
+\frac{\Delta(r_1,r_2,r_3)^2}
+     {P'(r_1)P'(r_2)P'(r_3)}=-1,
+\]
+because for a monic cubic
+$P'(r_i)=\prod_{j\ne i}(r_i-r_j)$ and the product of the three derivatives is
+$-\Delta(r_1,r_2,r_3)^2$.
+
+The remaining Euler factor and the height monomial are symmetric under
+$z_1\leftrightarrow z_3$.  Thus the six residues pair into three equal pairs,
+and the prefactor $-1/2$ turns each pair into one copy of the corresponding
+face.  If the middle variable is $z_2=-\beta$, the outer height exponent
+cancels and the first face is $Z_{\alpha,\beta,\gamma,1,1}$.  If
+$z_2=\alpha$, the total height exponent is $-\alpha-\beta$, giving
+$X^{-\alpha-\beta}Z_{-\beta,-\alpha,\gamma,1,1}$.  If
+$z_2=\gamma$, it is $-\beta-\gamma$, giving
+$X^{-\beta-\gamma}Z_{\alpha,-\gamma,-\beta,1,1}$.  Their sum is exactly
+\eqref{eq:scalar-HLZ-three-face}.
+Both sides are meromorphic in $(\alpha,\beta,\gamma)$ on the shift polydisc,
+so the identity theorem supplies the collision cases.
+\end{proof}
+
+\begin{hypothesis}[Imported scalar diagonal identity]
+\label{lem:scalar-lagweight-HLZ}
+Put $\log_3T:=\log\log\log T$ and
+\[
+D_{\mathbf z}(u):=
+\frac{\zeta(1+z_1-z_2+2u)\zeta(1-z_2+z_3+2u)}
+     {\zeta(1-z_2+2u)}.
+\]
+Let $c_+>0$ be fixed so that this Euler product is absolutely convergent on
+$\Re u=c_+/L$.  Suppose
+\begin{equation}
+W_{\rho,p,\mathbf z,T}(u)
+=\int_0^\rho a_{\rho,p,\mathbf z,T}(t)e^{Lut}\,dt
+\label{eq:scalar-HLZ-admissible-weight}
+\end{equation}
+(or a fixed finite product of such factors), where $0\le\rho\le C_*$ and, for
+every fixed derivative order used below,
+\begin{equation}
+\left\|\partial_t^m\partial_\rho^r\partial_p^j
+ a_{\rho,p,\mathbf z,T}\right\|_{L^1(0,C_*)}
+\ll L^{C_{m,r,j}}
+\label{eq:scalar-HLZ-weight-bounds}
+\end{equation}
+uniformly on $\mathcal T_L$.  Then, pointwise on the separated torus,
+\begin{equation}
+\boxed{
+W(0)Z_{\mathbf z,1,1}
+=\frac1{2\pi i}\int_{c_+/L-i\infty}^{c_+/L+i\infty}
+\frac{H_{\mathbf z}(u)W(u)}u T^{2u}D_{\mathbf z}(u)\,du
++\mathcal E_{\rm diag}(\rho,p,\mathbf z),
+}
+\label{eq:scalar-HLZ-diagonal}
+\end{equation}
+where, for every prescribed $A>0$ and every fixed $r,j$ required later,
+\begin{equation}
+\boxed{
+\sup_{\mathbf z\in\mathcal T_L}
+|\partial_\rho^r\partial_p^j\mathcal E_{\rm diag}|
+\ll_A L^{-A+C_{r,j}}.
+}
+\label{eq:scalar-HLZ-error}
+\end{equation}
+The particular weight $W$ must be derived from the Dirichlet-polynomial
+length and coefficient hypotheses of the cited Heap--Li--Zhao theorem.
+Bounded Mellin support alone is not asserted to imply this identity or its
+differentiated error.  Conditional on this imported input, the same estimate survives the finite Cauchy residues in
+Proposition~\ref{prop:scalar-HLZ-three-face} after increasing the requested
+saving exponent.
+\end{hypothesis}
+
+\begin{lemma}[Zero-free deformation of the imported scalar integral]
+\label{lem:scalar-zero-free-deformation}
+Let $c_\zeta>0$ be a classical zero-free-region constant and choose a fixed
+$c_{\rm mov}>0$ sufficiently small in terms of it.  Truncate the $u$-integral
+at $|\Im u|=B\sqrt{\log L}$ and move it only to
+\[
+\Re u=-\frac{c_{\rm mov}}{\log_3T}.
+\]
+Uniformly on $\mathcal T_L$, no pole of
+$1/\zeta(1-z_2+2u)$ is crossed.  The two numerator poles are cancelled by
+$H_{\mathbf z}$, so the only crossed pole of the full integrand is $u=0$.
+The left edge and Gaussian tails are $O_A(L^{-A})$ for every fixed $A$ after
+choosing $B$.
+\end{lemma}
+
+\begin{proof}
+On the truncated rectangle,
+$|\Im(1-z_2+2u)|=O(\sqrt{\log L})$, hence
+\[
+\log(|\Im(1-z_2+2u)|+3)\le\tfrac12\log_3T+O(1).
+\]
+The classical zero-free region
+$\sigma\ge1-c_\zeta/\log(|t|+3)$, used with a slightly smaller constant,
+contains the image of the new left edge when $c_{\rm mov}$ is small enough;
+the remainder of the deformation strip lies farther right.  Thus the
+reciprocal zeta factor has no pole and costs only a polylogarithmic factor.
+The zeros \eqref{eq:scalar-HLZ-auxiliary-zeros} cancel the numerator poles.
+Finally
+\[
+|T^{2u}|=\exp\!\left(-\frac{2c_{\rm mov}\log T}{\log_3T}\right)
+\]
+beats every power of $L$, while $e^{u^2}$ gives Gaussian decay on the
+horizontal edges and tails.
+\end{proof}
+
+\begin{lemma}[Local-height rescaling of the scalar diagonal]
+\label{lem:scalar-HLZ-local-height}
+Conditional on Hypothesis~\ref{lem:scalar-lagweight-HLZ},
+Let $X(\tau)=\tau/(2\pi)$ with $\tau\asymp T$.  In
+\eqref{eq:scalar-HLZ-diagonal}, the replacement
+\[
+T^{2u}\longmapsto X(\tau)^{2u}
+\]
+does not alter the residue at $u=0$ and preserves the error class
+\eqref{eq:scalar-HLZ-error}, including the first two fixed endpoint and
+curvature derivatives.
+\end{lemma}
+
+\begin{proof}
+Multiply the auxiliary weight by
+\[
+R_\tau(u):=\left(\frac{X(\tau)}T\right)^{2u}.
+\]
+Since $X(\tau)/T$ remains in a fixed compact subset of $(0,\infty)$,
+$R_\tau$ and every fixed height derivative have polynomial growth in $u$ on the
+same strip, hence preserve the Gaussian contour estimates.  Since
+$R_\tau(0)=1$, the $u=0$ residue is unchanged.  The same argument after the
+fixed endpoint and curvature derivatives proves the differentiated statement.
+\end{proof}
+
+\begin{remark}[Scope and current obstruction]
+The scalar statements above concern the untwisted Euler diagonal only.  The
+physical packet problem still contains the additive stationary carrier
+$e(-e^d\ell)$ after fixing the lag.  No assertion in this section removes that
+factor.  Consequently Proposition~\ref{prop:lagwise-packet-HLZ} requires an
+additional arithmetic bridge which is presently open; see
+\texttt{doc/lagwise\_hlz\_gap\_audit.md}.  In particular, the scalar lemma alone
+does not provide the theorem-facing packet lift.
+\end{remark}
