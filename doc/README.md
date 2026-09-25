@@ -32,6 +32,13 @@ density-one interface plan is in
 下一轮选定的 gap 及执行顺序记录于
 [lean_gap_closure_plan.md](lean_gap_closure_plan.md)。
 
+The corrected four-block matrix, stationary-residue form, (F/F') pole
+representation, Cayley transform, and the proposed generalized
+Nevanlinna/Levinson reformulation are separated by proof status in
+[four_block_inertia_equivalence_audit_2026-09-25.md](four_block_inertia_equivalence_audit_2026-09-25.md).
+That note deliberately distinguishes exact equivalences from the still-open
+Krein--Langer/negative-square and homotopy bridges.
+
 ## Local setup
 
 ```bash
