@@ -1,7 +1,7 @@
 \section{Right-edge arithmetic source and exact source algebra}
 \label{sec:right-edge}
 
-\subsection{Hermitian reflection and elimination of the self block}
+\subsection{Hermitian reflection and the archimedean self block}
 Differentiate the functional equation $\zeta(s)=\chi(s)\zeta(1-s)$. Since
 $f(s)=-\frac12\chi'/\chi(s)$ and $f(s)=f(1-s)$,
 \begin{equation}
@@ -69,7 +69,7 @@ J_{\rm arch}=I_f+I_f^*,
 \label{eq:J-I-source-split}
 \end{equation}
 
-\begin{lemma}[Holomorphic elimination of the archimedean self source]
+\begin{lemma}[Holomorphic identity does not eliminate the Hermitian self block]
 \label{lem:holomorphic-self-elimination}
 For $|p|\le p_0$ define the generating-family contour
 \[
@@ -84,11 +84,19 @@ Then, for every fixed normalized curvature derivative $0\le j\le2$,
 }
 \label{eq:holomorphic-self-elimination}
 \end{equation}
-Consequently the complete $f$-self block is removed from the principal
-arithmetic model before any AFE, stationary, packet, or HLZ reduction.  Its
-vertical contribution is the negative of its horizontal contribution, and the
-latter is covered on the retained packet space by
-Lemma~\ref{lem:horizontal-decay}.
+However, if $I_f$ is the upward right-side matrix in
+\eqref{eq:J-I-source-split}, reflection gives
+\begin{equation}
+\boxed{I_{f,\rm left}=-I_f^*,\qquad
+I_{f,\rm hor}=I_f^*-I_f.}
+\label{eq:f-self-orientation-correction}
+\end{equation}
+Thus the closed holomorphic identity cancels the anti-Hermitian vertical
+combination $I_f-I_f^*$ against its horizontal contribution. It gives no
+cancellation of the Hermitian matrix
+$J_{\rm arch}=I_f+I_f^*$ appearing in
+\eqref{eq:J-I-source-split}. That matrix remains an unaccounted term in the
+current arithmetic decomposition.
 \end{lemma}
 
 \begin{proof}
@@ -97,8 +105,11 @@ $s\pm p/L$ remain in a common holomorphy neighbourhood of the high rectangle.
 Thus the factors $f$, $\mathcal C_{\mathscr Z}(s,p)$, and
 $\mathcal B_{v,w}$ are jointly holomorphic there.  Cauchy's theorem gives
 $\mathcal I_f(p;v,w)=0$, and differentiation under the integral gives
-\eqref{eq:holomorphic-self-elimination}. Splitting the closed contour into
-vertical and horizontal pieces gives the second assertion. No approximate
+\eqref{eq:holomorphic-self-elimination}. Since
+$f(1-\bar s)=\overline{f(s)}$ and the packet-curvature factor swaps to its
+conjugate under $s\mapsto1-\bar s$, the orientation reversal on the left side
+gives $I_{f,\rm left}=-I_f^*$. The horizontal identity follows by subtracting
+the two vertical contributions from the zero closed integral. No approximate
 functional equation is involved.
 \end{proof}
 
@@ -209,7 +220,7 @@ The coefficient identity follows by symmetrizing
 
 \begin{lemma}[Product-level $f'$ separation]
 \label{lem:logonly-fprime-separation}
-After holomorphic self elimination, the right-edge product is exactly
+For the $L_1$ right-edge source alone, the product is exactly
 \begin{equation}
 \boxed{
 q^2\left[\mathcal C H_{\log}

@@ -2,10 +2,11 @@
 We construct a finite-dimensional Hermitian contour form from an analytic Hardy
 gauge and a near-lattice packet family.  Its zero-side residue representation
 converts off-critical-line stationary geometry into negative inertia.  On the
-arithmetic side the holomorphic archimedean self block is eliminated on the
-closed contour, and the complete non-$f'$ arithmetic source
+arithmetic side the complete non-$f'$ Dirichlet source
 $-P(s)+Q(s)/(f(s)-P(s))$ is kept inside the theorem-facing operator.  The
-remaining $f'$ source is treated separately.  The true operator retains the stationary
+remaining $f'$ source is treated separately. The holomorphic identity for the
+archimedean $f$ source does not eliminate its Hermitian self block, so the
+conditional arithmetic decomposition remains an unproved input. The true operator retains the stationary
 additive carrier $e(-ne^d)$.  The untwisted scalar Heap--Li--Zhao diagonal does
 not presently control this operator, so no unconditional packet--HLZ bridge is
 claimed.  We instead prove a conditional density-one theorem.  If the negative
@@ -16,8 +17,8 @@ Hilbert--Schmidt estimates, then
 \[
 \frac{N_{0,T}}{N_T}=1-O((\log T)^{-2})-o(1)=1-o(1).
 \]
-Thus the unresolved arithmetic content is isolated in one explicit one-sided
-relative spectral-defect hypothesis.
+Thus the unresolved arithmetic content includes both the one-sided relative
+spectral-defect hypothesis and the treatment of the archimedean self block.
 \end{abstract}
 
 \section{Main theorem and notation}
@@ -86,6 +87,14 @@ Consequently, by dyadic summation,
 \]
 \end{theorem}
 
+\begin{remark}[Status of the arithmetic decomposition]
+The decomposition assumed in Theorem~\ref{thm:main} has not been derived from
+the exact contour. In the right-edge reflection, the Hermitian archimedean
+self matrix $J_{\rm arch}=I_f+I_f^*$ survives the holomorphic identity
+\eqref{eq:holomorphic-self-elimination}. A separate estimate or a revised
+principal operator is needed to place it within the theorem's hypotheses.
+\end{remark}
+
 \begin{remark}[Scale of the regular remainder]
 The Hilbert--Schmidt triangle inequality and $\lambda_T\ge\lambda_*>0$ turn
 the three estimates in \eqref{eq:regular-lambda-scale-intro} into
@@ -140,9 +149,9 @@ separated into low-rank and relative Hilbert--Schmidt classes.
 
 The proof is organized around the normalized contour matrix introduced in
 Section~\ref{sec:common-matrix}, whose zero-side and arithmetic-side
-representations are developed in the subsequent sections.  The self source is
-removed by the exact holomorphic identity of
-Lemma~\ref{lem:holomorphic-self-elimination}.  The conditional theorem compares
+representations are developed in the subsequent sections. The holomorphic
+identity of Lemma~\ref{lem:holomorphic-self-elimination} cancels only the
+anti-Hermitian vertical $f$ contribution. The conditional theorem compares
 the true packet operator directly with the positive reference model through
 the one-sided defect \eqref{eq:beta-minus-intro}; no scalar diagonal or
 lagwise packet--HLZ reduction is used.  The complete source containing

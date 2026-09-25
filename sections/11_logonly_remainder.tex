@@ -9,6 +9,13 @@ remainder.  The remaining theorem-facing classes are measured with the
 absolute-lag primitive criterion of
 Section~\ref{sec:primitive-remainder-core}.
 
+The exact right-edge reflection also contributes the Hermitian archimedean
+self block $J_{\rm arch}=I_f+I_f^*$ of \eqref{eq:J-I-source-split}.
+Lemma~\ref{lem:holomorphic-self-elimination} does not remove it.  Thus the
+small-remainder decomposition assumed below requires an additional mechanism
+for this block; it does not follow from the source identities in
+Section~\ref{sec:right-edge}.
+
 There is no direct-residual operator in this ledger.  The safe-line estimate
 $\Delta H_{\rm dir}=O(L^{-2})$ does not survive the one-$\chi$ stationary
 normalization uniformly in the relevant Dirichlet carrier.  The full source
@@ -77,8 +84,10 @@ $H_{\rm ar}$.  The exact regular operator is
 \[
 R_T^{\rm reg}:=R_T^{\rm geom}+R_{f',T}^{\log}+R_T^{\rm hor},
 \]
-where $R_T^{\rm hor}$ is the horizontal-connector contribution left after
-holomorphic self-source cancellation.  Higher stationary and Stirling terms
+where $R_T^{\rm hor}$ is the horizontal-connector contribution specified by
+the hypothesis. The current route has not proved that $J_{\rm arch}$ is
+absorbed into the stated small-rank or relative-Hilbert--Schmidt classes.
+Higher stationary and Stirling terms
 occur only in estimates of these exact operators.  Under
 $\lambda_T\ge\lambda_*>0$, three separate unscaled relative
 Hilbert--Schmidt estimates $o(N_T)$ imply the displayed scaled estimate by the
