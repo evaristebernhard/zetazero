@@ -47,3 +47,27 @@ and a direct smooth-packet computation show that this block can dominate the
 finite matrix. The paper now displays the exact four-block contour identity,
 including the factor `L^-2` in every right-edge block. Its conditional
 small-remainder interpretation still requires a new treatment of this block.
+
+
+A separate structural audit,
+[generic_principal_part_negative_squares_2026-09-25.md](generic_principal_part_negative_squares_2026-09-25.md),
+proves an exact **genericized zero-side** equivalence
+[
+n_-(A_H)
+=
+B(H)+P(H')
+=
+operatorname{sq}_-(K_{M_Omega})
+=
+operatorname{sq}_-(K_{S_Omega})
+=
+deg B_Omega.
+]
+Here (M_Omega) is the finite principal part of (H/H') formed only from
+stationary poles inside the current good rectangle, and (S_Omega) is its
+Cayley transform.  The holomorphic background is removed exactly by Cauchy's
+theorem.  This does **not** identify the unperturbed four-block inertia
+(n_-(A_F)) with the Blaschke degree: (A_F) reaches (A_H) only through the
+existing small generic perturbation in Section 14.  The result is therefore an
+exact structural re-encoding of the generic stationary defect, not a new
+(o(N_T)) estimate and not a change of any major-node status.
