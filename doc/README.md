@@ -32,6 +32,16 @@ density-one interface plan is in
 下一轮选定的 gap 及执行顺序记录于
 [lean_gap_closure_plan.md](lean_gap_closure_plan.md)。
 
+
+A fully audited generic zero-side re-encoding of stationary inertia by a
+finite principal part, generalized Nevanlinna negative squares, and a
+Krein--Langer Blaschke denominator is recorded in
+[generic_principal_part_negative_squares_2026-09-25.md](generic_principal_part_negative_squares_2026-09-25.md).
+The note is explicit that this exact equivalence begins only after the existing
+generic perturbation (H=F+eta z+arepsilon); it does not identify the
+unperturbed four-block inertia (n_-(A_F)) with a Blaschke degree and does not
+change the theorem status.
+
 ## Local setup
 
 ```bash
