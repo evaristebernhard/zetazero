@@ -1,0 +1,304 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools,booktabs,mathrsfs}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newcommand{\CC}{\mathcal C}
+\newcommand{\RR}{\mathfrak R_T}
+\newcommand{\BF}{\mathcal B}
+\newcommand{\ZZ}{\mathscr Z}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\title{Numerical Companion to the Hardy-Gauge Contour Matrix}
+\author{Chaoyu Hu and Jizheng Chen}
+\date{25 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This independent numerical note specifies matrices that can be computed before
+any stationary-phase or scalar-kernel reduction. It distinguishes the original
+closed-contour matrix $A_F$ from the core arithmetic matrix $A_T^{\rm true}$,
+gives their exact four-block relation, describes the quadrature and FFT
+approximations actually used, and records finite-scale spectra and consistency
+errors. The data expose which analytical estimates would be needed in a proof;
+they do not establish asymptotic positivity or the density-one hypothesis.
+\end{abstract}
+
+\section{The matrix to be approximated}
+
+Fix $T$, choose boundary heights $T_1\in[T,T+1]$ and
+$T_2\in[2T,2T+1]$, and let $L=\log(T/2\pi)$. The symmetric rectangle has
+$-1\le\Re s\le2$ and $T_1\le\Im s\le T_2$, with counterclockwise boundary.
+Use the Hardy gauge $\ZZ=q\zeta$, where $q^2=\chi(1-s)$, and put
+\begin{equation}
+\begin{split}
+f&=-\tfrac12\chi'/\chi,\qquad
+P=-\zeta'/\zeta,\qquad Q=(\zeta'/\zeta)',\\
+L_1&=Z_1'/Z_1,\qquad Z_1=\zeta'+f\zeta,\qquad H=f+L_1,\\
+\CC&=\zeta^2Q,\qquad
+C_{\ZZ}^{\rm norm}=\frac{q^2}{L^2}(\CC+f'\zeta^2).
+\end{split}
+\label{eq:fields}
+\end{equation}
+For packet centres $\tau_j$ and packet polarization
+$\BF_{j k}(s)=B_k(z(s))B_j^\#(z(s))$, $z(s)=-i(s-1/2)$, the original matrix is
+\begin{equation}
+(A_F)_{jk}=\frac{1}{2\pi i}\oint_{\partial\mathcal R_T^{\rm sym}}
+L_1(s)C_{\ZZ}^{\rm norm}(s)\BF_{jk}(s)\,ds.
+\label{eq:af}
+\end{equation}
+The same closed integral with $H$ in place of $L_1$ is equal to
+\eqref{eq:af}: the difference is the integral of the holomorphic
+$fC_{\ZZ}^{\rm norm}\BF_{jk}$. This equality is a useful independent
+numerical check, but it does \emph{not} remove the right-edge Hermitian
+$f$ block.
+
+Define the upward right-edge integral $I_D$ by
+\begin{equation}
+(I_D)_{jk}=\frac{1}{2\pi L^2}\int_{T_1}^{T_2}
+q(2+it)^2D(2+it)\BF_{jk}(2+it)\,dt,
+\qquad \RR[D;1,1]=I_D+I_D^*.
+\label{eq:right}
+\end{equation}
+The factor $L^{-2}$ is mandatory: without it the resulting matrix has a
+different scale from $A_F$. Leg multipliers in $\RR[D;a,b]$ act on the two
+packet syntheses before integration, as in the main manuscript.
+
+\section{The exact four blocks}
+
+On the right edge, set
+\begin{equation}
+H_{\rm ar}=-P+\frac{Q}{f-P},\qquad
+D_{\rm ar}=\CC H_{\rm ar},\qquad
+D_f=f(\CC+f'\zeta^2),
+\label{eq:ar}
+\end{equation}
+and
+\begin{equation}
+D_{f'}=\frac{f'}{f-P}\CC+f'\zeta^2H_{\rm ar}
+          +\frac{(f')^2}{f-P}\zeta^2.
+\label{eq:fp}
+\end{equation}
+The identity $H=f+H_{\rm ar}+f'/(f-P)$ gives, pointwise on this edge,
+\begin{equation}
+HC_{\ZZ}^{\rm norm}
+=\frac{q^2}{L^2}(D_{\rm ar}+D_f+D_{f'}).
+\label{eq:pointwise}
+\end{equation}
+Let $\vartheta_c$ be the chosen core multiplier. The four Hermitian blocks
+are defined on the \emph{same full packet space} by
+\begin{align}
+A_T^{\rm true}&=\RR[D_{\rm ar};\vartheta_c,\vartheta_c],
+\label{eq:true}\\
+L_T^{\rm geom}&=\RR[D_{\rm ar};1,1]-A_T^{\rm true},
+\label{eq:geom}\\
+J_T^{\rm arch}&=\RR[D_f;1,1],
+\label{eq:arch}\\
+R_T^{\rm exact}&=\RR[D_{f'};1,1]+R_T^{\rm hor,H},
+\label{eq:remainder}
+\end{align}
+where $R_T^{\rm hor,H}$ is the oriented integral of
+$HC_{\ZZ}^{\rm norm}\BF$ on the top and bottom sides. Reflection converts the
+left $H$ integral into the adjoint of the right $H$ integral. Consequently,
+\begin{equation}
+\boxed{A_F=A_T^{\rm true}+L_T^{\rm geom}
+                +J_T^{\rm arch}+R_T^{\rm exact}.}
+\label{eq:four}
+\end{equation}
+The equality is algebraic and survives common compression to a retained
+subspace. The $ff'\zeta^2$ term belongs to $J_T^{\rm arch}$; omitting it would
+make \eqref{eq:four} inexact. The $f'$ source and horizontal contour are grouped
+into one fourth block only for bookkeeping. No smallness or sign is assigned to
+any block by \eqref{eq:four}.
+
+\section{Finite packet model and discretization}
+
+The numerical specialization uses an exact lattice
+$\tau_j=2\pi j/L_{\rm pkt}$ within $[T,2T]$, where
+\begin{equation}
+L_{\rm pkt}=L+0.1\log L,\qquad
+W_T=L-0.1\log L,\qquad u_0=-L/2.
+\label{eq:packetparameters}
+\end{equation}
+The full packet window equals $L_{\rm pkt}^{-1/2}$ on
+$[-L_{\rm pkt}/2,L_{\rm pkt}/2]$ and has $C^\infty$ caps of width $0.1$;
+the sharp core is $[u_0,u_0+W_T]$. These are explicit finite test parameters,
+not the manuscript's eventual asymptotic retained projection.
+
+On a vertical side $s=\sigma+it$, the flat part of a packet leg has the
+closed form
+\begin{equation}
+\begin{aligned}
+a_\pm&=\pm(\sigma-1/2)+i(t-\tau_j),\\
+P_\pm(t,\tau_j;\sigma,u,w)
+&=\frac1{\sqrt{L_{\rm pkt}}}\int_u^{u+w}e^{a_\pm x}\,dx\\
+&=\frac{w}{\sqrt{L_{\rm pkt}}}
+e^{a_\pm(u+w/2)}\frac{\sinh(a_\pm w/2)}{a_\pm w/2}.
+\end{aligned}
+\label{eq:packetclosed}
+\end{equation}
+The quotient is evaluated by its Taylor series near zero. Smooth caps are
+integrated with 64-point Gauss--Legendre quadrature. The matrix assembly has
+the weighted-product form
+\begin{equation}
+I_D\simeq P_-^*\operatorname{diag}(w_rF_D(t_r))P_+,
+\qquad F_D(t)=\frac{q(2+it)^2D(2+it)}{2\pi L^2},
+\label{eq:product}
+\end{equation}
+with trapezoidal weights $w_r$ on vertical sides. The top and bottom use
+Gauss--Legendre nodes in $\sigma$ and their true boundary orientations.
+For the direct $A_F$ computation, $\zeta,\zeta',\zeta''$ are evaluated using
+SciPy's complex zeta function and fourth-order central differences; $f'$ is
+differenced similarly. Thus the calculations here remain floating-point
+approximations, including their special-function evaluations.
+
+For the \emph{core right-edge} matrix, the $u$ integral in
+\eqref{eq:packetclosed} can instead be sampled and transformed by FFT.
+With $t_r-\tau_j$ on a grid of spacing $h_t$, choose $N_{\rm FFT}$ and
+$h_u=2\pi/(N_{\rm FFT}h_t)$. A midpoint sum in $u$ gives all packet
+frequencies from one inverse FFT, with the origin phase restored explicitly.
+The final partial cell is clipped to the exact core endpoint. The direct
+closed-form packet integral checks the FFT approximation separately from the
+height quadrature. The current \emph{full-contour} script uses the analytic
+packet formula and Gauss quadrature, not an FFT for its horizontal sides.
+
+\section{Finite spectra and decomposition checks}
+
+The following rows use the same smooth packet and good-height contour within
+each value of $T$. Let $S_0=A_T^{\rm true}$,
+$S_1=S_0+L_T^{\rm geom}$, $S_2=S_1+J_T^{\rm arch}$, and
+$S_3=S_2+R_T^{\rm exact}$. The direct column comes from the original
+$L_1$ closed integral \eqref{eq:af}, independently of the split.
+
+\begin{center}
+\begin{tabular}{@{}r l r r@{}}
+\toprule
+$T$ & matrix & negative eigenvalues & smallest eigenvalue \\
+\midrule
+80 & $S_0$ & 19 & $-3.303704$ \\
+   & $S_1$ & 18 & $-5.292936$ \\
+   & $S_2$ & 0  & $\phantom{-}0.597878$ \\
+   & $S_3$ & 0  & $\phantom{-}0.592901266$ \\
+   & direct $A_F$ & 0 & $\phantom{-}0.592901060$ \\
+\midrule
+160 & $S_0$ & 46 & $-6.320577$ \\
+    & $S_1$ & 46 & $-8.974877$ \\
+    & $S_2$ & 2  & $-11.558592$ \\
+    & $S_3$ & 0  & $\phantom{-}0.003758395$ \\
+    & direct $A_F$ & 0 & $\phantom{-}0.003757118$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The code selects these heights by maximizing the smallest sampled $|Z_1|$
+along each horizontal side; this sampling is not a proof that a side is
+zero-free. At $T=80$ the contour is $[80.1,160.95]$ and the dimension is 34. The
+vertical mesh is $0.0075$ and each horizontal side has 2048 Gauss nodes.
+At $T=160$ the contour is $[160.95,320.3]$ and the dimension is 85; the
+vertical mesh is $0.015$ and each horizontal side has 1024 nodes. The
+archimedean block has Frobenius norms $33.89237$ and $67.86938$, respectively.
+It is positive in the first sample but itself has two negative eigenvalues
+in the second. The fourth block is essential at $T=160$: adding $J_T^{\rm arch}$
+alone does not remove the last two negative directions.
+
+The relative Frobenius discrepancy
+$\norm{S_3-A_F^{(H)}}_F/\norm{A_F^{(H)}}_F$ is
+$3.34\cdot10^{-7}$ at $T=80$ and $4.82\cdot10^{-6}$ at $T=160$.
+Here $A_F^{(H)}$ is the independently assembled closed integral with $H$.
+The independent $L_1$ and $H$ closed integrals differ relatively by
+$5.43\cdot10^{-6}$ and $1.27\cdot10^{-4}$, respectively. These discrepancies
+come from quadrature, finite differences, and floating-point evaluation; the
+symbolic identity \eqref{eq:four} has no such error.
+
+The mesh sequence below holds the packet parameters and selected contour
+fixed at each $T$. Here $\delta_{\rm split}$ is the relative Frobenius
+discrepancy between $S_3$ and the direct $H$ integral, while
+$\delta_{L_1,H}$ compares the independently discretized closed integrals.
+\begin{center}
+\small
+\begin{tabular}{@{}r r r r r r@{}}
+\toprule
+$T$ & vertical step & horizontal nodes & $\lambda_{\min}(A_F)$
+& $\delta_{\rm split}$ & $\delta_{L_1,H}$ \\
+\midrule
+80  & $0.0300$ & 512  & $0.592889$ & $7.09\cdot10^{-7}$ & $8.76\cdot10^{-5}$ \\
+80  & $0.0150$ & 1024 & $0.592899$ & $5.35\cdot10^{-7}$ & $2.19\cdot10^{-5}$ \\
+80  & $0.0075$ & 2048 & $0.592901$ & $3.34\cdot10^{-7}$ & $5.43\cdot10^{-6}$ \\
+160 & $0.0300$ & 512  & $0.006842$ & $6.77\cdot10^{-6}$ & $5.06\cdot10^{-4}$ \\
+160 & $0.0150$ & 1024 & $0.003757$ & $4.82\cdot10^{-6}$ & $1.27\cdot10^{-4}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The $T=160$ minimum moves appreciably on refinement, so its positive sign is
+not numerically certified. In the separate core FFT experiment on $[T,2T]$,
+the full FFT matrix differs from a matrix using analytic packet integrals by
+$1.32\cdot10^{-5}$ in relative Frobenius norm at $T=80$; that comparison
+isolates the packet-transform approximation and uses different boundary
+heights from the closed-contour table.
+
+For computed Hermitian matrices $A$ and $B$, Weyl's inequality gives
+\begin{equation}
+|\lambda_{\min}(A)-\lambda_{\min}(B)|
+\le\norm{A-B}_2\le\norm{A-B}_F.
+\label{eq:weyl}
+\end{equation}
+This is a check between discretized matrices, not an error bound between a
+discretization and the exact contour integral. At $T=160$ the observed
+minimum is only about $0.0038$, so its sign is sensitive to a much tighter
+quadrature and special-function error analysis. Neither sample proves that
+$A_F\succeq0$ at other heights.
+
+\section{What the numerical study should test next}
+
+The paper's conditional hypothesis is about a \emph{whitened one-sided defect},
+not the raw negative index of $A_T^{\rm true}$. On the precisely specified
+retained space and with its reference Gram $G_T$, the quantity to measure is
+\begin{equation}
+\beta_-(T;\lambda_T)=
+\frac{\operatorname{tr}\!\left[
+\left(G_T^{-1/2}(A_T^{\rm true}-\lambda_TP_T)G_T^{-1/2}\right)_-^2
+\right]}{(\kappa_*\lambda_T)^2N_T},
+\qquad\kappa_*=0.02.
+\label{eq:beta}
+\end{equation}
+It cannot be inferred from the sign count in the table. A finite comparison
+on the mean-zero space alone has been computed, but the full retained
+projection and a stable treatment of small eigenvalues of $G_T$ are still
+required before extrapolating it.
+
+The immediate numerical tasks are to (i) refine vertical, horizontal,
+derivative, and special-function precision independently; (ii) repeat the
+four-block calculation across contours and packet parameters; (iii) calculate
+the spectrum of $L_T^{\rm geom}+J_T^{\rm arch}$ after the exact geometric edge
+extraction; and (iv) compute \eqref{eq:beta} after implementing the paper's
+complete retained projection. A rigorous sign certificate would also need
+explicit enclosures for the quadrature and field-evaluation errors. The
+four-block sum is the object to validate before studying any proposed
+asymptotic simplification.
+
+\section*{Reproduction}
+
+The tracked scripts are \path{scripts/compute_original_contour.py},
+\path{scripts/compute_true_matrix.py}, and
+\path{scripts/compare_true_reference.py}. For the first row of the
+table, run from the repository root:
+\begin{verbatim}
+python3 scripts/compute_original_contour.py --height 80 \
+  --smooth-cap 0.1 --height-step 0.0075 \
+  --horizontal-nodes 2048 --derivative-step 0.001 \
+  --output output/numerics/original_T80_smooth_superfine.json \
+  --matrix-output output/numerics/original_T80_smooth_superfine.npz
+\end{verbatim}
+For $T=160$ use \texttt{--height 160 --height-step 0.015
+--horizontal-nodes 1024}, with distinct output names. The core FFT is checked
+against analytic packet integrals by
+\begin{verbatim}
+python3 scripts/compute_true_matrix.py --height 80 --a0 0.1 \
+  --packet-reserve 0.1 --height-oversample 24 --u-step 0.001 \
+  --derivative-step 0.001 --direct-check
+\end{verbatim}
+The directed gates are \texttt{npm test -- original-contour true-matrix}.
+The JSON/NPZ output is locally generated and is not part of the manuscript.
+
+\end{document}

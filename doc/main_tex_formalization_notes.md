@@ -384,3 +384,28 @@ and proves the exact identity. The conditional theorem separately assumes
 incorporated into a revised principal operator or obtain a valid bound for its
 retained-space contribution, then revisit the one-sided spectral defect for
 that exact principal choice.
+
+## 2026-09-25 — M04/M08 finite four-block spectral coupling
+
+**Observation.** The exact four-block sum agrees numerically with an independent
+closed-contour integration, but its intermediate spectra cannot be inferred
+from a single block. In the smooth packet test at `T=80`, adding `J_arch` to
+`A_true+L_geom` removes all raw negative directions. At `T=160`, that same
+three-block partial sum still has two negative directions, and only the exact
+`f'`-plus-horizontal fourth block removes them in the tested matrix.
+
+**Lean evidence.** No Lean theorem certifies these finite spectra. The matrix
+data come from `scripts/compute_original_contour.py`; the standalone
+`numerical.tex` gives the matrix formulas, discretization, refinement table,
+and error limitations. `npm test -- original-contour true-matrix` checks the
+finite split and the core FFT against analytic packet integrals.
+
+**Manuscript impact.** Neither `A_true` nor `A_true+L_geom+J_arch` is a
+numerically reliable proxy for the original contour spectrum across the two
+tested heights. The horizontal contribution cannot be discarded before
+obtaining a quantified operator estimate. The small positive minimum at
+`T=160` is not a rigorous sign certificate.
+
+**Next interface.** Refine all four blocks with independent error controls,
+then analyze the spectrum after the full retained projection and reference-Gram
+whitening rather than extrapolating raw finite sign counts.
