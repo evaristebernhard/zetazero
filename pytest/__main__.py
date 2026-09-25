@@ -18,6 +18,14 @@ from test_compile import (
     test_stationary_oscillatory_approximation_build,
     test_density_one_endgame_interface_build,
 )
+def test_true_matrix_numerics():
+    from test_true_matrix import (
+        test_exact_source_is_log_plus_residual_and_derivative_step_converges,
+        test_fft_true_matrix_matches_direct_packet_integrals,
+    )
+
+    test_fft_true_matrix_matches_direct_packet_integrals()
+    test_exact_source_is_log_plus_residual_and_derivative_step_converges()
 
 
 def main():
@@ -38,6 +46,7 @@ def main():
         "density-one": test_density_one_endgame_interface_build,
         "blueprint-decls": test_blueprint_declarations,
         "latex": test_main_tex_compiles_cleanly,
+        "true-matrix": test_true_matrix_numerics,
     }
     if len(sys.argv) > 1:
         unknown = [name for name in sys.argv[1:] if name not in all_tests]

@@ -31,3 +31,10 @@ one-sided relative spectral-defect hypothesis for the true operator retaining
 `e(-n e^d)`. This remains a fatal M05 gap for an unconditional result. See
 `doc/lagwise_hlz_gap_audit.md` for the route-internal audit and possible repair
 directions.
+
+The finite-scale FFT audit in `doc/true_matrix_fft_audit_2026-09-25.md`
+computes a concrete packet specialization of `A_true` directly from its
+right-edge integral. It finds a near-half raw negative index but substantial
+raw negative squared mass for the tested parameters. The paper's retained-space,
+reference-whitened `beta_-` estimate remains untested and unproved; these
+numerics do not change any node status.

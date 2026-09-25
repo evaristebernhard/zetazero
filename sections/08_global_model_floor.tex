@@ -257,6 +257,20 @@ norm or Hilbert--Schmidt approximation of $A_T^{\rm true}$ by
 $\lambda_TP_T$ is assumed.
 \end{hypothesis}
 
+\begin{remark}[Why the negative-index count is insufficient]
+The number of negative eigenvalues of $A_T^{\rm true}$, by itself, does not
+measure the hypothesis above.  The quantity in
+\eqref{eq:one-chi-relative-defect} depends on the squared magnitudes of the
+negative eigenvalues after subtraction of $\lambda_TP_T$, restriction to the
+retained space, and whitening by $\Gfr_T$.  In particular, a large raw
+negative index is compatible with this hypothesis only if its relevant
+relative negative spectral mass is sufficiently small.  A finite-scale FFT
+calculation of the right-edge integral, with its packet and core choices
+recorded explicitly, is documented in
+\texttt{doc/true\_matrix\_fft\_audit\_2026-09-25.md}; it is numerical
+evidence, not a proof of the asymptotic estimate.
+\end{remark}
+
 \begin{remark}[Unresolved input]
 Hypothesis~\ref{hyp:one-chi-relative-defect} is not proved in this manuscript.
 The surviving phase $e(-ne^d)$ is precisely why no scalar reduction is used to

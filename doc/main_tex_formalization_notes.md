@@ -287,7 +287,7 @@ decomposition; these remain explicit inputs.
 
 ```text
 tr((G^(-1/2) (A_true - lambda_T P_T) G^(-1/2))_-^2)
-  / ((0.98 lambda_T)^2 N_T) = O(L^-2),
+  / ((0.02 lambda_T)^2 N_T) = O(L^-2),
 ```
 
 together with the geometric rank and scaled regular-relative-HS bounds.  The
@@ -297,3 +297,32 @@ spectral deletion costs at most `4 beta_- N_T` dimensions and yields
 **Next interface.**  Formalize the abstract one-sided-defect deletion lemma, then
 connect it to a concrete carrier-preserving operator only after an additive
 twist/second-stationary estimate is available.
+
+## 2026-09-25 — M05/M06/M10 finite true-matrix spectral audit
+
+**Observation.** Direct FFT evaluation of the right-edge integral defining
+`A_true` is feasible on explicit finite packet lattices. For the fixed
+finite-scale parameters `A_0=C_pkt=0.1`, its raw negative index is close to
+half the packet dimension at `T=80,160,320,640`. The negative squared mass is
+not small in this realization; it ranges from about `0.63` to `0.69` of the
+raw Frobenius square. Hence a raw sign count does not determine the one-sided
+relative defect. At accessible heights the exact direct residual and log-only
+source also cancel substantially, so numerical tests of `H_log` alone do not
+test `A_true`.
+
+**Lean evidence.** This is numerical evidence, not a Lean declaration.
+`scripts/compute_true_matrix.py` implements the section 08 right-edge form;
+`npm test -- true-matrix` checks the FFT packet values against analytic
+integrals and verifies the exact source split numerically. The reproducible
+parameters, convergence data, and full spectra are recorded in
+`doc/true_matrix_fft_audit_2026-09-25.md`.
+
+**Manuscript impact.** The conditional `beta_-` hypothesis remains open and
+must be tested on the actual retained space after reference-Gram whitening and
+subtraction of the positive model. The finite calculation neither proves nor
+disproves its asymptotic rate. The earlier `0.98` in the interface note above
+was stale; the current reference-floor constant is `kappa_*=0.02`.
+
+**Next interface.** Specify the retained projection and the comparison model
+on the same packet lattice, then bound the negative squared mass of the
+whitened defect uniformly in `T` or identify a counterexample family.
