@@ -313,7 +313,9 @@ test `A_true`.
 **Lean evidence.** This is numerical evidence, not a Lean declaration.
 `scripts/compute_true_matrix.py` implements the section 08 right-edge form;
 `npm test -- true-matrix` checks the FFT packet values against analytic
-integrals and verifies the exact source split numerically. The reproducible
+integrals and verifies the exact source split numerically.
+`scripts/compare_true_reference.py` evaluates the positive model on the same
+finite packet basis and compares the mean-zero generalized spectra. The reproducible
 parameters, convergence data, and full spectra are recorded in
 `doc/true_matrix_fft_audit_2026-09-25.md`.
 
@@ -323,6 +325,6 @@ subtraction of the positive model. The finite calculation neither proves nor
 disproves its asymptotic rate. The earlier `0.98` in the interface note above
 was stale; the current reference-floor constant is `kappa_*=0.02`.
 
-**Next interface.** Specify the retained projection and the comparison model
-on the same packet lattice, then bound the negative squared mass of the
+**Next interface.** Specify the complete retained projection on the same
+packet lattice, then bound the negative squared mass of the
 whitened defect uniformly in `T` or identify a counterexample family.

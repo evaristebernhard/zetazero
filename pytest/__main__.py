@@ -20,12 +20,14 @@ from test_compile import (
 )
 def test_true_matrix_numerics():
     from test_true_matrix import (
+        test_comparison_model_on_same_packet_basis,
         test_exact_source_is_log_plus_residual_and_derivative_step_converges,
         test_fft_true_matrix_matches_direct_packet_integrals,
     )
 
     test_fft_true_matrix_matches_direct_packet_integrals()
     test_exact_source_is_log_plus_residual_and_derivative_step_converges()
+    test_comparison_model_on_same_packet_basis()
 
 
 def main():

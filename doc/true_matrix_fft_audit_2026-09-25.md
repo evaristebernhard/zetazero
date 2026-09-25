@@ -76,6 +76,29 @@ eigenvalue by at most `0.044` at `T=640` (about `0.25%` of the spectral
 radius); the negative squared mass fraction changes by less than `1e-4`.
 Small eigenvalue signs are less stable.
 
+## Comparison with the paper's positive kernel at one finite height
+
+`scripts/compare_true_reference.py` puts
+`K(r,s)=G_log(1-|r-s|)` on the **same** finite packet basis and projects both
+matrices to the mean-zero space. At `T=80`, 1024-point Gauss quadrature gives
+dimension `33`, a reference Gram condition number about `707`, and
+
+```text
+min eig(P,G) = 0.57636 (> kappa_* = 0.02),
+negative count of eig(A_true - P,G) = 18,
+sum of squares of negative generalized eigenvalues = 5.3269e11,
+min eig(A_true - P,G) = -6.6443e5.
+```
+
+Here `eig(B,G)` means the Hermitian generalized eigenproblem `Bv=mu Gv`.
+The same negative squared mass changes by less than `5e-7` relatively when
+the model quadrature is halved to 512 nodes.  The large number is a
+finite-scale diagnostic on the mean-zero space only: the paper's additional
+core/end retained projection and asymptotic large-`A_0` regime are not in
+this calculation. It nevertheless shows that, for this explicit matrix,
+smallness of the raw eigenvalues cannot be inferred from their signs or from
+the positive comparison floor.
+
 At `T=80`, the exact source split also gives
 `||A_ar||_F=8.27`, `||A_log||_F=26.22`, and
 `||A_direct_residual||_F=24.64`, with
@@ -87,11 +110,10 @@ an algebraic check, not an asymptotic estimate.
 ## Manuscript impact and next interface
 
 The current conditional theorem may keep `beta_-` as an explicit hypothesis,
-but no numerical sign count establishes it.  The next useful experiment is to
-construct the paper's precise retained projection and positive comparison
-operator on the same packet basis, then compute the negative spectrum of
-`G^(-1/2)(A_true-lambda P)G^(-1/2)` with a verified treatment of the very
-small eigenvalues of `G`.  To turn this into a theorem, one needs uniform
+but no numerical sign count establishes it. The positive comparison operator
+can now be computed on the same finite basis; the next interface is the
+paper's precise retained projection and a verified treatment of the very
+small eigenvalues of `G` at larger heights. To turn this into a theorem, one needs uniform
 estimates for that spectral mass as `T` grows; finite FFT data alone cannot
 provide them.  The unproved additive-twist bridge in M05 remains open.
 
@@ -100,6 +122,7 @@ Reproduce the main files with:
 ```bash
 python3 scripts/compute_true_matrix.py --height 80 --a0 0.1 --packet-reserve 0.1 --height-oversample 24 --u-step 0.001 --derivative-step 0.001 --direct-check --output output/numerics/true_T80_fine.json --matrix-output output/numerics/true_T80_fine.npz
 npm test -- true-matrix
+python3 scripts/compare_true_reference.py --matrix output/numerics/true_T80_fine.npz --metadata output/numerics/true_T80_fine.json --nodes 1024 --output output/numerics/compare_T80_fine.json
 ```
 
 Replace `80` with `160`, `320`, or `640` for the other rows.  Generated NPZ
