@@ -328,3 +328,30 @@ was stale; the current reference-floor constant is `kappa_*=0.02`.
 **Next interface.** Specify the complete retained projection on the same
 packet lattice, then bound the negative squared mass of the
 whitened defect uniformly in `T` or identify a counterexample family.
+
+## 2026-09-25 — M02/M04/M08 original contour self-block correction
+
+**Observation.** The conjugate-even reflection of `f` and the downward left
+orientation give `I_f,left=-I_f*`. The zero closed holomorphic integral then
+forces `I_f,hor=I_f*-I_f`, which leaves the Hermitian `J_arch=I_f+I_f*`
+unconstrained. The former manuscript claim that holomorphy removes this
+self block had the wrong adjoint sign.
+
+**Lean evidence.** No concrete Lean matrix theorem establishes this split.
+The analytic reflection identity is recorded in
+`sections/03_right_edge.tex`. The independent finite integration in
+`scripts/compute_original_contour.py` checks the original `Z1'/Z1` contour,
+the equivalent Hardy-source contour, the raw zero-coordinate term, and each
+matrix block. `npm test -- original-contour` is the directed numerical gate;
+`doc/original_contour_split_audit_2026-09-25.md` gives convergence data.
+
+**Manuscript impact.** The current conditional decomposition is an additional
+unproved input with a missing leading candidate. At `T=80` on a smooth
+34-packet realization, the original matrix has zero negative eigenvalues,
+while `A_true` has 19; adding the omitted `J_arch` removes those negative
+directions. This demonstrates why the earlier `A_true` spectrum cannot be
+used as the original contour spectrum.
+
+**Next interface.** Keep `J_arch` in an exact contour operator identity, then
+analyze its retained-space rank/relative size or include it in a revised
+principal spectral model before attempting the M08 remainder estimate.

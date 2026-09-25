@@ -30,6 +30,12 @@ def test_true_matrix_numerics():
     test_comparison_model_on_same_packet_basis()
 
 
+def test_original_contour_numerics():
+    from test_original_contour import test_original_closed_contour_and_self_block_sign
+
+    test_original_closed_contour_and_self_block_sign()
+
+
 def main():
     all_tests = {
         "global-floor": test_global_floor_certificate,
@@ -49,6 +55,7 @@ def main():
         "blueprint-decls": test_blueprint_declarations,
         "latex": test_main_tex_compiles_cleanly,
         "true-matrix": test_true_matrix_numerics,
+        "original-contour": test_original_contour_numerics,
     }
     if len(sys.argv) > 1:
         unknown = [name for name in sys.argv[1:] if name not in all_tests]

@@ -10,6 +10,12 @@ packet/core choice.  It retains the complete `H_ar` source and therefore the
 oscillatory one-chi carrier; it does not insert the unproved scalar-HLZ lag
 kernel.
 
+**Later correction:** this right-edge operator is not the original closed
+contour matrix `A_F`. The original-contour audit in
+`doc/original_contour_split_audit_2026-09-25.md` found an omitted Hermitian
+archimedean self block in the proposed split. Its direct finite `A_F`
+spectrum must be used when discussing the original matrix.
+
 The finite experiments below have close to half of the raw eigenvalues
 negative.  Their raw negative squared mass is sizeable in this realization.
 Thus a sign count alone cannot support the claim that the negative spectrum is

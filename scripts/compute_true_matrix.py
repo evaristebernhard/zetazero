@@ -56,7 +56,12 @@ def right_edge_source(t: np.ndarray, log_scale: float, derivative_step: float, s
 def analytic_packet(offset: np.ndarray, sigma: float, left: float, width: float, packet_width: float) -> np.ndarray:
     """Closed-form integral of a flat core packet (used for FFT validation)."""
     a = sigma + 1j * offset
-    return np.exp(a * (left + width / 2)) * width * np.sinh(a * width / 2) / (a * width / 2) / np.sqrt(packet_width)
+    z = np.broadcast_to(a * width / 2, np.shape(offset))
+    ratio = np.empty_like(z, dtype=complex)
+    small = np.abs(z) < 1e-8
+    ratio[small] = 1 + z[small] ** 2 / 6 + z[small] ** 4 / 120
+    ratio[~small] = np.sinh(z[~small]) / z[~small]
+    return np.exp(a * (left + width / 2)) * width * ratio / np.sqrt(packet_width)
 
 
 def packet_table_fft(

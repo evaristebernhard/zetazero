@@ -529,3 +529,21 @@ currently intercepted earlier by the pre-existing M02 dependency
 `Analytic.chiOneSub`.  That dependency bug is recorded here rather than repaired
 from this parallel M04 track.  The manuscript `main.tex` is intentionally left
 unchanged until these parallel edits are consolidated.
+
+## 2026-09-25 — M02/M04/M08 archimedean self-block orientation gap
+
+The closed holomorphic integral of `f C_Z^norm B` is zero, but its reflected
+left vertical matrix is `-I_f*`, so the horizontal matrix equals
+`I_f* - I_f`. This cancels only the anti-Hermitian vertical combination.
+The Hermitian `J_arch=I_f+I_f*` in the right-edge reflection survives. The
+earlier manuscript lemma claiming its elimination was false, and the proposed
+`A_F=A_true+E_geom+R_reg` decomposition omits an exact block unless a new
+mechanism absorbs it with the required bounds. A direct finite contour audit
+at `T=80` finds `||J_arch||_F≈33.89` and zero negative eigenvalues for the
+original 34-dimensional `A_F`, versus 19 negative eigenvalues for `A_true`.
+The exact algebraic sign, numerical convergence checks, and reproducible
+matrices are in `doc/original_contour_split_audit_2026-09-25.md`.
+
+This is a distinct blocker from the M05 additive-carrier gap. Any repair must
+first state the correct principal operator including `J_arch`, or prove a
+quantitative rank/relative-HS treatment of it on the actual retained space.
