@@ -10,11 +10,9 @@ absolute-lag primitive criterion of
 Section~\ref{sec:primitive-remainder-core}.
 
 The exact right-edge reflection also contributes the Hermitian archimedean
-self block $J_{\rm arch}=I_f+I_f^*$ of \eqref{eq:J-I-source-split}.
-Lemma~\ref{lem:holomorphic-self-elimination} does not remove it.  Thus the
-small-remainder decomposition assumed below requires an additional mechanism
-for this block; it does not follow from the source identities in
-Section~\ref{sec:right-edge}.
+self block $J_T^{\rm arch}=I_f+I_f^*$ of \eqref{eq:J-I-source-split}.
+Lemma~\ref{lem:holomorphic-self-elimination} does not remove it. The following
+identity keeps this block visible before any small-remainder hypothesis.
 
 There is no direct-residual operator in this ledger.  The safe-line estimate
 $\Delta H_{\rm dir}=O(L^{-2})$ does not survive the one-$\chi$ stationary
@@ -24,8 +22,8 @@ $A_T^{\rm true}$ by definition \eqref{eq:true-logonly-operator}.
 
 \begin{lemma}[Log-only $f'$ class is relative-regular]
 \label{lem:logonly-fprime-relative-regular}
-Let $R_{f',T}^{\log}$ be the contribution of
-\eqref{eq:logonly-fprime-source}. Then
+Let $R_{f',T}^{\log}:=\mathfrak R_T[R_{f'}^{\log};1,1]$ be the Hermitian
+right-edge contribution of \eqref{eq:logonly-fprime-source}. Then
 \begin{equation}
 \boxed{
 \left\|\Gfr_T^{-1/2}R_{f',T}^{\log}\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T).
@@ -56,16 +54,74 @@ Thus the boundary-complete criterion applies without local mean deletion.
 
 For the final ledger write $R_T^{f'}:=R_{f',T}^{\log}$.
 
+\begin{proposition}[Exact four-block contour decomposition]
+\label{prop:exact-four-block-decomposition}
+On the full packet space, define the archimedean self block and the exact
+horizontal block by
+\begin{align}
+J_T^{\rm arch}
+&:=\mathfrak R_T\bigl[f(\mathcal C+f'\zeta^2);1,1\bigr],
+\label{eq:exact-arch-block}\\
+\langle R_T^{\rm hor,H}v,w\rangle
+&:=\frac1{2\pi i}\int_{\Gamma_{\rm hor}}
+H(s)C_{\mathscr Z}^{\rm norm}(s)\mathcal B_{v,w}(s)\,ds,
+\label{eq:exact-horizontal-H}
+\end{align}
+where $\Gamma_{\rm hor}$ is the union of the top and bottom sides with the
+boundary orientation of $\partial\mathcal R_T^{\rm sym}$. Set
+\begin{equation}
+R_T^{\rm exact}:=R_{f',T}^{\log}+R_T^{\rm hor,H}.
+\label{eq:exact-fourth-block}
+\end{equation}
+With $A_T^{\rm true}$ and $L_T^{\rm geom}$ as in
+\eqref{eq:true-logonly-operator}--\eqref{eq:exact-geometric-leakage}, the
+original normalized contour matrix satisfies
+\begin{equation}
+\boxed{
+A_F=A_T^{\rm true}+L_T^{\rm geom}+J_T^{\rm arch}+R_T^{\rm exact}.
+}
+\label{eq:exact-four-block-decomposition}
+\end{equation}
+This equality is exact before stationary phase, shell estimates, compression,
+or any asymptotic limit; it also holds after restricting all four terms to the
+same retained subspace.
+\end{proposition}
+
+\begin{proof}
+On the right edge, \eqref{eq:curvature-source} and
+\eqref{eq:L1-logonly-split} give the algebraic identity
+\[
+H(s)C_{\mathscr Z}^{\rm norm}(s)
+=\frac{q(s)^2}{L^2}\left[
+\mathcal C(s)H_{\rm ar}(s)
++f(s)\bigl(\mathcal C(s)+f'(s)\zeta(s)^2\bigr)
++R_{f'}^{\log}(s)\right].
+\]
+Reflection \eqref{eq:right-left-matrix-adjoint} turns the sum of the right and
+left integrals into the Hermitian right-edge operator $\mathfrak R_T$ applied
+to these three sources.  The horizontal integral is exactly
+\eqref{eq:exact-horizontal-H}. Moreover
+$\mathfrak R_T[\mathcal C H_{\rm ar};1,1]
+=A_T^{\rm true}+L_T^{\rm geom}$ by
+\eqref{eq:exact-geometric-leakage}.  Finally, the closed contour integrals
+with $H=f+L_1$ and with $L_1$ are equal by
+\eqref{eq:same-form-identity}. This proves the four-block identity.
+\end{proof}
+
 \begin{hypothesis}[Geometric edge and regular-remainder bounds]
 \label{hyp:edge-regular-bounds}
 For the same packet data and retained space $\Pret$ as in
-Hypothesis~\ref{hyp:one-chi-relative-defect}, assume
+Hypothesis~\ref{hyp:one-chi-relative-defect}, assume there is an edge operator
+$E_T^{\rm geom}$ such that
 \begin{equation}
-\boxed{A_F=A_T^{\rm true}+E_T^{\rm geom}+R_T^{\rm reg},}
+\boxed{
+L_T^{\rm geom}+J_T^{\rm arch}
+=E_T^{\rm geom}+R_T^{\rm edge+arch},
+}
 \label{eq:logonly-final-decomposition}
 \end{equation}
-where $A_T^{\rm true}$ is the exact log-only operator
-\eqref{eq:true-logonly-operator},
+with all operators restricted to $\Pret$. Here $A_T^{\rm true}$ is the exact
+log-only operator \eqref{eq:true-logonly-operator},
 \begin{equation}
 \boxed{\rank E_T^{\rm geom}=o(N_T),}
 \label{eq:logonly-edge-rank}
@@ -74,19 +130,25 @@ and each exact component satisfies
 \begin{equation}
 \boxed{
 \left\|\Gfr_T^{-1/2}R_T^\nu\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T)
-\quad(\nu\in\{\mathrm{geom},f',\mathrm{hor}\}).
+\quad(\nu\in\{\mathrm{edge+arch},f',\mathrm{hor}\}).
 }
 \label{eq:logonly-component-relative-HS}
 \end{equation}
-Here $E_T^{\rm geom}$ is exactly the geometric edge space of
+Here $E_T^{\rm geom}$ is the geometric edge operator of
 Proposition~\ref{prop:geometric-edge-ledger}; it contains no part of
-$H_{\rm ar}$.  The exact regular operator is
+$H_{\rm ar}$. The regular component $R_T^{\rm edge+arch}$ is defined by
+\eqref{eq:logonly-final-decomposition}, so its assumed relative bound must
+also account for the entire $J_T^{\rm arch}$ block. If the geometric ledger
+gives $L_T^{\rm geom}=E_T^{\rm geom}+R_T^{\rm geom}$ exactly, then
+$R_T^{\rm edge+arch}=R_T^{\rm geom}+J_T^{\rm arch}$; the bound for
+$R_T^{\rm geom}$ alone does not imply the bound assumed here. Put
+$R_T^{\rm hor}:=R_T^{\rm hor,H}$. The regular operator is
 \[
-R_T^{\rm reg}:=R_T^{\rm geom}+R_{f',T}^{\log}+R_T^{\rm hor},
+R_T^{\rm reg}:=R_T^{\rm edge+arch}+R_{f',T}^{\log}+R_T^{\rm hor}.
 \]
-where $R_T^{\rm hor}$ is the horizontal-connector contribution specified by
-the hypothesis. The current route has not proved that $J_{\rm arch}$ is
-absorbed into the stated small-rank or relative-Hilbert--Schmidt classes.
+Thus the exact four-block identity yields the conditional three-term equality
+$A_F=A_T^{\rm true}+E_T^{\rm geom}+R_T^{\rm reg}$ on $\Pret$. The current
+route has not proved the relative estimate for $R_T^{\rm edge+arch}$.
 Higher stationary and Stirling terms
 occur only in estimates of these exact operators.  Under
 $\lambda_T\ge\lambda_*>0$, three separate unscaled relative

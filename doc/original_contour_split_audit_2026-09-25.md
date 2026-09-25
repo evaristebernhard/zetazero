@@ -81,10 +81,14 @@ used as a certificate.
 
 ## Manuscript impact and next interface
 
-The current conditional theorem still assumes
-`A_F=A_true+E_geom+R_reg`; that equality and its small-remainder bounds do
-not follow from the source algebra as written. The missing $J_arch$ must be
-kept in the principal operator, or a new argument must place it in an allowed
+The paper now writes the exact normalized four-block identity
+`A_F=A_true+L_geom+J_arch+R_exact`, where
+`R_exact=A_fprime_right+A_horizontal_H`. Its right-edge operator includes
+the necessary `L^-2` curvature normalization. The conditional theorem
+separately assumes that `L_geom+J_arch` can be written as a small-rank edge
+operator plus a relative-Hilbert--Schmidt-small residual. That bound does not
+follow from the exact source algebra. The missing $J_arch$ must be kept in
+the principal operator, or a new argument must place it in an allowed
 remainder class. The finite calculation suggests it is leading size, but
 the exact orientation identity alone is enough to invalidate the claimed
 holomorphic elimination. The previously observed near-half negative spectrum

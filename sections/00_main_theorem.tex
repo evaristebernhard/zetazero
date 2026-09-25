@@ -4,9 +4,11 @@ gauge and a near-lattice packet family.  Its zero-side residue representation
 converts off-critical-line stationary geometry into negative inertia.  On the
 arithmetic side the complete non-$f'$ Dirichlet source
 $-P(s)+Q(s)/(f(s)-P(s))$ is kept inside the theorem-facing operator.  The
-remaining $f'$ source is treated separately. The holomorphic identity for the
-archimedean $f$ source does not eliminate its Hermitian self block, so the
-conditional arithmetic decomposition remains an unproved input. The true operator retains the stationary
+remaining $f'$ source is treated separately. The exact contour matrix splits
+into the true operator, geometric leakage, the Hermitian archimedean self
+block, and an exact $f'$-plus-horizontal block. The holomorphic identity for
+the archimedean $f$ source does not eliminate its self block, so its required
+relative bound remains an unproved input. The true operator retains the stationary
 additive carrier $e(-ne^d)$.  The untwisted scalar Heap--Li--Zhao diagonal does
 not presently control this operator, so no unconditional packet--HLZ bridge is
 claimed.  We instead prove a conditional density-one theorem.  If the negative
@@ -67,16 +69,21 @@ $\lambda_T\ge\lambda_*>0$,
 \boxed{\beta_-(T;\lambda_T)=O(L^{-2}).}
 \label{eq:beta-minus-hypothesis-intro}
 \end{equation}
-Assume also that the true contour matrix has the decomposition
+The exact contour matrix has the four-block decomposition
 \[
-A_F=A_T^{\rm true}+E_T^{\rm geom}+R_T^{\rm reg},
+A_F=A_T^{\rm true}+L_T^{\rm geom}+J_T^{\rm arch}+R_T^{\rm exact}
 \]
-where $\rank E_T^{\rm geom}=o(N_T)$ and
+of Proposition~\ref{prop:exact-four-block-decomposition}. Assume also that
+on the retained space $L_T^{\rm geom}+J_T^{\rm arch}
+=E_T^{\rm geom}+R_T^{\rm edge+arch}$, where
+$\rank E_T^{\rm geom}=o(N_T)$ and
 \begin{equation}
 \left\|\Gfr_T^{-1/2}R_T^\nu\Gfr_T^{-1/2}\right\|_{S_2}^2=o(N_T)
-\quad(\nu\in\{\mathrm{geom},f',\mathrm{hor}\}),
+\quad(\nu\in\{\mathrm{edge+arch},f',\mathrm{hor}\}),
 \label{eq:regular-lambda-scale-intro}
 \end{equation}
+Here $R_T^{\rm exact}=R_T^{f'}+R_T^{\rm hor}$ and
+$R_T^{\rm reg}=R_T^{\rm edge+arch}+R_T^{f'}+R_T^{\rm hor}$.
 Then, as $T\to\infty$,
 \[
 \boxed{\frac{N_{0,T}}{N_T}=1-O(L^{-2})-o(1)=1-o(1)}.
@@ -88,11 +95,12 @@ Consequently, by dyadic summation,
 \end{theorem}
 
 \begin{remark}[Status of the arithmetic decomposition]
-The decomposition assumed in Theorem~\ref{thm:main} has not been derived from
-the exact contour. In the right-edge reflection, the Hermitian archimedean
-self matrix $J_{\rm arch}=I_f+I_f^*$ survives the holomorphic identity
+The four-block identity in Proposition~\ref{prop:exact-four-block-decomposition}
+is exact. The relative estimate in \eqref{eq:regular-lambda-scale-intro} for
+$R_T^{\rm edge+arch}$ has not been derived from the contour. In particular,
+$J_T^{\rm arch}=I_f+I_f^*$ survives the holomorphic identity
 \eqref{eq:holomorphic-self-elimination}. A separate estimate or a revised
-principal operator is needed to place it within the theorem's hypotheses.
+principal operator is needed to establish the theorem's quantitative hypotheses.
 \end{remark}
 
 \begin{remark}[Scale of the regular remainder]

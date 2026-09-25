@@ -355,3 +355,32 @@ used as the original contour spectrum.
 **Next interface.** Keep `J_arch` in an exact contour operator identity, then
 analyze its retained-space rank/relative size or include it in a revised
 principal spectral model before attempting the M08 remainder estimate.
+
+## 2026-09-25 — M02/M04/M08 exact normalized four-block interface
+
+**Observation.** On the same full packet space, the original normalized contour
+matrix has the exact identity
+`A_F=A_true+L_geom+J_arch+R_exact`. Here
+`J_arch=R_T[f(C+f' zeta^2);1,1]` includes the `f f'` cross term, and
+`R_exact=R_T[R_f'^log;1,1]+R_hor,H` uses the oriented horizontal integral of
+the full Hardy source `H=f+L1`. The right-edge operator requires the factor
+`L^-2` from the original curvature normalization; its omission in the prior
+definition prevented literal matrix equality. The exact identity persists
+after a common retained-space compression.
+
+**Lean evidence.** This is an analytic manuscript identity, not a new Lean
+declaration. It follows from the source equations in
+`sections/03_right_edge.tex`, the normalized contour definition in
+`sections/01_invariant_contour.tex`, and reflection. The directed numerical
+comparison in `scripts/compute_original_contour.py` checks the corresponding
+finite matrix sum; it is a consistency test rather than a proof.
+
+**Manuscript impact.** Proposition `exact-four-block-decomposition` now states
+and proves the exact identity. The conditional theorem separately assumes
+`L_geom+J_arch=E_geom+R_edge+arch` and a relative-Hilbert--Schmidt bound on
+`R_edge+arch`; those estimates do not follow from the exact source algebra.
+
+**Next interface.** Determine whether the archimedean self block can be
+incorporated into a revised principal operator or obtain a valid bound for its
+retained-space contribution, then revisit the one-sided spectral defect for
+that exact principal choice.
