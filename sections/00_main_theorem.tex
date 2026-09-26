@@ -1,26 +1,42 @@
 \begin{abstract}
 We construct a finite-dimensional Hermitian contour form from an analytic Hardy
-gauge and a near-lattice packet family.  Its zero-side residue representation
-converts off-critical-line stationary geometry into negative inertia.  On the
-arithmetic side the complete non-$f'$ Dirichlet source
-$-P(s)+Q(s)/(f(s)-P(s))$ is kept inside the theorem-facing operator.  The
-remaining $f'$ source is treated separately. The exact contour matrix splits
-into the true operator, geometric leakage, the Hermitian archimedean self
-block, and an exact $f'$-plus-horizontal block. The holomorphic identity for
-the archimedean $f$ source does not eliminate its self block, so its required
-relative bound remains an unproved input. The true operator retains the stationary
-additive carrier $e(-ne^d)$.  The untwisted scalar Heap--Li--Zhao diagonal does
-not presently control this operator, so no unconditional packet--HLZ bridge is
-claimed.  We instead prove a conditional density-one theorem.  If the negative
-part of the relative defect between the true one-$\chi$ operator and a positive
-reference model has normalized Hilbert--Schmidt square $O((\log T)^{-2})$, and
-the geometric edge and regular remainders satisfy the stated rank and relative
+gauge and a near-lattice packet family.  On the zero side, stationary residues
+convert off-critical-line geometry into negative inertia.  After the generic
+real-symmetric perturbation used to remove stationary multiplicities, this
+inertia has an exact scalar re-encoding: the local principal part
+\(M_\Omega=\operatorname{PP}_{\Omega}(H/H')\) has a generalized-Nevanlinna
+kernel with exactly \(n_-(A_H)\) negative squares; its Cayley transform is a
+generalized Schur function whose Kre\u{\i}n--Langer denominator has the same
+degree, and this degree is equivalently the number of upper-half-plane zeros
+of a polynomial \(P_\Omega+iQ_\Omega\), or the upper-half-plane eigenvalue
+count of a diagonal matrix plus a rank-one perturbation.  This rewrite
+identifies the integer defect but does not by itself estimate it.
+
+On the arithmetic side the exact contour matrix is retained as the coupled
+four-block sum
+\[
+A_F=A_T^{\rm true}+L_T^{\rm geom}+J_T^{\rm arch}+R_T^{\rm exact}.
+\]
+The complete non-\(f'\) Dirichlet source
+\(-P(s)+Q(s)/(f(s)-P(s))\) remains inside the theorem-facing operator, the
+Hermitian archimedean self block is not discarded by holomorphy, and the exact
+fourth block contains the \(f'\) and horizontal contributions.  Finite
+computations show that the inertia of partial block sums can differ sharply
+from that of the complete contour matrix, so no individual block is assigned
+an independent positivity interpretation.
+
+We prove a conditional density-one theorem.  If the negative part of the
+relative defect between the true one-\(\chi\) operator and a positive reference
+model has normalized Hilbert--Schmidt square \(O((\log T)^{-2})\), and the
+geometric edge and regular remainders satisfy the stated rank and relative
 Hilbert--Schmidt estimates, then
 \[
 \frac{N_{0,T}}{N_T}=1-O((\log T)^{-2})-o(1)=1-o(1).
 \]
-Thus the unresolved arithmetic content includes both the one-sided relative
-spectral-defect hypothesis and the treatment of the archimedean self block.
+The negative-square/determinant rewrite therefore supplies a second exact
+description of the zero-side defect; an unconditional argument would still
+have to control that defect from the complete coupled right-edge arithmetic
+representation.
 \end{abstract}
 
 \section{Main theorem and notation}
@@ -139,6 +155,19 @@ HughesPearceCrump2025,PearceCrump2025,HLP}.  These results are especially close
 to the present zero-side use of stationary points of the Hardy gauge and to the
 right-edge expansion through $Z_1'/Z_1$.
 
+There is also an older positivity and inertia viewpoint.  Yoshida studied
+Hermitian forms attached to zeta functions, and Bombieri analyzed finite
+truncations of Weil's quadratic functional; under a finiteness assumption on
+off-critical zeros, Bombieri's truncations eventually have exactly one
+negative eigenvalue for each reflected off-line pair
+\cite{Yoshida1992,Bombieri2000}.  Generalized Nevanlinna and Schur theory
+provides the abstract language of finite negative squares and finite Blaschke
+defects used in Section~\ref{sec:negative-square-rewrite}
+\cite{Lilleberg2020}.  In the present argument this language is applied only
+to the finite rational principal part determined by stationary poles inside a
+single good rectangle; no global generalized-Nevanlinna property of
+\(F/F'\) is assumed.
+
 The arithmetic side also intersects the extensive literature on twisted moments,
 Dirichlet-polynomial mean values, mollifiers, and ratios of $L$-functions
 \cite{BalasubramanianConreyHeathBrown1985,Farmer1993,
@@ -155,18 +184,26 @@ and on the packetized right edge, the true log-only operator is compared
 spectrally with a positive reference model, and the remaining terms are
 separated into low-rank and relative Hilbert--Schmidt classes.
 
-The proof is organized around the normalized contour matrix introduced in
-Section~\ref{sec:common-matrix}, whose zero-side and arithmetic-side
-representations are developed in the subsequent sections. The holomorphic
-identity of Lemma~\ref{lem:holomorphic-self-elimination} cancels only the
-anti-Hermitian vertical $f$ contribution. The conditional theorem compares
-the true packet operator directly with the positive reference model through
-the one-sided defect \eqref{eq:beta-minus-intro}; no scalar diagonal or
+The proof is organized around one normalized contour matrix.  Section
+\ref{sec:zero-side} identifies its stationary residue blocks.  Section
+\ref{sec:negative-square-rewrite} then rewrites the generic zero-side defect
+exactly as a finite principal-part negative-square index, a Kre\u{\i}n--Langer
+Blaschke degree, and a rank-one determinant half-plane count.  This rewrite is
+diagnostic rather than eliminative: it identifies the integer defect but does
+not estimate it.  Sections~\ref{sec:right-edge} and following return to the
+same unperturbed contour matrix from the arithmetic side.  The exact four-block
+sum is therefore the mechanism available to control the defect, not a
+collection in which all but \(A_T^{\rm true}\) may be discarded.
+
+The holomorphic identity of Lemma~\ref{lem:holomorphic-self-elimination}
+cancels only the anti-Hermitian vertical $f$ contribution.  The conditional
+theorem compares the true packet operator with the positive reference model
+through the one-sided defect \eqref{eq:beta-minus-intro}; no scalar diagonal or
 lagwise packet--HLZ reduction is used.  The complete source containing
 $\Delta H_{\rm dir}$ is absorbed into $A_T^{\rm true}$ before stationary
 normalization; safe-line smallness is not used as an operator estimate.  The
-superseded frozen-self, critical-$J$ AFE,
-one-sided common-output, HLP-resummation, and macroscopic-shift source files are
-excluded from the active manuscript.  Appendix~\ref{sec:legacy-route-note}
-records only their historical scope; the detailed earlier text remains
-recoverable from the Git history.
+superseded frozen-self, critical-$J$ AFE, one-sided common-output,
+HLP-resummation, and macroscopic-shift source files are excluded from the
+active manuscript.  Appendix~\ref{sec:legacy-route-note} records only their
+historical scope; the detailed earlier text remains recoverable from the Git
+history.
