@@ -49,9 +49,8 @@ including the factor `L^-2` in every right-edge block. Its conditional
 small-remainder interpretation still requires a new treatment of this block.
 
 
-A separate structural audit,
-[generic_principal_part_negative_squares_2026-09-25.md](generic_principal_part_negative_squares_2026-09-25.md),
-proves an exact **genericized zero-side** equivalence
+The active manuscript now includes `sections/02_negative_square_rewrite.tex`, promoted from the separate structural audit
+[generic_principal_part_negative_squares_2026-09-25.md](generic_principal_part_negative_squares_2026-09-25.md).  It proves an exact **genericized zero-side** equivalence
 
 `n_-(A_H) = B(H) + P(H') = sq_-(K_{M_Omega}) = sq_-(K_{S_Omega}) = deg B_Omega`.
 
