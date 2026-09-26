@@ -1,0 +1,506 @@
+\section{Principal-part negative squares and determinant form}
+\label{sec:negative-square-rewrite}
+
+The stationary residue identity of Section~\ref{sec:zero-side} admits a second
+finite-dimensional description which is useful for separating the geometry of
+the bad directions from the arithmetic mechanism intended to control them.
+The description is exact only after the generic perturbation used in
+Section~\ref{sec:multiplicity-endgame}.  Accordingly, throughout this section
+let
+\[
+H(z)=F(z)+\eta z+\varepsilon
+\]
+be a real-symmetric perturbation for which all zeros of $H'$ in
+$\Omega_T$ are simple, $H$ and $H'$ have no common zero, and $H'$ has no zero
+on $\partial\Omega_T$.  These are precisely the properties supplied by
+Lemma~\ref{lem:generic-affine}.
+
+The point of the present section is not to add another hypothesis to the main
+theorem.  It is to identify the generic negative index with a rational
+generalized-Nevanlinna defect and then with a concrete determinant zero count.
+This gives a canonical scalar encoding of the quantity that the right-edge
+four-block decomposition must ultimately control.
+
+\subsection{The local principal part of $H/H'$}
+
+Put
+\begin{equation}
+M(z):=\frac{H(z)}{H'(z)}.
+\label{eq:full-M-H-over-Hprime}
+\end{equation}
+Let the real zeros of $H'$ in $\Omega_T$ be
+$c_1,\dots,c_r$, and let the nonreal zeros be
+\[
+\rho_1,\bar\rho_1,\dots,\rho_p,\bar\rho_p,
+\qquad \Im\rho_k>0.
+\]
+Since all stationary zeros are simple and none is a zero of $H$, define
+\[
+a_j:=\Res_{z=c_j}M(z)=\frac{H(c_j)}{H''(c_j)}
+\in\mathbb R\setminus\{0\},
+\]
+and
+\[
+b_k:=\Res_{z=\rho_k}M(z)=\frac{H(\rho_k)}{H''(\rho_k)}
+\in\mathbb C\setminus\{0\}.
+\]
+Real symmetry gives the residue $\overline{b_k}$ at $\bar\rho_k$.
+
+Define the rational principal part associated with the current good rectangle by
+\begin{equation}
+\boxed{
+M_{\Omega}(z)
+:=
+\sum_{j=1}^{r}\frac{a_j}{z-c_j}
++
+\sum_{k=1}^{p}
+\left(
+\frac{b_k}{z-\rho_k}
++
+\frac{\overline{b_k}}{z-\bar\rho_k}
+\right).
+}
+\label{eq:M-Omega-principal-part}
+\end{equation}
+
+\begin{proposition}[Exact principal-part reduction]
+\label{prop:principal-part-reduction}
+For every pair of packet test functions $h_1,h_2$,
+\begin{equation}
+\boxed{
+\mathcal A_H(h_1,h_2)
+=
+-\frac{1}{2\pi iL^2}
+\oint_{\partial\Omega_T}
+M_{\Omega}(z)
+\,[H''h_2](z)\,[H''h_1]^\#(z)\,dz.
+}
+\label{eq:principal-part-contour}
+\end{equation}
+In particular, the holomorphic background of $H/H'$ relative to
+$\Omega_T$ has exactly zero contribution to the closed contour form.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:zero-kernel}, with $F$ replaced by $H$, gives
+\[
+\mathcal A_H(h_1,h_2)
+=
+-\frac{1}{2\pi iL^2}
+\oint_{\partial\Omega_T}
+M(z)
+\,[H''h_2](z)\,[H''h_1]^\#(z)\,dz.
+\]
+By construction $M-M_\Omega$ is holomorphic on a neighbourhood of
+$\overline{\Omega_T}$.  The packet factors and $H''$ are holomorphic there as
+well.  Cauchy's theorem therefore removes the $M-M_\Omega$ term exactly.
+\end{proof}
+
+The restriction to the principal part in
+\eqref{eq:M-Omega-principal-part} is essential.  A holomorphic background is
+invisible to the closed contour but need not be invisible to a global Pick
+kernel.  Thus no generalized-Nevanlinna assertion is made for the full
+function $H/H'$.
+
+\subsection{Negative squares}
+
+For $z,w$ in the upper half-plane away from the poles of $M_\Omega$, define
+\begin{equation}
+K_{M_\Omega}(z,w)
+:=
+\frac{M_\Omega(z)-\overline{M_\Omega(w)}}{z-\bar w}.
+\label{eq:MOmega-Nevanlinna-kernel}
+\end{equation}
+
+For a real pole one has
+\begin{equation}
+\frac{a_j/(z-c_j)-a_j/(\bar w-c_j)}
+{z-\bar w}
+=
+-\frac{a_j}{(z-c_j)(\bar w-c_j)}.
+\label{eq:real-pole-Pick-block}
+\end{equation}
+For a nonreal conjugate pair,
+\begin{align}
+&\frac{1}{z-\bar w}
+\left[
+\frac{b_k}{z-\rho_k}
++\frac{\overline{b_k}}{z-\bar\rho_k}
+-\frac{\overline{b_k}}{\bar w-\bar\rho_k}
+-\frac{b_k}{\bar w-\rho_k}
+\right]
+\notag\\
+&\qquad=
+-\frac{b_k}{(z-\rho_k)(\bar w-\rho_k)}
+-\frac{\overline{b_k}}
+{(z-\bar\rho_k)(\bar w-\bar\rho_k)}.
+\label{eq:complex-pole-Pick-block}
+\end{align}
+In the Cauchy basis
+\[
+\frac1{z-\rho_k},
+\qquad
+\frac1{z-\bar\rho_k},
+\]
+the coefficient matrix of
+\eqref{eq:complex-pole-Pick-block} is
+\begin{equation}
+\begin{pmatrix}
+0&-b_k\\
+-\overline{b_k}&0
+\end{pmatrix},
+\label{eq:complex-Pick-signature-block}
+\end{equation}
+whose eigenvalues are $\pm|b_k|$.
+
+\begin{proposition}[Exact negative-square encoding]
+\label{prop:negative-square-encoding}
+The kernel $K_{M_\Omega}$ has exactly
+\begin{equation}
+\boxed{
+\kappa_T(H):=B(H)+P(H')
+}
+\label{eq:kappa-generic-def}
+\end{equation}
+negative squares.  Consequently, in the scalar generalized-Nevanlinna
+notation,
+\[
+M_\Omega\in N_{\kappa_T(H)},
+\]
+and
+\begin{equation}
+\boxed{
+n_-(A_H)
+=
+\operatorname{sq}_-(K_{M_\Omega})
+=
+\kappa_T(H).
+}
+\label{eq:AH-negative-squares}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Collect the Cauchy functions associated with the distinct poles into a vector
+$\Phi(z)$.  Equations~\eqref{eq:real-pole-Pick-block} and
+\eqref{eq:complex-Pick-signature-block} give a finite-rank factorization
+\[
+K_{M_\Omega}(z,w)
+=
+\Phi(z)\mathcal J_\Omega\Phi(w)^*,
+\]
+where
+\[
+\mathcal J_\Omega
+=
+\bigoplus_{j=1}^{r}[-a_j]
+\oplus
+\bigoplus_{k=1}^{p}
+\begin{pmatrix}
+0&-b_k\\
+-\overline{b_k}&0
+\end{pmatrix}.
+\]
+The Cauchy functions associated with distinct poles are linearly independent:
+a linear relation on an open set is a rational identity, and taking residues
+at the distinct poles makes every coefficient vanish.  Hence one can choose a
+finite set of upper-half-plane sample points on which the Cauchy evaluation
+matrix has full column rank.  Sylvester inertia then shows that the maximal
+number of negative eigenvalues of a kernel Gram matrix equals the negative
+inertia of $\mathcal J_\Omega$.
+
+A real block $[-a_j]$ is negative exactly when $a_j>0$.  Since
+\[
+a_j=\frac{H(c_j)}{H''(c_j)},
+\]
+this is equivalent to $H(c_j)H''(c_j)>0$, namely to a bad real stationary
+point.  Each block \eqref{eq:complex-Pick-signature-block} contributes exactly
+one negative direction.  Thus the negative-square index is
+$B(H)+P(H')$.  Equation~\eqref{eq:zero-inertia-generic} gives the same number
+for $n_-(A_H)$.
+\end{proof}
+
+This is the precise sense in which the zero-side defect is a counting
+invariant.  The magnitudes of the negative eigenvalues are irrelevant: changing
+a nonzero residue without crossing the signature-changing locus does not change
+the corresponding contribution to $\kappa_T(H)$.
+
+\subsection{Cayley transform and Blaschke degree}
+
+Define
+\begin{equation}
+S_\Omega(z)
+:=
+\frac{M_\Omega(z)-i}{M_\Omega(z)+i}.
+\label{eq:SOmega-Cayley}
+\end{equation}
+Its upper-half-plane Schur kernel is
+\[
+K_{S_\Omega}(z,w)
+:=
+\frac{1-S_\Omega(z)\overline{S_\Omega(w)}}
+{-i(z-\bar w)}.
+\]
+A direct calculation gives
+\begin{equation}
+\boxed{
+K_{S_\Omega}(z,w)
+=
+\frac{
+2K_{M_\Omega}(z,w)
+}{
+(M_\Omega(z)+i)
+(\overline{M_\Omega(w)}-i)
+}.
+}
+\label{eq:Cayley-kernel-congruence}
+\end{equation}
+Thus every finite Gram matrix for $K_{S_\Omega}$ is obtained from the
+corresponding Gram matrix for $K_{M_\Omega}$ by an invertible diagonal
+congruence and multiplication by the positive scalar $2$, away from the poles.
+Therefore
+\begin{equation}
+\operatorname{sq}_-(K_{S_\Omega})
+=
+\kappa_T(H).
+\label{eq:Cayley-same-negative-index}
+\end{equation}
+
+After conformally mapping the upper half-plane to the unit disk and, if
+necessary, precomposing with a disk automorphism to choose a regular base
+point, $S_\Omega$ is a scalar generalized Schur function of index
+$\kappa_T(H)$.  The scalar Kre\u{\i}n--Langer factorization then gives a
+coprime representation
+\begin{equation}
+\widehat S_\Omega
+=
+B_\Omega^{-1}S_0,
+\label{eq:Krein-Langer-factorization}
+\end{equation}
+where $S_0$ is an ordinary Schur function and $B_\Omega$ is a finite Blaschke
+product of degree
+\begin{equation}
+\boxed{
+\deg B_\Omega=\kappa_T(H).
+}
+\label{eq:Blaschke-degree-kappa}
+\end{equation}
+We use only this scalar Hilbert-space case of the standard
+Kre\u{\i}n--Langer theorem; see \cite{Lilleberg2020}.  In particular,
+\begin{equation}
+\boxed{
+n_-(A_H)
+=
+B(H)+P(H')
+=
+\operatorname{sq}_-(K_{M_\Omega})
+=
+\operatorname{sq}_-(K_{S_\Omega})
+=
+\deg B_\Omega.
+}
+\label{eq:generic-equivalence-chain}
+\end{equation}
+
+\subsection{Polynomial and determinant form}
+
+List all stationary poles in $\Omega_T$ as
+\[
+\lambda_1,\dots,\lambda_m,
+\qquad
+m=r+2p,
+\]
+and write their residues as $r_1,\dots,r_m$, so that
+\begin{equation}
+M_\Omega(z)
+=
+\sum_{j=1}^{m}\frac{r_j}{z-\lambda_j}.
+\label{eq:MOmega-sum-all-poles}
+\end{equation}
+Put
+\begin{equation}
+Q_\Omega(z)
+:=
+\prod_{j=1}^{m}(z-\lambda_j),
+\qquad
+P_\Omega(z)
+:=
+\sum_{j=1}^{m}
+r_j\prod_{\ell\ne j}(z-\lambda_\ell).
+\label{eq:PQ-Omega}
+\end{equation}
+Then
+\[
+M_\Omega=\frac{P_\Omega}{Q_\Omega},
+\qquad
+S_\Omega
+=
+\frac{P_\Omega-iQ_\Omega}
+{P_\Omega+iQ_\Omega}.
+\]
+Since every $r_j$ is nonzero, $P_\Omega$ and $Q_\Omega$ have no common zero.
+Hence $P_\Omega+iQ_\Omega$ and $P_\Omega-iQ_\Omega$ have no common zero
+either.  The poles of $S_\Omega$ in the upper half-plane are therefore exactly
+the upper-half-plane zeros of $P_\Omega+iQ_\Omega$, counted with multiplicity.
+By \eqref{eq:Blaschke-degree-kappa},
+\begin{equation}
+\boxed{
+\kappa_T(H)
+=
+N_{\mathbb C_+}(P_\Omega+iQ_\Omega).
+}
+\label{eq:polynomial-zero-count-kappa}
+\end{equation}
+
+There is also an exact rank-one determinant representation.  Let
+\[
+D_\Omega:=\operatorname{diag}(\lambda_1,\dots,\lambda_m),
+\qquad
+r_\Omega:=(r_1,\dots,r_m)^T,
+\qquad
+\mathbf 1:=(1,\dots,1)^T.
+\]
+Then
+\[
+M_\Omega(z)
+=
+\mathbf 1^T(zI-D_\Omega)^{-1}r_\Omega.
+\]
+The matrix determinant lemma gives
+\begin{align}
+\det(zI-D_\Omega-i r_\Omega\mathbf1^T)
+&=
+\det(zI-D_\Omega)
+\left(
+1-i\,\mathbf1^T(zI-D_\Omega)^{-1}r_\Omega
+\right)
+\notag\\
+&=
+Q_\Omega(z)\bigl(1-iM_\Omega(z)\bigr).
+\label{eq:determinant-lemma-Omega}
+\end{align}
+Since
+\[
+P_\Omega+iQ_\Omega
+=
+iQ_\Omega(1-iM_\Omega),
+\]
+we obtain
+\begin{equation}
+\boxed{
+P_\Omega(z)+iQ_\Omega(z)
+=
+i\det(zI-D_\Omega-i r_\Omega\mathbf1^T).
+}
+\label{eq:determinant-polynomial-identity}
+\end{equation}
+Consequently,
+\begin{equation}
+\boxed{
+\kappa_T(H)
+=
+\#\left\{
+\lambda\in\spec(D_\Omega+i r_\Omega\mathbf1^T):
+\Im\lambda>0
+\right\},
+}
+\label{eq:rank-one-half-plane-count}
+\end{equation}
+with algebraic multiplicity.
+
+The matrix in \eqref{eq:rank-one-half-plane-count} is diagonal plus rank one,
+but it is non-selfadjoint.  Rank one alone therefore gives no bound on the
+number of eigenvalues that can move into the upper half-plane.  The
+determinant form is an exact rewrite, not a solution of the density problem.
+
+\subsection{Interface with the arithmetic four-block decomposition}
+
+It is important to distinguish the exact generic equivalence above from the
+unperturbed arithmetic matrix.  Proposition~\ref{prop:exact-four-block-decomposition}
+states exactly
+\begin{equation}
+A_F
+=
+A_T^{\rm true}
++L_T^{\rm geom}
++J_T^{\rm arch}
++R_T^{\rm exact}.
+\label{eq:four-block-restated-negative-square-section}
+\end{equation}
+The matrix $A_F$ is not replaced by the determinant
+\eqref{eq:determinant-polynomial-identity}.  Instead, Section~\ref{sec:multiplicity-endgame}
+chooses $H$ on the same finite packet space so that $A_H-A_F$ is arbitrarily
+small in the normalized operator metric required by the min--max argument.
+Only after this genericization does
+\eqref{eq:generic-equivalence-chain} apply exactly.
+
+Thus the two sides of the method have distinct roles:
+\[
+\boxed{
+\begin{array}{ll}
+\text{zero side:}
+&
+A_H\longleftrightarrow
+M_\Omega\longleftrightarrow
+\deg B_\Omega
+\longleftrightarrow
+N_{\mathbb C_+}(P_\Omega+iQ_\Omega),
+\\[1mm]
+\text{arithmetic side:}
+&
+A_F=
+A_T^{\rm true}
++L_T^{\rm geom}
++J_T^{\rm arch}
++R_T^{\rm exact}.
+\end{array}
+}
+\]
+The first line identifies the defect to be counted.  The second line is the
+available right-edge representation from which that defect must be controlled.
+
+In particular, the four-block decomposition is not superseded by the
+determinant rewrite.  What is discarded is only the interpretation of
+$A_T^{\rm true}$ as a separately positive principal matrix without controlling
+its coupling to the other exact blocks.  The finite computations in
+\texttt{numerical.tex} already show that the inertia can change substantially
+as the missing blocks are restored.
+
+The manuscript's existing generic count
+\eqref{eq:D-H} and \eqref{eq:generic-equivalence-chain} give
+\begin{equation}
+\boxed{
+D(H)
+=
+\deg B_\Omega+o(N_T).
+}
+\label{eq:DH-Blaschke-degree}
+\end{equation}
+This is an exact structural reformulation up to the already established
+good-height counting error.  It is not a new estimate, because
+$M_\Omega$ was built from the stationary poles themselves.
+
+The genuinely new arithmetic problem suggested by the rewrite is therefore:
+can the complete right-edge data in
+\eqref{eq:four-block-restated-negative-square-section} force
+\begin{equation}
+\boxed{
+\deg B_\Omega=o(N_T)
+}
+\label{eq:Blaschke-target}
+\end{equation}
+without first reconstructing all stationary poles?  Equivalently, can one
+show from the arithmetic side that, after deleting only $o(N_T)$ exceptional
+directions, the local principal part has ordinary Herglotz--Nevanlinna sign
+structure?  This question is not resolved in the present paper.
+
+The use of negative inertia to encode failures of zeta-zero positivity has
+precedents in the Hermitian-form and Weil-functional literature.  Yoshida
+studied Hermitian forms attached to zeta functions, while Bombieri showed for
+finite truncations of Weil's quadratic functional that, under a finiteness
+assumption on off-line zeros, the eventual number of negative eigenvalues is
+one half of the number of zeros violating RH
+\cite{Yoshida1992,Bombieri2000}.  The present principal-part construction is
+different: it is tied to the stationary detector $H'$ and to the exact
+Hardy-curvature contour form, and its role here is to expose the integer defect
+which the four-block right-edge representation would need to control.
